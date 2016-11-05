@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="signup">Još nemaš račun? Kreiraj ga!</string>
+    <string name="passwordHint">Lozinka</string>
+    <string name="loginButton">Prijavi se</string>
+</resources>

@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">SoleX</string>
+    <string name="signup">No account yet? Create one!</string>
+    <string name="passwordHint">Password</string>
+    <string name="loginButton">Login</string>
+
 </resources>
