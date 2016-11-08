@@ -8,5 +8,7 @@
     <string name="btnPoduzece">Company</string>
     <string name="developer">Developer</string>
     <string name="account_create">Which account u want to create?</string>
+    <string name="signup_yourself_as_a_developer">Signup yourself as a developer!</string>
+    <string name="signup_your_company">Signup your company!</string>
 
 </resources>

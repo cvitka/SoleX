@@ -6,6 +6,7 @@
     <string name="btnPoduzece">Poduzeće</string>
     <string name="developer">Razvojni inženjer</string>
     <string name="account_create">Koju vrstu računa želite kreirati?</string>
-
+    <string name="signup_yourself_as_a_developer">Registriraj se kao developer!</string>
+    <string name="signup_your_company">Registriraj svoje poduzeće!</string>
 
 </resources>

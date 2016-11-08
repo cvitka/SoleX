@@ -1,22 +1,10 @@
 package hr.foi.air.solex;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
-import butterknife.Optional;
 import me.relex.circleindicator.CircleIndicator;
 
 public class SignupActivity extends AppCompatActivity {
@@ -26,7 +14,6 @@ public class SignupActivity extends AppCompatActivity {
     ViewPager mPager;
     @BindView(R.id.indicator)
     CircleIndicator circleIndicator;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,5 +30,4 @@ public class SignupActivity extends AppCompatActivity {
         adapter.addFragment(SignupCompanyFragment.newInstance());
         viewPager.setAdapter(adapter);
     }
-
 }
