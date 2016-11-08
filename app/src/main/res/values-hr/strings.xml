@@ -3,4 +3,9 @@
     <string name="signup">Još nemaš račun? Kreiraj ga!</string>
     <string name="passwordHint">Lozinka</string>
     <string name="loginButton">Prijavi se</string>
+    <string name="btnPoduzece">Poduzeće</string>
+    <string name="developer">Razvojni inženjer</string>
+    <string name="account_create">Koju vrstu računa želite kreirati?</string>
+
+
 </resources>
