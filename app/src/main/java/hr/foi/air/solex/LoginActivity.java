@@ -9,6 +9,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import hr.foi.air.solex.view.CompanyProfileActivity;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -19,6 +20,12 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
 
+    }
+
+    @OnClick(R.id.btn_login)
+    public void login_click(View view){
+        Intent intent = new Intent(this, CompanyProfileActivity.class);
+        startActivity(intent);
     }
 
     @OnClick(R.id.link_signup)
