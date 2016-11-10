@@ -9,10 +9,10 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import hr.foi.air.solex.view.CompanyProfileActivity;
 
 public class LoginActivity extends AppCompatActivity {
-
+    @BindView(R.id.input_password)
+    TextView txtInputPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,8 +24,16 @@ public class LoginActivity extends AppCompatActivity {
 
     @OnClick(R.id.btn_login)
     public void login_click(View view){
-        Intent intent = new Intent(this, CompanyProfileActivity.class);
-        startActivity(intent);
+        String input = txtInputPassword.getText().toString();
+        if(input.equals("firma")) {
+            Intent intent = new Intent(this, CompanyProfileActivity.class);
+            startActivity(intent);
+        }
+        else if(input.equals("devel")) {
+            Intent intent = new Intent(this, DeveloperProfileActivity.class);
+            startActivity(intent);
+        }
+
     }
 
     @OnClick(R.id.link_signup)

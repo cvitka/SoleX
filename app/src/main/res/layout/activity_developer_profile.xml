@@ -12,15 +12,15 @@
     tools:context="hr.foi.air.solex.CompanyProfileActivity">
 
     <ImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        app:srcCompat="@drawable/company_logo"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        app:srcCompat="@drawable/developer_logo"
         android:id="@+id/imageView2"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true" />
 
     <TextView
-        android:text="Company Name"
+        android:text="Developer Name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -39,7 +39,7 @@
         android:layout_alignStart="@+id/textView" />
 
     <TextView
-        android:text="Address"
+        android:text="Years of experience"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="21dp"
@@ -156,7 +156,7 @@
 
 
     <TextView
-        android:text="General Information"
+        android:text="IT skills"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -175,40 +175,6 @@
         android:layout_below="@+id/imageButton2"/>
 
 
-    <TextView
-        android:text="Main Technologies"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:id="@+id/textView6"
-        android:layout_marginTop="43dp"
-        android:layout_below="@+id/horizontalBarView3"
-        android:layout_alignParentStart="true"
-        android:textStyle="bold"
-        android:textSize="15dp"/>
-
-    <View
-        android:id="@+id/horizontalBarView4"
-        android:layout_width="match_parent"
-        android:layout_height="2dip"
-        android:background="#55555555"
-        android:layout_below="@+id/imageButton3"/>
-
-
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/gray_expand_img"
-        android:id="@+id/imageButton3"
-        android:layout_marginTop="35dp"
-        android:adjustViewBounds="true"
-        android:background="@drawable/roundbutton"
-        android:layout_below="@+id/horizontalBarView3"
-        android:layout_alignEnd="@+id/horizontalBarView3"
-        android:backgroundTint="@color/colorPrimary"
-        android:tag="gray_expand_img"
-        />
-
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -225,7 +191,7 @@
         android:text="Update"
         android:layout_width="65dp"
         android:layout_height="25dp"
-        android:id="@+id/btnStartUpdateCompanyData"
+        android:id="@+id/btnStartUpdateDeveloperData"
         android:background="@color/colorPrimaryDark"
         android:layout_marginRight="23dp"
         android:layout_alignParentTop="true"

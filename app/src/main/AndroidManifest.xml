@@ -21,8 +21,18 @@
         <activity
             android:name=".SignupActivity"
             android:label="@string/title_activity_signup"
+            android:theme="@style/AppTheme.Dark" />
+        <activity
+            android:name=".CompanyProfileActivity"
+            android:theme="@style/AppTheme.Dark" />
+        <activity
+            android:name=".UpdateCompanyDataActivity"
             android:theme="@style/AppTheme.Dark"/>
-        <activity android:name=".view.CompanyProfileActivity"
+        <activity
+            android:name=".DeveloperProfileActivity"
+            android:theme="@style/AppTheme.Dark" />
+        <activity
+            android:name=".UpdateDeveloperDataActivity"
             android:theme="@style/AppTheme.Dark"/>
     </application>
 
