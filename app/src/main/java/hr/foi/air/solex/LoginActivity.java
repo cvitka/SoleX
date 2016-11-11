@@ -7,21 +7,15 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.example.webservice.WebServiceRequest;
+import com.example.webservice.models.Developer;
 
-import okhttp3.OkHttpClient;
-
+import hr.foi.air.solex.Loaders.DataLoader;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import hr.foi.air.solex.models.Developers;
-import hr.foi.air.solex.webservice.WebService;
-import hr.foi.air.solex.webservice.WebServiceRequest;
-import hr.foi.air.solex.webservice.WebServiceResponse;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
+
+
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -32,8 +26,6 @@ public class LoginActivity extends AppCompatActivity {
     @BindView(R.id.input_password)
     TextView txtInputPassword;
 
-    public static String baseUrl = "http://barka.foi.hr/WebDiP/2015_projekti/WebDiP2015x008/";
-    private Callback<WebServiceResponse> failed;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,48 +38,14 @@ public class LoginActivity extends AppCompatActivity {
     public void login_click(View view){
         String password = txtInputPassword.getText().toString();
         String email = txtInputEmail.getText().toString();
-        loginProcess(email,password);
-    }
-    public void loginProcess(String email, String password){
 
-        OkHttpClient client = new OkHttpClient();
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(baseUrl)
-                .addConverterFactory(GsonConverterFactory.create())
-                .client(client)
-                .build();
-
-        WebService webServiceInterface = retrofit.create(WebService.class);
-
-        Developers developer = new Developers();
+        Developer developer = new Developer();
         developer.setEmail(email);
         developer.setPassword(password);
+        DataLoader dataLoader = new DataLoader(this);
+        WebServiceRequest request = new WebServiceRequest(dataLoader);
 
-        WebServiceRequest request = new WebServiceRequest();
-        request.setDeveloper(developer);
-
-        Call<WebServiceResponse> call = webServiceInterface.checkPrijava(email,password);
-        call.enqueue(new Callback<WebServiceResponse>() {
-            @Override
-            public void onResponse(Call<WebServiceResponse> call, Response<WebServiceResponse> response) {
-                if(response.isSuccessful()){
-                    Log.d("Api","Uspjeli");
-                    if(response.body().getSuccess().equals("1") && response.body().getType().equals("developer")){
-                        Intent intent = new Intent(LoginActivity.this, DeveloperProfileActivity.class);
-                        startActivity(intent);
-                    }else{
-                        Intent intent = new Intent(LoginActivity.this, CompanyProfileActivity.class);
-                        startActivity(intent);
-                    }
-                }
-
-            }
-
-            @Override
-            public void onFailure(Call<WebServiceResponse> call, Throwable t) {
-                Log.d("Api","failiure");
-            }
-        });
+        request.loginProccess(email,password);
     }
 
     @OnClick(R.id.link_signup)

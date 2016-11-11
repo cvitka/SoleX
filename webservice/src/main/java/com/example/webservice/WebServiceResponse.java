@@ -1,17 +1,13 @@
-package hr.foi.air.solex.webservice;
+package com.example.webservice;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import hr.foi.air.solex.models.Developers;
-
 /**
- * Created by cvitka on 10.11.16..
+ * Created by cvitka on 11.11.16..
  */
 
 public class WebServiceResponse {
-
-
     @SerializedName("success")
     @Expose
     private String success;
@@ -24,22 +20,12 @@ public class WebServiceResponse {
     @Expose
     private String type;
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    /*   @SerializedName("developer")
+    @SerializedName("id")
     @Expose
-    private Developers developer;*/
-
+    private int id;
 
     public WebServiceResponse() {
     }
-
 
     public String getSuccess() {
         return success;
@@ -49,19 +35,27 @@ public class WebServiceResponse {
         this.success = success;
     }
 
-   /* public Developers getDeveloper() {
-        return developer;
-    }
-
-    public void setDeveloper(Developers developer) {
-        this.developer = developer;
-    }*/
-
     public String getMessage() {
         return message;
     }
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

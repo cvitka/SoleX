@@ -1,12 +1,12 @@
-package hr.foi.air.solex.models;
+package com.example.webservice.models;
 
 import java.sql.Blob;
 
 /**
- * Created by cvitka on 10.11.16..
+ * Created by cvitka on 11.11.16..
  */
 
-public class Developers {
+public class Developer {
     int id;
     String imePrezime;
     String adresa;
@@ -17,7 +17,15 @@ public class Developers {
     Blob slika;
     String status;
 
-    public Developers() {
+    public Developer() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getImePrezime() {
@@ -82,13 +90,5 @@ public class Developers {
 
     public void setStatus(String status) {
         this.status = status;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 }
