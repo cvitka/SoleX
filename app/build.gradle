@@ -7,7 +7,7 @@ android {
     buildToolsVersion "24.0.3"
     defaultConfig {
         applicationId "hr.foi.air.solex"
-        minSdkVersion 21
+        minSdkVersion 19
         targetSdkVersion 24
         versionCode 1
         versionName "1.0"
@@ -38,4 +38,10 @@ dependencies {
 
     //CircleIndicator
     compile 'me.relex:circleindicator:1.2.2@aar'
+
+    compile 'com.google.code.gson:gson:2.4'
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.0.2'
+    compile 'com.squareup.okhttp:okhttp:2.7.0'
+
 }
