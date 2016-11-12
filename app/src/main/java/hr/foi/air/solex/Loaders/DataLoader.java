@@ -3,6 +3,7 @@ package hr.foi.air.solex.Loaders;
 import android.app.Activity;
 import android.content.Intent;
 
+import com.example.core.utils.UserType;
 import com.example.webservice.WebServiceHandler;
 import com.example.webservice.models.User;
 
@@ -22,8 +23,8 @@ public class DataLoader implements WebServiceHandler{
     }
 
     @Override
-    public void onLogin(User user) {
-        if (user.getType().equals("developer")) {
+    public void onLogin() {
+        if (User.getInstance().getUserType() == UserType.DEVELOPER) {
             Intent intent = new Intent(mActivity, DeveloperProfileActivity.class);
             mActivity.startActivity(intent);
 

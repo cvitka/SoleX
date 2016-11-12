@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_project_management"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="hr.foi.air.solex.ProjectManagementActivity">
+
+    <TextView
+        android:text="project_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="23dp"
+        android:id="@+id/textView20"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+
+    <TextView
+        android:text="description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:id="@+id/textView21"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textSize="18sp"
+        android:layout_below="@+id/textView20"
+        android:layout_alignStart="@+id/textView20" />
+
+    <TextView
+        android:text="Completion: number (percentage)"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="69dp"
+        android:id="@+id/textView22"
+        android:textSize="18sp"
+        android:layout_below="@+id/textView21"
+        android:layout_alignStart="@+id/textView21" />
+
+    <TextView
+        android:text="Needed collaborations list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignStart="@+id/textView22"
+        android:id="@+id/textView23"
+        android:textSize="18sp" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:id="@+id/activity_project_management_lvNeededCollaborations"
+        android:layout_below="@+id/textView23"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="24dp"
+        android:layout_height="150dp" />
+
+    <Button
+        android:text="New collaboration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/activity_project_management_btnNewNeededCollaboration"
+        android:layout_below="@+id/activity_project_management_lvNeededCollaborations"
+        android:layout_centerHorizontal="true" />
+</RelativeLayout>

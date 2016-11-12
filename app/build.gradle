@@ -2,8 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'android-apt'
 
 
-android {
-    compileSdkVersion 24
+android {compileSdkVersion 24
     buildToolsVersion "24.0.3"
     defaultConfig {
         applicationId "hr.foi.air.solex"
@@ -40,5 +39,6 @@ dependencies {
     compile 'me.relex:circleindicator:1.2.2@aar'
 
     compile project(':webservice')
+    compile project(':core')
 
 }

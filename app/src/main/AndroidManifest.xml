@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="hr.foi.air.solex">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/applogo_part"
@@ -21,20 +22,55 @@
             android:theme="@style/AppTheme.Dark" />
         <activity
             android:name=".SignupActivity"
-            android:label="@string/title_activity_signup"
             android:theme="@style/AppTheme.Dark" />
         <activity
             android:name=".CompanyProfileActivity"
             android:theme="@style/AppTheme.Dark" />
         <activity
             android:name=".UpdateCompanyDataActivity"
-            android:theme="@style/AppTheme.Dark"/>
+            android:theme="@style/AppTheme.Dark" />
         <activity
             android:name=".DeveloperProfileActivity"
             android:theme="@style/AppTheme.Dark" />
         <activity
             android:name=".UpdateDeveloperDataActivity"
-            android:theme="@style/AppTheme.Dark"/>
+            android:theme="@style/AppTheme.Dark" />
+        <activity
+            android:name=".DeveloperCollaborationsActivity"
+            android:theme="@style/AppTheme.Dark" />
+        <activity
+            android:name=".DeveloperApplicationsActivity"
+            android:theme="@style/AppTheme.Dark" />
+        <activity
+            android:name=".ProjectSearchActivity"
+            android:theme="@style/AppTheme.Dark" />
+        <activity
+            android:name=".FeelingLuckyActivity"
+            android:theme="@style/AppTheme.Dark" />
+        <activity
+            android:name=".NeededCollaborationActivity"
+            android:theme="@style/AppTheme.Dark" />
+        <activity
+            android:name=".CompanyProjectsActivity"
+            android:theme="@style/AppTheme.Dark" />
+        <activity
+            android:name=".NewProjectActivity"
+            android:theme="@style/AppTheme.Dark" />
+        <activity
+            android:name=".ProjectManagementActivity"
+            android:theme="@style/AppTheme.Dark" />
+        <activity
+            android:name=".NewNeededCollaborationActivity"
+            android:theme="@style/AppTheme.Dark" />
+        <activity
+            android:name=".DrawerActivity"
+            android:theme="@style/AppTheme.Dark" />
+        <activity
+            android:name=".CompanyNeededCollaborationActivity"
+            android:theme="@style/AppTheme.Dark" />
+        <activity
+            android:name=".CollaborationActivity"
+            android:theme="@style/AppTheme.Dark" />
     </application>
 
 </manifest>

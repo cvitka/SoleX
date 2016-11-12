@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="hr.foi.air.solex.UpdateCompanyDataActivity">
+    tools:context="hr.foi.air.solex.UpdateDeveloperDataActivity">
 
     <TextView
         android:text="Enter new info"

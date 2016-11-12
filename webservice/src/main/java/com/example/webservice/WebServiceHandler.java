@@ -7,5 +7,5 @@ import com.example.webservice.models.User;
  */
 
 public interface WebServiceHandler {
-    void onLogin(User user);
+    void onLogin();
 }

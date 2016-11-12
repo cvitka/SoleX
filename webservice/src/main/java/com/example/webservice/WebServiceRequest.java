@@ -3,6 +3,7 @@ package com.example.webservice;
 
 import android.util.Log;
 
+import com.example.core.utils.UserType;
 import com.example.webservice.models.User;
 import com.google.gson.Gson;
 
@@ -44,12 +45,16 @@ public class WebServiceRequest {
                     if(response.isSuccessful()){
                         if(response.body().getSuccess().equals("1")){
                             Log.d("API",response.body().getSuccess());
-                            User user = new User();
-                            user.setId(response.body().getId());
-                            user.setEmail(email);
-                            user.setType(response.body().getType());
+                            User.getInstance().setId(response.body().getId());
+                            User.getInstance().setEmail(email);
+                            if(response.body().getType().equals(UserType.COMPANY.stringVal())){
+                                User.getInstance().setUserType(UserType.COMPANY);
+                            }
+                            else if(response.body().getType().equals(UserType.DEVELOPER.stringVal())){
+                                User.getInstance().setUserType(UserType.DEVELOPER);
+                            }
                             if(listener !=null) {
-                                listener.onLogin(user);
+                                listener.onLogin();
                             }
                         }
                     }

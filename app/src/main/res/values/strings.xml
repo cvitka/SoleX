@@ -10,5 +10,30 @@
     <string name="account_create">Which account u want to create?</string>
     <string name="signup_yourself_as_a_developer">Signup yourself as a developer!</string>
     <string name="signup_your_company">Signup your company!</string>
+    <string name="preferences">Preferences</string>
+    <string name="cancel">Cancel</string>
+    <string name="delete">Delete</string>
+    <string name="removal_question">Do you wish to remove this item?</string>
+    <string name="username">Username</string>
+    <string name="load_data_from">Load data from web service by default?</string>
+    <string name="app_lang_pref">Language preference</string>
+    <string name="nav_header_title">Discount Locator</string>
+    <string name="nav_header_info">foi@foi.hr</string>
+    <string name="navigation_drawer_open">Open drawer</string>
+    <string name="navigation_drawer_close">Close drawer</string>
+    <string name="menu_list">List view</string>
+    <string name="menu_map">Map view</string>
+    <string name="menu_about">About app</string>
+    <string name="dev_opt_collaborations">Collaborations</string>
+    <string name="dev_opt_applications">Applications</string>
+    <string name="dev_opt_search">Search projects</string>
+    <string name="dev_opt_logout">Logout</string>
+    <string name="dev_opt_profile">My profile</string>
+    <string name="comp_opt_collaborations">Collaborations</string>
+    <string name="comp_opt_favourites">Favourites</string>
+    <string name="comp_opt_projects">My projects</string>
+    <string name="comp_opt_logout">Logout</string>
+    <string name="comp_opt_profile">My profile</string>
+    <string name="drawer_additional">Additional</string>
 
 </resources>

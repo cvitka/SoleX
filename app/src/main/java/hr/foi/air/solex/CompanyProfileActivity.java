@@ -1,6 +1,7 @@
 package hr.foi.air.solex;
 
 import android.content.Intent;
+import android.support.design.widget.NavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,7 +15,8 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import hr.foi.air.solex.R;
 
-public class CompanyProfileActivity extends AppCompatActivity {
+public class CompanyProfileActivity extends DrawerActivity {
+
     @BindView(R.id.imgBtnTestExpand)
     ImageButton highlightProjectsBtn;
 
@@ -27,9 +29,12 @@ public class CompanyProfileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_company_profile);
-        ButterKnife.bind(this);
 
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_company_profile;
     }
 
     @OnClick(R.id.btnStartUpdateCompanyData)
@@ -42,4 +47,5 @@ public class CompanyProfileActivity extends AppCompatActivity {
     public void btnClick(View view){
 
     }
+
 }
