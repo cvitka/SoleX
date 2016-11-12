@@ -42,10 +42,15 @@ public class LoginActivity extends AppCompatActivity {
         Developer developer = new Developer();
         developer.setEmail(email);
         developer.setPassword(password);
-        DataLoader dataLoader = new DataLoader(this);
-        WebServiceRequest request = new WebServiceRequest(dataLoader);
-
-        request.loginProccess(email,password);
+        if(!email.isEmpty() &&!password.isEmpty()) {
+            DataLoader dataLoader = new DataLoader(this);
+            WebServiceRequest request = new WebServiceRequest(dataLoader);
+            request.loginProccess(email, password);
+        }
+        else
+        {
+            Toast.makeText(getApplicationContext(),"Your insert data is not correct!",Toast.LENGTH_SHORT).show();
+        }
     }
 
     @OnClick(R.id.link_signup)

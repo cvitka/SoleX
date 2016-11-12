@@ -8,4 +8,6 @@ import com.example.webservice.models.User;
 
 public interface WebServiceHandler {
     void onLogin();
+    void onRegistration();
+    void onRegistrationCompany();
 }

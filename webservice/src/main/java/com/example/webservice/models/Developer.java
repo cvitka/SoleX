@@ -8,17 +8,16 @@ import java.sql.Blob;
 
 public class Developer {
     int id;
-    String imePrezime;
+    String ime;
+    String prezime;
     String adresa;
     String email;
     String kontaktBroj;
-    int godineIskustva;
     String password;
+    int godineIskustva;
     Blob slika;
     String status;
 
-    public Developer() {
-    }
 
     public int getId() {
         return id;
@@ -28,12 +27,20 @@ public class Developer {
         this.id = id;
     }
 
-    public String getImePrezime() {
-        return imePrezime;
+    public String getIme() {
+        return ime;
     }
 
-    public void setImePrezime(String imePrezime) {
-        this.imePrezime = imePrezime;
+    public void setIme(String ime) {
+        this.ime = ime;
+    }
+
+    public String getPrezime() {
+        return prezime;
+    }
+
+    public void setPrezime(String prezime) {
+        this.prezime = prezime;
     }
 
     public String getAdresa() {
@@ -90,5 +97,16 @@ public class Developer {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    private static Developer instance;
+
+    public static Developer getInstance() {
+        if(instance==null)
+            instance = new Developer();
+        return instance;
+    }
+
+    public Developer() {
     }
 }

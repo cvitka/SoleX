@@ -12,9 +12,9 @@ public interface WebServiceInterface {
     @GET("prijava.php")
     Call<WebServiceResponse> checkPrijava(@Query("email") String email, @Query("lozinka") String password);
 
-    @GET("registacijaDeveloperi.php")
-    Call<WebServiceResponse> registrirajDeveloper(@Query("method") String email, String password);
+    @GET("registracijaDevelopera.php")
+    Call<WebServiceResponse> registrirajDevelopera(@Query("ime") String name, @Query("prezime") String surName, @Query("adresa") String address, @Query("email") String email, @Query("lozinka") String password );
 
-    @GET("registacijaPoduzeca.php")
-    Call<WebServiceResponse> registrirajPoduzece(@Query("method") String method, String password);
+    @GET("registracijaPoduzeca.php")
+    Call<WebServiceResponse> registrirajPoduzece(@Query("naziv") String name, @Query("adresa") String address, @Query("email") String email, @Query("lozinka") String password );
 }
