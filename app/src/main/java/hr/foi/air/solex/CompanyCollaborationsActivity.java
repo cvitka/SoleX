@@ -13,15 +13,14 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnItemClick;
 
-public class DeveloperCollaborationsActivity extends DrawerActivity {
-
-    @BindView(R.id.activity_developer_collaborations_lvCollaborations)
-    ListView lvCollaborations;
-
+public class CompanyCollaborationsActivity extends DrawerActivity {
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_developer_collaborations;
+        return R.layout.activity_company_collaborations;
     }
+
+    @BindView(R.id.activity_company_collaborations_lvCollaborations)
+    ListView lvCollaborations;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +37,7 @@ public class DeveloperCollaborationsActivity extends DrawerActivity {
         lvCollaborations.setAdapter(itemsAdapter);
     }
 
-    @OnItemClick(R.id.activity_developer_collaborations_lvCollaborations)
+    @OnItemClick(R.id.activity_company_collaborations_lvCollaborations)
     public void lvCollaborationsClick(View view){
         Intent intent = new Intent(this, CollaborationActivity.class);
         startActivity(intent);

@@ -13,14 +13,18 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnItemClick;
 
-public class DeveloperApplicationsActivity extends AppCompatActivity {
+public class DeveloperApplicationsActivity extends DrawerActivity {
     @BindView(R.id.activity_developer_applications_lvApplications)
     ListView lvApplications;
 
     @Override
+    protected int getLayoutId() {
+        return R.layout.activity_developer_applications;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_developer_applications);
         ButterKnife.bind(this);
 
         ArrayList<String> items = new ArrayList<String>();

@@ -14,7 +14,7 @@ public class CollaborationActivity extends DrawerActivity {
 
     @BindView(R.id.activity_collaboration_imvDeveloper)
     ImageView imvDeveloper;
-
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

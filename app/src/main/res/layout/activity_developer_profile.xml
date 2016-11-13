@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
-        tools:context="hr.foi.air.solex.DrawerActivity">
+        tools:context="hr.foi.air.solex.DeveloperProfileActivity">
 
 
 
@@ -182,7 +182,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:id="@+id/textView5"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="4dp"
                 android:layout_below="@+id/highlightedProjectsLayout"
                 android:layout_alignParentStart="true"
                 android:textStyle="bold"
@@ -217,6 +217,15 @@
                 android:layout_marginRight="23dp"
                 android:layout_alignParentTop="true"
                 android:layout_alignEnd="@+id/highlightedProjectsLayout" />
+            <Button
+                android:text="Projects"
+                android:layout_width="95dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="15dp"
+                android:id="@+id/activity_developer_profile_btnProjects"
+                android:background="@color/colorPrimaryDark"
+                android:layout_below="@+id/horizontalBarView3"
+                android:layout_centerInParent="true"/>
         </RelativeLayout>
 
 
@@ -225,6 +234,7 @@
 
     </android.support.design.widget.CoordinatorLayout>
     <android.support.design.widget.NavigationView
+        android:visibility="visible"
         android:id="@+id/nav_view"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"

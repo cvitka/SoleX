@@ -9,13 +9,18 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class NewNeededCollaborationActivity extends AppCompatActivity {
+public class NewNeededCollaborationActivity extends DrawerActivity {
     @BindView(R.id.activity_new_needed_collaboration_btnAddCollaboration)
     Button btnAddCollaboration;
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_new_needed_collaboration;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_needed_collaboration);
         ButterKnife.bind(this);
     }
 

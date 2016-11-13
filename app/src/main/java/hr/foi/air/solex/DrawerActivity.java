@@ -23,15 +23,23 @@ public class DrawerActivity extends AppCompatActivity implements  NavigationView
     private void startNewActivity(Class<?> activity){
         Intent intent = new Intent(this, activity);
         startActivity(intent);
+        //main activities (profile activities) are never finished
+        if(User.getInstance().getUserType() == UserType.COMPANY)
+            if(getLayoutId() != R.layout.activity_company_profile)
+                return;
+        else if(User.getInstance().getUserType() == UserType.COMPANY)
+            if(getLayoutId() != R.layout.activity_developer_profile)
+                return;
+        finish();
     }
 
-    private static int lastId = -1;
+    protected static int lastDrawerOption = -1;
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
         //if we are not already on desired activity
-        if(id != lastId) {
-            lastId = id;
+        if(id != lastDrawerOption) {
+            lastDrawerOption = id; //to be updated with getOptionId in subclasses
             switch(id)
             {
                 case R.id.developer_opt_applications:
@@ -52,6 +60,17 @@ public class DrawerActivity extends AppCompatActivity implements  NavigationView
                 case R.id.company_opt_projects:
                     startNewActivity(CompanyProjectsActivity.class);
                     break;
+                case R.id.company_opt_collaborations:
+                    startNewActivity(CompanyCollaborationsActivity.class);
+                    break;
+                case R.id.company_opt_favourites:
+                    startNewActivity(FavouritesActivity.class);
+                    break;
+                case R.id.company_opt_profile:
+                    startNewActivity(CompanyProfileActivity.class);
+                    break;
+                case R.id.company_opt_logout:
+                    startNewActivity(LoginActivity.class);
             }
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

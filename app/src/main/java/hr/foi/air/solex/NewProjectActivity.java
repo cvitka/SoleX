@@ -9,13 +9,18 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class NewProjectActivity extends AppCompatActivity {
+public class NewProjectActivity extends DrawerActivity {
     @BindView(R.id.btnSaveProject)
     Button btnSaveProject;
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_new_project;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_project);
         ButterKnife.bind(this);
     }
 

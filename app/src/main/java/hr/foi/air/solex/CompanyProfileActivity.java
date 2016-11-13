@@ -10,6 +10,9 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 
+import com.example.core.utils.UserType;
+import com.example.webservice.models.User;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -26,10 +29,20 @@ public class CompanyProfileActivity extends DrawerActivity {
     @BindView(R.id.btnStartUpdateCompanyData)
     Button btnStartUpdateCompanyData;
 
+
+    @BindView(R.id.activity_company_profile_btnProjects)
+    Button btnProjects;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        //if company is logged in
+        if(User.getInstance().getUserType() == UserType.COMPANY) {
+            //we hide "projects" button that should be visible only to companies
+            btnProjects.setVisibility(View.GONE);
+            //and we set that companyprofile was last drawer option
+            DrawerActivity.lastDrawerOption = R.id.company_opt_profile;
+        }
     }
 
     @Override
@@ -43,9 +56,10 @@ public class CompanyProfileActivity extends DrawerActivity {
         startActivity(intent);
     }
 
-    @OnClick(R.id.imgBtnTestExpand)
+    @OnClick(R.id.activity_company_profile_btnProjects)
     public void btnClick(View view){
-
+        Intent intent = new Intent(this, ProjectsListingActivity.class);
+        startActivity(intent);
     }
 
 }

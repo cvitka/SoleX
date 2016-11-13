@@ -11,13 +11,18 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class UpdateCompanyDataActivity extends AppCompatActivity {
+public class UpdateCompanyDataActivity extends DrawerActivity {
     @BindView(R.id.btnUpdateCompanyData)
     Button btnUpdateCompanyData;
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_update_company_data;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_update_company_data);
         ButterKnife.bind(this);
     }
 

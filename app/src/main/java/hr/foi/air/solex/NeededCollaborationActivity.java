@@ -15,14 +15,16 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnItemClick;
 
-public class NeededCollaborationActivity extends AppCompatActivity {
+public class NeededCollaborationActivity extends DrawerActivity {
 
-
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_needed_collaboration;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_needed_collaboration);
         ButterKnife.bind(this);
 
 

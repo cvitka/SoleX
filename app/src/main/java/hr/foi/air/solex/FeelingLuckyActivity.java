@@ -1,5 +1,6 @@
 package hr.foi.air.solex;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,14 +13,18 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnItemClick;
 
-public class FeelingLuckyActivity extends AppCompatActivity {
+public class FeelingLuckyActivity extends DrawerActivity {
     @BindView(R.id.activity_feeling_lucky_lvLuckyProjects)
     ListView lvLuckyProjects;
 
     @Override
+    protected int getLayoutId() {
+        return R.layout.activity_feeling_lucky;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_feeling_lucky);
         ButterKnife.bind(this);
         ArrayList<String> items = new ArrayList<String>();
         ArrayAdapter<String> itemsAdapter;
@@ -34,5 +39,7 @@ public class FeelingLuckyActivity extends AppCompatActivity {
     @OnItemClick(R.id.activity_feeling_lucky_lvLuckyProjects)
     public void lvLuckyProjectsClick(View view) {
         //open project page
+        Intent intent = new Intent(this, ProjectDisplayActivity.class);
+        startActivity(intent);
     }
 }

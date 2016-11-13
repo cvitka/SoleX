@@ -25,7 +25,6 @@ public class CompanyNeededCollaborationActivity extends DrawerActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_company_needed_collaboration);
         ButterKnife.bind(this);
 
         ArrayList<String> items = new ArrayList<String>();
@@ -51,7 +50,7 @@ public class CompanyNeededCollaborationActivity extends DrawerActivity {
 
     @OnClick(R.id.activity_company_needed_collaboration_btnAcceptApplicant)
     public void btnAcceptApplicantClick(){
-        Intent intent = new Intent(this, DeveloperProfileActivity.class);
+        Intent intent = new Intent(this, CollaborationActivity.class);
         startActivity(intent);
     }
 }

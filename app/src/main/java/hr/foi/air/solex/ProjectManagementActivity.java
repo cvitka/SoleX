@@ -16,25 +16,30 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnItemClick;
 
-public class ProjectManagementActivity extends AppCompatActivity {
+public class ProjectManagementActivity extends DrawerActivity {
     @BindView(R.id.activity_project_management_lvNeededCollaborations)
     ListView lvNeededCollaborations;
 
     @BindView(R.id.activity_project_management_btnNewNeededCollaboration)
     Button btnNewNeededCollaboration;
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_project_management;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_project_management);
         ButterKnife.bind(this);
 
         ArrayList<String> items = new ArrayList<String>();
         ArrayAdapter<String> itemsAdapter;
         itemsAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items);
-        items.add("collab 1");
-        items.add("collab 2");
-        items.add("collab 3");
-        items.add("collab 4");
+        items.add("collab (needed)");
+        items.add("collab (filled)");
+        items.add("collab (needed)");
+        items.add("collab (filled)");
         lvNeededCollaborations.setAdapter(itemsAdapter);
     }
 

@@ -13,34 +13,33 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnItemClick;
 
-public class DeveloperCollaborationsActivity extends DrawerActivity {
+public class ProjectsListingActivity extends DrawerActivity {
 
-    @BindView(R.id.activity_developer_collaborations_lvCollaborations)
-    ListView lvCollaborations;
-
-    @Override
-    protected int getLayoutId() {
-        return R.layout.activity_developer_collaborations;
-    }
-
+    @BindView(R.id.activity_projects_listing_lvProjects)
+    ListView lvProjects;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
-
         ArrayList<String> items = new ArrayList<String>();
         ArrayAdapter<String> itemsAdapter;
         itemsAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items);
-        items.add("collaboration 1");
-        items.add("collaboration 2");
-        items.add("collaboration 3");
-        items.add("collaboration 4");
-        lvCollaborations.setAdapter(itemsAdapter);
+        items.add("project 1");
+        items.add("project 2");
+        items.add("project 3");
+        items.add("project 4");
+        lvProjects.setAdapter(itemsAdapter);
     }
 
-    @OnItemClick(R.id.activity_developer_collaborations_lvCollaborations)
-    public void lvCollaborationsClick(View view){
-        Intent intent = new Intent(this, CollaborationActivity.class);
+    @OnItemClick(R.id.activity_projects_listing_lvProjects)
+    public void lvProjectsClick(View view){
+        Intent intent = new Intent(this, ProjectDisplayActivity.class);
         startActivity(intent);
     }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_projects_listing;
+    }
+
 }

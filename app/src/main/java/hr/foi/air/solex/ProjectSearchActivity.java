@@ -15,7 +15,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnItemClick;
 
-public class ProjectSearchActivity extends AppCompatActivity {
+public class ProjectSearchActivity extends DrawerActivity {
     @BindView(R.id.txtViewFeelingLucky)
     TextView txtViewFeelingLucky;
 
@@ -26,9 +26,13 @@ public class ProjectSearchActivity extends AppCompatActivity {
     ListView lvItSkills;
 
     @Override
+    protected int getLayoutId() {
+        return R.layout.activity_project_search;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_project_search);
         ButterKnife.bind(this);
         ArrayList<String> items = new ArrayList<String>();
         ArrayAdapter<String> itemsAdapter;
@@ -53,6 +57,8 @@ public class ProjectSearchActivity extends AppCompatActivity {
     @OnItemClick(R.id.activity_project_search_lvSearchedProjects)
     public void lvSearchedProjectsClick(View view) {
         //open project page
+        Intent intent = new Intent(this, ProjectDisplayActivity.class);
+        startActivity(intent);
     }
 
     @OnClick(R.id.txtViewFeelingLucky)

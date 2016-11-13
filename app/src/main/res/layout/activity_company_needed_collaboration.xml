@@ -85,7 +85,7 @@
                 android:id="@+id/activity_company_needed_collaboration_lvApplicants"/>
 
             <Button
-                android:text="Applicate"
+                android:text="Accept application"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/activity_company_needed_collaboration_btnAcceptApplicant"
@@ -99,6 +99,7 @@
 
     </android.support.design.widget.CoordinatorLayout>
     <android.support.design.widget.NavigationView
+        android:visibility="visible"
         android:id="@+id/nav_view"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"

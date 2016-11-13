@@ -12,14 +12,13 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".LoginActivity"
-            android:theme="@style/AppTheme.Dark" >
+            android:theme="@style/AppTheme.Dark">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".SignupActivity"
             android:theme="@style/AppTheme.Dark" />
@@ -71,6 +70,18 @@
         <activity
             android:name=".CollaborationActivity"
             android:theme="@style/AppTheme.Dark" />
+        <activity
+            android:name=".CompanyCollaborationsActivity"
+            android:theme="@style/AppTheme.Dark"/>
+        <activity
+            android:name=".FavouritesActivity"
+            android:theme="@style/AppTheme.Dark"/>
+        <activity
+            android:name=".ProjectsListingActivity"
+            android:theme="@style/AppTheme.Dark"/>
+        <activity
+            android:name=".ProjectDisplayActivity"
+            android:theme="@style/AppTheme.Dark"/>
     </application>
 
 </manifest>

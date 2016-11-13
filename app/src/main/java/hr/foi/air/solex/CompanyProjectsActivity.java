@@ -14,19 +14,21 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnItemClick;
 
-public class CompanyProjectsActivity extends AppCompatActivity {
+public class CompanyProjectsActivity extends DrawerActivity {
     @BindView(R.id.btnAddNewProject)
     Button btnAddNewProject;
 
     @BindView(R.id.myProjectsList)
     ListView listViewMyProjectsList;
 
-
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_company_projects;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_company_projects);
         ButterKnife.bind(this);
 
 
