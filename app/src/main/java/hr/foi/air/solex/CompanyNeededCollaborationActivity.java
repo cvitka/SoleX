@@ -15,7 +15,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnItemClick;
 
-public class CompanyNeededCollaborationActivity extends AppCompatActivity {
+public class CompanyNeededCollaborationActivity extends DrawerActivity {
     @BindView(R.id.activity_company_needed_collaboration_lvApplicants)
     ListView lvApplicants;
 
@@ -36,6 +36,11 @@ public class CompanyNeededCollaborationActivity extends AppCompatActivity {
         items.add("developer 3");
         items.add("developer 4");
         lvApplicants.setAdapter(itemsAdapter);
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_company_needed_collaboration;
     }
 
     @OnItemClick(R.id.activity_company_needed_collaboration_lvApplicants)

@@ -10,7 +10,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class CollaborationActivity extends AppCompatActivity {
+public class CollaborationActivity extends DrawerActivity {
 
     @BindView(R.id.activity_collaboration_imvDeveloper)
     ImageView imvDeveloper;
@@ -18,7 +18,6 @@ public class CollaborationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_collaboration);
         ButterKnife.bind(this);
     }
 
@@ -28,4 +27,8 @@ public class CollaborationActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_collaboration;
+    }
 }

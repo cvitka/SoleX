@@ -25,6 +25,7 @@ public class UpdateCompanyDataActivity extends AppCompatActivity {
     public void btnClick(View view){
         Intent intent = new Intent(this, CompanyProfileActivity.class);
         startActivity(intent);
+        finish();
     }
 
 }
