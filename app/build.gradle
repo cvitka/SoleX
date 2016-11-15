@@ -37,6 +37,7 @@ dependencies {
 
     //CircleIndicator
     compile 'me.relex:circleindicator:1.2.2@aar'
+    
 
     compile project(':webservice')
     compile project(':core')

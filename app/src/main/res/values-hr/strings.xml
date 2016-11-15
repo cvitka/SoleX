@@ -8,5 +8,7 @@
     <string name="account_create">Koju vrstu računa želite kreirati?</string>
     <string name="signup_yourself_as_a_developer">Registriraj se kao developer!</string>
     <string name="signup_your_company">Registriraj svoje poduzeće!</string>
-
+    <string name="loginProgress">Prijava u tijeku...</string>
+    <string name="signupProgress">Kreiranje računa....</string>
+    <string name="signupInfo">Svi potrebni podaci za registraciju nisu popunjeni!</string>
 </resources>

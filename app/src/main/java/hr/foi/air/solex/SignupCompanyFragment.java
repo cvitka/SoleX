@@ -1,5 +1,6 @@
 package hr.foi.air.solex;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -56,6 +57,7 @@ public class SignupCompanyFragment extends Fragment {
         ButterKnife.bind(this,view);
         return view;
     }
+    ProgressDialog progressDialog;
 
     public SignupCompanyFragment() {
     }
@@ -84,10 +86,15 @@ public class SignupCompanyFragment extends Fragment {
             DataLoader registrationLoader = new DataLoader(this);
             WebServiceRequest request = new WebServiceRequest(registrationLoader);
             request.registrationProccesCompany(name, address, email, password);
+            progressDialog = new ProgressDialog(getActivity(),
+                    R.style.AppTheme_Bright_Dialog);
+            progressDialog.setIndeterminate(true);
+            progressDialog.setMessage(getString(R.string.signupProgress));
+            progressDialog.show();
         }
         else
         {
-            Toast.makeText(getContext(),"Your insert data is not correct!",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), R.string.signupInfo ,Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -98,6 +105,19 @@ public class SignupCompanyFragment extends Fragment {
         Intent intent = new Intent(getContext(), LoginActivity.class);
         getActivity().startActivity(intent);
         getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
+    }
+
+
+    public void registration_failed(final String message, final boolean status){
+        new android.os.Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (status == false) {
+                    progressDialog.dismiss();
+                    Toast.makeText(getActivity(), message, Toast.LENGTH_LONG).show();
+                }
+            }
+        }, 1000);
     }
 
 }

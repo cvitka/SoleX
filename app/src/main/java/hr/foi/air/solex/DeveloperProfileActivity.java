@@ -51,4 +51,8 @@ public class DeveloperProfileActivity extends DrawerActivity {
         Intent intent = new Intent(this, ProjectsListingActivity.class);
         startActivity(intent);
     }
+
+    @Override
+    public void onBackPressed() {
+    }
 }

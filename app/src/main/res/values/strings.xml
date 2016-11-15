@@ -35,5 +35,8 @@
     <string name="comp_opt_logout">Logout</string>
     <string name="comp_opt_profile">My profile</string>
     <string name="drawer_additional">Additional</string>
+    <string name="loginProgress">Logging in progress...</string>
+    <string name="signupProgress">Creating account....</string>
+    <string name="signupInfo">Your insert data is not correct!</string>
 
 </resources>

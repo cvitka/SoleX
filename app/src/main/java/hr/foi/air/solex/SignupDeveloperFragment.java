@@ -1,5 +1,6 @@
 package hr.foi.air.solex;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -43,6 +44,7 @@ public class SignupDeveloperFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
     }
+    ProgressDialog progressDialog;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -70,7 +72,6 @@ public class SignupDeveloperFragment extends Fragment {
         String email = txtInputEmail.getText().toString();
         String password = txtInputPassword.getText().toString();
         String password2 = txtInputReEnterPassword.getText().toString();
-
         Developer developer= new Developer();
         developer.setIme(name);
         developer.setPrezime(surName);
@@ -82,10 +83,15 @@ public class SignupDeveloperFragment extends Fragment {
             DataLoader registrationLoader = new DataLoader(this);
             WebServiceRequest request = new WebServiceRequest(registrationLoader);
             request.registrationProcces(name, surName, address, email, password);
+            progressDialog = new ProgressDialog(getActivity(),
+                    R.style.AppTheme_Bright_Dialog);
+            progressDialog.setIndeterminate(true);
+            progressDialog.setMessage(getString(R.string.signupProgress));
+            progressDialog.show();
         }
         else
         {
-            Toast.makeText(getContext(),"Your insert data is not correct!",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), R.string.signupInfo,Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -94,5 +100,17 @@ public class SignupDeveloperFragment extends Fragment {
         Intent intent = new Intent(getActivity(), LoginActivity.class);
         getActivity().startActivity(intent);
         getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
+    }
+
+    public void registration_failed(final String message, final boolean status){
+        new android.os.Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (status == false) {
+                    progressDialog.dismiss();
+                    Toast.makeText(getActivity(), message, Toast.LENGTH_LONG).show();
+                }
+            }
+        }, 1000);
     }
 }

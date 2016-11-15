@@ -62,4 +62,7 @@ public class CompanyProfileActivity extends DrawerActivity {
         startActivity(intent);
     }
 
+    @Override
+    public void onBackPressed() {
+    }
 }
