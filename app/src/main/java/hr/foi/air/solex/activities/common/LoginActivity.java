@@ -1,4 +1,4 @@
-package hr.foi.air.solex;
+package hr.foi.air.solex.activities.common;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -11,7 +11,8 @@ import android.widget.Toast;
 import com.example.webservice.WebServiceRequest;
 import com.example.webservice.models.Developer;
 
-import hr.foi.air.solex.Loaders.DataLoader;
+import hr.foi.air.solex.R;
+import hr.foi.air.solex.loaders.DataLoader;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;

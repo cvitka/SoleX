@@ -1,4 +1,4 @@
-package hr.foi.air.solex;
+package hr.foi.air.solex.fragments;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -16,7 +16,9 @@ import com.example.webservice.models.Developer;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import hr.foi.air.solex.Loaders.DataLoader;
+import hr.foi.air.solex.activities.common.LoginActivity;
+import hr.foi.air.solex.R;
+import hr.foi.air.solex.loaders.DataLoader;
 
 
 public class SignupDeveloperFragment extends Fragment {

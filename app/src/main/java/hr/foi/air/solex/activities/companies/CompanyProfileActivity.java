@@ -1,11 +1,8 @@
-package hr.foi.air.solex;
+package hr.foi.air.solex.activities.companies;
 
 import android.content.Intent;
-import android.support.design.widget.NavigationView;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
@@ -14,9 +11,10 @@ import com.example.core.utils.UserType;
 import com.example.webservice.models.User;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import hr.foi.air.solex.R;
+import hr.foi.air.solex.activities.common.DrawerActivity;
+import hr.foi.air.solex.activities.ProjectsListingActivity;
 
 public class CompanyProfileActivity extends DrawerActivity {
 
@@ -41,7 +39,7 @@ public class CompanyProfileActivity extends DrawerActivity {
             //we hide "projects" button that should be visible only to companies
             btnProjects.setVisibility(View.GONE);
             //and we set that companyprofile was last drawer option
-            DrawerActivity.lastDrawerOption = R.id.company_opt_profile;
+            lastDrawerOption = R.id.company_opt_profile;
         }
     }
 

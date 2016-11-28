@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
-        tools:context="hr.foi.air.solex.CompanyProjectsActivity">
+        tools:context="hr.foi.air.solex.activities.CompanyProjectsActivity">
 
 
         <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -28,7 +28,7 @@
             android:paddingLeft="@dimen/activity_horizontal_margin"
             android:paddingRight="@dimen/activity_horizontal_margin"
             android:paddingTop="@dimen/activity_vertical_margin"
-            tools:context="hr.foi.air.solex.CompanyProjectsActivity">
+            tools:context="hr.foi.air.solex.activities.CompanyProjectsActivity">
 
             <TextView
                 android:text="List of your projects"

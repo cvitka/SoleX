@@ -1,7 +1,6 @@
-package hr.foi.air.solex;
+package hr.foi.air.solex.activities;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -13,6 +12,10 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnItemClick;
+import hr.foi.air.solex.R;
+import hr.foi.air.solex.activities.common.DrawerActivity;
+import hr.foi.air.solex.activities.companies.NewProjectActivity;
+import hr.foi.air.solex.activities.companies.ProjectManagementActivity;
 
 public class CompanyProjectsActivity extends DrawerActivity {
     @BindView(R.id.btnAddNewProject)

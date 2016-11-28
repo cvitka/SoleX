@@ -1,7 +1,6 @@
-package hr.foi.air.solex;
+package hr.foi.air.solex.activities.companies;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -15,6 +14,11 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnItemClick;
+import hr.foi.air.solex.R;
+import hr.foi.air.solex.activities.CollaborationActivity;
+import hr.foi.air.solex.activities.CompanyNeededCollaborationActivity;
+import hr.foi.air.solex.activities.NewNeededCollaborationActivity;
+import hr.foi.air.solex.activities.common.DrawerActivity;
 
 public class ProjectManagementActivity extends DrawerActivity {
     @BindView(R.id.activity_project_management_lvNeededCollaborations)

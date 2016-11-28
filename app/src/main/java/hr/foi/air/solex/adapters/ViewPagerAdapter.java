@@ -1,4 +1,4 @@
-package hr.foi.air.solex;
+package hr.foi.air.solex.adapters;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

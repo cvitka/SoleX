@@ -1,10 +1,14 @@
-package hr.foi.air.solex;
+package hr.foi.air.solex.activities.common;
 
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import hr.foi.air.solex.R;
+import hr.foi.air.solex.adapters.ViewPagerAdapter;
+import hr.foi.air.solex.fragments.SignupCompanyFragment;
+import hr.foi.air.solex.fragments.SignupDeveloperFragment;
 import me.relex.circleindicator.CircleIndicator;
 
 public class SignupActivity extends AppCompatActivity {

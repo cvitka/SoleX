@@ -1,4 +1,4 @@
-package hr.foi.air.solex;
+package hr.foi.air.solex.activities.common;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -14,7 +14,15 @@ import com.example.webservice.models.User;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
+import hr.foi.air.solex.R;
+import hr.foi.air.solex.activities.CompanyCollaborationsActivity;
+import hr.foi.air.solex.activities.CompanyProjectsActivity;
+import hr.foi.air.solex.activities.DeveloperApplicationsActivity;
+import hr.foi.air.solex.activities.DeveloperCollaborationsActivity;
+import hr.foi.air.solex.activities.developers.DeveloperProfileActivity;
+import hr.foi.air.solex.activities.FavouritesActivity;
+import hr.foi.air.solex.activities.ProjectSearchActivity;
+import hr.foi.air.solex.activities.companies.CompanyProfileActivity;
 
 public class DrawerActivity extends AppCompatActivity implements  NavigationView.OnNavigationItemSelectedListener{
     @BindView(R.id.nav_view)

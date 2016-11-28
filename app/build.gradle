@@ -6,7 +6,7 @@ android {compileSdkVersion 24
     buildToolsVersion "24.0.3"
     defaultConfig {
         applicationId "hr.foi.air.solex"
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 24
         versionCode 1
         versionName "1.0"

@@ -1,7 +1,6 @@
-package hr.foi.air.solex;
+package hr.foi.air.solex.activities;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -12,34 +11,36 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnItemClick;
+import hr.foi.air.solex.R;
+import hr.foi.air.solex.activities.common.DrawerActivity;
 
-public class DeveloperApplicationsActivity extends DrawerActivity {
-    @BindView(R.id.activity_developer_applications_lvApplications)
-    ListView lvApplications;
+public class FeelingLuckyActivity extends DrawerActivity {
+    @BindView(R.id.activity_feeling_lucky_lvLuckyProjects)
+    ListView lvLuckyProjects;
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_developer_applications;
+        return R.layout.activity_feeling_lucky;
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
-
         ArrayList<String> items = new ArrayList<String>();
         ArrayAdapter<String> itemsAdapter;
         itemsAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items);
-        items.add("application 1");
-        items.add("application 2");
-        items.add("application 3");
-        items.add("application 4");
-        lvApplications.setAdapter(itemsAdapter);
+        items.add("project 1");
+        items.add("project 2");
+        items.add("project 3");
+        items.add("project 4");
+        lvLuckyProjects.setAdapter(itemsAdapter);
     }
 
-    @OnItemClick(R.id.activity_developer_applications_lvApplications)
-    public void lvApplicationstemClick(View view){
-        Intent intent = new Intent(this, NeededCollaborationActivity.class);
+    @OnItemClick(R.id.activity_feeling_lucky_lvLuckyProjects)
+    public void lvLuckyProjectsClick(View view) {
+        //open project page
+        Intent intent = new Intent(this, ProjectDisplayActivity.class);
         startActivity(intent);
     }
 }
