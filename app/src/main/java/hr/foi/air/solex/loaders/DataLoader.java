@@ -81,6 +81,4 @@ public class DataLoader implements WebServiceHandler{
     public void onFailedRegistrationCompany(LoginStatus loginStatus) {
         cFragment.registration_failed(loginStatus.getMessage(),loginStatus.isSuccess());
     }
-
-
 }

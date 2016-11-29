@@ -27,7 +27,6 @@ public class CompanyProfileActivity extends DrawerActivity {
     @BindView(R.id.btnStartUpdateCompanyData)
     Button btnStartUpdateCompanyData;
 
-
     @BindView(R.id.activity_company_profile_btnProjects)
     Button btnProjects;
 

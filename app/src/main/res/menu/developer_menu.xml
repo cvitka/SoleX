@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
-
-        <item
-            android:id="@+id/developer_opt_logout"
-            android:icon="@android:drawable/ic_menu_mylocation"
-            android:title="@string/dev_opt_logout" />
         <item
             android:id="@+id/developer_opt_profile"
             android:icon="@android:drawable/ic_menu_mylocation"
@@ -22,7 +17,10 @@
             android:id="@+id/developer_opt_collaborations"
             android:icon="@android:drawable/ic_menu_mylocation"
             android:title="@string/dev_opt_collaborations" />
-
+        <item
+            android:id="@+id/developer_opt_logout"
+            android:icon="@android:drawable/ic_menu_mylocation"
+            android:title="@string/dev_opt_logout" />
     </group>
 
     <item android:title="@string/drawer_additional">

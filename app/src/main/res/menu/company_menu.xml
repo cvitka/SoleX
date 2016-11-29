@@ -3,10 +3,6 @@
     <group android:checkableBehavior="single">
 
         <item
-            android:id="@+id/company_opt_logout"
-            android:icon="@android:drawable/ic_menu_mylocation"
-            android:title="@string/comp_opt_logout" />
-        <item
             android:id="@+id/company_opt_profile"
             android:icon="@android:drawable/ic_menu_mylocation"
             android:title="@string/comp_opt_profile" />
@@ -22,6 +18,11 @@
             android:id="@+id/company_opt_favourites"
             android:icon="@android:drawable/ic_menu_agenda"
             android:title="@string/comp_opt_favourites" />
+        <item
+            android:id="@+id/company_opt_logout"
+            android:icon="@android:drawable/ic_menu_mylocation"
+            android:title="@string/comp_opt_logout"
+            />
     </group>
     <item android:title="@string/drawer_additional">
         <menu>

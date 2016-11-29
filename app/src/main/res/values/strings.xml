@@ -39,5 +39,4 @@
     <string name="signupProgress">Creating account....</string>
     <string name="signupInfo">Your insert data is not correct!</string>
     <string name="enter_e_mail">enter e-mail</string>
-
 </resources>
