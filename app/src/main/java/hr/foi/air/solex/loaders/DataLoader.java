@@ -65,6 +65,7 @@ public class DataLoader implements WebServiceHandler{
     {
         Intent intent = new Intent(cFragment.getActivity(),LoginActivity.class);
         cFragment.startActivity(intent);
+
     }
 
     @Override

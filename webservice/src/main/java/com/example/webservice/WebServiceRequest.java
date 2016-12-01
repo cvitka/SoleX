@@ -51,11 +51,15 @@ public class WebServiceRequest {
                         if (response.body().getSuccess().equals("1")) {
                             Log.d("API", response.body().getSuccess());
                             User.getInstance().setId(response.body().getId());
+                            Company.getInstance().setId(response.body().getId());
                             User.getInstance().setEmail(email);
                             if (response.body().getType().equals(UserType.COMPANY.stringVal())) {
                                 User.getInstance().setUserType(UserType.COMPANY);
+                                Company.getInstance().setId(response.body().getId());
+
                             } else if (response.body().getType().equals(UserType.DEVELOPER.stringVal())) {
                                 User.getInstance().setUserType(UserType.DEVELOPER);
+                                Developer.getInstance().setId(response.body().getId());
                             }
                             if (listener != null) {
                                 listener.onLogin();
@@ -93,7 +97,7 @@ public class WebServiceRequest {
                     if (response.isSuccessful()) {
                         if (response.body().getSuccess().equals("1")) {
                             Log.d("API", response.body().getSuccess());
-                            Developer.getInstance().setEmail(email);
+
                             if (listener != null) {
 
                                 listener.onRegistration();
