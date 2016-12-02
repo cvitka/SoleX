@@ -1,24 +1,19 @@
-package com.example.webservice;
+package com.example.webservice.Companies;
 
 import okhttp3.OkHttpClient;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-/**
- * Created by tomislav on 11/30/16.
- */
-
-public class WSRequestUpdateCompany {
+public class WSUpdateCompany {
 
     Retrofit retrofit;
     private final String baseUrl = "http://barka.foi.hr/WebDiP/2015_projekti/WebDiP2015x008/";
-    private WSHandlerCompany listener;
+    private WSUpdateCompanyListener listener;
 
-    public WSRequestUpdateCompany(WSHandlerCompany listener) {
+    public WSUpdateCompany(WSUpdateCompanyListener listener) {
         this.listener = listener;
         OkHttpClient client = new OkHttpClient();
         retrofit = new Retrofit.Builder().baseUrl(baseUrl)
@@ -39,10 +34,7 @@ public class WSRequestUpdateCompany {
                             if(listener!=null){
                                 listener.onCompanyUpdate();
                             }
-
-
                         }
-
                     }
                 }
 
@@ -54,5 +46,4 @@ public class WSRequestUpdateCompany {
         }
 
     }
-
 }
