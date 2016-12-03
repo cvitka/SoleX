@@ -52,6 +52,7 @@ public class WebServiceRequest {
                             Log.d("API", response.body().getSuccess());
                             User.getInstance().setId(response.body().getId());
                             Company.getInstance().setId(response.body().getId());
+                            Developer.getInstance().setId(response.body().getId());
                             User.getInstance().setEmail(email);
                             if (response.body().getType().equals(UserType.COMPANY.stringVal())) {
                                 User.getInstance().setUserType(UserType.COMPANY);

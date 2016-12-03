@@ -40,7 +40,6 @@ public class LoginActivity extends AppCompatActivity {
     public void login_click(View view) {
         String password = txtInputPassword.getText().toString();
         String email = txtInputEmail.getText().toString();
-
         Developer developer = new Developer();
         developer.setEmail(email);
         developer.setPassword(password);

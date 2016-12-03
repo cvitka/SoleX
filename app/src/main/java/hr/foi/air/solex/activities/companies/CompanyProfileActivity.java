@@ -2,6 +2,7 @@ package hr.foi.air.solex.activities.companies;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -45,6 +46,9 @@ public class CompanyProfileActivity extends DrawerActivity implements CompanyDat
     @BindView(R.id.textView)
     TextView txtCompanyName;
 
+    @BindView(R.id.nav_view)
+    NavigationView navigationView;
+
     Company mThisCompany;
 
     @Override
@@ -56,6 +60,7 @@ public class CompanyProfileActivity extends DrawerActivity implements CompanyDat
             btnProjects.setVisibility(View.GONE);
             //and we set that companyprofile was last drawer option
             lastDrawerOption = R.id.company_opt_profile;
+
             DLCompany loader = new DLCompany(this);
             WSRequestCompany request = new WSRequestCompany(loader);
             request.getCompanyData(User.getInstance().getId());
@@ -91,5 +96,9 @@ public class CompanyProfileActivity extends DrawerActivity implements CompanyDat
         txtCompanyEmail.setText(mThisCompany.getEmail());
         txtCompanyAddress.setText(mThisCompany.getAddress());
         txtCompanyName.setText(mThisCompany.getName());
+
+        View header=navigationView.getHeaderView(0);
+        TextView textEmail = (TextView)header.findViewById(R.id.textViewEmail);
+        textEmail.setText(mThisCompany.getEmail());
     }
 }

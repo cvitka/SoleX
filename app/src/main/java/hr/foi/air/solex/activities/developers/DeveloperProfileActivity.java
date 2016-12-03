@@ -2,25 +2,45 @@ package hr.foi.air.solex.activities.developers;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.core.utils.UserType;
+import com.example.webservice.Developers.WSRequestDeveloper;
+import com.example.webservice.models.Developer;
 import com.example.webservice.models.User;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 import hr.foi.air.solex.R;
+import hr.foi.air.solex.activities.Listeners.DeveloperDataListener;
 import hr.foi.air.solex.activities.ProjectsListingActivity;
 import hr.foi.air.solex.activities.common.DrawerActivity;
+import hr.foi.air.solex.loaders.DLDeveloper;
 
-public class DeveloperProfileActivity extends DrawerActivity {
+public class DeveloperProfileActivity extends DrawerActivity implements DeveloperDataListener {
+
+    @BindView(R.id.textView3)
+    TextView txtDeveloperAddress;
+
+    @BindView(R.id.textView2)
+    TextView txtDevelopeEmail;
+
+    @BindView(R.id.textView)
+    TextView txtDevelopeName;
 
     @BindView(R.id.btnStartUpdateDeveloperData)
     Button btnStartUpdateDeveloperData;
 
     @BindView(R.id.activity_developer_profile_btnProjects)
     Button btnProjects;
+
+    Developer mThisdDveloper;
+
+    @BindView(R.id.nav_view)
+    NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +51,10 @@ public class DeveloperProfileActivity extends DrawerActivity {
             btnProjects.setVisibility(View.GONE);
             //and we set that developerprofile was last drawer option
             lastDrawerOption = R.id.developer_opt_profile;
+
+            DLDeveloper loader = new DLDeveloper(this);
+            WSRequestDeveloper request = new WSRequestDeveloper(loader);
+            request.getDeveloperData(Developer.getInstance().getId());
         }
     }
 
@@ -53,5 +77,17 @@ public class DeveloperProfileActivity extends DrawerActivity {
 
     @Override
     public void onBackPressed() {
+    }
+
+    @Override
+    public void DataArrivedDeveloepr(Developer developer) {
+        mThisdDveloper = developer;
+        txtDevelopeEmail.setText(mThisdDveloper.getEmail());
+        txtDeveloperAddress.setText(mThisdDveloper.getAdresa());
+        txtDevelopeName.setText(mThisdDveloper.getIme());
+
+        View header=navigationView.getHeaderView(0);
+        TextView textEmail = (TextView)header.findViewById(R.id.textViewEmail);
+        textEmail.setText(mThisdDveloper.getEmail());
     }
 }

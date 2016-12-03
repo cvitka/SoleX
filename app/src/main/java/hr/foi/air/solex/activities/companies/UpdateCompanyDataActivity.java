@@ -1,7 +1,9 @@
 package hr.foi.air.solex.activities.companies;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -40,6 +42,9 @@ public class UpdateCompanyDataActivity extends DrawerActivity implements Company
 
     ProgressDialog progressDialog;
 
+    @BindView(R.id.nav_view)
+    NavigationView navigationView;
+
 
     @Override
     protected int getLayoutId() {
@@ -62,6 +67,9 @@ public class UpdateCompanyDataActivity extends DrawerActivity implements Company
 
     @OnClick(R.id.btnUpdateCompanyData)
     public void btnClick(View view){
+
+        Intent intent = new Intent(this, CompanyProfileActivity.class);
+        startActivity(intent);
 
         String name= txtInputNewName.getText().toString();
         String address= txtInputNewAddress.getText().toString();
@@ -86,6 +94,8 @@ public class UpdateCompanyDataActivity extends DrawerActivity implements Company
         progressDialog.setMessage("Updating data...");
         progressDialog.show();
 
+
+
     }
 /*
     public void getList(){
@@ -104,15 +114,19 @@ public class UpdateCompanyDataActivity extends DrawerActivity implements Company
         progressDialog.dismiss();
         Toast.makeText(this, "Profile data has been updated", Toast.LENGTH_LONG).show();
 
+
+
     }
 
     public void DataArrived(Company company){
         mThisCompany = company;
-
         txtInputNewEmail.setText(mThisCompany.getEmail());
         txtInputNewAddress.setText(mThisCompany.getAddress());
         txtInputNewName.setText(mThisCompany.getName());
-        System.out.println("Data is here... " + mThisCompany.getAddress());
+
+        View header=navigationView.getHeaderView(0);
+        TextView textEmail = (TextView)header.findViewById(R.id.textViewEmail);
+        textEmail.setText(mThisCompany.getEmail());
     }
 
 
