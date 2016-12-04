@@ -1,6 +1,6 @@
 package hr.foi.air.solex.activities.Listeners;
 
-import com.example.webservice.models.Developer;
+import com.example.webservice.models.Developers.Developer;
 
 public interface DeveloperDataListener {
 

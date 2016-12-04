@@ -10,9 +10,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.core.utils.UserType;
-import com.example.webservice.Companies.WSRequestCompany;
-import com.example.webservice.models.Company;
-import com.example.webservice.models.User;
+import com.example.webservice.models.Companies.CompanyModelImpl;
+import com.example.webservice.models.Companies.Company;
+import com.example.webservice.models.login_registration.User;
+import com.google.gson.Gson;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -20,9 +21,10 @@ import hr.foi.air.solex.R;
 import hr.foi.air.solex.activities.common.DrawerActivity;
 import hr.foi.air.solex.activities.ProjectsListingActivity;
 import hr.foi.air.solex.activities.Listeners.CompanyDataListener;
-import hr.foi.air.solex.loaders.DLCompany;
+import hr.foi.air.solex.presenters.CompanyProfilePresenter;
+import hr.foi.air.solex.presenters.CompanyProfilePresenterImpl;
 
-public class CompanyProfileActivity extends DrawerActivity implements CompanyDataListener{
+public class CompanyProfileActivity extends DrawerActivity implements CompanyDataListener, CompanyProfileView{
 
     @BindView(R.id.imgBtnTestExpand)
     ImageButton highlightProjectsBtn;
@@ -51,6 +53,8 @@ public class CompanyProfileActivity extends DrawerActivity implements CompanyDat
 
     Company mThisCompany;
 
+    CompanyProfilePresenter mCompanyProfilePresenter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,10 +64,13 @@ public class CompanyProfileActivity extends DrawerActivity implements CompanyDat
             btnProjects.setVisibility(View.GONE);
             //and we set that companyprofile was last drawer option
             lastDrawerOption = R.id.company_opt_profile;
-
+/*
             DLCompany loader = new DLCompany(this);
-            WSRequestCompany request = new WSRequestCompany(loader);
+            CompanyModelImpl request = new CompanyModelImpl(loader);
             request.getCompanyData(User.getInstance().getId());
+            */
+            mCompanyProfilePresenter = new CompanyProfilePresenterImpl(this, new CompanyModelImpl());
+            mCompanyProfilePresenter.getCompany(User.getInstance().getId());
         }
 
     }
@@ -76,6 +83,10 @@ public class CompanyProfileActivity extends DrawerActivity implements CompanyDat
     @OnClick(R.id.btnStartUpdateCompanyData)
     public void btnUpdateCompanyDataClick(View view){
         Intent intent = new Intent(this, UpdateCompanyDataActivity.class);
+        intent.putExtra("myObject", new Gson().toJson(mThisCompany));
+        //Bundle bund = new Bundle();
+        //bund.put
+       // intent.putExtra("companyData", mThisCompany);
         startActivity(intent);
     }
 

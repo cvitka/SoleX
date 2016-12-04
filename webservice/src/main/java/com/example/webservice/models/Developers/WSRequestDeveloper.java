@@ -1,6 +1,4 @@
-package com.example.webservice.Developers;
-
-import com.example.webservice.Companies.WSHandlerCompany;
+package com.example.webservice.models.Developers;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Call;
@@ -14,14 +12,28 @@ public class WSRequestDeveloper {
     Retrofit retrofit;
     private final String baseUrl = "http://barka.foi.hr/WebDiP/2015_projekti/WebDiP2015x008/";
     private WSHandlerDeveloper listener;
+    private WSListHandlerDevelopers listListener;
 
-    public WSRequestDeveloper(WSHandlerDeveloper listener) {
-        this.listener = listener;
+    private void InitRetrofit(){
         OkHttpClient client = new OkHttpClient();
         retrofit = new Retrofit.Builder().baseUrl(baseUrl)
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build();
+    }
+
+    public WSRequestDeveloper(WSHandlerDeveloper listener) {
+        this.listener = listener;
+        InitRetrofit();
+    }
+
+    public WSRequestDeveloper(WSListHandlerDevelopers wsListHandler){
+        this.listListener = wsListHandler;
+        InitRetrofit();
+    }
+
+    public void getDeveloperListData(int [] id){//neki ulazni parametar koji već nam bude trebao, možemo imat više razl. metoda za dohvat liste po različitim parametrima
+
     }
 
     public void getDeveloperData(int id){
@@ -37,17 +49,17 @@ public class WSRequestDeveloper {
                         if (listener != null)
                         {
                             listener.onDataComeDeveloper(response.body().getId(),response.body().getIme(),response.body().getPrezime(),response.body().getAdresa(),response.body().getEmail(),response.body().getKontaktBroj(),response.body().getGodineIskustva(),response.body().getSlika());
+                            //response.body().
                         }
-
                     }
                 }
-
                 @Override
                 public void onFailure(Call<WSResponseDeveloper> call, Throwable t) {
-
                 }
             });
         }
-
     }
+
+
+
 }

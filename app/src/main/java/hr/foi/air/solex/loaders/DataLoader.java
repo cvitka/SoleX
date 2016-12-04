@@ -5,8 +5,8 @@ import android.content.Intent;
 
 import com.example.core.utils.LoginStatus;
 import com.example.core.utils.UserType;
-import com.example.webservice.WebServiceHandler;
-import com.example.webservice.models.User;
+import com.example.webservice.models.login_registration.WebServiceHandler;
+import com.example.webservice.models.login_registration.User;
 
 import hr.foi.air.solex.activities.companies.CompanyProfileActivity;
 import hr.foi.air.solex.activities.developers.DeveloperProfileActivity;

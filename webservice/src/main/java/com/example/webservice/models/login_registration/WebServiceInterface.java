@@ -1,4 +1,4 @@
-package com.example.webservice;
+package com.example.webservice.models.login_registration;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

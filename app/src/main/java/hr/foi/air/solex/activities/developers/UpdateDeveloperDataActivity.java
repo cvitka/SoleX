@@ -9,10 +9,10 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.webservice.Developers.WSRequestDeveloper;
-import com.example.webservice.Developers.WSUpdateDeveloper;
-import com.example.webservice.Developers.WSUpdateDeveloperListener;
-import com.example.webservice.models.Developer;
+import com.example.webservice.models.Developers.WSRequestDeveloper;
+import com.example.webservice.models.Developers.WSUpdateDeveloper;
+import com.example.webservice.models.Developers.WSUpdateDeveloperListener;
+import com.example.webservice.models.Developers.Developer;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -20,8 +20,6 @@ import butterknife.OnClick;
 import hr.foi.air.solex.R;
 import hr.foi.air.solex.activities.Listeners.DeveloperDataListener;
 import hr.foi.air.solex.activities.common.DrawerActivity;
-import hr.foi.air.solex.activities.companies.UpdateCompanyDataActivity;
-import hr.foi.air.solex.activities.developers.DeveloperProfileActivity;
 import hr.foi.air.solex.loaders.DLDeveloper;
 
 import static hr.foi.air.solex.R.id.editText3;

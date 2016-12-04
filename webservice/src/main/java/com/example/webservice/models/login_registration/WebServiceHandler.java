@@ -1,7 +1,6 @@
-package com.example.webservice;
+package com.example.webservice.models.login_registration;
 
 import com.example.core.utils.LoginStatus;
-import com.example.webservice.models.User;
 
 /**
  * Created by cvitka on 11.11.16..

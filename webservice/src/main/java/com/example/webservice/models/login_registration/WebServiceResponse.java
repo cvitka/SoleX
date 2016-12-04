@@ -1,4 +1,4 @@
-package com.example.webservice;
+package com.example.webservice.models.login_registration;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

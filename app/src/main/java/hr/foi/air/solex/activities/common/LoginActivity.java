@@ -8,8 +8,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.webservice.WebServiceRequest;
-import com.example.webservice.models.Developer;
+import com.example.webservice.models.login_registration.WebServiceRequest;
+import com.example.webservice.models.Developers.Developer;
 
 import hr.foi.air.solex.R;
 import hr.foi.air.solex.loaders.DataLoader;

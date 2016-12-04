@@ -1,6 +1,4 @@
-package com.example.webservice.Developers;
-
-import com.example.webservice.Companies.WSResponseCompany;
+package com.example.webservice.models.Developers;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

@@ -1,7 +1,7 @@
 package hr.foi.air.solex.loaders;
 
-import com.example.webservice.Developers.WSHandlerDeveloper;
-import com.example.webservice.models.Developer;
+import com.example.webservice.models.Developers.WSHandlerDeveloper;
+import com.example.webservice.models.Developers.Developer;
 
 import java.sql.Blob;
 

@@ -1,4 +1,4 @@
-package com.example.webservice.models;
+package com.example.webservice.models.Companies;
 
 import java.sql.Blob;
 

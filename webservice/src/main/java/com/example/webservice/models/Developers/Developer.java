@@ -1,74 +1,23 @@
-package com.example.webservice.Developers;
-
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
+package com.example.webservice.models.Developers;
 
 import java.sql.Blob;
 
-public class WSResponseDeveloper {
+/**
+ * Created by cvitka on 11.11.16..
+ */
 
-    @SerializedName("success")
-    @Expose
-    private String success;
+public class Developer {
+    int id;
+    String ime;
+    String prezime;
+    String adresa;
+    String email;
+    String kontaktBroj;
+    String password;
+    String godineIskustva;
+    Blob slika;
+    String status;
 
-    @SerializedName("message")
-    @Expose
-    private String message;
-
-    @SerializedName("id")
-    @Expose
-    private int id;
-
-    @SerializedName("ime")
-    @Expose
-    private String ime;
-
-    @SerializedName("prezime")
-    @Expose
-    private String prezime;
-
-    @SerializedName("adresa")
-    @Expose
-    private String adresa;
-
-    @SerializedName("email")
-    @Expose
-    private String email;
-
-    @SerializedName("kontaktBroj")
-    @Expose
-    private String kontaktBroj;
-
-    @SerializedName("godineIskustva")
-    @Expose
-    private String godineIskustva;
-
-    @SerializedName("slika")
-    @Expose
-    private Blob slika;
-
-    @SerializedName("status")
-    @Expose
-    private String status;
-
-    public WSResponseDeveloper() {
-    }
-
-    public String getSuccess() {
-        return success;
-    }
-
-    public void setSuccess(String success) {
-        this.success = success;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
 
     public int getId() {
         return id;
@@ -126,6 +75,14 @@ public class WSResponseDeveloper {
         this.godineIskustva = godineIskustva;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public Blob getSlika() {
         return slika;
     }
@@ -140,5 +97,16 @@ public class WSResponseDeveloper {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    private static Developer instance;
+
+    public static Developer getInstance() {
+        if(instance==null)
+            instance = new Developer();
+        return instance;
+    }
+
+    public Developer() {
     }
 }

@@ -1,4 +1,4 @@
-package com.example.webservice.Companies;
+package com.example.webservice.models.Companies;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

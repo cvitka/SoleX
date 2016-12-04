@@ -9,24 +9,26 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.webservice.Companies.WSRequestCompany;
-import com.example.webservice.Companies.WSUpdateCompany;
-import com.example.webservice.Companies.WSUpdateCompanyListener;
-import com.example.webservice.models.Company;
+import com.example.webservice.models.Companies.CompanyModelImpl;
+import com.example.webservice.models.Companies.CompanyUpdateListener;
+import com.example.webservice.models.Companies.Company;
+import com.example.webservice.models.login_registration.User;
+import com.google.gson.Gson;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import hr.foi.air.solex.R;
 import hr.foi.air.solex.activities.common.DrawerActivity;
-import hr.foi.air.solex.activities.Listeners.CompanyDataListener;
-import hr.foi.air.solex.loaders.DLCompany;
+import hr.foi.air.solex.presenters.UpdateCompanyDataPresenter;
+import hr.foi.air.solex.presenters.UpdateCompanyDataPresenterImpl;
 
 import static hr.foi.air.solex.R.id.editText3;
 
-public class UpdateCompanyDataActivity extends DrawerActivity implements CompanyDataListener, WSUpdateCompanyListener{
+public class UpdateCompanyDataActivity extends DrawerActivity implements  UpdateCompanyDataView {
 
     Company mThisCompany;
+    UpdateCompanyDataPresenter mUpdateCompanyDataPresenter;
 
     @BindView(R.id.btnUpdateCompanyData)
     Button btnUpdateCompanyData;
@@ -45,7 +47,6 @@ public class UpdateCompanyDataActivity extends DrawerActivity implements Company
     @BindView(R.id.nav_view)
     NavigationView navigationView;
 
-
     @Override
     protected int getLayoutId() {
         return R.layout.activity_update_company_data;
@@ -55,70 +56,39 @@ public class UpdateCompanyDataActivity extends DrawerActivity implements Company
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
+        //dobavljamo bundlovani objekt
+        String jsonMyObject = getIntent().getExtras().getString("myObject");
+        mThisCompany = new Gson().fromJson(jsonMyObject, Company.class);
+        setDataOnLayout(mThisCompany);
 
-        int id = Company.getInstance().getId();
-        DLCompany loader = new DLCompany(this);
-        WSRequestCompany request = new WSRequestCompany(loader);
-        request.getCompanyData(id);
-
+        this.mUpdateCompanyDataPresenter = new UpdateCompanyDataPresenterImpl(this, new CompanyModelImpl());
     }
-
-
 
     @OnClick(R.id.btnUpdateCompanyData)
     public void btnClick(View view){
+        mThisCompany.setName(txtInputNewName.getText().toString());
+        mThisCompany.setAddress(txtInputNewAddress.getText().toString());
+        mThisCompany.setEmail(txtInputNewEmail.getText().toString());
 
-        Intent intent = new Intent(this, CompanyProfileActivity.class);
-        startActivity(intent);
-
-        String name= txtInputNewName.getText().toString();
-        String address= txtInputNewAddress.getText().toString();
-        String email = txtInputNewEmail.getText().toString();
-
-        int id = Company.getInstance().getId();
-        Company company= new Company();
-        company.setName(name);
-        company.setAddress(address);
-        company.setEmail(email);
-        company.setId(id);
-
-        DLCompany loader = new DLCompany(this);
-        final WSUpdateCompany request = new WSUpdateCompany(this);
-        request.companyUpdateProcces(id,name,address,email);
-
-
+        mUpdateCompanyDataPresenter.updateCompanyData(mThisCompany);
 
         progressDialog = new ProgressDialog(UpdateCompanyDataActivity.this,
                 R.style.AppTheme_Bright_Dialog);
         progressDialog.setIndeterminate(true);
         progressDialog.setMessage("Updating data...");
         progressDialog.show();
-
-
-
     }
-/*
-    public void getList(){
 
-        polje [50] CompanyId;
-        for(int i=0; i<50; i++){
-            DLCompany loader = new DLCompany(this);
-            WSRequestCompany request = new WSRequestCompany(loader);
-            request.getCompanyData(polje[i]);
-        }
-    }
-*/
     @Override
-    public void onCompanyUpdate() {
-        //pozvat natrag aktivnost profila
+    public void updateFinished() {
         progressDialog.dismiss();
         Toast.makeText(this, "Profile data has been updated", Toast.LENGTH_LONG).show();
 
-
-
+        Intent intent = new Intent(this, CompanyProfileActivity.class);
+        startActivity(intent);
     }
 
-    public void DataArrived(Company company){
+    public void setDataOnLayout(Company company){
         mThisCompany = company;
         txtInputNewEmail.setText(mThisCompany.getEmail());
         txtInputNewAddress.setText(mThisCompany.getAddress());
@@ -128,6 +98,4 @@ public class UpdateCompanyDataActivity extends DrawerActivity implements Company
         TextView textEmail = (TextView)header.findViewById(R.id.textViewEmail);
         textEmail.setText(mThisCompany.getEmail());
     }
-
-
 }

@@ -1,4 +1,4 @@
-package com.example.webservice.models;
+package com.example.webservice.models.login_registration;
 
 import com.example.core.utils.UserType;
 

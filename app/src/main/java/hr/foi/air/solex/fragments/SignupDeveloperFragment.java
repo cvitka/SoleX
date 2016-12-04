@@ -10,8 +10,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.webservice.WebServiceRequest;
-import com.example.webservice.models.Developer;
+import com.example.webservice.models.login_registration.WebServiceRequest;
+import com.example.webservice.models.Developers.Developer;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

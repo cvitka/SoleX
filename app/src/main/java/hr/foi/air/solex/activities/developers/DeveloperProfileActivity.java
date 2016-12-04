@@ -8,9 +8,9 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.core.utils.UserType;
-import com.example.webservice.Developers.WSRequestDeveloper;
-import com.example.webservice.models.Developer;
-import com.example.webservice.models.User;
+import com.example.webservice.models.Developers.WSRequestDeveloper;
+import com.example.webservice.models.Developers.Developer;
+import com.example.webservice.models.login_registration.User;
 
 import butterknife.BindView;
 import butterknife.OnClick;

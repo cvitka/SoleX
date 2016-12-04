@@ -1,4 +1,4 @@
-package com.example.webservice.Companies;
+package com.example.webservice.models.Developers;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Call;
@@ -7,13 +7,13 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class WSUpdateCompany {
+public class WSUpdateDeveloper {
 
     Retrofit retrofit;
     private final String baseUrl = "http://barka.foi.hr/WebDiP/2015_projekti/WebDiP2015x008/";
-    private WSUpdateCompanyListener listener;
+    private WSUpdateDeveloperListener listener;
 
-    public WSUpdateCompany(WSUpdateCompanyListener listener) {
+    public WSUpdateDeveloper(WSUpdateDeveloperListener listener) {
         this.listener = listener;
         OkHttpClient client = new OkHttpClient();
         retrofit = new Retrofit.Builder().baseUrl(baseUrl)
@@ -22,28 +22,30 @@ public class WSUpdateCompany {
                 .build();
     }
 
-    public void companyUpdateProcces(int id, String name, String address, String email){
-        WSInterfaceCompany servInterface = retrofit.create(WSInterfaceCompany.class);
-        Call<WSResponseCompany> call = servInterface.azurirajKompaniju(id,name,address,email);
+    public void developerUpdateProcces(int id, String name, String address, String email){
+        WSInterfaceDeveloper servInterface = retrofit.create(WSInterfaceDeveloper.class);
+        Call<WSResponseDeveloper> call = servInterface.azurirajDevelopera(id,name,address,email);
         if (call != null) {
-            call.enqueue(new Callback<WSResponseCompany>() {
+            call.enqueue(new Callback<WSResponseDeveloper>() {
                 @Override
-                public void onResponse(Call<WSResponseCompany> call, Response<WSResponseCompany> response) {
+                public void onResponse(Call<WSResponseDeveloper> call, Response<WSResponseDeveloper> response) {
                     if (response.isSuccessful()){
                         if(response.body().getSuccess().equals("1")){
                             if(listener!=null){
-                                listener.onCompanyUpdate();
+                                listener.onDeveloperUpdate();
                             }
                         }
                     }
                 }
 
                 @Override
-                public void onFailure(Call<WSResponseCompany> call, Throwable t) {
+                public void onFailure(Call<WSResponseDeveloper> call, Throwable t) {
 
                 }
             });
         }
 
     }
+
+
 }

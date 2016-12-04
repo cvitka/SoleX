@@ -1,13 +1,12 @@
-package com.example.webservice;
+package com.example.webservice.models.login_registration;
 
 
 import android.util.Log;
 
 import com.example.core.utils.UserType;
-import com.example.webservice.models.Company;
-import com.example.webservice.models.Developer;
+import com.example.webservice.models.Companies.Company;
+import com.example.webservice.models.Developers.Developer;
 import com.example.core.utils.LoginStatus;
-import com.example.webservice.models.User;
 
 import okhttp3.OkHttpClient;
 
