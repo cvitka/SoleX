@@ -54,7 +54,7 @@ public class DeveloperProfileActivity extends DrawerActivity implements Develope
 
             DLDeveloper loader = new DLDeveloper(this);
             WSRequestDeveloper request = new WSRequestDeveloper(loader);
-            request.getDeveloperData(Developer.getInstance().getId());
+            request.getDeveloperData(User.getInstance().getId());
         }
     }
 

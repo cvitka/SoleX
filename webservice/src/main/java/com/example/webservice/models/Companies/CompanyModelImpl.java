@@ -1,5 +1,7 @@
 package com.example.webservice.models.Companies;
 
+import com.example.webservice.models.WebServiceCommunicator;
+
 import okhttp3.OkHttpClient;
 
 import retrofit2.Call;
@@ -10,9 +12,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 
-public class CompanyModelImpl implements CompanyModel {
+public class CompanyModelImpl extends WebServiceCommunicator implements CompanyModel {
     private interface WSInterfaceCompany {
-
         @GET("dohvatiPoduzece.php")
         Call<WSResponseCompany> dohvatiKompaniju(@Query("id") int id);
 
@@ -20,17 +21,11 @@ public class CompanyModelImpl implements CompanyModel {
         Call<WSResponseCompany> azurirajKompaniju(@Query("id") int id, @Query("naziv") String naziv, @Query("adresa") String adresa, @Query("email") String email);
     }
 
-    Retrofit retrofit;
-    private final String baseUrl = "http://barka.foi.hr/WebDiP/2015_projekti/WebDiP2015x008/";
     private CompanyScalarListener scalarListener;
     private CompanyUpdateListener updateListener;
 
     public CompanyModelImpl() {
-        OkHttpClient client = new OkHttpClient();
-        retrofit = new Retrofit.Builder().baseUrl(baseUrl)
-                .addConverterFactory(GsonConverterFactory.create())
-                .client(client)
-                .build();
+        initRetrofit();
     }
 
     public void setScalarListener(CompanyScalarListener listener){

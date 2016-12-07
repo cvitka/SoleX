@@ -13,6 +13,7 @@ import com.example.webservice.models.Developers.WSRequestDeveloper;
 import com.example.webservice.models.Developers.WSUpdateDeveloper;
 import com.example.webservice.models.Developers.WSUpdateDeveloperListener;
 import com.example.webservice.models.Developers.Developer;
+import com.example.webservice.models.login_registration.User;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -55,7 +56,7 @@ public class UpdateDeveloperDataActivity extends DrawerActivity implements Devel
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
 
-        int id = Developer.getInstance().getId();
+        int id = User.getInstance().getId();
         DLDeveloper loader = new DLDeveloper(this);
         WSRequestDeveloper request = new WSRequestDeveloper(loader);
         request.getDeveloperData(id);

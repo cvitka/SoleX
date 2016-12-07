@@ -7,16 +7,15 @@ import java.sql.Blob;
  */
 
 public class Developer {
-    int id;
-    String ime;
-    String prezime;
-    String adresa;
-    String email;
-    String kontaktBroj;
-    String password;
-    String godineIskustva;
-    Blob slika;
-    String status;
+    private int id;
+    private String ime;
+    private String prezime;
+    private String adresa;
+    private String email;
+    private String kontaktBroj;
+    private String godineIskustva;
+    private Blob slika;
+    private String status;
 
 
     public int getId() {
@@ -73,14 +72,6 @@ public class Developer {
 
     public void setGodineIskustva(String godineIskustva) {
         this.godineIskustva = godineIskustva;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public Blob getSlika() {

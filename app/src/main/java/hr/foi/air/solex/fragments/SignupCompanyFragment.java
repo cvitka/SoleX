@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.webservice.models.login_registration.WebServiceRequest;
 import com.example.webservice.models.Companies.Company;
 
 import butterknife.BindView;
@@ -19,12 +18,11 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import hr.foi.air.solex.R;
 import hr.foi.air.solex.activities.common.LoginActivity;
-import hr.foi.air.solex.loaders.DataLoader;
+import hr.foi.air.solex.presenters.CompanySignupPresenter;
+import hr.foi.air.solex.presenters.CompanySignupPresenterImpl;
 
 
-public class SignupCompanyFragment extends Fragment {
-
-
+public class SignupCompanyFragment extends Fragment implements SignupView{
     @BindView(R.id.input_name)
     TextView txtInputName;
 
@@ -40,6 +38,7 @@ public class SignupCompanyFragment extends Fragment {
     @BindView(R.id.input_reEnterPassword)
     TextView txtInputReEnterPassword;
 
+    CompanySignupPresenter mCompanySignupPresenter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -51,50 +50,41 @@ public class SignupCompanyFragment extends Fragment {
         LayoutInflater lf = getActivity().getLayoutInflater();
         View view = lf.inflate(R.layout.fragment_signup_company, container, false);
         ButterKnife.bind(this,view);
+        mCompanySignupPresenter = new CompanySignupPresenterImpl(this);
         return view;
     }
     ProgressDialog progressDialog;
 
-    public SignupCompanyFragment() {
-    }
-
     public static SignupCompanyFragment newInstance (){
-        SignupCompanyFragment signupCompanyFragment = new SignupCompanyFragment();
-        return signupCompanyFragment;
+        return new SignupCompanyFragment();
     }
 
     @OnClick(R.id.btn_signup)
-    public void signupCompany_click(View view)
-    {
-        String name= txtInputName.getText().toString();
-        String address= txtInputAddress.getText().toString();
-        String email = txtInputEmail.getText().toString();
-        String password = txtInputPassword.getText().toString();
-        String password2 = txtInputReEnterPassword.getText().toString();
-
-        Company company= new Company();
-        company.setName(name);
-        company.setAddress(address);
-        company.setEmail(email);
-        company.setPassword(password);
-
-        if(password.equals(password2) && !name.isEmpty() && !address.isEmpty() && !email.isEmpty() && !password.isEmpty() && !password2.isEmpty()) {
-            DataLoader registrationLoader = new DataLoader(this);
-            WebServiceRequest request = new WebServiceRequest(registrationLoader);
-            request.registrationProccesCompany(name, address, email, password);
+    public void signupCompany_click(View view){
+        if(txtInputName.getText().toString().isEmpty()
+        || txtInputAddress.getText().toString().isEmpty()
+        || txtInputEmail.getText().toString().isEmpty()
+        || txtInputPassword.getText().toString().isEmpty()
+        || txtInputReEnterPassword.getText().toString().isEmpty()){
+            showToast("All fields must be filled");
+        }
+        else if(!txtInputPassword.getText().toString().equals(txtInputReEnterPassword.getText().toString())){
+            showToast("Passwords don't match!");
+        }
+        else{
+            Company company = new Company();
+            company.setName(txtInputName.getText().toString());
+            company.setAddress(txtInputAddress.getText().toString());
+            company.setEmail(txtInputEmail.getText().toString());
+            //
+            mCompanySignupPresenter.tryRegister(company, txtInputPassword.getText().toString());
             progressDialog = new ProgressDialog(getActivity(),
-                    R.style.AppTheme_Bright_Dialog);
+                        R.style.AppTheme_Bright_Dialog);
             progressDialog.setIndeterminate(true);
             progressDialog.setMessage(getString(R.string.signupProgress));
             progressDialog.show();
         }
-        else
-        {
-            Toast.makeText(getContext(), R.string.signupInfo ,Toast.LENGTH_SHORT).show();
-        }
     }
-
-
 
     @OnClick(R.id.link_login_company)
     public void click_login() {
@@ -103,18 +93,26 @@ public class SignupCompanyFragment extends Fragment {
         getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
     }
 
+    private void showToast(String msg){
+        Toast.makeText(getActivity(), msg, Toast.LENGTH_LONG).show();
+    }
 
-    public void registration_failed(final String message, final boolean status){
+    @Override
+    public void signupSuccessful() {
+        showToast("Registration successful! Redirecting on login screen...");
         new android.os.Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                if (status == false) {
-                    progressDialog.dismiss();
-                    Toast.makeText(getActivity(), message, Toast.LENGTH_LONG).show();
-                }
+                Intent intent = new Intent(getActivity(),LoginActivity.class);
+                startActivity(intent);
             }
+
         }, 1000);
     }
 
+    @Override
+    public void signupFailed(String message) {
+        showToast(message);
+    }
 }
 

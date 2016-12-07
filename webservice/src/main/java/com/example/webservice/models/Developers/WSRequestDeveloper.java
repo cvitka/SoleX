@@ -1,5 +1,7 @@
 package com.example.webservice.models.Developers;
 
+import android.util.Log;
+
 import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -37,6 +39,7 @@ public class WSRequestDeveloper {
     }
 
     public void getDeveloperData(int id){
+        Log.v("", listener.toString());
         WSInterfaceDeveloper interfaceCompany = retrofit.create(WSInterfaceDeveloper.class);
         Call<WSResponseDeveloper> call = interfaceCompany.dohvatiDevelopere(id);
         if (call!=null)
@@ -44,6 +47,8 @@ public class WSRequestDeveloper {
             call.enqueue(new Callback<WSResponseDeveloper>() {
                 @Override
                 public void onResponse(Call<WSResponseDeveloper> call, Response<WSResponseDeveloper> response) {
+
+                    Log.w("no haha", "ha = ha");
                     if(response.isSuccessful())
                     {
                         if (listener != null)
@@ -52,9 +57,12 @@ public class WSRequestDeveloper {
                             //response.body().
                         }
                     }
+                    else
+                        Log.w("no listener", "listener = null");
                 }
                 @Override
                 public void onFailure(Call<WSResponseDeveloper> call, Throwable t) {
+                    Log.w("onFailure", t.getMessage());
                 }
             });
         }

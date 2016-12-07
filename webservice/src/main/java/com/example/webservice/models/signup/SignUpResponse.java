@@ -1,4 +1,4 @@
-package com.example.webservice.models.login_registration;
+package com.example.webservice.models.signup;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
  * Created by cvitka on 11.11.16..
  */
 
-public class WebServiceResponse {
+public class SignupResponse {
     @SerializedName("success")
     @Expose
     private String success;
@@ -15,17 +15,6 @@ public class WebServiceResponse {
     @SerializedName("message")
     @Expose
     private String message;
-
-    @SerializedName("type")
-    @Expose
-    private String type;
-
-    @SerializedName("id")
-    @Expose
-    private int id;
-
-    public WebServiceResponse() {
-    }
 
     public String getSuccess() {
         return success;
@@ -41,21 +30,5 @@ public class WebServiceResponse {
 
     public void setMessage(String message) {
         this.message = message;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 }

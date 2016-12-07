@@ -8,21 +8,23 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.webservice.models.login_registration.WebServiceRequest;
 import com.example.webservice.models.Developers.Developer;
 
 import hr.foi.air.solex.R;
-import hr.foi.air.solex.loaders.DataLoader;
+import hr.foi.air.solex.activities.companies.CompanyProfileActivity;
+import hr.foi.air.solex.activities.developers.DeveloperProfileActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import hr.foi.air.solex.presenters.LoginPresenter;
+import hr.foi.air.solex.presenters.LoginPresenterImpl;
 
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements LoginView {
+    private LoginPresenter mLoginPresenter;
 
     @BindView(R.id.input_email)
     TextView txtInputEmail;
-
 
     @BindView(R.id.input_password)
     TextView txtInputPassword;
@@ -33,38 +35,44 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
-
+        mLoginPresenter = new LoginPresenterImpl(this);
     }
 
     @OnClick(R.id.btn_login)
     public void login_click(View view) {
-        String password = txtInputPassword.getText().toString();
-        String email = txtInputEmail.getText().toString();
-        Developer developer = new Developer();
-        developer.setEmail(email);
-        developer.setPassword(password);
-        if (!email.isEmpty() && !password.isEmpty()) {
-            DataLoader dataLoader = new DataLoader(this);
-            final WebServiceRequest request = new WebServiceRequest(dataLoader);
-            request.loginProccess(email, password);
-
-            progressDialog = new ProgressDialog(LoginActivity.this,
+        if(txtInputEmail.getText().toString().isEmpty() || txtInputPassword.getText().toString().isEmpty()){
+            Toast.makeText(getApplicationContext(), "Fill in all data", Toast.LENGTH_LONG).show();
+        }
+        else{
+            mLoginPresenter.tryLogin(txtInputEmail.getText().toString(), txtInputPassword.getText().toString());
+            progressDialog = new ProgressDialog(this,
                     R.style.AppTheme_Bright_Dialog);
             progressDialog.setIndeterminate(true);
             progressDialog.setMessage(getString(R.string.loginProgress));
             progressDialog.show();
-
         }
     }
 
-    public void failed_login(final String message, final boolean status){
+    @Override
+    public void onDeveloperLoginSuccess() {
+        Intent intent = new Intent(this, DeveloperProfileActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onCompanyLoginSuccess() {
+        Intent intent = new Intent(this, CompanyProfileActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onLoginFailed(final String message) {
         new android.os.Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                if (status == false) {
-                    progressDialog.dismiss();
-                    Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
-                }
+            progressDialog.dismiss();
+                Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+
             }
         }, 1000);
     }

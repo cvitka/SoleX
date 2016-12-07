@@ -8,13 +8,12 @@ import java.sql.Blob;
 
 public class Company {
 
-    int id;
-    String name;
-    String address;
-    String email;
-    String password;
-    Blob picture;
-    String status;
+    private int id;
+    private String name;
+    private String address;
+    private String email;
+    private Blob picture;
+    private String status;
 
     public int getId() {
         return id;
@@ -46,14 +45,6 @@ public class Company {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public Blob getPicture() {

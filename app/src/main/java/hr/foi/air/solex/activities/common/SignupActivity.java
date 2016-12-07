@@ -13,7 +13,6 @@ import me.relex.circleindicator.CircleIndicator;
 
 public class SignupActivity extends AppCompatActivity {
 
-
     @BindView(R.id.vpPager)
     ViewPager mPager;
     @BindView(R.id.indicator)
@@ -31,6 +30,7 @@ public class SignupActivity extends AppCompatActivity {
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(SignupDeveloperFragment.newInstance());
+        //on kreira dva objekta (fragmenta) i sa njima radi, onCreate u fragmentima se ne poziva dvaput samo jedanput (vrlo dobro za MVP arhitekturu jer bi nam se inace kreirali presenteri dvaput)
         adapter.addFragment(SignupCompanyFragment.newInstance());
         viewPager.setAdapter(adapter);
     }
