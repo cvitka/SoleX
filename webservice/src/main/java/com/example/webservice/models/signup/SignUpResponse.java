@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
  * Created by cvitka on 11.11.16..
  */
 
-public class SignupResponse {
+public class SignUpResponse {
     @SerializedName("success")
     @Expose
     private String success;

@@ -1,12 +1,9 @@
 package hr.foi.air.solex.presenters;
 
-import com.example.webservice.models.Companies.Company;
 import com.example.webservice.models.Developers.Developer;
-import com.example.webservice.models.signup.CompanySignupModel;
-import com.example.webservice.models.signup.CompanySignupModelImpl;
 import com.example.webservice.models.signup.DeveloperSignupModel;
 import com.example.webservice.models.signup.DeveloperSignupModelImpl;
-import com.example.webservice.models.signup.SignupResponseListener;
+import com.example.webservice.models.signup.SignUpResponseListener;
 
 import hr.foi.air.solex.fragments.SignupView;
 
@@ -14,7 +11,7 @@ import hr.foi.air.solex.fragments.SignupView;
  * Created by Asus on 7.12.2016..
  */
 
-public class DeveloperSignupPresenterImpl implements DeveloperSignupPresenter, SignupResponseListener {
+public class DeveloperSignupPresenterImpl implements DeveloperSignupPresenter, SignUpResponseListener {
 
     private SignupView mDeveloperSignupView;
     private DeveloperSignupModel mDeveloperSignupModel;

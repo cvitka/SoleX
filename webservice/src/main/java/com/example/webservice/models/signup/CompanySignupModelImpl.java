@@ -18,11 +18,11 @@ import retrofit2.http.Query;
 public class CompanySignupModelImpl extends WebServiceCommunicator implements CompanySignupModel{
     private interface WebServiceInterface {
        @GET("registracijaPoduzeca.php")
-       Call<SignupResponse> registrirajPoduzece(@Query("naziv") String name, @Query("adresa") String address, @Query("email") String email, @Query("lozinka") String password);
+       Call<SignUpResponse> registrirajPoduzece(@Query("naziv") String name, @Query("adresa") String address, @Query("email") String email, @Query("lozinka") String password);
     }
 
-    private SignupResponseListener mResponseListener;
-    public CompanySignupModelImpl(SignupResponseListener listener) {
+    private SignUpResponseListener mResponseListener;
+    public CompanySignupModelImpl(SignUpResponseListener listener) {
         this.mResponseListener = listener;
         initRetrofit();
     }
@@ -30,11 +30,11 @@ public class CompanySignupModelImpl extends WebServiceCommunicator implements Co
     @Override
     public void registerCompany(Company company, String password) {
         WebServiceInterface serviceIntf = retrofit.create(WebServiceInterface.class);
-        Call<SignupResponse> call3 = serviceIntf.registrirajPoduzece(company.getName(), company.getAddress(), company.getEmail(), password);
+        Call<SignUpResponse> call3 = serviceIntf.registrirajPoduzece(company.getName(), company.getAddress(), company.getEmail(), password);
         if (call3 != null) {
-            call3.enqueue(new Callback<SignupResponse>() {
+            call3.enqueue(new Callback<SignUpResponse>() {
                 @Override
-                public void onResponse(Call<SignupResponse> call, Response<SignupResponse> response) {
+                public void onResponse(Call<SignUpResponse> call, Response<SignUpResponse> response) {
                     if (response.isSuccessful()) {
                         if (response.body().getSuccess().equals("1")) {
                             Log.d("API", response.body().getSuccess());
@@ -51,7 +51,7 @@ public class CompanySignupModelImpl extends WebServiceCommunicator implements Co
                 }
 
                 @Override
-                public void onFailure(Call<SignupResponse> call, Throwable t) {
+                public void onFailure(Call<SignUpResponse> call, Throwable t) {
                     if (mResponseListener != null)
                         mResponseListener.onServerConnectionFailed();
                 }
