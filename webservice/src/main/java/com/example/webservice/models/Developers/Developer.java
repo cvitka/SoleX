@@ -17,7 +17,6 @@ public class Developer {
     private Blob slika;
     private String status;
 
-
     public int getId() {
         return id;
     }
@@ -88,16 +87,5 @@ public class Developer {
 
     public void setStatus(String status) {
         this.status = status;
-    }
-
-    private static Developer instance;
-
-    public static Developer getInstance() {
-        if(instance==null)
-            instance = new Developer();
-        return instance;
-    }
-
-    public Developer() {
     }
 }

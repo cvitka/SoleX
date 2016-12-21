@@ -22,8 +22,8 @@ public class DeveloperSignupPresenterImpl implements DeveloperSignupPresenter, S
     }
 
     @Override
-    public void tryRegister(Developer company, String password) {
-        mDeveloperSignupModel.registerDeveloper(company, password);
+    public void tryRegister(Developer developer, String password) {
+        mDeveloperSignupModel.registerDeveloper(developer, password);
     }
 
     @Override

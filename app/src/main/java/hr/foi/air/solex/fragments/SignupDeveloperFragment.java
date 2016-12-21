@@ -19,6 +19,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import hr.foi.air.solex.activities.common.LoginActivity;
 import hr.foi.air.solex.R;
+import hr.foi.air.solex.activities.common.SignupActivity;
 import hr.foi.air.solex.presenters.DeveloperSignupPresenter;
 import hr.foi.air.solex.presenters.DeveloperSignupPresenterImpl;
 

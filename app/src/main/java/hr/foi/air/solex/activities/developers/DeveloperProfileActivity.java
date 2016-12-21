@@ -8,19 +8,21 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.core.utils.UserType;
-import com.example.webservice.models.Developers.WSRequestDeveloper;
 import com.example.webservice.models.Developers.Developer;
 import com.example.webservice.models.login_registration.User;
+import com.google.gson.Gson;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 import hr.foi.air.solex.R;
-import hr.foi.air.solex.activities.Listeners.DeveloperDataListener;
 import hr.foi.air.solex.activities.ProjectsListingActivity;
 import hr.foi.air.solex.activities.common.DrawerActivity;
-import hr.foi.air.solex.loaders.DLDeveloper;
+import hr.foi.air.solex.presenters.DeveloperProfilePresenter;
+import hr.foi.air.solex.presenters.DeveloperProfilePresenterImpl;
 
-public class DeveloperProfileActivity extends DrawerActivity implements DeveloperDataListener {
+public class DeveloperProfileActivity extends DrawerActivity implements DeveloperProfileView {
+
+    private DeveloperProfilePresenter mDeveloperProfilePresenter;
 
     @BindView(R.id.textView3)
     TextView txtDeveloperAddress;
@@ -45,6 +47,7 @@ public class DeveloperProfileActivity extends DrawerActivity implements Develope
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mDeveloperProfilePresenter = new DeveloperProfilePresenterImpl(this);
         //if developer is logged in
         if(User.getInstance().getUserType() == UserType.DEVELOPER) {
             //we hide "projects" button that should be visible only to companies
@@ -52,9 +55,7 @@ public class DeveloperProfileActivity extends DrawerActivity implements Develope
             //and we set that developerprofile was last drawer option
             lastDrawerOption = R.id.developer_opt_profile;
 
-            DLDeveloper loader = new DLDeveloper(this);
-            WSRequestDeveloper request = new WSRequestDeveloper(loader);
-            request.getDeveloperData(User.getInstance().getId());
+            mDeveloperProfilePresenter.getDeveloperData(User.getInstance().getId());
         }
     }
 
@@ -66,6 +67,7 @@ public class DeveloperProfileActivity extends DrawerActivity implements Develope
     @OnClick(R.id.btnStartUpdateDeveloperData)
     public void btnStartUpdateDeveloperDataClick(View view){
         Intent intent = new Intent(this, UpdateDeveloperDataActivity.class);
+        intent.putExtra("myObject", new Gson().toJson(mThisdDveloper));
         startActivity(intent);
     }
 
@@ -80,7 +82,7 @@ public class DeveloperProfileActivity extends DrawerActivity implements Develope
     }
 
     @Override
-    public void DataArrivedDeveloepr(Developer developer) {
+    public void DataArrivedDeveloper(Developer developer) {
         mThisdDveloper = developer;
         txtDevelopeEmail.setText(mThisdDveloper.getEmail());
         txtDeveloperAddress.setText(mThisdDveloper.getAdresa());

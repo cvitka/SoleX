@@ -10,7 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public abstract class WebServiceCommunicator {
     protected Retrofit retrofit;
-    protected final String baseUrl = "http://barka.foi.hr/WebDiP/2015_projekti/WebDiP2015x008/";
+    private final String baseUrl = "http://barka.foi.hr/WebDiP/2015_projekti/WebDiP2015x008/";
 
     protected void initRetrofit(){
         OkHttpClient client = new OkHttpClient();

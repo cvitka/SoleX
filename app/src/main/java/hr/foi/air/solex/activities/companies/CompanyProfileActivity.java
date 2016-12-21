@@ -24,7 +24,7 @@ import hr.foi.air.solex.activities.Listeners.CompanyDataListener;
 import hr.foi.air.solex.presenters.CompanyProfilePresenter;
 import hr.foi.air.solex.presenters.CompanyProfilePresenterImpl;
 
-public class CompanyProfileActivity extends DrawerActivity implements CompanyDataListener, CompanyProfileView{
+public class CompanyProfileActivity extends DrawerActivity implements CompanyProfileView{
 
     @BindView(R.id.imgBtnTestExpand)
     ImageButton highlightProjectsBtn;
@@ -37,7 +37,6 @@ public class CompanyProfileActivity extends DrawerActivity implements CompanyDat
 
     @BindView(R.id.activity_company_profile_btnProjects)
     Button btnProjects;
-
 
     @BindView(R.id.textView3)
     TextView txtCompanyAddress;
@@ -58,6 +57,7 @@ public class CompanyProfileActivity extends DrawerActivity implements CompanyDat
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mCompanyProfilePresenter = new CompanyProfilePresenterImpl(this, new CompanyModelImpl());
         //if company is logged in
         if(User.getInstance().getUserType() == UserType.COMPANY) {
             //we hide "projects" button that should be visible only to companies
@@ -69,10 +69,9 @@ public class CompanyProfileActivity extends DrawerActivity implements CompanyDat
             CompanyModelImpl request = new CompanyModelImpl(loader);
             request.getCompanyData(User.getInstance().getId());
             */
-            mCompanyProfilePresenter = new CompanyProfilePresenterImpl(this, new CompanyModelImpl());
+
             mCompanyProfilePresenter.getCompany(User.getInstance().getId());
         }
-
     }
 
     @Override
@@ -84,9 +83,6 @@ public class CompanyProfileActivity extends DrawerActivity implements CompanyDat
     public void btnUpdateCompanyDataClick(View view){
         Intent intent = new Intent(this, UpdateCompanyDataActivity.class);
         intent.putExtra("myObject", new Gson().toJson(mThisCompany));
-        //Bundle bund = new Bundle();
-        //bund.put
-       // intent.putExtra("companyData", mThisCompany);
         startActivity(intent);
     }
 
