@@ -12,8 +12,25 @@ public class Company {
     private String name;
     private String address;
     private String email;
-    private Blob picture;
+    private String picture;
     private String status;
+    private Blob pictureName;
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
+    public Blob getPictureName() {
+        return pictureName;
+    }
+
+    public void setPictureName(Blob pictureName) {
+        this.pictureName = pictureName;
+    }
 
     public int getId() {
         return id;
@@ -45,14 +62,6 @@ public class Company {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public Blob getPicture() {
-        return picture;
-    }
-
-    public void setPicture(Blob picture) {
-        this.picture = picture;
     }
 
     public String getStatus() {

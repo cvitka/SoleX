@@ -23,19 +23,19 @@ import hr.foi.air.solex.presenters.CompanySignupPresenterImpl;
 
 
 public class SignupCompanyFragment extends Fragment implements SignupView{
-    @BindView(R.id.input_name)
+    @BindView(R.id.fragment_signup_company_etInputName)
     TextView txtInputName;
 
-    @BindView(R.id.input_address)
+    @BindView(R.id.fragment_signup_company_etInputAddress)
     TextView txtInputAddress;
 
-    @BindView(R.id.input_email)
+    @BindView(R.id.fragment_signup_company_etInputEmail)
     TextView txtInputEmail;
 
-    @BindView(R.id.input_password)
+    @BindView(R.id.fragment_signup_company_etInputPassword)
     TextView txtInputPassword;
 
-    @BindView(R.id.input_reEnterPassword)
+    @BindView(R.id.fragment_signup_company_etReEnterPassword)
     TextView txtInputReEnterPassword;
 
     CompanySignupPresenter mCompanySignupPresenter;
@@ -59,7 +59,7 @@ public class SignupCompanyFragment extends Fragment implements SignupView{
         return new SignupCompanyFragment();
     }
 
-    @OnClick(R.id.btn_signup)
+    @OnClick(R.id.fragment_signup_company_btnSignup)
     public void signupCompany_click(View view){
         if(txtInputName.getText().toString().isEmpty()
         || txtInputAddress.getText().toString().isEmpty()
@@ -86,7 +86,7 @@ public class SignupCompanyFragment extends Fragment implements SignupView{
         }
     }
 
-    @OnClick(R.id.link_login_company)
+    @OnClick(R.id.fragment_signup_company_tvLinkLoginCompany)
     public void click_login() {
         Intent intent = new Intent(getContext(), LoginActivity.class);
         getActivity().startActivity(intent);

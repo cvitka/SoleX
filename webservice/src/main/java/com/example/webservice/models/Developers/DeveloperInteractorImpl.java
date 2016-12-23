@@ -18,7 +18,7 @@ public class DeveloperInteractorImpl extends WebServiceCommunicator implements D
         Call<WSResponseDeveloper> dohvatiDevelopere(@Query("id") int id);
 
         @GET("updateDevelopera.php")
-        Call<WSResponseDeveloper> azurirajDevelopera(@Query("id") int id, @Query("ime") String ime, @Query("adresa") String adresa, @Query("email") String email);
+        Call<WSResponseDeveloper> azurirajDevelopera(@Query("id") int id, @Query("ime") String ime, @Query("prezime") String prezime, @Query("adresa") String adresa, @Query("email") String email,@Query("kontaktBroj") String kontaktBroj,@Query("godineIskustva") String godineIskustva,@Query("slika") String slika);
     }
 
     private DeveloperScalarListener scalarListener;
@@ -87,9 +87,9 @@ public class DeveloperInteractorImpl extends WebServiceCommunicator implements D
     }
 
     @Override
-    public void updateDeveloperData(int id, String name, String address, String email) {
+    public void updateDeveloperData(int id, String name,String surname, String address, String email,String number,String years,String image) {
         WSInterfaceDeveloper servInterface = retrofit.create(WSInterfaceDeveloper.class);
-        Call<WSResponseDeveloper> call = servInterface.azurirajDevelopera(id, name, address, email);
+        Call<WSResponseDeveloper> call = servInterface.azurirajDevelopera(id, name, surname, address, email,number,years,image);
         if (call != null) {
             call.enqueue(new Callback<WSResponseDeveloper>() {
                 @Override

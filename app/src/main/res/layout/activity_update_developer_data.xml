@@ -50,7 +50,7 @@
                 tools:context="hr.foi.air.solex.activities.developers.UpdateDeveloperDataActivity">
 
                 <TextView
-                    android:id="@+id/textView7"
+                    android:id="@+id/activity_update_developer_tvNewInfo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
@@ -60,79 +60,168 @@
                     android:text="Enter new info"
                     android:textSize="24sp" />
 
-                <TextView
-                    android:id="@+id/textView9"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignStart="@+id/editText"
-                    android:layout_below="@+id/editText"
-                    android:layout_marginTop="17dp"
-                    android:text="Your e-mail" />
+                <ImageView
+                    android:id="@+id/activity_update_developer_iwNewImage"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_alignParentStart="true"
+                    app:srcCompat="@drawable/developer_logo"
+                    android:layout_below="@+id/activity_update_developer_tvNewInfo"
+                    />
+
+                <Button
+                    android:id="@+id/activity_update_developer_btnChoose"
+                    style="@style/ButtonStyleBlue"
+                    android:layout_width="65dp"
+                    android:layout_height="25dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/activity_update_developer_tvNewInfo"
+                    android:layout_toRightOf="@+id/activity_update_developer_iwNewImage"
+                    android:text="Choose" />
 
                 <TextView
-                    android:id="@+id/textView10"
+                    android:id="@+id/activity_update_developer_tvNewName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignStart="@+id/editText2"
-                    android:layout_below="@+id/editText2"
+                    android:layout_alignStart="@+id/activity_update_developer_iwNewImage"
+                    android:layout_below="@+id/activity_update_developer_iwNewImage"
                     android:layout_marginTop="11dp"
-                    android:text="Years of experience" />
+                    android:text="Your name" />
 
                 <EditText
-                    android:id="@+id/editText3"
+                    android:id="@+id/activity_update_developer_etNewName"
                     style="@style/EditTextStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignStart="@+id/textView10"
-                    android:layout_below="@+id/textView10"
-                    android:layout_marginTop="15dp"
-                    android:ems="10"
-                    android:hint="enter experience"
-                    android:inputType="textPersonName" />
-
-                <EditText
-                    android:id="@+id/editText"
-                    style="@style/EditTextStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignStart="@+id/textView8"
-                    android:layout_below="@+id/textView8"
+                    android:layout_alignStart="@+id/activity_update_developer_tvNewName"
+                    android:layout_below="@+id/activity_update_developer_tvNewName"
                     android:layout_marginTop="16dp"
                     android:ems="10"
                     android:hint="enter name"
                     android:inputType="textPersonName"
                     android:selectAllOnFocus="true" />
 
+                <TextView
+                    android:id="@+id/activity_update_developer_tvNewSurame"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/activity_update_developer_etNewName"
+                    android:layout_below="@+id/activity_update_developer_etNewName"
+                    android:layout_marginTop="11dp"
+                    android:text="Your surname" />
+
                 <EditText
-                    android:id="@+id/editText2"
+                    android:id="@+id/activity_update_developer_etNewSurname"
                     style="@style/EditTextStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignStart="@+id/textView9"
-                    android:layout_below="@+id/textView9"
+                    android:layout_alignStart="@+id/activity_update_developer_tvNewSurame"
+                    android:layout_below="@+id/activity_update_developer_tvNewSurame"
+                    android:layout_marginTop="16dp"
+                    android:ems="10"
+                    android:hint="enter surname"
+                    android:inputType="textPersonName"
+                    android:selectAllOnFocus="true" />
+
+                <TextView
+                    android:id="@+id/activity_update_developer_tvNewAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/activity_update_developer_etNewSurname"
+                    android:layout_below="@+id/activity_update_developer_etNewSurname"
+                    android:layout_marginTop="17dp"
+                    android:text="Your address" />
+
+                <EditText
+                    android:id="@+id/activity_update_developer_etNewAddress"
+                    style="@style/EditTextStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/activity_update_developer_tvNewAddress"
+                    android:layout_below="@+id/activity_update_developer_tvNewAddress"
+                    android:layout_marginTop="12dp"
+                    android:ems="10"
+                    android:hint="enter address"
+                    android:inputType="textPersonName" />
+
+                <TextView
+                    android:id="@+id/activity_update_developer_tvNewEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/activity_update_developer_etNewAddress"
+                    android:layout_below="@+id/activity_update_developer_etNewAddress"
+                    android:layout_marginTop="17dp"
+                    android:text="Your e-mail" />
+
+                <EditText
+                    android:id="@+id/activity_update_developer_etNewEmail"
+                    style="@style/EditTextStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/activity_update_developer_tvNewEmail"
+                    android:layout_below="@+id/activity_update_developer_tvNewEmail"
                     android:layout_marginTop="12dp"
                     android:ems="10"
                     android:hint="enter e-mail"
                     android:inputType="textEmailAddress" />
 
+                <TextView
+                    android:id="@+id/activity_update_developer_tvNewNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/activity_update_developer_etNewEmail"
+                    android:layout_below="@+id/activity_update_developer_etNewEmail"
+                    android:layout_marginTop="11dp"
+                    android:text="Your contact number" />
+
+                <EditText
+                    android:id="@+id/activity_update_developer_etNewNumber"
+                    style="@style/EditTextStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/activity_update_developer_tvNewNumber"
+                    android:layout_below="@+id/activity_update_developer_tvNewNumber"
+                    android:layout_marginTop="15dp"
+                    android:ems="10"
+                    android:hint="enter contact number"
+                    android:inputType="textPersonName" />
+
+                <TextView
+                    android:id="@+id/activity_update_developer_tvNewYears"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/activity_update_developer_etNewNumber"
+                    android:layout_below="@+id/activity_update_developer_etNewNumber"
+                    android:layout_marginTop="11dp"
+                    android:text="Your years of experience" />
+
+                <EditText
+                    android:id="@+id/activity_update_developer_etNewYears"
+                    style="@style/EditTextStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/activity_update_developer_tvNewYears"
+                    android:layout_below="@+id/activity_update_developer_tvNewYears"
+                    android:layout_marginTop="15dp"
+                    android:ems="10"
+                    android:hint="enter experience"
+                    android:inputType="textPersonName" />
+
                 <Button
-                    android:id="@+id/btnUpdateDeveloperData"
+                    android:id="@+id/activity_update_developer_btnUpdateData"
                     style="@style/ButtonStyleBlue"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_below="@+id/activity_update_developer_etNewYears"
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
                     android:layout_marginBottom="25dp"
                     android:text="Update" />
 
-                <TextView
-                    android:id="@+id/textView8"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignStart="@+id/textView7"
-                    android:layout_below="@+id/textView7"
-                    android:layout_marginTop="38dp"
-                    android:text="Your name" />
+
             </RelativeLayout>
 
         </ScrollView>

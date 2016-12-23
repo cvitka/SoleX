@@ -20,7 +20,7 @@ public class UpdateDeveloperDataPresenterImpl implements  UpdateDeveloperDataPre
 
     @Override
     public void updateDeveloperData(Developer developer) {
-        mDeveloperInteractor.updateDeveloperData(developer.getId(), developer.getIme(), developer.getAdresa(), developer.getEmail());
+        mDeveloperInteractor.updateDeveloperData(developer.getId(), developer.getIme(),developer.getPrezime(), developer.getAdresa(), developer.getEmail(),developer.getKontaktBroj(),developer.getGodineIskustva(),developer.getSlika());
     }
 
     @Override

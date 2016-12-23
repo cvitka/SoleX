@@ -14,7 +14,7 @@ public class Developer {
     private String email;
     private String kontaktBroj;
     private String godineIskustva;
-    private Blob slika;
+    private String slika;
     private String status;
 
     public int getId() {
@@ -73,11 +73,11 @@ public class Developer {
         this.godineIskustva = godineIskustva;
     }
 
-    public Blob getSlika() {
+    public String getSlika() {
         return slika;
     }
 
-    public void setSlika(Blob slika) {
+    public void setSlika(String slika) {
         this.slika = slika;
     }
 

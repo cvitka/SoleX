@@ -8,8 +8,6 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.webservice.models.Developers.Developer;
-
 import hr.foi.air.solex.R;
 import hr.foi.air.solex.activities.companies.CompanyProfileActivity;
 import hr.foi.air.solex.activities.developers.DeveloperProfileActivity;
@@ -23,10 +21,10 @@ import hr.foi.air.solex.presenters.LoginPresenterImpl;
 public class LoginActivity extends AppCompatActivity implements LoginView {
     private LoginPresenter mLoginPresenter;
 
-    @BindView(R.id.input_email)
+    @BindView(R.id.activity_login_etInputEmail)
     TextView txtInputEmail;
 
-    @BindView(R.id.input_password)
+    @BindView(R.id.activity_login_etInputPassword)
     TextView txtInputPassword;
 
     ProgressDialog progressDialog;
@@ -38,7 +36,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         mLoginPresenter = new LoginPresenterImpl(this);
     }
 
-    @OnClick(R.id.btn_login)
+    @OnClick(R.id.activity_login_btnLogin)
     public void login_click(View view) {
         if(txtInputEmail.getText().toString().isEmpty() || txtInputPassword.getText().toString().isEmpty()){
             Toast.makeText(getApplicationContext(), "Fill in all data", Toast.LENGTH_LONG).show();
@@ -77,7 +75,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         }, 1000);
     }
 
-    @OnClick(R.id.link_signup)
+    @OnClick(R.id.activity_login_tvLink_signup)
     public void signup_click(View view) {
         Intent intent = new Intent(this, SignupActivity.class);
         startActivity(intent);

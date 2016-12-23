@@ -2,6 +2,8 @@ package com.example.webservice.models.Companies;
 
 import com.example.webservice.models.WebServiceCommunicator;
 
+import java.sql.Blob;
+
 import okhttp3.OkHttpClient;
 
 import retrofit2.Call;
@@ -18,7 +20,7 @@ public class CompanyModelImpl extends WebServiceCommunicator implements CompanyM
         Call<WSResponseCompany> dohvatiKompaniju(@Query("id") int id);
 
         @GET("updatePoduzeca.php")
-        Call<WSResponseCompany> azurirajKompaniju(@Query("id") int id, @Query("naziv") String naziv, @Query("adresa") String adresa, @Query("email") String email);
+        Call<WSResponseCompany> azurirajKompaniju(@Query("id") int id, @Query("naziv") String naziv, @Query("adresa") String adresa, @Query("email") String email,@Query("slika") String slika);
     }
 
     private CompanyScalarListener scalarListener;
@@ -69,7 +71,7 @@ public class CompanyModelImpl extends WebServiceCommunicator implements CompanyM
     @Override
     public void updateCompanyData(Company company) {
         WSInterfaceCompany servInterface = retrofit.create(WSInterfaceCompany.class);
-        Call<WSResponseCompany> call = servInterface.azurirajKompaniju(company.getId(),company.getName(),company.getAddress(), company.getEmail());
+        Call<WSResponseCompany> call = servInterface.azurirajKompaniju(company.getId(),company.getName(),company.getAddress(), company.getEmail(),company.getPicture());
         if (call != null) {
             call.enqueue(new Callback<WSResponseCompany>() {
                 @Override

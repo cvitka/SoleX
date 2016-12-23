@@ -45,7 +45,7 @@ public class WSResponseDeveloper {
 
     @SerializedName("slika")
     @Expose
-    private Blob slika;
+    private String slika;
 
     @SerializedName("status")
     @Expose
@@ -126,11 +126,11 @@ public class WSResponseDeveloper {
         this.godineIskustva = godineIskustva;
     }
 
-    public Blob getSlika() {
+    public String getSlika() {
         return slika;
     }
 
-    public void setSlika(Blob slika) {
+    public void setSlika(String slika) {
         this.slika = slika;
     }
 
