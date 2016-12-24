@@ -1,7 +1,5 @@
 package com.example.webservice.models.Developers;
 
-import java.sql.Blob;
-
 /**
  * Created by cvitka on 11.11.16..
  */
@@ -14,7 +12,7 @@ public class Developer {
     private String email;
     private String kontaktBroj;
     private String godineIskustva;
-    private String slika;
+    private String picture;
     private String status;
 
     public int getId() {
@@ -73,12 +71,12 @@ public class Developer {
         this.godineIskustva = godineIskustva;
     }
 
-    public String getSlika() {
-        return slika;
+    public String getPicture() {
+        return picture;
     }
 
-    public void setSlika(String slika) {
-        this.slika = slika;
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 
     public String getStatus() {

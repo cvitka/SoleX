@@ -7,7 +7,6 @@ import com.example.webservice.models.WebServiceCommunicator;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 
@@ -70,7 +69,7 @@ public class DeveloperInteractorImpl extends WebServiceCommunicator implements D
                             developer.setEmail(response.body().getEmail());
                             developer.setKontaktBroj(response.body().getKontaktBroj());
                             developer.setGodineIskustva(response.body().getGodineIskustva());
-                            developer.setSlika(response.body().getSlika());
+                            developer.setPicture(response.body().getSlika());
                             scalarListener.onDataComeDeveloper(developer);
                             //response.body().
                         }

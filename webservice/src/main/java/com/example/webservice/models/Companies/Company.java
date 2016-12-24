@@ -1,6 +1,7 @@
 package com.example.webservice.models.Companies;
 
 import java.sql.Blob;
+import java.util.HashMap;
 
 /**
  * Created by corpus on 12.11.16..
@@ -15,6 +16,15 @@ public class Company {
     private String picture;
     private String status;
     private Blob pictureName;
+    private HashMap<String, String> image;
+
+    public HashMap<String, String> getImage() {
+        return image;
+    }
+
+    public void setImage(HashMap<String, String> image) {
+        this.image = image;
+    }
 
     public String getPicture() {
         return picture;

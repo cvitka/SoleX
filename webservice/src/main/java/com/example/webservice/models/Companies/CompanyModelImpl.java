@@ -3,6 +3,7 @@ package com.example.webservice.models.Companies;
 import com.example.webservice.models.WebServiceCommunicator;
 
 import java.sql.Blob;
+import java.util.HashMap;
 
 import okhttp3.OkHttpClient;
 

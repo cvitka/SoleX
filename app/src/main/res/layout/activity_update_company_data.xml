@@ -69,25 +69,13 @@
                     android:layout_below="@+id/activity_update_company_tvNewInfo"
                     />
 
-                <Button
-                    android:id="@+id/activity_update_company_btnChoose"
-                    style="@style/ButtonStyleBlue"
-                    android:layout_width="65dp"
-                    android:layout_height="25dp"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_below="@+id/activity_update_company_tvNewInfo"
-                    android:layout_toRightOf="@+id/activity_update_company_iwNewImage"
-                    android:text="Choose" />
-
                 <TextView
                     android:id="@+id/activity_update_company_tvNewName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignStart="@+id/activity_update_company_tvNewInfo"
                     android:layout_below="@+id/activity_update_company_iwNewImage"
-                    android:layout_marginTop="38dp"
+                    android:layout_marginTop="11dp"
                     android:text="Company name" />
 
                 <EditText

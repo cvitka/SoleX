@@ -3,12 +3,15 @@ package hr.foi.air.solex.activities.companies;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.design.widget.NavigationView;
 import android.util.Base64;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -19,7 +22,10 @@ import com.example.webservice.models.Companies.Company;
 import com.google.gson.Gson;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -53,16 +59,12 @@ public class UpdateCompanyDataActivity extends DrawerActivity implements  Update
     @BindView(R.id.nav_view)
     NavigationView navigationView;
 
-    @BindView(R.id.activity_update_company_btnChoose)
-    Button btnChoseCompImg;
-
     @BindView(R.id.activity_update_company_iwNewImage)
-    ImageView companyPicture;
+    ImageView imageToUpload;
 
-    private static final int SELECT_PICTURE = 1;
-
-    Bitmap bitmap;
-    Uri selectedImage;
+    private static final int RESULT_LOAD_IMAGE = 1;
+    private Uri selectedImage;
+    private int odabrano = 0;
 
     @Override
     protected int getLayoutId() {
@@ -86,6 +88,14 @@ public class UpdateCompanyDataActivity extends DrawerActivity implements  Update
         mThisCompany.setName(txtInputNewName.getText().toString());
         mThisCompany.setAddress(txtInputNewAddress.getText().toString());
         mThisCompany.setEmail(txtInputNewEmail.getText().toString());
+
+        if(odabrano == 1){
+            Bitmap image = ((BitmapDrawable) imageToUpload.getDrawable()).getBitmap();
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            image.compress(Bitmap.CompressFormat.JPEG,20, baos);
+            String encodedImage = Base64.encodeToString(baos.toByteArray(),Base64.DEFAULT);
+            mThisCompany.setPicture(encodedImage);
+        }
 
         mUpdateCompanyDataPresenter.updateCompanyData(mThisCompany);
 
@@ -111,46 +121,39 @@ public class UpdateCompanyDataActivity extends DrawerActivity implements  Update
         txtInputNewAddress.setText(mThisCompany.getAddress());
         txtInputNewName.setText(mThisCompany.getName());
 
+        String encodedImage = mThisCompany.getPicture();
+        if(!encodedImage.isEmpty()){
+            byte[] decodedString = Base64.decode(encodedImage, Base64.DEFAULT);
+            Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+            imageToUpload.setImageBitmap(decodedByte);
+        }
+        else{
+            int id = getResources().getIdentifier("hr.foi.air.solex:drawable/" + "company_logo", null, null);
+            imageToUpload.setImageResource(id);
+        }
 
         View header=navigationView.getHeaderView(0);
         TextView textEmail = (TextView)header.findViewById(R.id.textViewEmail);
         textEmail.setText(mThisCompany.getEmail());
     }
 
-    @OnClick(R.id.activity_update_company_btnChoose)
+    @OnClick(R.id.activity_update_company_iwNewImage)
     public void chooseImage(View view){
+
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        startActivityForResult(intent, SELECT_PICTURE);
+        startActivityForResult(intent, RESULT_LOAD_IMAGE);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == SELECT_PICTURE && resultCode == RESULT_OK && data != null && data.getData() != null) {
+        if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && data != null && data != null) {
 
             selectedImage = data.getData();
-            try {
-                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), selectedImage);
-                companyPicture.setImageBitmap(bitmap);
-                mThisCompany.setPicture("slika");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            imageToUpload.setImageURI(selectedImage);
+            odabrano = 1;
         }
-
-
-
-            }
-
-    public String getStringImage(Bitmap bmp){
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bmp.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-        byte[] imageBytes = baos.toByteArray();
-        String encodedImage = Base64.encodeToString(imageBytes, Base64.DEFAULT);
-        return encodedImage;
     }
-
-
 
 }
