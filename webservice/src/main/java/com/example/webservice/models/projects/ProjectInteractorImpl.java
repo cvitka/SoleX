@@ -1,9 +1,11 @@
 package com.example.webservice.models.projects;
 
-import com.example.webservice.models.WebServiceCommunicator;
+import android.util.Log;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import com.example.webservice.models.WebServiceCommunicator;
+import com.example.webservice.models.login_registration.User;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -15,10 +17,16 @@ public class ProjectInteractorImpl extends WebServiceCommunicator implements Pro
 
     CreateProjectListener mCreateProjectListener;
 
-    private interface WSInterfaceAddProject {
+
+    ProjectListListener mListListener;
+
+    private interface WSInterfaceProject {
 
         @GET("dodajProjekt.php")
         Call<WSResponseProject> addProject(@Query("name") String name, @Query("description") String description, @Query("date") String startDate, @Query("state") int stateId, @Query("companyID") int companyId);
+
+        @GET("dohvatiProjekte.php")
+        Call<List<ApiProject>> getProjects(@Query("companyID") int companyID);
     }
 
     public ProjectInteractorImpl() {
@@ -27,15 +35,15 @@ public class ProjectInteractorImpl extends WebServiceCommunicator implements Pro
 
     @Override
     public void createNewProject(Project project) {
-        WSInterfaceAddProject interfaceAddProject = retrofit.create(WSInterfaceAddProject.class);
-        Call<WSResponseProject> call = interfaceAddProject.addProject(project.getName(), project.getDescription(), project.getStartDate(), project.getStateId(), project.getCompanyId());
+        WSInterfaceProject interfaceProject = retrofit.create(WSInterfaceProject.class);
+        Call<WSResponseProject> call = interfaceProject.addProject(project.getName(), project.getDescription(), project.getStartDate(), project.getStateId(), project.getCompanyId());
         if (call != null) {
             call.enqueue(new Callback<WSResponseProject>() {
                 @Override
                 public void onResponse(Call<WSResponseProject> call, Response<WSResponseProject> response) {
-                    if(response.isSuccessful()){
-                        if(response.body().getSuccess().equals("1")){
-                            if(mCreateProjectListener != null){
+                    if (response.isSuccessful()) {
+                        if (response.body().getSuccess().equals("1")) {
+                            if (mCreateProjectListener != null) {
                                 mCreateProjectListener.onProjectCreate();
                             }
                         }
@@ -44,7 +52,7 @@ public class ProjectInteractorImpl extends WebServiceCommunicator implements Pro
 
                 @Override
                 public void onFailure(Call<WSResponseProject> call, Throwable t) {
-
+                    Log.d("Api", t.getMessage());
                 }
             });
         }
@@ -53,6 +61,33 @@ public class ProjectInteractorImpl extends WebServiceCommunicator implements Pro
     @Override
     public void setCreateListener(CreateProjectListener listener) {
         mCreateProjectListener = listener;
+
+    }
+
+    @Override
+    public void setListListener(ProjectListListener listListener) {
+        mListListener = listListener;
+    }
+
+    @Override
+    public void getProjectList() {
+        WSInterfaceProject interfaceProject = retrofit.create(WSInterfaceProject.class);
+        Call<List<ApiProject>> call = interfaceProject.getProjects(User.getInstance().getId());
+        call.enqueue(new Callback<List<ApiProject>>() {
+            @Override
+            public void onResponse(Call<List<ApiProject>> call, Response<List<ApiProject>> response) {
+                if (response.isSuccessful()) {
+                    if (mListListener != null) {
+                        mListListener.onProjectListCome(response.body());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<ApiProject>> call, Throwable t) {
+                Log.d("Api", t.getMessage());
+            }
+        });
 
     }
 

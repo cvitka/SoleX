@@ -37,7 +37,7 @@
             android:name=".activities.common.DrawerActivity"
             android:theme="@style/AcitivityProfilesBlue" />
         <activity
-            android:name=".activities.CompanyProjectsActivity"
+            android:name=".activities.companies.CompanyProjectsActivity"
             android:label="List of your projects"
             android:theme="@style/ActivityWithInput" />
         <activity

@@ -2,10 +2,7 @@ package hr.foi.air.solex.activities.companies;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -21,14 +18,12 @@ import com.jaredrummler.materialspinner.MaterialSpinner;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import hr.foi.air.solex.R;
-import hr.foi.air.solex.activities.CompanyProjectsActivity;
 import hr.foi.air.solex.activities.common.DrawerActivity;
 import hr.foi.air.solex.presenters.AddNewProjectPresenter;
 import hr.foi.air.solex.presenters.AddNewProjectPresenterImpl;
@@ -83,6 +78,7 @@ public class AddNewProjectActivity extends DrawerActivity implements AddNewProje
             mAddNewProjectPresenter.createNewProject(mProject);
         }
     }
+
     DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
 
         @Override
@@ -112,27 +108,28 @@ public class AddNewProjectActivity extends DrawerActivity implements AddNewProje
     }
 
     private void fillSpinner() {
-        spinner.setItems("Start project", "In progress", "Finished", "Paused", "Stopped");
+        spinner.setItems("Chose state","Start project", "In progress", "Finished", "Paused", "Stopped");
         spinner.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
             @Override
             public void onItemSelected(MaterialSpinner view, int position, long id, Object item) {
                 switch (position) {
                     case 0:
-                        stateData = 1;
+                        stateData = 0;
                         break;
                     case 1:
-                        stateData = 2;
+                        stateData = 1;
                         break;
                     case 2:
-                        stateData = 3;
+                        stateData = 2;
                         break;
                     case 3:
-                        stateData = 4;
-
+                        stateData = 3;
                         break;
                     case 4:
+                        stateData = 4;
+                        break;
+                    case 5:
                         stateData = 5;
-
                         break;
                     default:
                         stateData = 0;
@@ -140,6 +137,7 @@ public class AddNewProjectActivity extends DrawerActivity implements AddNewProje
             }
         });
     }
+
     @Override
     public void onCreation() {
         Toast.makeText(this, "The project has been created", Toast.LENGTH_LONG).show();
