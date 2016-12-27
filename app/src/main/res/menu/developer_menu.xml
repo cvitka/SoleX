@@ -3,23 +3,23 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/developer_opt_profile"
-            android:icon="@android:drawable/ic_menu_mylocation"
+            android:icon="@mipmap/ic_home_white_24dp"
             android:title="@string/dev_opt_profile" />
         <item
             android:id="@+id/developer_opt_search"
-            android:icon="@android:drawable/ic_menu_mylocation"
+            android:icon="@mipmap/ic_search_white_24dp"
             android:title="@string/dev_opt_search" />
         <item
             android:id="@+id/developer_opt_applications"
-            android:icon="@android:drawable/ic_menu_agenda"
+            android:icon="@mipmap/ic_developer_mode_white_24dp"
             android:title="@string/dev_opt_applications" />
         <item
             android:id="@+id/developer_opt_collaborations"
-            android:icon="@android:drawable/ic_menu_mylocation"
+            android:icon="@mipmap/ic_people_white_24dp"
             android:title="@string/dev_opt_collaborations" />
         <item
             android:id="@+id/developer_opt_logout"
-            android:icon="@android:drawable/ic_menu_mylocation"
+            android:icon="@mipmap/ic_exit_to_app_white_24dp"
             android:title="@string/dev_opt_logout" />
     </group>
 
@@ -27,7 +27,7 @@
         <menu>
             <item
                 android:id="@+id/menu_about"
-                android:icon="@android:drawable/ic_menu_info_details"
+                android:icon="@mipmap/ic_info_white_24dp"
                 android:title="@string/menu_about" />
         </menu>
     </item>

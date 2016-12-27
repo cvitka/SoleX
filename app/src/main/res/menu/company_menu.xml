@@ -4,23 +4,23 @@
 
         <item
             android:id="@+id/company_opt_profile"
-            android:icon="@android:drawable/ic_menu_mylocation"
+            android:icon="@mipmap/ic_home_white_24dp"
             android:title="@string/comp_opt_profile" />
         <item
             android:id="@+id/company_opt_projects"
-            android:icon="@android:drawable/ic_menu_mylocation"
+            android:icon="@mipmap/ic_folder_white_24dp"
             android:title="@string/comp_opt_projects" />
         <item
             android:id="@+id/company_opt_collaborations"
-            android:icon="@android:drawable/ic_menu_mylocation"
+            android:icon="@mipmap/ic_people_white_24dp"
             android:title="@string/comp_opt_collaborations" />
         <item
             android:id="@+id/company_opt_favourites"
-            android:icon="@android:drawable/ic_menu_agenda"
+            android:icon="@mipmap/ic_favorite_white_24dp"
             android:title="@string/comp_opt_favourites" />
         <item
             android:id="@+id/company_opt_logout"
-            android:icon="@android:drawable/ic_menu_mylocation"
+            android:icon="@mipmap/ic_exit_to_app_white_24dp"
             android:title="@string/comp_opt_logout"
             />
     </group>
@@ -28,7 +28,7 @@
         <menu>
             <item
                 android:id="@+id/menu_about"
-                android:icon="@android:drawable/ic_menu_info_details"
+                android:icon="@mipmap/ic_info_white_24dp"
                 android:title="@string/menu_about" />
         </menu>
     </item>

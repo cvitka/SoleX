@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.webservice.models.Companies.Company;
+import com.example.webservice.models.companies.Company;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

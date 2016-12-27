@@ -27,9 +27,6 @@ public class SignupActivity extends AppCompatActivity {
         circleIndicator.setViewPager(mPager);
     }
 
-    public void bilosta(){
-
-    }
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());

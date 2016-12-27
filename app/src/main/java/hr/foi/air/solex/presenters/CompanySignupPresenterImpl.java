@@ -1,6 +1,6 @@
 package hr.foi.air.solex.presenters;
 
-import com.example.webservice.models.Companies.Company;
+import com.example.webservice.models.companies.Company;
 import com.example.webservice.models.signup.CompanySignupModel;
 import com.example.webservice.models.signup.CompanySignupModelImpl;
 import com.example.webservice.models.signup.SignUpResponseListener;

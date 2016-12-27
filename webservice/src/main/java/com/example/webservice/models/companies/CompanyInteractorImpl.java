@@ -1,21 +1,14 @@
-package com.example.webservice.models.Companies;
+package com.example.webservice.models.companies;
 
 import com.example.webservice.models.WebServiceCommunicator;
-
-import java.sql.Blob;
-import java.util.HashMap;
-
-import okhttp3.OkHttpClient;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 
-public class CompanyModelImpl extends WebServiceCommunicator implements CompanyModel {
+public class CompanyInteractorImpl extends WebServiceCommunicator implements CompanyInteractor {
     private interface WSInterfaceCompany {
         @GET("dohvatiPoduzece.php")
         Call<WSResponseCompany> dohvatiKompaniju(@Query("id") int id);
@@ -27,7 +20,7 @@ public class CompanyModelImpl extends WebServiceCommunicator implements CompanyM
     private CompanyScalarListener scalarListener;
     private CompanyUpdateListener updateListener;
 
-    public CompanyModelImpl() {
+    public CompanyInteractorImpl() {
         initRetrofit();
     }
 

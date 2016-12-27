@@ -79,4 +79,10 @@
     <style name="ActivityDrawerTextStyle">
         <item name="android:textColor">@color/colorPrimary</item>
     </style>
+
+    <style name="DatePicker" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:colorAccent">@color/colorPrimary</item>
+        <item name="android:windowBackground">@color/colorAccent</item>
+
+    </style>
 </resources>

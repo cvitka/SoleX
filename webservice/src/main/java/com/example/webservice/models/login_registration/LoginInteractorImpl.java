@@ -15,7 +15,7 @@ import retrofit2.http.Query;
  * Created by cvitka on 11.11.16..
  */
 
-public class LoginModelImpl extends WebServiceCommunicator implements LoginModel{
+public class LoginInteractorImpl extends WebServiceCommunicator implements LoginInteractor {
     private interface WebServiceInterface {
         @GET("prijava.php")
         Call<LogInResponse> checkPrijava(@Query("email") String email, @Query("lozinka") String password);
@@ -24,7 +24,7 @@ public class LoginModelImpl extends WebServiceCommunicator implements LoginModel
     private LoginResponseListener presenter;
     private String mEmail;
 
-    public LoginModelImpl(LoginResponseListener listener) {
+    public LoginInteractorImpl(LoginResponseListener listener) {
         this.presenter = listener;
         initRetrofit();
     }

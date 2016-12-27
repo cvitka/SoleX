@@ -1,9 +1,8 @@
 package hr.foi.air.solex.presenters;
 
-import com.example.webservice.models.Companies.Company;
-import com.example.webservice.models.Companies.CompanyModel;
-import com.example.webservice.models.Companies.CompanyScalarListener;
-import com.example.webservice.models.Companies.CompanyUpdateListener;
+import com.example.webservice.models.companies.Company;
+import com.example.webservice.models.companies.CompanyInteractor;
+import com.example.webservice.models.companies.CompanyUpdateListener;
 
 import hr.foi.air.solex.activities.companies.UpdateCompanyDataView;
 
@@ -12,18 +11,18 @@ import hr.foi.air.solex.activities.companies.UpdateCompanyDataView;
  */
 
 public class UpdateCompanyDataPresenterImpl implements UpdateCompanyDataPresenter, CompanyUpdateListener {
-    CompanyModel mCompanyModel;
+    CompanyInteractor mCompanyInteractor;
     UpdateCompanyDataView mUpdateCompanyDataView;
 
-    public UpdateCompanyDataPresenterImpl(UpdateCompanyDataView updateCompanyDataView, CompanyModel companyModel) {
-        this.mCompanyModel = companyModel;
+    public UpdateCompanyDataPresenterImpl(UpdateCompanyDataView updateCompanyDataView, CompanyInteractor companyInteractor) {
+        this.mCompanyInteractor = companyInteractor;
         this.mUpdateCompanyDataView = updateCompanyDataView;
-        mCompanyModel.setUpdateListener(this);  //preplaćujemo se kao slušatelj za update akciju kod modela
+        mCompanyInteractor.setUpdateListener(this);  //preplaćujemo se kao slušatelj za update akciju kod modela
     }
     //metoda iz UpdateCompanyDataPresenter interfacea, poziva ju UpdateCompanyDataActivity
     @Override
     public void updateCompanyData(Company company) {
-        mCompanyModel.updateCompanyData(company);
+        mCompanyInteractor.updateCompanyData(company);
     }
     //metoda iz CompanyUpdateListener, poziva ju model
     @Override

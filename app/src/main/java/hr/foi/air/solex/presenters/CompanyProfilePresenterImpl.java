@@ -1,8 +1,8 @@
 package hr.foi.air.solex.presenters;
 
-import com.example.webservice.models.Companies.Company;
-import com.example.webservice.models.Companies.CompanyModel;
-import com.example.webservice.models.Companies.CompanyScalarListener;
+import com.example.webservice.models.companies.Company;
+import com.example.webservice.models.companies.CompanyInteractor;
+import com.example.webservice.models.companies.CompanyScalarListener;
 
 import hr.foi.air.solex.activities.companies.CompanyProfileView;
 
@@ -11,20 +11,20 @@ import hr.foi.air.solex.activities.companies.CompanyProfileView;
  */
 
 public class CompanyProfilePresenterImpl implements CompanyProfilePresenter, CompanyScalarListener{
-    private CompanyModel mCompanyModel;
+    private CompanyInteractor mCompanyInteractor;
     private CompanyProfileView mCompanyProfileView;
 
-    public CompanyProfilePresenterImpl(CompanyProfileView companyProfileView, CompanyModel companyModel) {
-        this.mCompanyModel = companyModel;
-        mCompanyModel.setScalarListener(this);  //registriramo se kao slušatelj kod modela
+    public CompanyProfilePresenterImpl(CompanyProfileView companyProfileView, CompanyInteractor companyInteractor) {
+        this.mCompanyInteractor = companyInteractor;
+        mCompanyInteractor.setScalarListener(this);  //registriramo se kao slušatelj kod modela
         mCompanyProfileView = companyProfileView;
     }
     //metoda iz CompanyProfilePresenter interfacea, ovu metodu poziva CompanyProfileActivity
     @Override
     public void getCompany(int companyId) {
-        mCompanyModel.getCompanyData(companyId);
+        mCompanyInteractor.getCompanyData(companyId);
     }
-    //metoda iz CompanyScalarListener interfacea, ovu metodu poziva mCompanyModel kada stignu podaci
+    //metoda iz CompanyScalarListener interfacea, ovu metodu poziva mCompanyInteractor kada stignu podaci
     @Override
     public void onDataCome(Company company) {
         mCompanyProfileView.DataArrived(company);

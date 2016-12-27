@@ -14,7 +14,7 @@ import butterknife.OnClick;
 import butterknife.OnItemClick;
 import hr.foi.air.solex.R;
 import hr.foi.air.solex.activities.common.DrawerActivity;
-import hr.foi.air.solex.activities.companies.NewProjectActivity;
+import hr.foi.air.solex.activities.companies.AddNewProjectActivity;
 import hr.foi.air.solex.activities.companies.ProjectManagementActivity;
 
 public class CompanyProjectsActivity extends DrawerActivity {
@@ -47,7 +47,7 @@ public class CompanyProjectsActivity extends DrawerActivity {
 
     @OnClick(R.id.btnAddNewProject)
     public void btnAddNewProjectClick(){
-        Intent intent = new Intent(this, NewProjectActivity.class);
+        Intent intent = new Intent(this, AddNewProjectActivity.class);
         startActivity(intent);
     }
 

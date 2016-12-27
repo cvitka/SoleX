@@ -11,21 +11,16 @@ import android.provider.MediaStore;
 import android.support.design.widget.NavigationView;
 import android.util.Base64;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.webservice.models.Companies.CompanyModelImpl;
-import com.example.webservice.models.Companies.Company;
+import com.example.webservice.models.companies.CompanyInteractorImpl;
+import com.example.webservice.models.companies.Company;
 import com.google.gson.Gson;
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -80,7 +75,7 @@ public class UpdateCompanyDataActivity extends DrawerActivity implements  Update
         mThisCompany = new Gson().fromJson(jsonMyObject, Company.class);
         setDataOnLayout(mThisCompany);
 
-        this.mUpdateCompanyDataPresenter = new UpdateCompanyDataPresenterImpl(this, new CompanyModelImpl());
+        this.mUpdateCompanyDataPresenter = new UpdateCompanyDataPresenterImpl(this, new CompanyInteractorImpl());
     }
 
     @OnClick(R.id.activity_update_company_btnUpdateData)

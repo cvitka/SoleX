@@ -1,6 +1,6 @@
 package com.example.webservice.models.signup;
 
-import com.example.webservice.models.Developers.Developer;
+import com.example.webservice.models.developers.Developer;
 
 /**
  * Created by Asus on 6.12.2016..

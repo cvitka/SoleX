@@ -1,10 +1,10 @@
-package com.example.webservice.models.Companies;
+package com.example.webservice.models.companies;
 
 /**
  * Created by Asus on 4.12.2016..
  */
 
-public interface CompanyModel {
+public interface CompanyInteractor {
     public void getCompanyData(int id);
     public void updateCompanyData(Company company);
     public void setScalarListener(CompanyScalarListener listener);

@@ -10,8 +10,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.core.utils.UserType;
-import com.example.webservice.models.Companies.CompanyModelImpl;
-import com.example.webservice.models.Companies.Company;
+import com.example.webservice.models.companies.CompanyInteractorImpl;
+import com.example.webservice.models.companies.Company;
 import com.example.webservice.models.login_registration.User;
 import com.google.gson.Gson;
 
@@ -20,7 +20,6 @@ import butterknife.OnClick;
 import hr.foi.air.solex.R;
 import hr.foi.air.solex.activities.common.DrawerActivity;
 import hr.foi.air.solex.activities.ProjectsListingActivity;
-import hr.foi.air.solex.activities.Listeners.CompanyDataListener;
 import hr.foi.air.solex.presenters.CompanyProfilePresenter;
 import hr.foi.air.solex.presenters.CompanyProfilePresenterImpl;
 
@@ -57,7 +56,7 @@ public class CompanyProfileActivity extends DrawerActivity implements CompanyPro
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mCompanyProfilePresenter = new CompanyProfilePresenterImpl(this, new CompanyModelImpl());
+        mCompanyProfilePresenter = new CompanyProfilePresenterImpl(this, new CompanyInteractorImpl());
         //if company is logged in
         if(User.getInstance().getUserType() == UserType.COMPANY) {
             //we hide "projects" button that should be visible only to companies
@@ -66,7 +65,7 @@ public class CompanyProfileActivity extends DrawerActivity implements CompanyPro
             lastDrawerOption = R.id.company_opt_profile;
 /*
             DLCompany loader = new DLCompany(this);
-            CompanyModelImpl request = new CompanyModelImpl(loader);
+            CompanyInteractorImpl request = new CompanyInteractorImpl(loader);
             request.getCompanyData(User.getInstance().getId());
             */
 

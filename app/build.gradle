@@ -34,6 +34,8 @@ dependencies {
     apt 'com.jakewharton:butterknife-compiler:8.4.0'
     //CircleIndicator
     compile 'me.relex:circleindicator:1.2.2@aar'
+//spinner
+    compile 'com.jaredrummler:material-spinner:1.1.0'
     compile project(':webservice')
     compile project(':core')
 }
