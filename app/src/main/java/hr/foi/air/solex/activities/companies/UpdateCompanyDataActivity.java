@@ -16,8 +16,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.webservice.models.companies.CompanyInteractorImpl;
-import com.example.webservice.models.companies.Company;
+import com.example.webservice.models.mcompanies.CompanyInteractorImpl;
+import com.example.webservice.models.mcompanies.Company;
 import com.google.gson.Gson;
 
 import java.io.ByteArrayOutputStream;

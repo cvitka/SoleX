@@ -16,7 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.webservice.models.developers.Developer;
+import com.example.webservice.models.mdevelopers.Developer;
 import com.example.webservice.models.login_registration.User;
 import com.google.gson.Gson;
 

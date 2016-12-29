@@ -1,17 +1,13 @@
 package hr.foi.air.solex.presenters;
 
-import com.example.webservice.models.companies.Company;
 import com.example.webservice.models.projects.ApiProject;
-import com.example.webservice.models.projects.Project;
 import com.example.webservice.models.projects.ProjectInteractor;
 import com.example.webservice.models.projects.ProjectInteractorImpl;
 import com.example.webservice.models.projects.ProjectListListener;
-import com.example.webservice.models.projects.WSResponseProject;
 
 import java.util.List;
 
 import hr.foi.air.solex.activities.companies.CompanyProjectsView;
-import retrofit2.Call;
 
 public class CompanyProjectsPresenterImpl implements CompanyProjectsPresenter, ProjectListListener {
     CompanyProjectsView mCompanyProjectsView;

@@ -1,4 +1,4 @@
-package com.example.webservice.models.companies;
+package com.example.webservice.models.mcompanies;
 
 import com.example.webservice.models.WebServiceCommunicator;
 

@@ -1,4 +1,4 @@
-package com.example.webservice.models.developers;
+package com.example.webservice.models.mdevelopers;
 
 
 public interface DeveloperInteractor {

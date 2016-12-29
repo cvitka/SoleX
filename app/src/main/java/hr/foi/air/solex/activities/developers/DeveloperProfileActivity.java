@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.core.utils.UserType;
-import com.example.webservice.models.developers.Developer;
+import com.example.webservice.models.mdevelopers.Developer;
 import com.example.webservice.models.login_registration.User;
 import com.google.gson.Gson;
 

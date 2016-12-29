@@ -10,8 +10,8 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.core.utils.UserType;
-import com.example.webservice.models.companies.CompanyInteractorImpl;
-import com.example.webservice.models.companies.Company;
+import com.example.webservice.models.mcompanies.CompanyInteractorImpl;
+import com.example.webservice.models.mcompanies.Company;
 import com.example.webservice.models.login_registration.User;
 import com.github.aakira.expandablelayout.ExpandableLayout;
 import com.google.gson.Gson;

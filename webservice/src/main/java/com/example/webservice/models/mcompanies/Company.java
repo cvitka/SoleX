@@ -1,4 +1,4 @@
-package com.example.webservice.models.companies;
+package com.example.webservice.models.mcompanies;
 
 import java.sql.Blob;
 import java.util.HashMap;

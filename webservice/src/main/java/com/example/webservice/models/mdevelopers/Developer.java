@@ -1,72 +1,19 @@
-package com.example.webservice.models.developers;
+package com.example.webservice.models.mdevelopers;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
+/**
+ * Created by cvitka on 11.11.16..
+ */
 
-public class WSResponseDeveloper {
-
-    @SerializedName("success")
-    @Expose
-    private String success;
-
-    @SerializedName("message")
-    @Expose
-    private String message;
-
-    @SerializedName("id")
-    @Expose
+public class Developer {
     private int id;
-
-    @SerializedName("ime")
-    @Expose
     private String ime;
-
-    @SerializedName("prezime")
-    @Expose
     private String prezime;
-
-    @SerializedName("adresa")
-    @Expose
     private String adresa;
-
-    @SerializedName("email")
-    @Expose
     private String email;
-
-    @SerializedName("kontaktBroj")
-    @Expose
     private String kontaktBroj;
-
-    @SerializedName("godineIskustva")
-    @Expose
     private String godineIskustva;
-
-    @SerializedName("slika")
-    @Expose
-    private String slika;
-
-    @SerializedName("status")
-    @Expose
+    private String picture;
     private String status;
-
-    public WSResponseDeveloper() {
-    }
-
-    public String getSuccess() {
-        return success;
-    }
-
-    public void setSuccess(String success) {
-        this.success = success;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
 
     public int getId() {
         return id;
@@ -124,12 +71,12 @@ public class WSResponseDeveloper {
         this.godineIskustva = godineIskustva;
     }
 
-    public String getSlika() {
-        return slika;
+    public String getPicture() {
+        return picture;
     }
 
-    public void setSlika(String slika) {
-        this.slika = slika;
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 
     public String getStatus() {

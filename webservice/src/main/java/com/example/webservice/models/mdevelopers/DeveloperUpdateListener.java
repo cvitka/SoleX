@@ -1,4 +1,4 @@
-package com.example.webservice.models.Developers;
+package com.example.webservice.models.mdevelopers;
 
 
 public interface DeveloperUpdateListener {

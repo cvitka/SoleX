@@ -2,7 +2,7 @@ package com.example.webservice.models.signup;
 
 import android.util.Log;
 
-import com.example.webservice.models.developers.Developer;
+import com.example.webservice.models.mdevelopers.Developer;
 import com.example.webservice.models.WebServiceCommunicator;
 
 import retrofit2.Call;

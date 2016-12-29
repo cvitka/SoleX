@@ -1,8 +1,8 @@
 package hr.foi.air.solex.presenters;
 
-import com.example.webservice.models.companies.Company;
-import com.example.webservice.models.companies.CompanyInteractor;
-import com.example.webservice.models.companies.CompanyUpdateListener;
+import com.example.webservice.models.mcompanies.Company;
+import com.example.webservice.models.mcompanies.CompanyInteractor;
+import com.example.webservice.models.mcompanies.CompanyUpdateListener;
 
 import hr.foi.air.solex.activities.companies.UpdateCompanyDataView;
 

@@ -1,6 +1,6 @@
 package hr.foi.air.solex.presenters;
 
-import com.example.webservice.models.developers.Developer;
+import com.example.webservice.models.mdevelopers.Developer;
 
 /**
  * Created by Asus on 7.12.2016..
