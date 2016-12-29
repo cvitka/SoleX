@@ -16,8 +16,27 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
-        tools:context="hr.foi.air.solex.activities.NewNeededCollaborationActivity">
+        tools:context="hr.foi.air.solex.activities.companies.NewNeededCollaborationActivity">
 
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+        </android.support.design.widget.AppBarLayout>
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="55dp">
 
         <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:tools="http://schemas.android.com/tools"
@@ -29,85 +48,109 @@
             android:paddingLeft="@dimen/activity_horizontal_margin"
             android:paddingRight="@dimen/activity_horizontal_margin"
             android:paddingTop="@dimen/activity_vertical_margin"
-            tools:context="hr.foi.air.solex.activities.NewNeededCollaborationActivity">
+            tools:context="hr.foi.air.solex.activities.companies.NewNeededCollaborationActivity">
 
             <TextView
+                android:id="@+id/activity_new_needed_collaboration_tvName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="13dp"
-                android:id="@+id/textView24"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_alignParentStart="true"
-                android:hint="collaboration_name"
-                android:textSize="24sp" />
-
-            <TextView
-                android:text="Needed IT skills"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="58dp"
-                android:id="@+id/textView26"
-                android:textSize="18sp"
-                android:layout_below="@+id/textView25"
-                android:layout_alignStart="@+id/textView25" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="19dp"
-                android:id="@+id/textView25"
-                android:hint="collaboration_decription"
-                android:textSize="24sp"
-                android:layout_below="@+id/textView24"
-                android:layout_alignStart="@+id/textView24" />
-
-            <ListView
-                android:layout_width="match_parent"
-                android:layout_below="@+id/textView26"
-                android:layout_alignParentStart="true"
-                android:layout_height="90dp"
-                android:id="@+id/activity_new_needed_collaboration_lvNeededITSkills"/>
+                android:layout_marginStart="14dp"
+                android:layout_marginTop="18dp"
+                android:text="Name" />
 
             <EditText
+                android:id="@+id/activity_new_needed_collaboration_etName"
+                style="@style/EditTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName"
+                android:layout_alignStart="@+id/activity_new_needed_collaboration_tvName"
+                android:layout_below="@+id/activity_new_needed_collaboration_tvName"
+                android:layout_marginTop="16dp"
                 android:ems="10"
-                android:layout_below="@+id/activity_new_needed_collaboration_lvNeededITSkills"
-                android:layout_alignEnd="@+id/textView25"
-                android:layout_marginEnd="14dp"
-                android:layout_marginTop="15dp"
-                android:id="@+id/editText5"
-                android:hint="new it skill" />
+                android:hint="enter name"
+                android:inputType="textPersonName"
+                android:selectAllOnFocus="true" />
 
-            <ImageButton
+            <TextView
+                android:id="@+id/activity_new_needed_collaboration_tvDescription"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/gray_add_button"
-                android:id="@+id/imageButton2"
-                android:adjustViewBounds="true"
-                android:background="@drawable/roundbutton"
-                android:backgroundTint="@color/colorPrimary"
-                android:tag="gray_expand_img"
-                android:layout_alignBottom="@+id/editText5"
-                android:layout_alignParentEnd="true"/>
+                android:layout_alignStart="@+id/activity_new_needed_collaboration_etName"
+                android:layout_below="@+id/activity_new_needed_collaboration_etName"
+                android:layout_marginTop="18dp"
+                android:text="Description" />
+
+            <EditText
+                android:id="@+id/activity_new_needed_collaboration_etDescription"
+                style="@style/EditTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/activity_new_needed_collaboration_tvDescription"
+                android:layout_below="@+id/activity_new_needed_collaboration_tvDescription"
+                android:layout_marginTop="16dp"
+                android:ems="10"
+                android:hint="enter description"
+                android:inputType="textPersonName"
+                android:selectAllOnFocus="true" />
+
+            <TextView
+                android:id="@+id/activity_new_needed_collaboration_tvNeededSkills"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/activity_new_needed_collaboration_etDescription"
+                android:layout_below="@+id/activity_new_needed_collaboration_etDescription"
+                android:layout_marginTop="18dp"
+                android:text="Needed IT skills" />
+
+            <com.jaredrummler.materialspinner.MaterialSpinner
+                android:id="@+id/activity_new_needed_collaboration_spItSkills"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/activity_new_needed_collaboration_tvNeededSkills"
+                android:layout_below="@+id/activity_new_needed_collaboration_tvNeededSkills"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="8dp"
+                android:hint="IT Skills"
+                android:textColor="@color/colorPrimaryDarker" />
+
+            <TextView
+                android:id="@+id/activity_new_needed_collaboration_tvCooperationType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/activity_new_needed_collaboration_spItSkills"
+                android:layout_below="@+id/activity_new_needed_collaboration_spItSkills"
+                android:layout_marginTop="18dp"
+                android:text="Type Of Cooperation" />
+
+            <com.jaredrummler.materialspinner.MaterialSpinner
+                android:id="@+id/activity_new_needed_collaboration_spICooperationType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/activity_new_needed_collaboration_tvCooperationType"
+                android:layout_below="@+id/activity_new_needed_collaboration_tvCooperationType"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="8dp"
+                android:hint="Collab Type"
+                android:textColor="@color/colorPrimaryDarker" />
 
             <Button
-                android:text="Add collaboration"
+                android:id="@+id/activity_new_needed_collaboration_btnAddCollaboration"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/activity_new_needed_collaboration_btnAddCollaboration"
-                android:layout_below="@+id/editText5"
+                android:layout_alignParentBottom="true"
+                android:layout_below="@id/activity_new_needed_collaboration_spICooperationType"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="41dp" />
+                android:layout_marginTop="18dp"
+                android:layout_marginBottom="19dp"
+                android:text="Add"
+                android:textColor="@color/white"
+                />
 
         </RelativeLayout>
 
-
-
-
+        </ScrollView>
 
     </android.support.design.widget.CoordinatorLayout>
     <android.support.design.widget.NavigationView

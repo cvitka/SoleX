@@ -44,11 +44,19 @@
             android:name=".activities.companies.AddNewProjectActivity"
             android:label="Create new project"
             android:theme="@style/ActivityWithInput" />
-        />
+        <activity
+            android:name=".activities.companies.ProjectManagementActivity"
+            android:label="Project Management"
+            android:theme="@style/ActivityWithInput" />
+        <activity
+            android:name=".activities.companies.NewNeededCollaborationActivity"
+            android:label="New Collaboration"
+            android:theme="@style/ActivityWithInput" />
         <activity
             android:name=".activities.common.SplashScreenActivity"
             android:label="@string/app_name"
             android:theme="@style/SplashTheme">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

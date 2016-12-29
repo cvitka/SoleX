@@ -2,11 +2,17 @@ package hr.foi.air.solex.activities.companies;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.webservice.models.projects.Project;
+import com.example.webservice.models.projects.SelectedProjectInteractorImpl;
 
 import java.util.ArrayList;
 
@@ -17,15 +23,30 @@ import butterknife.OnItemClick;
 import hr.foi.air.solex.R;
 import hr.foi.air.solex.activities.CollaborationActivity;
 import hr.foi.air.solex.activities.CompanyNeededCollaborationActivity;
-import hr.foi.air.solex.activities.NewNeededCollaborationActivity;
 import hr.foi.air.solex.activities.common.DrawerActivity;
+import hr.foi.air.solex.presenters.ProjectManagementPresenter;
+import hr.foi.air.solex.presenters.ProjectManagementPresenterImpl;
 
-public class ProjectManagementActivity extends DrawerActivity {
+public class ProjectManagementActivity extends DrawerActivity implements ProjectManagementView{
+
     @BindView(R.id.activity_project_management_lvNeededCollaborations)
     ListView lvNeededCollaborations;
 
+    @BindView(R.id.activity_project_management_tvProjectName)
+    TextView txtProjectName;
+
     @BindView(R.id.activity_project_management_btnNewNeededCollaboration)
     Button btnNewNeededCollaboration;
+
+    @BindView(R.id.activity_project_management_tvDescriptionData)
+    TextView txtProjectDescription;
+
+    @BindView(R.id.nav_view)
+    NavigationView navigationView;
+
+    Project mThisProject;
+    ProjectManagementPresenter mPresenter;
+    private String projectId;
 
     @Override
     protected int getLayoutId() {
@@ -36,6 +57,7 @@ public class ProjectManagementActivity extends DrawerActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
+        mPresenter = new ProjectManagementPresenterImpl(this,new SelectedProjectInteractorImpl());
 
         ArrayList<String> items = new ArrayList<String>();
         ArrayAdapter<String> itemsAdapter;
@@ -45,6 +67,22 @@ public class ProjectManagementActivity extends DrawerActivity {
         items.add("collab (needed)");
         items.add("collab (filled)");
         lvNeededCollaborations.setAdapter(itemsAdapter);
+
+        String projectName;
+
+        if (savedInstanceState == null) {
+            Bundle extras = getIntent().getExtras();
+            if(extras == null) {
+                projectName= null;
+                projectId = null;
+            } else {
+                projectName= extras.getString("projectName");
+                projectId= extras.getString("projectId");
+                mPresenter.getProject(Integer.parseInt(projectId));
+            }
+        } else {
+            projectName= (String) savedInstanceState.getSerializable("projectName");
+        }
     }
 
     @OnItemClick(R.id.activity_project_management_lvNeededCollaborations)
@@ -56,15 +94,22 @@ public class ProjectManagementActivity extends DrawerActivity {
         else{
             Intent intent = new Intent(this, CollaborationActivity.class);
             startActivity(intent);
-
         }
-
     }
 
     @OnClick(R.id.activity_project_management_btnNewNeededCollaboration)
     public void btnNewNeededCollaborationClick(){
         Intent intent = new Intent(this, NewNeededCollaborationActivity.class);
+        intent.putExtra("projectId",projectId);
         startActivity(intent);
+
+    }
+
+    @Override
+    public void DataArrived(Project project) {
+        mThisProject = project;
+        txtProjectName.setText(mThisProject.getName());
+        txtProjectDescription.setText(mThisProject.getDescription());
 
     }
 }

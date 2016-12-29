@@ -19,11 +19,13 @@ public class CompanyProfilePresenterImpl implements CompanyProfilePresenter, Com
         mCompanyInteractor.setScalarListener(this);  //registriramo se kao slušatelj kod modela
         mCompanyProfileView = companyProfileView;
     }
+
     //metoda iz CompanyProfilePresenter interfacea, ovu metodu poziva CompanyProfileActivity
     @Override
     public void getCompany(int companyId) {
         mCompanyInteractor.getCompanyData(companyId);
     }
+
     //metoda iz CompanyScalarListener interfacea, ovu metodu poziva mCompanyInteractor kada stignu podaci
     @Override
     public void onDataCome(Company company) {

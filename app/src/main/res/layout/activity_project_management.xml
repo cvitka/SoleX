@@ -18,6 +18,25 @@
         android:fitsSystemWindows="true"
         tools:context="hr.foi.air.solex.activities.companies.ProjectManagementActivity">
 
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+        </android.support.design.widget.AppBarLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="55dp">
+
         <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:tools="http://schemas.android.com/tools"
             android:id="@+id/activity_project_management"
@@ -29,67 +48,93 @@
             android:paddingTop="@dimen/activity_vertical_margin"
             tools:context="hr.foi.air.solex.activities.companies.ProjectManagementActivity">
 
+
             <TextView
-                android:text="project_name"
+                android:id="@+id/activity_project_management_tvProjectName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
                 android:layout_alignParentStart="true"
-                android:layout_marginStart="21dp"
-                android:layout_marginTop="23dp"
-                android:id="@+id/textView20"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="14dp"
+                android:layout_marginTop="14dp"
+                android:text="Project Name"
+                android:textSize="24sp" />
 
             <TextView
-                android:text="description"
+                android:id="@+id/activity_project_management_tvDescription"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                android:id="@+id/textView21"
-                android:textAppearance="@style/TextAppearance.AppCompat"
-                android:textSize="18sp"
-                android:layout_below="@+id/textView20"
-                android:layout_alignStart="@+id/textView20" />
+                android:layout_alignStart="@+id/activity_project_management_tvProjectName"
+                android:layout_below="@+id/activity_project_management_tvProjectName"
+                android:layout_marginTop="17dp"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                android:text="Description" />
 
             <TextView
-                android:text="Completion: number (percentage)"
+                android:id="@+id/activity_project_management_tvDescriptionData"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="69dp"
-                android:id="@+id/textView22"
-                android:textSize="18sp"
-                android:layout_below="@+id/textView21"
-                android:layout_alignStart="@+id/textView21" />
+                android:layout_alignStart="@+id/activity_project_management_tvDescription"
+                android:layout_below="@+id/activity_project_management_tvDescription"
+                android:layout_marginTop="17dp"
+                android:text="Ovo je opis projekta i tako"
+                android:textSize="13sp"/>
 
             <TextView
-                android:text="Needed collaborations list"
+                android:id="@+id/activity_project_management_tvCompletion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_alignStart="@+id/textView22"
-                android:id="@+id/textView23"
-                android:textSize="18sp" />
+                android:layout_alignStart="@+id/activity_project_management_tvDescriptionData"
+                android:layout_below="@+id/activity_project_management_tvDescriptionData"
+                android:layout_marginTop="17dp"
+                android:text="Completion(percentage)"
+                android:textSize="15dp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/activity_project_management_tvCompletionData"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/activity_project_management_tvCompletion"
+                android:layout_below="@+id/activity_project_management_tvCompletion"
+                android:layout_marginTop="17dp"
+                android:text="70%"
+                android:textSize="13sp"/>
+
+            <TextView
+                android:id="@+id/activity_project_management_tvCollaborationList"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/activity_project_management_tvCompletionData"
+                android:layout_below="@+id/activity_project_management_tvCompletionData"
+                android:layout_marginTop="17dp"
+                android:text="Collaborations "
+                android:textSize="15dp"
+                android:textStyle="bold"/>
 
             <ListView
                 android:layout_width="match_parent"
                 android:id="@+id/activity_project_management_lvNeededCollaborations"
-                android:layout_below="@+id/textView23"
                 android:layout_alignParentStart="true"
-                android:layout_marginTop="24dp"
+                android:layout_alignStart="@+id/activity_project_management_tvCollaborationList"
+                android:layout_below="@+id/activity_project_management_tvCollaborationList"
+                android:layout_marginTop="17dp"
                 android:layout_height="150dp" />
 
             <Button
-                android:text="New collaboration"
+                android:id="@+id/activity_project_management_btnNewNeededCollaboration"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/activity_project_management_btnNewNeededCollaboration"
-                android:layout_below="@+id/activity_project_management_lvNeededCollaborations"
-                android:layout_centerHorizontal="true" />
+                android:layout_alignParentBottom="true"
+                android:layout_below="@id/activity_project_management_lvNeededCollaborations"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="19dp"
+                android:text="New Collaboration"
+                android:textColor="@color/white" />
+
         </RelativeLayout>
-
-
-
-
+        </ScrollView>
 
     </android.support.design.widget.CoordinatorLayout>
     <android.support.design.widget.NavigationView

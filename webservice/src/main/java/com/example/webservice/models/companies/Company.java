@@ -3,9 +3,6 @@ package com.example.webservice.models.companies;
 import java.sql.Blob;
 import java.util.HashMap;
 
-/**
- * Created by corpus on 12.11.16..
- */
 
 public class Company {
 
