@@ -17,7 +17,7 @@ import com.example.webservice.models.login_registration.User;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import hr.foi.air.solex.R;
-import hr.foi.air.solex.activities.CompanyCollaborationsActivity;
+import hr.foi.air.solex.activities.companies.CompanyCollaborationsActivity;
 import hr.foi.air.solex.activities.DeveloperApplicationsActivity;
 import hr.foi.air.solex.activities.DeveloperCollaborationsActivity;
 import hr.foi.air.solex.activities.companies.CompanyProjectsActivity;

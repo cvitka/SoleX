@@ -1,8 +1,8 @@
 package hr.foi.air.solex.presenters;
 
 import com.example.webservice.models.mcompanies.Company;
-import com.example.webservice.models.signup.CompanySignupModel;
-import com.example.webservice.models.signup.CompanySignupModelImpl;
+import com.example.webservice.models.signup.CompanySignupInteractor;
+import com.example.webservice.models.signup.CompanySignupInteractorImpl;
 import com.example.webservice.models.signup.SignUpResponseListener;
 
 import hr.foi.air.solex.fragments.SignupView;
@@ -14,16 +14,16 @@ import hr.foi.air.solex.fragments.SignupView;
 public class CompanySignupPresenterImpl implements CompanySignupPresenter, SignUpResponseListener {
 
     private SignupView mCompanySignupView;
-    private CompanySignupModel mCompanySignupModel;
+    private CompanySignupInteractor mCompanySignupInteractor;
 
     public CompanySignupPresenterImpl(SignupView companySignupView) {
         this.mCompanySignupView = companySignupView;
-        this.mCompanySignupModel = new CompanySignupModelImpl(this);
+        this.mCompanySignupInteractor = new CompanySignupInteractorImpl(this);
     }
 
     @Override
     public void tryRegister(Company company, String password) {
-        mCompanySignupModel.registerCompany(company, password);
+        mCompanySignupInteractor.registerCompany(company, password);
     }
 
     @Override

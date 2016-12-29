@@ -15,14 +15,14 @@ import retrofit2.http.Query;
  * Created by Asus on 6.12.2016..
  */
 
-public class CompanySignupModelImpl extends WebServiceCommunicator implements CompanySignupModel{
+public class CompanySignupInteractorImpl extends WebServiceCommunicator implements CompanySignupInteractor {
     private interface WebServiceInterface {
        @GET("registracijaPoduzeca.php")
        Call<SignUpResponse> registrirajPoduzece(@Query("naziv") String name, @Query("adresa") String address, @Query("email") String email, @Query("lozinka") String password);
     }
 
     private SignUpResponseListener mResponseListener;
-    public CompanySignupModelImpl(SignUpResponseListener listener) {
+    public CompanySignupInteractorImpl(SignUpResponseListener listener) {
         this.mResponseListener = listener;
         initRetrofit();
     }
