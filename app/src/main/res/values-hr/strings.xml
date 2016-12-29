@@ -11,4 +11,7 @@
     <string name="loginProgress">Prijava u tijeku...</string>
     <string name="signupProgress">Kreiranje računa....</string>
     <string name="signupInfo">Svi potrebni podaci za registraciju nisu popunjeni!</string>
+    <string name="comp_web_page">Web stranica poduzeća</string>
+    <string name="comp_director">Direktor</string>
+    <string name="comp_num_employees">Broj zaposlenika</string>
 </resources>

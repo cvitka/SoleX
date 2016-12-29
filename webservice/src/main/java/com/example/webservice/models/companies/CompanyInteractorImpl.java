@@ -14,7 +14,12 @@ public class CompanyInteractorImpl extends WebServiceCommunicator implements Com
         Call<WSResponseCompany> dohvatiKompaniju(@Query("id") int id);
 
         @GET("updatePoduzeca.php")
-        Call<WSResponseCompany> azurirajKompaniju(@Query("id") int id, @Query("naziv") String naziv, @Query("adresa") String adresa, @Query("email") String email,@Query("slika") String slika);
+        Call<WSResponseCompany> azurirajKompaniju(
+                @Query("id") int id,
+                @Query("naziv") String naziv,
+                @Query("adresa") String adresa,
+                @Query("email") String email,
+                @Query("slika") String slika);
     }
 
     private CompanyScalarListener scalarListener;
@@ -49,6 +54,10 @@ public class CompanyInteractorImpl extends WebServiceCommunicator implements Com
                                 company.setName(response.body().getNaziv());
                                 company.setEmail(response.body().getEmail());
                                 company.setPicture(response.body().getSlika());
+                                company.setDirektor(response.body().getDirektor());
+                                company.setWebStranica(response.body().getWebStranica());
+                                company.setOpisPoduzeca(response.body().getOpisPoduzeca());//mozda se makne
+                                company.setBrojZaposlenika(response.body().getBrojZaposlenika());
                                 scalarListener.onDataCome(company);
                             }
                         }

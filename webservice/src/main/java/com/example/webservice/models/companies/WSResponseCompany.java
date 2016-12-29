@@ -34,6 +34,57 @@ public class WSResponseCompany {
     @Expose
     private String  slika;
 
+
+    @SerializedName("webStranica")
+    @Expose
+    private String  webStranica;
+
+
+    @SerializedName("direktor")
+    @Expose
+    private String  direktor;
+
+
+    @SerializedName("opisPoduzeca")
+    @Expose
+    private String  opisPoduzeca;
+
+    public String getWebStranica() {
+        return webStranica;
+    }
+
+    public void setWebStranica(String webStranica) {
+        this.webStranica = webStranica;
+    }
+
+    public String getDirektor() {
+        return direktor;
+    }
+
+    public void setDirektor(String direktor) {
+        this.direktor = direktor;
+    }
+
+    public String getOpisPoduzeca() {
+        return opisPoduzeca;
+    }
+
+    public void setOpisPoduzeca(String opisPoduzeca) {
+        this.opisPoduzeca = opisPoduzeca;
+    }
+
+    public int getBrojZaposlenika() {
+        return brojZaposlenika;
+    }
+
+    public void setBrojZaposlenika(int brojZaposlenika) {
+        this.brojZaposlenika = brojZaposlenika;
+    }
+
+    @SerializedName("brojZaposlenika")
+    @Expose
+    private int  brojZaposlenika;
+
     @SerializedName("status")
     @Expose
     private String status;

@@ -39,4 +39,8 @@
     <string name="signupProgress">Creating account....</string>
     <string name="signupInfo">Your insert data is not correct!</string>
     <string name="enter_e_mail">enter e-mail</string>
+    <string name="comp_web_page">Company web page</string>
+    <string name="comp_director">Director</string>
+    <string name="comp_num_employees">Number of employees</string>
+
 </resources>

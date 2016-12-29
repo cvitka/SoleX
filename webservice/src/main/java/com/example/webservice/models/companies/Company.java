@@ -7,6 +7,7 @@ import java.util.HashMap;
 public class Company {
 
     private int id;
+
     private String name;
     private String address;
     private String email;
@@ -14,9 +15,46 @@ public class Company {
     private String status;
     private Blob pictureName;
     private HashMap<String, String> image;
+    private String webStranica;
+    private String direktor;
+    private String opisPoduzeca;
+    private int brojZaposlenika;
 
     public HashMap<String, String> getImage() {
         return image;
+    }
+
+    public String getDirektor() {
+        return direktor;
+    }
+
+    public void setDirektor(String direktor) {
+        this.direktor = direktor;
+    }
+
+    public String getOpisPoduzeca() {
+        return opisPoduzeca;
+    }
+
+    public void setOpisPoduzeca(String opisPoduzeca) {
+        this.opisPoduzeca = opisPoduzeca;
+    }
+
+    public int getBrojZaposlenika() {
+        return brojZaposlenika;
+    }
+
+    public void setBrojZaposlenika(int brojZaposlenika) {
+        this.brojZaposlenika = brojZaposlenika;
+    }
+
+    public String getWebStranica() {
+
+        return webStranica;
+    }
+
+    public void setWebStranica(String webStranica) {
+        this.webStranica = webStranica;
     }
 
     public void setImage(HashMap<String, String> image) {

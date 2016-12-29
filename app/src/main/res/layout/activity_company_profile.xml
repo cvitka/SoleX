@@ -48,6 +48,16 @@
                 android:paddingTop="@dimen/activity_vertical_margin"
                 tools:context="hr.foi.air.solex.activities.companies.CompanyProfileActivity">
 
+                <Button
+                    android:id="@+id/btnStartUpdateCompanyData"
+                    style="@style/ButtonStyleBlue"
+                    android:layout_width="65dp"
+                    android:layout_height="25dp"
+                    android:layout_alignEnd="@+id/activity_company_profile_projectsLayout"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginRight="45dp"
+                    android:text="Update" />
+
                 <ImageView
                     android:id="@+id/activity_collaboration_imvDeveloper"
                     android:layout_width="150dp"
@@ -107,36 +117,35 @@
                     android:id="@+id/horizontalBarView2"
                     android:layout_width="match_parent"
                     android:layout_height="2dip"
-                    android:layout_below="@+id/imgBtnTestExpand"
-                    android:background="#55555555"></View>
+                    android:layout_below="@+id/activity_company_profile_btnToggleProjectsLayout"
+                    android:background="#55555555"/>
 
                 <ImageButton
-                    android:id="@+id/imgBtnTestExpand"
+                    android:id="@+id/activity_company_profile_btnToggleProjectsLayout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignEnd="@+id/horizontalBarView"
                     android:layout_below="@+id/horizontalBarView"
                     android:layout_marginTop="15dp"
                     android:adjustViewBounds="true"
-                    android:background="@drawable/roundbutton"
-                    android:backgroundTint="@color/colorPrimary"
                     android:tag="gray_expand_img"
-                    app:srcCompat="@drawable/gray_collapse_img" />
+                    android:background="@drawable/lblue_collapse_img" />
 
-                <RelativeLayout
-                    android:id="@+id/highlightedProjectsLayout"
+                <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+                    android:id="@+id/activity_company_profile_projectsLayout"
                     android:layout_width="300dp"
                     android:layout_height="170dp"
                     android:layout_below="@+id/horizontalBarView2"
                     android:layout_centerInParent="true"
-                    android:layout_marginTop="8dp">
+                    android:layout_marginTop="8dp"
+                    app:ael_expanded="true">
 
                     <View
                         android:id="@+id/horizontalBarViewInRelLay"
                         android:layout_width="match_parent"
                         android:layout_height="2dip"
                         android:layout_marginTop="70dp"
-                        android:background="#55555555"></View>
+                        android:background="#55555555"/>
 
                     <TextView
                         android:id="@+id/nazivProjekta1"
@@ -167,7 +176,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="2dip"
                         android:layout_marginTop="140dp"
-                        android:background="#55555555"></View>
+                        android:background="#55555555"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -192,7 +201,7 @@
                         android:layout_marginTop="120dp"
                         android:text="Broj sudionika: 23" />
 
-                </RelativeLayout>
+                </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
 
 
                 <TextView
@@ -200,27 +209,86 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
-                    android:layout_below="@+id/highlightedProjectsLayout"
+                    android:layout_below="@+id/activity_company_profile_projectsLayout"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="4dp"
                     android:text="General Information"
                     android:textSize="15dp"
                     android:textStyle="bold" />
 
+                <ImageButton
+                    android:id="@+id/activity_company_profile_btnToggleGenInfoLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/textView5"
+                    android:layout_alignParentEnd="true"
+                    android:adjustViewBounds="true"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:tag="gray_expand_img"
+                    android:background="@drawable/lblue_expand_img" />
+
                 <View
                     android:id="@+id/horizontalBarView3"
                     android:layout_width="match_parent"
                     android:layout_height="2dip"
-                    android:layout_below="@+id/imageButton2"
+                    android:layout_below="@+id/activity_company_profile_btnToggleGenInfoLayout"
                     android:background="#55555555" />
+                <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+                    android:id="@+id/activity_company_profile_generalInfoLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/horizontalBarView3"
+                    android:paddingStart="24dp">
 
+                    <TextView
+                        android:id="@+id/activity_company_profile_tvsWebPage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/comp_web_page"/>
+                    <TextView
+                        android:id="@+id/activity_company_profile_tvWebPage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/activity_company_profile_tvsWebPage"
+                        android:layout_marginStart="20dp"
+                        android:lines="2"/>
+
+                    <TextView
+                        android:id="@+id/activity_company_profile_tvsDirector"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/comp_director"
+                        android:layout_below="@+id/activity_company_profile_tvWebPage"/>
+                    <TextView
+                        android:id="@+id/activity_company_profile_tvDirector"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="2dp"
+                        android:layout_below="@+id/activity_company_profile_tvWebPage"
+                        android:layout_toEndOf="@+id/activity_company_profile_tvsDirector"/>
+
+                    <TextView
+                        android:id="@+id/activity_company_profile_tvsNumberEmployees"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/activity_company_profile_tvDirector"
+                        android:text="@string/comp_num_employees"/>
+                    <TextView
+                        android:id="@+id/activity_company_profile_tvNumberEmployees"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/activity_company_profile_tvDirector"
+                        android:layout_marginStart="6dp"
+                        android:layout_toEndOf="@+id/activity_company_profile_tvsNumberEmployees"/>
+
+                </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
 
                 <TextView
                     android:id="@+id/textView6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
-                    android:layout_below="@+id/horizontalBarView3"
+                    android:layout_below="@+id/activity_company_profile_generalInfoLayout"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="13dp"
                     android:text="Main Technologies"
@@ -231,44 +299,30 @@
                     android:id="@+id/horizontalBarView4"
                     android:layout_width="match_parent"
                     android:layout_height="2dip"
-                    android:layout_below="@+id/imageButton3"
+                    android:layout_below="@+id/activity_company_profile_btnToggleMainTechLayout"
                     android:background="#55555555" />
 
 
                 <ImageButton
-                    android:id="@+id/imageButton3"
+                    android:id="@+id/activity_company_profile_btnToggleMainTechLayout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignEnd="@+id/horizontalBarView3"
-                    android:layout_below="@+id/horizontalBarView3"
+                    android:layout_below="@+id/activity_company_profile_generalInfoLayout"
                     android:layout_marginTop="5dp"
                     android:adjustViewBounds="true"
-                    android:background="@drawable/roundbutton"
                     android:backgroundTint="@color/colorPrimary"
                     android:tag="gray_expand_img"
-                    app:srcCompat="@drawable/gray_expand_img" />
+                    android:background="@drawable/lblue_expand_img"/>
 
-                <ImageButton
-                    android:id="@+id/imageButton2"
+
+                <com.github.aakira.expandablelayout.ExpandableRelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/textView5"
-                    android:layout_alignParentEnd="true"
-                    android:adjustViewBounds="true"
-                    android:background="@drawable/roundbutton"
-                    android:backgroundTint="@color/colorPrimary"
-                    android:tag="gray_expand_img"
-                    app:srcCompat="@drawable/gray_expand_img" />
+                    android:id="@+id/activity_company_profile_mainTechLayout">
 
-                <Button
-                    android:id="@+id/btnStartUpdateCompanyData"
-                    style="@style/ButtonStyleBlue"
-                    android:layout_width="65dp"
-                    android:layout_height="25dp"
-                    android:layout_alignEnd="@+id/highlightedProjectsLayout"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginRight="45dp"
-                    android:text="Update" />
+                </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+
 
                 <Button
                     android:id="@+id/activity_company_profile_btnProjects"
