@@ -22,7 +22,7 @@ import hr.foi.air.solex.activities.DeveloperApplicationsActivity;
 import hr.foi.air.solex.activities.DeveloperCollaborationsActivity;
 import hr.foi.air.solex.activities.companies.CompanyProjectsActivity;
 import hr.foi.air.solex.activities.developers.DeveloperProfileActivity;
-import hr.foi.air.solex.activities.FavouritesActivity;
+import hr.foi.air.solex.activities.companies.FavouritesActivity;
 import hr.foi.air.solex.activities.ProjectSearchActivity;
 import hr.foi.air.solex.activities.companies.CompanyProfileActivity;
 

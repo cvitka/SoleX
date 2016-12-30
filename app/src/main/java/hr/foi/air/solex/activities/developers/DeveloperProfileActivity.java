@@ -6,6 +6,7 @@ import android.support.design.widget.NavigationView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.core.utils.UserType;
 import com.example.webservice.models.mdevelopers.Developer;
@@ -44,10 +45,27 @@ public class DeveloperProfileActivity extends DrawerActivity implements Develope
     @BindView(R.id.nav_view)
     NavigationView navigationView;
 
+    private int developerId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         mDeveloperProfilePresenter = new DeveloperProfilePresenterImpl(this);
+
+        String id;
+
+        if (savedInstanceState == null) {
+            Bundle extras = getIntent().getExtras();
+            if(extras == null) {
+                id = null;
+            } else {
+                id= extras.getString("developerId");
+                developerId = Integer.parseInt(id);
+
+                mDeveloperProfilePresenter.getDeveloperData(developerId);
+            }
+        }
+
         //if developer is logged in
         if(User.getInstance().getUserType() == UserType.DEVELOPER) {
             //we hide "projects" button that should be visible only to companies
@@ -64,21 +82,30 @@ public class DeveloperProfileActivity extends DrawerActivity implements Develope
         return R.layout.activity_developer_profile;
     }
 
+
     @OnClick(R.id.btnStartUpdateDeveloperData)
     public void btnStartUpdateDeveloperDataClick(View view){
+        if(developerId ==0) {
+
         Intent intent = new Intent(this, UpdateDeveloperDataActivity.class);
         intent.putExtra("myObject", new Gson().toJson(mThisdDveloper));
         startActivity(intent);
+        }
     }
 
     @OnClick(R.id.activity_developer_profile_btnProjects)
     public void btnProjectsClick(){
-        Intent intent = new Intent(this, ProjectsListingActivity.class);
-        startActivity(intent);
+        if(developerId ==0) {
+            Intent intent = new Intent(this, ProjectsListingActivity.class);
+            startActivity(intent);
+        }
     }
 
     @Override
     public void onBackPressed() {
+        if(developerId !=0) {
+            finish();
+        }
     }
 
     @Override

@@ -11,10 +11,13 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.webservice.models.collaboration.ApiNeededCollaborations;
+import com.example.webservice.models.collaboration.ApiNeededCollaborationsInteractorImpl;
 import com.example.webservice.models.projects.Project;
 import com.example.webservice.models.projects.SelectedProjectInteractorImpl;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -24,6 +27,8 @@ import hr.foi.air.solex.R;
 import hr.foi.air.solex.activities.CollaborationActivity;
 import hr.foi.air.solex.activities.CompanyNeededCollaborationActivity;
 import hr.foi.air.solex.activities.common.DrawerActivity;
+import hr.foi.air.solex.presenters.GetNeededCollaaborationsPresenter;
+import hr.foi.air.solex.presenters.GetNeededCollaborationsPresenterImpl;
 import hr.foi.air.solex.presenters.ProjectManagementPresenter;
 import hr.foi.air.solex.presenters.ProjectManagementPresenterImpl;
 
@@ -46,7 +51,12 @@ public class ProjectManagementActivity extends DrawerActivity implements Project
 
     Project mThisProject;
     ProjectManagementPresenter mPresenter;
+    GetNeededCollaaborationsPresenter colabPresenter;
     private String projectId;
+    private ArrayList<String> itemsId = new ArrayList<String>();
+    private String selectedProjectName;
+    private String selectedProjectId;
+    private int projectID;
 
     @Override
     protected int getLayoutId() {
@@ -58,6 +68,7 @@ public class ProjectManagementActivity extends DrawerActivity implements Project
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
         mPresenter = new ProjectManagementPresenterImpl(this,new SelectedProjectInteractorImpl());
+        colabPresenter = new GetNeededCollaborationsPresenterImpl(this, new ApiNeededCollaborationsInteractorImpl());
 
         ArrayList<String> items = new ArrayList<String>();
         ArrayAdapter<String> itemsAdapter;
@@ -78,7 +89,9 @@ public class ProjectManagementActivity extends DrawerActivity implements Project
             } else {
                 projectName= extras.getString("projectName");
                 projectId= extras.getString("projectId");
-                mPresenter.getProject(Integer.parseInt(projectId));
+                projectID = Integer.parseInt(projectId);
+                mPresenter.getProject(projectID);
+                colabPresenter.getNeededCollaboration(projectID);
             }
         } else {
             projectName= (String) savedInstanceState.getSerializable("projectName");
@@ -102,7 +115,6 @@ public class ProjectManagementActivity extends DrawerActivity implements Project
         Intent intent = new Intent(this, NewNeededCollaborationActivity.class);
         intent.putExtra("projectId",projectId);
         startActivity(intent);
-
     }
 
     @Override
@@ -110,6 +122,40 @@ public class ProjectManagementActivity extends DrawerActivity implements Project
         mThisProject = project;
         txtProjectName.setText(mThisProject.getName());
         txtProjectDescription.setText(mThisProject.getDescription());
+    }
 
+    @Override
+    public void NeededCollaborationsArrived(List<ApiNeededCollaborations> neededCollaborationses) {
+        ArrayList<String> items = new ArrayList<String>();
+        ArrayAdapter<String> itemsAdapter;
+        itemsAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items);
+        for (int i = 0; i < neededCollaborationses.size(); i++) {
+            items.add(neededCollaborationses.get(i).getDevNcollabNme());
+            itemsId.add(neededCollaborationses.get(i).getCollabId());
+
+        }
+        lvNeededCollaborations.setAdapter(itemsAdapter);
+        lvNeededCollaborations.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                selectedProjectName = ((TextView) view).getText().toString();
+                Integer selectionID = Integer.parseInt(itemsId.get(i));
+                selectedProjectId = selectionID.toString();
+                onSelect(selectedProjectName,selectedProjectId);
+
+            }
+        });
+    }
+
+    public void onSelect(String name,String id){
+        Intent intent = new Intent(this, CollaborationActivity.class);
+        intent.putExtra("collaborationName",name);
+        intent.putExtra("collaborationId",id);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
     }
 }

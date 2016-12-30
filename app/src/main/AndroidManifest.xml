@@ -58,6 +58,14 @@
             android:label="Collaborations"
             android:theme="@style/ActivityWithInput"></activity>
         <activity
+            android:name=".activities.companies.FavouritesActivity"
+            android:label="Favourites"
+            android:theme="@style/ActivityWithInput"></activity>
+        <activity
+            android:name=".activities.CollaborationActivity"
+            android:label="Collaboration"
+            android:theme="@style/ActivityWithInput"></activity>
+        <activity
             android:name=".activities.common.SplashScreenActivity"
             android:label="@string/app_name"
             android:theme="@style/SplashTheme">

@@ -185,7 +185,9 @@ public class NewNeededCollaborationActivity extends DrawerActivity implements Ne
     @Override
     public void onAdd() {
         Toast.makeText(getApplicationContext(), "New Needed Collaboration Has Been Created!", Toast.LENGTH_LONG).show();
-        Intent intent = new Intent(this, CompanyProjectsActivity.class);
+        Intent intent = new Intent(this, ProjectManagementActivity.class);
+        intent.putExtra("projectId",projekt);
         startActivity(intent);
+
     }
 }
