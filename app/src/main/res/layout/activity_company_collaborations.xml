@@ -30,9 +30,11 @@
 
         </android.support.design.widget.AppBarLayout>
 
+
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginTop="55dp">
 
             <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:tools="http://schemas.android.com/tools"
@@ -45,17 +47,13 @@
                 android:paddingTop="@dimen/activity_vertical_margin"
                 tools:context="hr.foi.air.solex.activities.companies.CompanyCollaborationsActivity">
 
-                <ListView
-                    android:id="@+id/activity_company_collaborations_lvCollaborations"
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/activity_company_collaborations_recyclerView"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentEnd="true"
-                    android:layout_below="@+id/textView11"
-                    android:layout_marginTop="41dp" />
+                    android:layout_height="wrap_content"
+                    android:scrollbars="vertical" />
             </RelativeLayout>
         </ScrollView>
-
-
     </android.support.design.widget.CoordinatorLayout>
 
     <android.support.design.widget.NavigationView
@@ -66,4 +64,5 @@
         android:fitsSystemWindows="true"
         android:visibility="visible"
         app:headerLayout="@layout/menu_drawer_header" />
+
 </android.support.v4.widget.DrawerLayout>

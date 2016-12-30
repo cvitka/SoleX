@@ -2,6 +2,9 @@ package hr.foi.air.solex.activities.companies;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -22,25 +25,29 @@ import butterknife.OnItemClick;
 import hr.foi.air.solex.R;
 import hr.foi.air.solex.activities.CollaborationActivity;
 import hr.foi.air.solex.activities.common.DrawerActivity;
+import hr.foi.air.solex.adapters.CompanyCollaborationsAdapter;
+import hr.foi.air.solex.adapters.DividerItemDecoration;
 import hr.foi.air.solex.presenters.CompanyAddFavoritePresenter;
 import hr.foi.air.solex.presenters.CompanyAddFavoritePresenterImpl;
 import hr.foi.air.solex.presenters.CompanyCollaborationsPresenter;
 import hr.foi.air.solex.presenters.CompanyCollaborationsPresenterImpl;
 
-public class CompanyCollaborationsActivity extends DrawerActivity implements CompanyCollaborationsView,CompanyAddFavoriteView {
+public class CompanyCollaborationsActivity extends DrawerActivity implements CompanyCollaborationsView, CompanyAddFavoriteView {
     @Override
     protected int getLayoutId() {
         return R.layout.activity_company_collaborations;
     }
 
-    private ArrayList<String> itemsId = new ArrayList<String>();
-    private String selectedProjectName;
-    private String selectedDevId;
+    @BindView(R.id.activity_company_collaborations_recyclerView)
+    RecyclerView recyclerView;
 
-    @BindView(R.id.activity_company_collaborations_lvCollaborations)
-    ListView lvCollaborations;
+
     CompanyCollaborationsPresenter mCompanyCollaborationsPresenter;
     CompanyAddFavoritePresenter mCompanyAddFavoritePresenter;
+
+    private CompanyCollaborationsAdapter companyCollaborationsAdapter;
+    CompanyCollaborationsAdapter.OnItemClickListener itemClickListener;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,42 +58,31 @@ public class CompanyCollaborationsActivity extends DrawerActivity implements Com
         mCompanyAddFavoritePresenter = new CompanyAddFavoritePresenterImpl(this, new FavoritesInteractorImpl());
     }
 
-    @OnItemClick(R.id.activity_company_collaborations_lvCollaborations)
-    public void lvCollaborationsClick(View view) {
-        Intent intent = new Intent(this, CollaborationActivity.class);
-        startActivity(intent);
-
-    }
-
     @Override
     public void onDataArrived(List<ApiCompanyCollaborations> collaborationsList) {
-        ArrayList<String> items = new ArrayList<String>();
-        ArrayAdapter<String> itemsAdapter;
-        itemsAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items);
-        for (int i = 0; i < collaborationsList.size(); i++) {
-            items.add(collaborationsList.get(i).getDevName() + " " + collaborationsList.get(i).getDevSurname());
-            itemsId.add(collaborationsList.get(i).getDevID());
 
-        }
-        lvCollaborations.setAdapter(itemsAdapter);
-        lvCollaborations.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        companyCollaborationsAdapter = new CompanyCollaborationsAdapter(collaborationsList, itemClickListener);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
+        recyclerView.setAdapter(new CompanyCollaborationsAdapter(collaborationsList, new CompanyCollaborationsAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Integer selectionID = Integer.parseInt(itemsId.get(i));
+            public void onItemClick(ApiCompanyCollaborations companyColaborations) {
+                Integer selectionID = Integer.parseInt(companyColaborations.getDevID());
                 mCompanyAddFavoritePresenter.addToFavorites(selectionID);
-
             }
-        });
+        }));
     }
 
     @Override
     public void onFavoriteAddition() {
-        Toast.makeText(getApplicationContext(),"The use has been added to favorites", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "The use has been added to favorites", Toast.LENGTH_LONG).show();
 
     }
 
     @Override
     public void onFavoriteFailure(String message) {
-        Toast.makeText(getApplicationContext(),message, Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
     }
 }

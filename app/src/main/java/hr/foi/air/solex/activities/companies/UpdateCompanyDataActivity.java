@@ -32,7 +32,7 @@ import hr.foi.air.solex.presenters.UpdateCompanyDataPresenterImpl;
 
 import static hr.foi.air.solex.R.id.activity_update_company_etNewAddress;
 
-public class UpdateCompanyDataActivity extends DrawerActivity implements  UpdateCompanyDataView {
+public class UpdateCompanyDataActivity extends DrawerActivity implements UpdateCompanyDataView {
 
     Company mThisCompany;
     UpdateCompanyDataPresenter mUpdateCompanyDataPresenter;
@@ -48,6 +48,15 @@ public class UpdateCompanyDataActivity extends DrawerActivity implements  Update
 
     @BindView(R.id.activity_update_company_etNewName)
     TextView txtInputNewName;
+
+    @BindView(R.id.activity_update_company_etDirector)
+    TextView txtInputNewDirector;
+
+    @BindView(R.id.activity_update_company_etWebPage)
+    TextView txtInputNewWebPage;
+
+    @BindView(R.id.activity_update_company_etNumberOfWorkers)
+    TextView txtInputNumberofWorkers;
 
     ProgressDialog progressDialog;
 
@@ -79,16 +88,20 @@ public class UpdateCompanyDataActivity extends DrawerActivity implements  Update
     }
 
     @OnClick(R.id.activity_update_company_btnUpdateData)
-    public void btnClick(View view){
+    public void btnClick(View view) {
         mThisCompany.setName(txtInputNewName.getText().toString());
         mThisCompany.setAddress(txtInputNewAddress.getText().toString());
         mThisCompany.setEmail(txtInputNewEmail.getText().toString());
+        mThisCompany.setWebStranica(txtInputNewWebPage.getText().toString());
+        mThisCompany.setDirektor(txtInputNewDirector.getText().toString());
+        Integer brojZaposlenika = Integer.parseInt(txtInputNumberofWorkers.getText().toString());
+        mThisCompany.setBrojZaposlenika(brojZaposlenika);
 
-        if(odabrano == 1){
+        if (odabrano == 1) {
             Bitmap image = ((BitmapDrawable) imageToUpload.getDrawable()).getBitmap();
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            image.compress(Bitmap.CompressFormat.JPEG,20, baos);
-            String encodedImage = Base64.encodeToString(baos.toByteArray(),Base64.DEFAULT);
+            image.compress(Bitmap.CompressFormat.JPEG, 20, baos);
+            String encodedImage = Base64.encodeToString(baos.toByteArray(), Base64.DEFAULT);
             mThisCompany.setPicture(encodedImage);
         }
 
@@ -110,30 +123,32 @@ public class UpdateCompanyDataActivity extends DrawerActivity implements  Update
         startActivity(intent);
     }
 
-    public void setDataOnLayout(Company company){
+    public void setDataOnLayout(Company company) {
         mThisCompany = company;
         txtInputNewEmail.setText(mThisCompany.getEmail());
         txtInputNewAddress.setText(mThisCompany.getAddress());
         txtInputNewName.setText(mThisCompany.getName());
+        txtInputNewWebPage.setText(mThisCompany.getWebStranica());
+        txtInputNewDirector.setText(mThisCompany.getDirektor());
+        txtInputNumberofWorkers.setText(""+mThisCompany.getBrojZaposlenika());
 
         String encodedImage = mThisCompany.getPicture();
-        if(!encodedImage.isEmpty()){
+        if (!encodedImage.isEmpty()) {
             byte[] decodedString = Base64.decode(encodedImage, Base64.DEFAULT);
             Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
             imageToUpload.setImageBitmap(decodedByte);
-        }
-        else{
+        } else {
             int id = getResources().getIdentifier("hr.foi.air.solex:drawable/" + "company_logo", null, null);
             imageToUpload.setImageResource(id);
         }
 
-        View header=navigationView.getHeaderView(0);
-        TextView textEmail = (TextView)header.findViewById(R.id.textViewEmail);
+        View header = navigationView.getHeaderView(0);
+        TextView textEmail = (TextView) header.findViewById(R.id.textViewEmail);
         textEmail.setText(mThisCompany.getEmail());
     }
 
     @OnClick(R.id.activity_update_company_iwNewImage)
-    public void chooseImage(View view){
+    public void chooseImage(View view) {
 
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(intent, RESULT_LOAD_IMAGE);

@@ -48,17 +48,6 @@
                 android:paddingTop="@dimen/activity_vertical_margin"
                 tools:context="hr.foi.air.solex.activities.companies.UpdateCompanyDataActivity">
 
-                <TextView
-                    android:id="@+id/activity_update_company_tvNewInfo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginStart="14dp"
-                    android:layout_marginTop="18dp"
-                    android:text="Enter new info"
-                    android:textSize="24sp" />
-
                 <ImageView
                     android:id="@+id/activity_update_company_iwNewImage"
                     android:layout_width="100dp"
@@ -71,7 +60,7 @@
 
                 <TextView
                     android:id="@+id/activity_update_company_tvNewName"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignStart="@+id/activity_update_company_tvNewInfo"
                     android:layout_below="@+id/activity_update_company_iwNewImage"
@@ -81,7 +70,7 @@
                 <EditText
                     android:id="@+id/activity_update_company_etNewName"
                     style="@style/EditTextStyle"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignStart="@+id/activity_update_company_tvNewName"
                     android:layout_below="@+id/activity_update_company_tvNewName"
@@ -94,7 +83,7 @@
 
                 <TextView
                     android:id="@+id/activity_update_company_tvNewEmail"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignStart="@+id/activity_update_company_etNewName"
                     android:layout_below="@+id/activity_update_company_etNewName"
@@ -104,7 +93,7 @@
                 <EditText
                     android:id="@+id/activity_update_company_etNewEmail"
                     style="@style/EditTextStyle"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignStart="@+id/activity_update_company_tvNewEmail"
                     android:layout_below="@+id/activity_update_company_tvNewEmail"
@@ -115,7 +104,7 @@
 
                 <TextView
                     android:id="@+id/activity_update_company_tvNewAddress"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignStart="@+id/activity_update_company_etNewEmail"
                     android:layout_below="@+id/activity_update_company_etNewEmail"
@@ -125,7 +114,7 @@
                 <EditText
                     android:id="@+id/activity_update_company_etNewAddress"
                     style="@style/EditTextStyle"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignStart="@+id/activity_update_company_tvNewAddress"
                     android:layout_below="@+id/activity_update_company_tvNewAddress"
@@ -134,16 +123,77 @@
                     android:hint="enter address"
                     android:inputType="textPersonName" />
 
-                <Button
-                    android:id="@+id/activity_update_company_btnUpdateData"
-                    style="@style/ButtonStyleBlue"
+                <TextView
+                    android:id="@+id/activity_update_company_tvWebPage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_centerHorizontal="true"
+                    android:layout_alignStart="@+id/activity_update_company_etNewAddress"
                     android:layout_below="@+id/activity_update_company_etNewAddress"
-                    android:layout_marginBottom="25dp"
-                    android:text="Update" />
+                    android:layout_marginTop="11dp"
+                    android:text="Webpage" />
+
+                <EditText
+                    android:id="@+id/activity_update_company_etWebPage"
+                    style="@style/EditTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/activity_update_company_tvWebPage"
+                    android:layout_below="@+id/activity_update_company_tvWebPage"
+                    android:layout_marginTop="15dp"
+                    android:ems="10"
+                    android:hint="Enter webpage address"
+                    android:inputType="textPersonName" />
+
+                <TextView
+                    android:id="@+id/activity_update_company_tvDirector"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/activity_update_company_etWebPage"
+                    android:layout_below="@+id/activity_update_company_etWebPage"
+                    android:layout_marginTop="11dp"
+                    android:text="Director" />
+
+                <EditText
+                    android:id="@+id/activity_update_company_etDirector"
+                    style="@style/EditTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/activity_update_company_tvDirector"
+                    android:layout_below="@+id/activity_update_company_tvDirector"
+                    android:layout_marginTop="15dp"
+                    android:ems="10"
+                    android:hint="Director information"
+                    android:inputType="textPersonName" />
+
+                <TextView
+                    android:id="@+id/activity_update_company_tvNumberOfWorkers"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/activity_update_company_etDirector"
+                    android:layout_below="@+id/activity_update_company_etDirector"
+                    android:layout_marginTop="11dp"
+                    android:text="Number of workers" />
+
+                <EditText
+                    android:id="@+id/activity_update_company_etNumberOfWorkers"
+                    style="@style/EditTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/activity_update_company_tvNumberOfWorkers"
+                    android:layout_below="@+id/activity_update_company_tvNumberOfWorkers"
+                    android:layout_marginTop="15dp"
+                    android:ems="10"
+                    android:hint="Enter number of workers"
+                    android:inputType="number" />
+
+                <Button
+                    android:id="@+id/activity_update_company_btnUpdateData"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/activity_update_company_etNumberOfWorkers"
+                    android:layout_centerHorizontal="true"
+                    android:text="Update data"
+                    android:textColor="@color/colorAccent" />
             </RelativeLayout>
 
 

@@ -19,7 +19,11 @@ public class CompanyInteractorImpl extends WebServiceCommunicator implements Com
                 @Query("naziv") String naziv,
                 @Query("adresa") String adresa,
                 @Query("email") String email,
-                @Query("slika") String slika);
+                @Query("slika") String slika,
+                @Query("webstranica") String webStranica,
+                @Query("direktor") String direktor,
+                @Query("brojZaposlenika") int brojZaposlenika
+                );
     }
 
     private CompanyScalarListener scalarListener;
@@ -74,7 +78,7 @@ public class CompanyInteractorImpl extends WebServiceCommunicator implements Com
     @Override
     public void updateCompanyData(Company company) {
         WSInterfaceCompany servInterface = retrofit.create(WSInterfaceCompany.class);
-        Call<WSResponseCompany> call = servInterface.azurirajKompaniju(company.getId(),company.getName(),company.getAddress(), company.getEmail(),company.getPicture());
+        Call<WSResponseCompany> call = servInterface.azurirajKompaniju(company.getId(),company.getName(),company.getAddress(), company.getEmail(),company.getPicture(), company.getWebStranica(), company.getDirektor(), company.getBrojZaposlenika());
         if (call != null) {
             call.enqueue(new Callback<WSResponseCompany>() {
                 @Override

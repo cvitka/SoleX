@@ -26,7 +26,8 @@
             android:theme="@style/AcitivityProfilesBlue" />
         <activity
             android:name=".activities.companies.UpdateCompanyDataActivity"
-            android:theme="@style/ActivityWithInput" />
+            android:theme="@style/ActivityWithInput"
+            android:label="Enter new info"/>
         <activity
             android:name=".activities.developers.DeveloperProfileActivity"
             android:theme="@style/AcitivityProfilesBlue" />
