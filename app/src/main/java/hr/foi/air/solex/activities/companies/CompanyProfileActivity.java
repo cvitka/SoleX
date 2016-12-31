@@ -13,8 +13,11 @@ import com.example.core.utils.UserType;
 import com.example.webservice.models.mcompanies.CompanyInteractorImpl;
 import com.example.webservice.models.mcompanies.Company;
 import com.example.webservice.models.login_registration.User;
+import com.example.webservice.models.profile_screen_project.ProfileScreenProject;
 import com.github.aakira.expandablelayout.ExpandableLayout;
 import com.google.gson.Gson;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -22,7 +25,7 @@ import hr.foi.air.solex.R;
 import hr.foi.air.solex.activities.common.DrawerActivity;
 import hr.foi.air.solex.activities.ProjectsListingActivity;
 import hr.foi.air.solex.presenters.CompanyProfilePresenter;
-import hr.foi.air.solex.presenters.CompanyProfilePresenterImpl;
+import hr.foi.air.solex.presenters.CompanyProfilePresenterImplList;
 
 public class CompanyProfileActivity extends DrawerActivity implements CompanyProfileView{
     @BindView(R.id.activity_company_profile_btnToggleProjectsLayout)
@@ -78,21 +81,25 @@ public class CompanyProfileActivity extends DrawerActivity implements CompanyPro
 
     CompanyProfilePresenter mCompanyProfilePresenter;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mCompanyProfilePresenter = new CompanyProfilePresenterImpl(this, new CompanyInteractorImpl());
+        mCompanyProfilePresenter = new CompanyProfilePresenterImplList(this, new CompanyInteractorImpl());
+        int companyId = getIntent().getExtras().getInt("companyId");
         //if company is logged in
-        if(User.getInstance().getUserType() == UserType.COMPANY) {
+        if(User.getInstance().getUserType() == UserType.COMPANY && companyId == User.getInstance().getId()) {
             //we hide "projects" button that should be visible only to companies
             btnProjects.setVisibility(View.GONE);
             //and we set that companyprofile was last drawer option
             lastDrawerOption = R.id.company_opt_profile;
-
-            mCompanyProfilePresenter.getCompany(User.getInstance().getId());
         }
         lastExpanded = highlightedProjectsLayout;
         lastExpandedBtn = highlightProjectsBtn;
+
+        mCompanyProfilePresenter.getCompany(companyId);
+        mCompanyProfilePresenter.getHighlightedProjects(companyId);
     }
 
     private void expandableLayoutClicked(ExpandableLayout layout, ImageButton btn){
@@ -134,7 +141,6 @@ public class CompanyProfileActivity extends DrawerActivity implements CompanyPro
         expandableLayoutClicked(mainTechLayout, mainTechBtn);
     }
 
-
     @Override
     protected int getLayoutId() {
         return R.layout.activity_company_profile;
@@ -174,4 +180,10 @@ public class CompanyProfileActivity extends DrawerActivity implements CompanyPro
         TextView textEmail = (TextView)header.findViewById(R.id.textViewEmail);
         textEmail.setText(mThisCompany.getEmail());
     }
+
+    @Override
+    public void HighlihtedProjectsArrived(List<ProfileScreenProject> list) {
+
+    }
+
 }

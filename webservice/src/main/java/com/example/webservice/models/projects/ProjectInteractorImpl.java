@@ -61,7 +61,6 @@ public class ProjectInteractorImpl extends WebServiceCommunicator implements Pro
     @Override
     public void setCreateListener(CreateProjectListener listener) {
         mCreateProjectListener = listener;
-
     }
 
     @Override
@@ -76,10 +75,15 @@ public class ProjectInteractorImpl extends WebServiceCommunicator implements Pro
         call.enqueue(new Callback<List<ApiProject>>() {
             @Override
             public void onResponse(Call<List<ApiProject>> call, Response<List<ApiProject>> response) {
-                if (response.isSuccessful()) {
+                if (response.body().size()>=1) {
                     if (mListListener != null) {
                         mListListener.onProjectListCome(response.body());
+
                     }
+                }
+                else {
+                    //prazna lista
+
                 }
             }
 
