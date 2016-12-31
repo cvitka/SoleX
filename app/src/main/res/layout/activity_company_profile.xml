@@ -134,12 +134,17 @@
                 <com.github.aakira.expandablelayout.ExpandableRelativeLayout
                     android:id="@+id/activity_company_profile_projectsLayout"
                     android:layout_width="300dp"
-                    android:layout_height="170dp"
+                    android:layout_height="wrap_content"
                     android:layout_below="@+id/horizontalBarView2"
                     android:layout_centerInParent="true"
                     android:layout_marginTop="8dp"
                     app:ael_expanded="true">
+                    <ListView
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:id="@+id/activity_company_profile_lvHighProjects"/>
 
+                    <!--
                     <View
                         android:id="@+id/horizontalBarViewInRelLay"
                         android:layout_width="match_parent"
@@ -200,7 +205,7 @@
                         android:layout_marginStart="180dp"
                         android:layout_marginTop="120dp"
                         android:text="Broj sudionika: 23" />
-
+                    -->
                 </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
 
 

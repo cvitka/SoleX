@@ -5,8 +5,10 @@ import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.content.res.ResourcesCompat;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.core.utils.UserType;
@@ -15,19 +17,23 @@ import com.example.webservice.models.mcompanies.Company;
 import com.example.webservice.models.login_registration.User;
 import com.example.webservice.models.profile_screen_project.ProfileScreenProject;
 import com.github.aakira.expandablelayout.ExpandableLayout;
+import com.github.aakira.expandablelayout.ExpandableLinearLayout;
 import com.google.gson.Gson;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import butterknife.OnItemClick;
 import hr.foi.air.solex.R;
 import hr.foi.air.solex.activities.common.DrawerActivity;
 import hr.foi.air.solex.activities.ProjectsListingActivity;
+import hr.foi.air.solex.adapters.CompanyProfileProjectAdapter;
 import hr.foi.air.solex.presenters.CompanyProfilePresenter;
 import hr.foi.air.solex.presenters.CompanyProfilePresenterImplList;
 
-public class CompanyProfileActivity extends DrawerActivity implements CompanyProfileView{
+public class CompanyProfileActivity extends DrawerActivity implements CompanyProfileView, AdapterView.OnItemClickListener{
     @BindView(R.id.activity_company_profile_btnToggleProjectsLayout)
     ImageButton highlightProjectsBtn;
 
@@ -77,10 +83,15 @@ public class CompanyProfileActivity extends DrawerActivity implements CompanyPro
     @BindView(R.id.activity_company_profile_tvWebPage)
     TextView txtWebPage;
 
+    @BindView(R.id.activity_company_profile_lvHighProjects)
+    ListView lvHighProjects;
+
     Company mThisCompany;
 
     CompanyProfilePresenter mCompanyProfilePresenter;
 
+    List<ProfileScreenProject> mProjectsList;
+    private CompanyProfileProjectAdapter mProjectsAdapter;
 
 
     @Override
@@ -100,6 +111,11 @@ public class CompanyProfileActivity extends DrawerActivity implements CompanyPro
 
         mCompanyProfilePresenter.getCompany(companyId);
         mCompanyProfilePresenter.getHighlightedProjects(companyId);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        ProfileScreenProject clickedProject = mProjectsList.get(position);
     }
 
     private void expandableLayoutClicked(ExpandableLayout layout, ImageButton btn){
@@ -129,6 +145,8 @@ public class CompanyProfileActivity extends DrawerActivity implements CompanyPro
     @OnClick(R.id.activity_company_profile_btnToggleProjectsLayout)
     public void btnToggleHighlightedProjects(View view){
         expandableLayoutClicked(highlightedProjectsLayout, highlightProjectsBtn);
+
+
     }
 
     @OnClick(R.id.activity_company_profile_btnToggleGenInfoLayout)
@@ -140,6 +158,8 @@ public class CompanyProfileActivity extends DrawerActivity implements CompanyPro
     public void btnToggleMainTech(View view){
         expandableLayoutClicked(mainTechLayout, mainTechBtn);
     }
+
+
 
     @Override
     protected int getLayoutId() {
@@ -183,7 +203,10 @@ public class CompanyProfileActivity extends DrawerActivity implements CompanyPro
 
     @Override
     public void HighlihtedProjectsArrived(List<ProfileScreenProject> list) {
-
+        mProjectsList = list;
+        lvHighProjects.setOnItemClickListener(this);
+        mProjectsAdapter = new CompanyProfileProjectAdapter(this, R.layout.list_item_company_profile_highlighted_projects, mProjectsList);
+        lvHighProjects.setAdapter(mProjectsAdapter);
     }
 
 }

@@ -14,4 +14,10 @@
     <string name="comp_web_page">Web stranica poduzeća</string>
     <string name="comp_director">Direktor</string>
     <string name="comp_num_employees">Broj zaposlenika</string>
+    <string name="list_item_projects_collab">suradnji</string>
+    <string name="project_state_1">Nije počeo</string>
+    <string name="project_state_2">Izvodi se</string>
+    <string name="project_state_3">Završen</string>
+    <string name="project_state_4">Pauziran</string>
+    <string name="project_state_5">Prekinut</string>
 </resources>

@@ -4,7 +4,7 @@ public class ProfileScreenProject {
     private int projectId;
     private String projectName;
     private String companyName;
-    private String state;
+    private int state;
     private int numOfCollaborations;
 
     public int getNumOfCollaborations() {
@@ -39,11 +39,12 @@ public class ProfileScreenProject {
         this.companyName = companyId;
     }
 
-    public String getState() {
+    public int getState() {
         return state;
     }
 
-    public void setState(String state) {
+    public void setState(int state) {
         this.state = state;
     }
+
 }

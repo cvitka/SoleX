@@ -42,5 +42,10 @@
     <string name="comp_web_page">Company web page</string>
     <string name="comp_director">Director</string>
     <string name="comp_num_employees">Number of employees</string>
-
+    <string name="list_item_projects_collab">collaborations</string>
+    <string name="project_state_1">Awaiting start</string>
+    <string name="project_state_2">In process</string>
+    <string name="project_state_3">Completed</string>
+    <string name="project_state_4">Paused</string>
+    <string name="project_state_5">Aborted</string>
 </resources>
