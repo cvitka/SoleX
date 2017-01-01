@@ -1,33 +1,18 @@
 package hr.foi.air.solex.activities.companies;
 
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
-import android.support.v7.widget.SearchView;
-import android.text.util.Rfc822Tokenizer;
-import android.view.ContextThemeWrapper;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.android.ex.chips.BaseRecipientAdapter;
-import com.android.ex.chips.RecipientEditTextView;
 import com.example.webservice.models.favorites.ApiFavourites;
 import com.example.webservice.models.favorites.ApiFavouritesInteractorImpl;
 import com.example.webservice.models.login_registration.User;
-import com.example.webservice.models.projects.ApiProject;
-import com.example.webservice.models.projects.ProjectInteractorImpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,16 +20,13 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.OnItemClick;
 import hr.foi.air.solex.R;
 import hr.foi.air.solex.activities.common.DrawerActivity;
 import hr.foi.air.solex.activities.developers.DeveloperProfileActivity;
-import hr.foi.air.solex.presenters.CompanyProjectsPresenter;
-import hr.foi.air.solex.presenters.CompanyProjectsPresenterImpl;
 import hr.foi.air.solex.presenters.FavouritesPresenter;
 import hr.foi.air.solex.presenters.FavouritesPresenterImpl;
 
-public class FavouritesActivity extends DrawerActivity implements  FavouritesView{
+public class FavouritesActivity extends DrawerActivity implements FavouritesActivityView {
 
     @Override
     protected int getLayoutId() {
@@ -65,15 +47,6 @@ public class FavouritesActivity extends DrawerActivity implements  FavouritesVie
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
-        ArrayList<String> items = new ArrayList<String>();
-        ArrayAdapter<String> itemsAdapter;
-        itemsAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items);
-        items.add("developer 1");
-        items.add("developer 2");
-        items.add("developer 3");
-        items.add("developer 4");
-        lvFavourites.setAdapter(itemsAdapter);
-
         this.mFavouritesPresenter = new FavouritesPresenterImpl(this, new ApiFavouritesInteractorImpl());
         mFavouritesPresenter.getFavourites(User.getInstance().getId());
 

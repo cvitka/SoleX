@@ -70,15 +70,6 @@ public class ProjectManagementActivity extends DrawerActivity implements Project
         mPresenter = new ProjectManagementPresenterImpl(this,new SelectedProjectInteractorImpl());
         colabPresenter = new GetNeededCollaborationsPresenterImpl(this, new ApiNeededCollaborationsInteractorImpl());
 
-        ArrayList<String> items = new ArrayList<String>();
-        ArrayAdapter<String> itemsAdapter;
-        itemsAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items);
-        items.add("collab (needed)");
-        items.add("collab (filled)");
-        items.add("collab (needed)");
-        items.add("collab (filled)");
-        lvNeededCollaborations.setAdapter(itemsAdapter);
-
         String projectName;
 
         if (savedInstanceState == null) {

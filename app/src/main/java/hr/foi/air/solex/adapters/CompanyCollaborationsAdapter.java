@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.webservice.models.collaboration.ApiCompanyCollaborations;
+import com.example.webservice.models.favorites.ApiFavourites;
 
 import java.util.List;
 
@@ -18,16 +19,18 @@ import hr.foi.air.solex.R;
 
 public class CompanyCollaborationsAdapter extends RecyclerView.Adapter<CompanyCollaborationsAdapter.ViewHolder> {
 
-    public interface OnItemClickListener {
-        void onItemClick(ApiCompanyCollaborations companyColaborations);
+    public interface ClickListener {
+        void onItemClick(ApiCompanyCollaborations companyCollaborations);
+
+        void onItemLongClick(ApiCompanyCollaborations companyCollaborations);
     }
 
     @BindView(R.id.collaboration_list_addToFavorites)
     ImageView addToFavorites;
 
     private List<ApiCompanyCollaborations> mProjectList;
-    ApiCompanyCollaborations companyColaborations;
-    private final OnItemClickListener mListener;
+    public List<ApiFavourites> mFavouritesList;
+    private final ClickListener mListener;
 
     Context mContext;
 
@@ -42,21 +45,31 @@ public class CompanyCollaborationsAdapter extends RecyclerView.Adapter<CompanyCo
             addToFavorites = (ImageView) itemView.findViewById(R.id.collaboration_list_addToFavorites);
         }
 
-        public void bind(final ApiCompanyCollaborations item, final OnItemClickListener listener) {
+        public void bind(final ApiCompanyCollaborations item, final ClickListener listener) {
             devInfo.setText(item.getDevName() + " " + item.getDevSurname());
             projectName.setText(item.getProjectName());
             final int color = Color.parseColor("#31C3E7");
+            if (item.getFavorit() != null && item.getFavorit() == '1') {
+                addToFavorites.setColorFilter(color);
+            }
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     listener.onItemClick(item);
+                }
+            });
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    listener.onItemLongClick(item);
                     addToFavorites.setColorFilter(color);
+                    return true;
                 }
             });
         }
     }
 
-    public CompanyCollaborationsAdapter(List<ApiCompanyCollaborations> projectList, OnItemClickListener listener) {
+    public CompanyCollaborationsAdapter(List<ApiCompanyCollaborations> projectList, ClickListener listener) {
         mProjectList = projectList;
         mListener = listener;
     }
@@ -74,7 +87,6 @@ public class CompanyCollaborationsAdapter extends RecyclerView.Adapter<CompanyCo
     @Override
     public void onBindViewHolder(CompanyCollaborationsAdapter.ViewHolder holder, int position) {
         holder.bind(mProjectList.get(position), mListener);
-
     }
 
     @Override

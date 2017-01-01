@@ -4,51 +4,75 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class ApiCompanyCollaborations {
-        @SerializedName("developeriId")
-        @Expose
-        private String devID;
+    @SerializedName("developeriId")
+    @Expose
+    private String devID;
 
-        @SerializedName("ime")
-        @Expose
-        private String devName;
+    @SerializedName("ime")
+    @Expose
+    private String devName;
 
-        @SerializedName("prezime")
-        @Expose
-        private String devSurname;
+    @SerializedName("prezime")
+    @Expose
+    private String devSurname;
 
-        @SerializedName("naziv")
-        @Expose
-        private String projectName;
+    public String getProjectId() {
+        return projectId;
+    }
 
-        public String getDevID() {
-            return devID;
-        }
+    public void setProjectId(String projectId) {
+        this.projectId = projectId;
+    }
 
-        public void setDevID(String devID) {
-            this.devID = devID;
-        }
+    @SerializedName("projektiId")
+    @Expose
+    private String projectId;
 
-        public String getDevName() {
-            return devName;
-        }
+    @SerializedName("naziv")
+    @Expose
+    private String projectName;
 
-        public void setDevName(String devName) {
-            this.devName = devName;
-        }
+    @SerializedName("favorit")
+    @Expose
+    private Character  favorit;
 
-        public String getDevSurname() {
-            return devSurname;
-        }
+    public Character getFavorit() {
+        return favorit;
+    }
 
-        public void setDevSurname(String devSurname) {
-            this.devSurname = devSurname;
-        }
+    public void setFavorit(Character favorit) {
+        this.favorit = favorit;
+    }
 
-        public String getProjectName() {
-            return projectName;
-        }
+    public String getDevID() {
+        return devID;
+    }
 
-        public void setProjectName(String projectName) {
-            this.projectName = projectName;
-        }
+    public void setDevID(String devID) {
+        this.devID = devID;
+    }
+
+    public String getDevName() {
+        return devName;
+    }
+
+    public void setDevName(String devName) {
+        this.devName = devName;
+    }
+
+    public String getDevSurname() {
+        return devSurname;
+    }
+
+    public void setDevSurname(String devSurname) {
+        this.devSurname = devSurname;
+    }
+
+    public String getProjectName() {
+        return projectName;
+    }
+
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
+    }
 }

@@ -3,26 +3,25 @@ package hr.foi.air.solex.presenters;
 import com.example.webservice.models.favorites.ApiFavourites;
 import com.example.webservice.models.favorites.ApiFavouritesInteractor;
 import com.example.webservice.models.favorites.ApiFavouritesListListener;
-import com.example.webservice.models.favorites.FavoritesInteractor;
 
 import java.util.List;
 
-import hr.foi.air.solex.activities.companies.FavouritesView;
+import hr.foi.air.solex.activities.companies.FavouritesActivityView;
 
 public class FavouritesPresenterImpl implements FavouritesPresenter, ApiFavouritesListListener {
 
-    FavouritesView mFavouritesView;
+    FavouritesActivityView mFavouritesActivityView;
     ApiFavouritesInteractor mFavouritesInteractor;
 
-    public FavouritesPresenterImpl(FavouritesView mFavouritesView, ApiFavouritesInteractor mFavouritesInteractor) {
-        this.mFavouritesView = mFavouritesView;
+    public FavouritesPresenterImpl(FavouritesActivityView mFavouritesActivityView, ApiFavouritesInteractor mFavouritesInteractor) {
+        this.mFavouritesActivityView = mFavouritesActivityView;
         this.mFavouritesInteractor = mFavouritesInteractor;
         mFavouritesInteractor.setFavouritesListListener(this);
     }
 
     @Override
     public void dataArrived(List<ApiFavourites> apiFavourites) {
-        mFavouritesView.dataArrived(apiFavourites);
+        mFavouritesActivityView.dataArrived(apiFavourites);
 
     }
 

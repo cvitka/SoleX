@@ -1,4 +1,4 @@
-package hr.foi.air.solex.activities.companies;
+package hr.foi.air.solex.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
