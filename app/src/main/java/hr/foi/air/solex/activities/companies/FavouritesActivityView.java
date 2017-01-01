@@ -4,6 +4,6 @@ import com.example.webservice.models.favorites.ApiFavourites;
 
 import java.util.List;
 
-public interface FavouritesView {
+public interface FavouritesActivityView {
     void dataArrived(List<ApiFavourites> apiFavourites);
 }
