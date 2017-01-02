@@ -12,6 +12,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Toast;
+
 import com.example.core.utils.UserType;
 import com.example.webservice.models.login_registration.User;
 import butterknife.BindView;
@@ -57,6 +59,7 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
         int id = item.getItemId();
         //if we are not already on desired activity
         if (id != lastDrawerOption) {
+            Intent intent;
             lastDrawerOption = id; //to be updated with getOptionId in subclasses
             switch (id) {
                 case R.id.developer_opt_applications:
@@ -72,7 +75,9 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
                     startNewActivity(LoginActivity.class);
                     break;
                 case R.id.developer_opt_profile:
-                    startNewActivity(DeveloperProfileActivity.class);
+                    intent = new Intent(this, CompanyProfileActivity.class);
+                    intent.putExtra("developerId", User.getInstance().getId());
+                    startActivity(intent);
                     break;
                 case R.id.company_opt_projects:
                     startNewActivity(CompanyProjectsActivity.class);
@@ -84,7 +89,9 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
                     startNewActivity(FavouritesActivity.class);
                     break;
                 case R.id.company_opt_profile:
-                    startNewActivity(CompanyProfileActivity.class);
+                    intent = new Intent(this, CompanyProfileActivity.class);
+                    intent.putExtra("companyId", User.getInstance().getId());
+                    startActivity(intent);
                     break;
                 case R.id.company_opt_logout:
                     startNewActivity(LoginActivity.class);
@@ -144,5 +151,13 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
               //  Intent intent = new Intent(this, PreferencesActivity);
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    protected void showToastShort(String msg){
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+    }
+
+    protected void showToastLong(String msg){
+        Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
     }
 }

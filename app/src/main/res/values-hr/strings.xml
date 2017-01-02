@@ -20,4 +20,7 @@
     <string name="project_state_3">Završen</string>
     <string name="project_state_4">Pauziran</string>
     <string name="project_state_5">Prekinut</string>
+    <string name="error_adding_skill">Morate izabrati od ponuđenih stručnosti!</string>
+    <string name="error_skill_exists">Ta stručnost je već dodana!</string>
+
 </resources>

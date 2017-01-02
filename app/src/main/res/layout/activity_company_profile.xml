@@ -34,7 +34,8 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="55dp">
+            android:layout_marginTop="55dp"
+            android:id="@+id/activity_company_profile_scrollView">
 
             <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -108,7 +109,7 @@
                     android:layout_alignParentStart="true"
                     android:layout_below="@+id/horizontalBarView"
                     android:layout_marginStart="20dp"
-                    android:layout_marginTop="23dp"
+                    android:layout_marginTop="43dp"
                     android:text="Highlighted Projects"
                     android:textSize="15dp"
                     android:textStyle="bold" />
@@ -126,7 +127,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignEnd="@+id/horizontalBarView"
                     android:layout_below="@+id/horizontalBarView"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="35dp"
                     android:adjustViewBounds="true"
                     android:tag="gray_expand_img"
                     android:background="@drawable/lblue_collapse_img" />
@@ -216,7 +217,7 @@
                     android:layout_alignParentStart="true"
                     android:layout_below="@+id/activity_company_profile_projectsLayout"
                     android:layout_marginStart="20dp"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="24dp"
                     android:text="General Information"
                     android:textSize="15dp"
                     android:textStyle="bold" />
@@ -227,6 +228,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignBottom="@+id/textView5"
                     android:layout_alignParentEnd="true"
+                    android:layout_marginTop="16dp"
                     android:adjustViewBounds="true"
                     android:backgroundTint="@color/colorPrimary"
                     android:tag="gray_expand_img"
@@ -295,7 +297,7 @@
                     android:layout_alignParentStart="true"
                     android:layout_below="@+id/activity_company_profile_generalInfoLayout"
                     android:layout_marginStart="20dp"
-                    android:layout_marginTop="13dp"
+                    android:layout_marginTop="33dp"
                     android:text="Main Technologies"
                     android:textSize="15dp"
                     android:textStyle="bold" />
@@ -314,7 +316,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignEnd="@+id/horizontalBarView3"
                     android:layout_below="@+id/activity_company_profile_generalInfoLayout"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="25dp"
                     android:adjustViewBounds="true"
                     android:backgroundTint="@color/colorPrimary"
                     android:tag="gray_expand_img"
@@ -324,7 +326,28 @@
                 <com.github.aakira.expandablelayout.ExpandableRelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/activity_company_profile_mainTechLayout">
+                    android:id="@+id/activity_company_profile_mainTechLayout"
+                    android:padding="20dp"
+                    android:layout_below="@+id/horizontalBarView4">
+
+                    <ListView
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:id="@+id/activity_company_profile_lvMainTech"/>
+                    <AutoCompleteTextView
+                        android:layout_marginStart="5dp"
+                        android:layout_width="230dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/activity_company_profile_actvNewTech"
+                        android:layout_below="@+id/activity_company_profile_lvMainTech"/>
+                    <ImageButton
+                        android:id="@+id/activity_company_profile_btnAddNewTech"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_toEndOf="@+id/activity_company_profile_actvNewTech"
+                        android:background="@drawable/lblue_add_img"
+                        android:layout_below="@+id/activity_company_profile_lvMainTech"/>
 
                 </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
 
@@ -342,6 +365,7 @@
             </RelativeLayout>
         </ScrollView>
     </android.support.design.widget.CoordinatorLayout>
+
 
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"

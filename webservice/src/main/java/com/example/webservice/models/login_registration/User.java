@@ -35,6 +35,20 @@ public class User {
         this.id = id;
     }
 
+    //checks if the user is current one
+    public static boolean isCurrentUser(UserType userType, int id){
+        //type and id must match
+        return getInstance().getUserType().intVal()==userType.intVal()&&getInstance().getId()==id;
+    }
+
+    public static boolean isCompany(){
+        return getInstance().getUserType().intVal()==UserType.COMPANY.intVal();
+    }
+
+    public static boolean isDeveloper(){
+        return getInstance().getUserType().intVal()==UserType.DEVELOPER.intVal();
+    }
+
     private static User instance;
 
     public static User getInstance() {

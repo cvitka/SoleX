@@ -12,4 +12,6 @@ import java.util.List;
 public interface CompanyProfileView {
     public void DataArrived(Company company);
     public void HighlihtedProjectsArrived(List<ProfileScreenProject> list);
+    public void allSkillsListArrived(List<String> list);
+    public void companySkillsListArrived(List<String> list);
 }

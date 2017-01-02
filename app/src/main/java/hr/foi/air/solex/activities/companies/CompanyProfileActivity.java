@@ -4,11 +4,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.content.res.ResourcesCompat;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.example.core.utils.UserType;
@@ -16,22 +21,22 @@ import com.example.webservice.models.mcompanies.CompanyInteractorImpl;
 import com.example.webservice.models.mcompanies.Company;
 import com.example.webservice.models.login_registration.User;
 import com.example.webservice.models.profile_screen_project.ProfileScreenProject;
+import com.example.webservice.models.skills.SkillListListener;
+import com.example.webservice.models.skills.SkillsInteractorImpl;
 import com.github.aakira.expandablelayout.ExpandableLayout;
-import com.github.aakira.expandablelayout.ExpandableLinearLayout;
 import com.google.gson.Gson;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import butterknife.OnItemClick;
+import butterknife.OnItemLongClick;
 import hr.foi.air.solex.R;
 import hr.foi.air.solex.activities.common.DrawerActivity;
 import hr.foi.air.solex.activities.ProjectsListingActivity;
 import hr.foi.air.solex.adapters.CompanyProfileProjectAdapter;
 import hr.foi.air.solex.presenters.CompanyProfilePresenter;
-import hr.foi.air.solex.presenters.CompanyProfilePresenterImplList;
+import hr.foi.air.solex.presenters.CompanyProfilePresenterImpl;
 
 public class CompanyProfileActivity extends DrawerActivity implements CompanyProfileView, AdapterView.OnItemClickListener{
     @BindView(R.id.activity_company_profile_btnToggleProjectsLayout)
@@ -86,36 +91,102 @@ public class CompanyProfileActivity extends DrawerActivity implements CompanyPro
     @BindView(R.id.activity_company_profile_lvHighProjects)
     ListView lvHighProjects;
 
+
+    @BindView(R.id.activity_company_profile_lvMainTech)
+    ListView lvMainTech;
+
+
+    @BindView(R.id.activity_company_profile_actvNewTech)
+    AutoCompleteTextView actvNewTech;
+
+
+    @BindView(R.id.activity_company_profile_btnAddNewTech)
+    ImageButton btnAddNewTech;
+
+    @BindView(R.id.activity_company_profile_scrollView)
+    ScrollView scrollView;
+
+
+
     Company mThisCompany;
 
     CompanyProfilePresenter mCompanyProfilePresenter;
 
     List<ProfileScreenProject> mProjectsList;
+    List<String> mMainTechList;
+    ArrayAdapter<String> mMainTechAdapter;
+    List<String> allTechList;
     private CompanyProfileProjectAdapter mProjectsAdapter;
 
+
+    public void setVisibilityForUsers(int companyId){
+        if(User.isCurrentUser(UserType.COMPANY, companyId)){
+            btnProjects.setVisibility(View.GONE);
+            lastDrawerOption = R.id.company_opt_profile;
+        }
+        else{
+            actvNewTech.setVisibility(View.GONE);
+            btnAddNewTech.setVisibility(View.GONE);
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mCompanyProfilePresenter = new CompanyProfilePresenterImplList(this, new CompanyInteractorImpl());
+        mCompanyProfilePresenter = new CompanyProfilePresenterImpl(this, new CompanyInteractorImpl());
         int companyId = getIntent().getExtras().getInt("companyId");
         //if company is logged in
-        if(User.getInstance().getUserType() == UserType.COMPANY && companyId == User.getInstance().getId()) {
-            //we hide "projects" button that should be visible only to companies
-            btnProjects.setVisibility(View.GONE);
-            //and we set that companyprofile was last drawer option
-            lastDrawerOption = R.id.company_opt_profile;
-        }
-        lastExpanded = highlightedProjectsLayout;
-        lastExpandedBtn = highlightProjectsBtn;
+        setVisibilityForUsers(companyId);
+
 
         mCompanyProfilePresenter.getCompany(companyId);
         mCompanyProfilePresenter.getHighlightedProjects(companyId);
+        //autocomplete list is not needed when user looking at profile is not the owner
+        if(User.isCurrentUser(UserType.COMPANY, companyId))
+            mCompanyProfilePresenter.getAllSkillList();
+        mCompanyProfilePresenter.getSkillList(companyId);
+        fixNestedScrollViews();
+
+        lastExpanded = highlightedProjectsLayout;
+        lastExpandedBtn = highlightProjectsBtn;
+    }
+
+    private void fixNestedScrollViews() {
+        lvMainTech.setOnTouchListener(new View.OnTouchListener() {
+            // Setting on Touch Listener for handling the touch inside ScrollView
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                // Disallow the touch request for parent scroll on touch of child view
+                scrollView.requestDisallowInterceptTouchEvent(true);
+                return false;
+            }
+        });
+
+        lvHighProjects.setOnTouchListener(new View.OnTouchListener() {
+            // Setting on Touch Listener for handling the touch inside ScrollView
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                // Disallow the touch request for parent scroll on touch of child view
+                scrollView.requestDisallowInterceptTouchEvent(true);
+                return false;
+            }
+        });
     }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         ProfileScreenProject clickedProject = mProjectsList.get(position);
+    }
+
+    @OnItemLongClick(R.id.activity_company_profile_lvMainTech)
+    public boolean onItemLongClick(AdapterView<?> parent, int position) {
+        //we allow deletion only if profile is being viewed by its owner
+        if(User.isCurrentUser(UserType.COMPANY, mThisCompany.getId())) {
+            mCompanyProfilePresenter.deleteSkill(mThisCompany.getId(), mMainTechList.get(position));
+            mMainTechList.remove(position);
+            mMainTechAdapter.notifyDataSetChanged();
+        }
+        return true;
     }
 
     private void expandableLayoutClicked(ExpandableLayout layout, ImageButton btn){
@@ -157,9 +228,8 @@ public class CompanyProfileActivity extends DrawerActivity implements CompanyPro
     @OnClick(R.id.activity_company_profile_btnToggleMainTechLayout)
     public void btnToggleMainTech(View view){
         expandableLayoutClicked(mainTechLayout, mainTechBtn);
+        scrollView.fullScroll(scrollView.FOCUS_DOWN);
     }
-
-
 
     @Override
     protected int getLayoutId() {
@@ -177,6 +247,23 @@ public class CompanyProfileActivity extends DrawerActivity implements CompanyPro
     public void btnClick(View view){
         Intent intent = new Intent(this, ProjectsListingActivity.class);
         startActivity(intent);
+    }
+
+    @OnClick(R.id.activity_company_profile_btnAddNewTech)
+    public void btnAddNewTechClick(View view){
+        String skill = actvNewTech.getText().toString();
+        if(!allTechList.contains(skill)){
+            showToastLong(getResources().getString(R.string.error_adding_skill));
+        }
+        else if(mMainTechList.contains(skill)) {
+            showToastLong(getResources().getString(R.string.error_skill_exists));
+        }
+        else{
+            mCompanyProfilePresenter.addSkill(mThisCompany.getId(), skill);
+            mMainTechList.add(skill);
+            mMainTechAdapter.notifyDataSetChanged();
+            actvNewTech.setText("");
+        }
     }
 
     @Override
@@ -209,4 +296,21 @@ public class CompanyProfileActivity extends DrawerActivity implements CompanyPro
         lvHighProjects.setAdapter(mProjectsAdapter);
     }
 
+    @Override
+    public void allSkillsListArrived(List<String> list) {
+        allTechList = list;
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_dropdown_item_1line, allTechList);
+
+        actvNewTech.setAdapter(adapter);
+
+    }
+
+    @Override
+    public void companySkillsListArrived(List<String> list) {
+        mMainTechList = list;
+        mMainTechAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, mMainTechList);
+        lvMainTech.setAdapter(mMainTechAdapter);
+
+    }
 }

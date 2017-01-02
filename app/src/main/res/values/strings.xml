@@ -48,4 +48,6 @@
     <string name="project_state_3">Completed</string>
     <string name="project_state_4">Paused</string>
     <string name="project_state_5">Aborted</string>
+    <string name="error_adding_skill">You must choose from sugested skills!</string>
+    <string name="error_skill_exists">Skill already added!</string>
 </resources>

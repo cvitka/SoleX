@@ -10,7 +10,7 @@ public enum UserType {
 
     private String stringValue;
     private int intValue;
-    private UserType(String toString, int value) {
+    UserType(String toString, int value) {
         stringValue = toString;
         intValue = value;
     }
