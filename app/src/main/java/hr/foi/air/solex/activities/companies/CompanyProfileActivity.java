@@ -10,7 +10,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.ScrollView;
@@ -21,8 +20,6 @@ import com.example.webservice.models.mcompanies.CompanyInteractorImpl;
 import com.example.webservice.models.mcompanies.Company;
 import com.example.webservice.models.login_registration.User;
 import com.example.webservice.models.profile_screen_project.ProfileScreenProject;
-import com.example.webservice.models.skills.SkillListListener;
-import com.example.webservice.models.skills.SkillsInteractorImpl;
 import com.github.aakira.expandablelayout.ExpandableLayout;
 import com.google.gson.Gson;
 
@@ -34,7 +31,7 @@ import butterknife.OnItemLongClick;
 import hr.foi.air.solex.R;
 import hr.foi.air.solex.activities.common.DrawerActivity;
 import hr.foi.air.solex.activities.ProjectsListingActivity;
-import hr.foi.air.solex.adapters.CompanyProfileProjectAdapter;
+import hr.foi.air.solex.adapters.ProjectsListAdapter;
 import hr.foi.air.solex.presenters.CompanyProfilePresenter;
 import hr.foi.air.solex.presenters.CompanyProfilePresenterImpl;
 
@@ -116,7 +113,7 @@ public class CompanyProfileActivity extends DrawerActivity implements CompanyPro
     List<String> mMainTechList;
     ArrayAdapter<String> mMainTechAdapter;
     List<String> allTechList;
-    private CompanyProfileProjectAdapter mProjectsAdapter;
+    private ProjectsListAdapter mProjectsAdapter;
 
 
     public void setVisibilityForUsers(int companyId){
@@ -127,6 +124,7 @@ public class CompanyProfileActivity extends DrawerActivity implements CompanyPro
         else{
             actvNewTech.setVisibility(View.GONE);
             btnAddNewTech.setVisibility(View.GONE);
+            btnStartUpdateCompanyData.setVisibility(View.GONE);
         }
     }
 
@@ -228,7 +226,6 @@ public class CompanyProfileActivity extends DrawerActivity implements CompanyPro
     @OnClick(R.id.activity_company_profile_btnToggleMainTechLayout)
     public void btnToggleMainTech(View view){
         expandableLayoutClicked(mainTechLayout, mainTechBtn);
-        scrollView.fullScroll(scrollView.FOCUS_DOWN);
     }
 
     @Override
@@ -292,7 +289,7 @@ public class CompanyProfileActivity extends DrawerActivity implements CompanyPro
     public void HighlihtedProjectsArrived(List<ProfileScreenProject> list) {
         mProjectsList = list;
         lvHighProjects.setOnItemClickListener(this);
-        mProjectsAdapter = new CompanyProfileProjectAdapter(this, R.layout.list_item_company_profile_highlighted_projects, mProjectsList);
+        mProjectsAdapter = new ProjectsListAdapter(this, R.layout.list_item_company_profile_highlighted_projects, mProjectsList, UserType.COMPANY);
         lvHighProjects.setAdapter(mProjectsAdapter);
     }
 

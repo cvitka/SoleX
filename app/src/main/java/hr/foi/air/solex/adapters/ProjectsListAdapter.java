@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.example.core.utils.UserType;
 import com.example.webservice.models.profile_screen_project.ProfileScreenProject;
 
 import java.util.List;
@@ -15,16 +16,18 @@ import java.util.List;
 import hr.foi.air.solex.R;
 import hr.foi.air.solex.helpers.TypeHelper;
 
-public class CompanyProfileProjectAdapter extends ArrayAdapter<ProfileScreenProject> {
+public class ProjectsListAdapter extends ArrayAdapter<ProfileScreenProject> {
     private List<ProfileScreenProject> items;
     private Context ctx;
     int itemResId;
+    UserType userType;
 
-    public CompanyProfileProjectAdapter(Context context, int textViewResourceId, List<ProfileScreenProject> items) {
+    public ProjectsListAdapter(Context context, int textViewResourceId, List<ProfileScreenProject> items, UserType userType) {
         super(context, textViewResourceId, items);
         this.items = items;
         this.ctx = context;
         itemResId = textViewResourceId;
+        this.userType = userType;
     }
 
     @Override
@@ -39,9 +42,19 @@ public class CompanyProfileProjectAdapter extends ArrayAdapter<ProfileScreenProj
             TextView lblCollabNum = (TextView) v.findViewById(R.id.company_profile_hproj_tvCollabNum);
             TextView lblProjectName = (TextView) v.findViewById(R.id.company_profile_hproj_tvProjectName);
             TextView lblProjectState = (TextView) v.findViewById(R.id.company_profile_hproj_tvProjectState);
+            TextView lblCompanyName = (TextView) v.findViewById(R.id.company_profile_hproj_tvCompanyName);
             lblCollabNum.setText(Integer.toString(o.getNumOfCollaborations()));
-            lblProjectName.setText(o.getProjectName());
             lblProjectState.setText(TypeHelper.getProjectState(ctx, o.getState()));
+
+            if(userType.intVal() == UserType.DEVELOPER.intVal()) {
+                lblProjectName.setText(o.getProjectName() + ": ");
+                lblCompanyName.setText(o.getCompanyName());
+            }
+            else {
+                lblProjectName.setText(o.getProjectName());
+                lblCompanyName.setText("");
+            }
+
         }
         return v;
     }

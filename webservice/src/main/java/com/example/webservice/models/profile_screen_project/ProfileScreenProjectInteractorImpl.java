@@ -2,6 +2,7 @@ package com.example.webservice.models.profile_screen_project;
 
 import android.util.Log;
 
+import com.example.core.utils.UserType;
 import com.example.webservice.models.WebServiceCommunicator;
 import com.example.webservice.models.projects.CreateProjectListener;
 
@@ -19,7 +20,7 @@ public class ProfileScreenProjectInteractorImpl extends WebServiceCommunicator i
 
     private interface WSInterfaceProject {
         @GET("dohvatiProjekte.php")
-        Call<List<ProfileScreenProject>> getProjects(@Query("tipDohvacanja") String tipDohvacanja, @Query("companyID") int companyID);
+        Call<List<ProfileScreenProject>> getProjects(@Query("tipDohvacanja") String tipDohvacanja, @Query("id") int id);
     }
 
     public ProfileScreenProjectInteractorImpl(ProfileScreenProjectListListener listener) {
@@ -28,9 +29,14 @@ public class ProfileScreenProjectInteractorImpl extends WebServiceCommunicator i
     }
 
     @Override
-    public void getHighlightedProjectList(int companyId) {
+    public void getHighlightedProjectList(int id, UserType userType) {
         WSInterfaceProject interfaceProject = retrofit.create(WSInterfaceProject.class);
-        Call<List<ProfileScreenProject>> call = interfaceProject.getProjects("ProfileScreenProject", companyId);
+        String tipDohvacanja = "";
+        if(userType.intVal() == UserType.COMPANY.intVal())
+            tipDohvacanja = "ProfileScreenProjectCompany";
+        else
+            tipDohvacanja = "ProfileScreenProjectDeveloper";
+        Call<List<ProfileScreenProject>> call = interfaceProject.getProjects(tipDohvacanja, id);
         call.enqueue(new Callback<List<ProfileScreenProject>>() {
             @Override
             public void onResponse(Call<List<ProfileScreenProject>> call, Response<List<ProfileScreenProject>> response) {

@@ -75,7 +75,7 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
                     startNewActivity(LoginActivity.class);
                     break;
                 case R.id.developer_opt_profile:
-                    intent = new Intent(this, CompanyProfileActivity.class);
+                    intent = new Intent(this, DeveloperProfileActivity.class);
                     intent.putExtra("developerId", User.getInstance().getId());
                     startActivity(intent);
                     break;

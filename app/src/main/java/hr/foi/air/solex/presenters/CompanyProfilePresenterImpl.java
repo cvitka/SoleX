@@ -25,7 +25,7 @@ public class CompanyProfilePresenterImpl implements CompanyProfilePresenter, Com
 
     @Override
     public void getHighlightedProjects(int companyId) {
-        mProfileScreenProjectInteractor.getHighlightedProjectList(companyId);
+        mProfileScreenProjectInteractor.getHighlightedProjectList(companyId, UserType.COMPANY);
     }
 
     public CompanyProfilePresenterImpl(CompanyProfileView companyProfileView, CompanyInteractor companyInteractor) {

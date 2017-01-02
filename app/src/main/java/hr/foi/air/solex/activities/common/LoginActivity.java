@@ -56,9 +56,9 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     @Override
     public void onDeveloperLoginSuccess() {
         Intent intent = new Intent(this, DeveloperProfileActivity.class);
+        intent.putExtra("developerId", User.getInstance().getId());
         startActivity(intent);
     }
-
     @Override
     public void onCompanyLoginSuccess() {
         Intent intent = new Intent(this, CompanyProfileActivity.class);
