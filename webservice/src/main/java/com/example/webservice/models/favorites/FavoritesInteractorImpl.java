@@ -17,6 +17,7 @@ public class FavoritesInteractorImpl extends WebServiceCommunicator implements F
 
     FavoritesAddListener mFavoritesAddListener;
     FavoritesUpdateListener mFavoritesUpdateListener;
+    FavoritesDeleteListener mFavoritesDeleteListener;
 
     private interface WSInterfaceFavourite {
 
@@ -25,6 +26,9 @@ public class FavoritesInteractorImpl extends WebServiceCommunicator implements F
 
         @GET("updateFavorita.php")
         Call<WSResponseFavourite> updateFavouriteState(@Query("companyID") int companyID, @Query("developerID") int developerID);
+
+        @GET("deleteFavorita.php")
+        Call<WSResponseFavourite> deleteFavorit(@Query("developerId") int developerId, @Query("companyId") int companyId);
     }
 
     public FavoritesInteractorImpl() {
@@ -92,6 +96,37 @@ public class FavoritesInteractorImpl extends WebServiceCommunicator implements F
     @Override
     public void setFavoriteUpdateListener(FavoritesUpdateListener updateListener) {
         mFavoritesUpdateListener = updateListener;
+    }
+
+    @Override
+    public void deleteFavorites(int id) {
+        WSInterfaceFavourite interfaceFavourite = retrofit.create(WSInterfaceFavourite.class);
+        Call<WSResponseFavourite> call = interfaceFavourite.deleteFavorit(id, User.getInstance().getId());
+        call.enqueue(new Callback<WSResponseFavourite>() {
+            @Override
+            public void onResponse(Call<WSResponseFavourite> call, Response<WSResponseFavourite> response) {
+                if (response.isSuccessful())
+                    if (response.body().getSuccess().equals("1")) {
+                        if (mFavoritesDeleteListener != null) {
+                            mFavoritesDeleteListener.onFavoriteDelete();
+                        }
+                    }else{
+                        if(mFavoritesDeleteListener !=null){
+                            mFavoritesDeleteListener.onFavoriteDeleteFailure(response.body().getMessage());
+                        }
+                    }
+            }
+
+            @Override
+            public void onFailure(Call<WSResponseFavourite> call, Throwable t) {
+
+            }
+        });
+    }
+
+    @Override
+    public void setFavoritesDeleteListener(FavoritesDeleteListener deleteListener) {
+        mFavoritesDeleteListener = deleteListener;
     }
 
 

@@ -5,4 +5,6 @@ public interface FavoritesInteractor {
     void updateFavorites(int id);
     void setFavoriteAddListener(FavoritesAddListener addListener);
     void setFavoriteUpdateListener(FavoritesUpdateListener updateListener);
+    void deleteFavorites(int id);
+    void setFavoritesDeleteListener(FavoritesDeleteListener deleteListener);
 }
