@@ -1,4 +1,4 @@
-package hr.foi.air.solex.activities;
+package hr.foi.air.solex.activities.common;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,7 +13,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnItemClick;
 import hr.foi.air.solex.R;
-import hr.foi.air.solex.activities.common.DrawerActivity;
+import hr.foi.air.solex.activities.CollaborationActivity;
+import hr.foi.air.solex.activities.NeededCollaborationActivity;
 
 public class ProjectDisplayActivity extends DrawerActivity {
     @BindView(R.id.activity_project_display_lvCollaborations)

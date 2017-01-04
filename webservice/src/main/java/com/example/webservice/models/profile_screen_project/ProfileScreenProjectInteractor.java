@@ -7,4 +7,5 @@ import com.example.webservice.models.projects.ProjectListListener;
 
 public interface ProfileScreenProjectInteractor {
     void getHighlightedProjectList(int id, UserType userType);
+    void getAllProjectList(int id);
 }

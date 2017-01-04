@@ -25,7 +25,7 @@ import hr.foi.air.solex.activities.DeveloperCollaborationsActivity;
 import hr.foi.air.solex.activities.companies.CompanyProjectsActivity;
 import hr.foi.air.solex.activities.developers.DeveloperProfileActivity;
 import hr.foi.air.solex.activities.companies.FavouritesActivity;
-import hr.foi.air.solex.activities.ProjectSearchActivity;
+import hr.foi.air.solex.activities.developers.ProjectSearchActivity;
 import hr.foi.air.solex.activities.companies.CompanyProfileActivity;
 
 public class DrawerActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -80,7 +80,9 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
                     startActivity(intent);
                     break;
                 case R.id.company_opt_projects:
-                    startNewActivity(CompanyProjectsActivity.class);
+                    intent = new Intent(this, CompanyProjectsActivity.class);
+                    intent.putExtra("companyId", User.getInstance().getId());
+                    startActivity(intent);
                     break;
                 case R.id.company_opt_collaborations:
                     startNewActivity(CompanyCollaborationsActivity.class);

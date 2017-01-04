@@ -1,4 +1,4 @@
-package hr.foi.air.solex.activities;
+package hr.foi.air.solex.activities.developers;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,7 +14,9 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnItemClick;
 import hr.foi.air.solex.R;
+import hr.foi.air.solex.activities.FeelingLuckyActivity;
 import hr.foi.air.solex.activities.common.DrawerActivity;
+import hr.foi.air.solex.activities.common.ProjectDisplayActivity;
 
 public class ProjectSearchActivity extends DrawerActivity {
     @BindView(R.id.txtViewFeelingLucky)

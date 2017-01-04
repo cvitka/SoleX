@@ -158,7 +158,7 @@ public class FavouritesActivity extends DrawerActivity implements FavouritesActi
 
     public void onSelect(String id) {
         Intent intent = new Intent(this, DeveloperProfileActivity.class);
-        intent.putExtra("developerId", id);
+        intent.putExtra("developerId", Integer.parseInt(id));
         startActivity(intent);
     }
 

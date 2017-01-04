@@ -10,6 +10,9 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.core.utils.UserType;
+import com.example.webservice.models.login_registration.User;
+import com.example.webservice.models.profile_screen_project.ProfileScreenProject;
 import com.example.webservice.models.projects.ApiProject;
 import com.example.webservice.models.projects.ProjectInteractorImpl;
 
@@ -22,6 +25,7 @@ import butterknife.OnClick;
 import hr.foi.air.solex.R;
 import hr.foi.air.solex.activities.common.DrawerActivity;
 import hr.foi.air.solex.adapters.ProjectsAdapter;
+import hr.foi.air.solex.adapters.ProjectsListAdapter;
 import hr.foi.air.solex.presenters.CompanyProjectsPresenter;
 import hr.foi.air.solex.presenters.CompanyProjectsPresenterImpl;
 
@@ -33,35 +37,32 @@ public class CompanyProjectsActivity extends DrawerActivity implements CompanyPr
     @BindView(R.id.myProjectsList)
     ListView listViewMyProjectsList;
 
-
     CompanyProjectsPresenter mCompanyProjectsPresenter;
-    private RecyclerView recyclerView;
-    private ProjectsAdapter projectsAdapter;
-    private ArrayList<String> itemsId = new ArrayList<String>();
-    private String selectedProjectName;
-    private String selectedProjectId;
+    private List<ProfileScreenProject> mProjectsList;
 
     @Override
     protected int getLayoutId() {
         return R.layout.activity_company_projects;
     }
 
+    private void setLayout(int id){
+        if(!User.isCurrentUser(UserType.COMPANY, id)){
+            btnAddNewProject.setVisibility(View.GONE);
+            setTitle(getIntent().getExtras().getString("companyName") + R.string.projects_list);
+        }
+    }
+
+    private int companyId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
+        companyId = getIntent().getExtras().getInt("companyId");
 
-        ArrayList<String> items = new ArrayList<String>();
-        ArrayAdapter<String> itemsAdapter;
-        itemsAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items);
-        items.add("projekt 1");
-        items.add("projekt 2");
-        items.add("projekt 3");
-        items.add("projekt 4");
-        listViewMyProjectsList.setAdapter(itemsAdapter);
-
-        this.mCompanyProjectsPresenter = new CompanyProjectsPresenterImpl(this, new ProjectInteractorImpl());
-        mCompanyProjectsPresenter.getProjects();
+        this.mCompanyProjectsPresenter = new CompanyProjectsPresenterImpl(this);
+        mCompanyProjectsPresenter.getProjects(companyId);
+        setLayout(companyId);
     }
 
     @OnClick(R.id.btnAddNewProject)
@@ -71,35 +72,25 @@ public class CompanyProjectsActivity extends DrawerActivity implements CompanyPr
     }
 
     @Override
-    public void onDataArrived(List<ApiProject> projects) {
+    public void onDataArrived(List<ProfileScreenProject> projects) {
+        mProjectsList = projects;
+        ProjectsListAdapter adapter =
+                new ProjectsListAdapter(this, android.R.layout.simple_list_item_1, mProjectsList, UserType.COMPANY);
 
-        ArrayList<String> items = new ArrayList<String>();
-        ArrayAdapter<String> itemsAdapter;
-        itemsAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items);
-        for (int i = 0; i < projects.size(); i++) {
-            items.add(projects.get(i).getNaziv());
-            itemsId.add(projects.get(i).getProjektiId());
-
-        }
-        listViewMyProjectsList.setAdapter(itemsAdapter);
+        listViewMyProjectsList.setAdapter(adapter);
         listViewMyProjectsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                selectedProjectName = ((TextView) view).getText().toString();
-                Integer selectionID = Integer.parseInt(itemsId.get(i));
-                selectedProjectId = selectionID.toString();
-                onSelect(selectedProjectName,selectedProjectId);
-
+            public void onItemClick(AdapterView<?> adapterView, View view, int pos, long l) {
+                ProfileScreenProject clickedProj = mProjectsList.get(pos);
+                openProjectActivity(clickedProj.getId(), User.isCurrentUser(UserType.COMPANY, companyId));
             }
         });
-
-
     }
 
-    public void onSelect(String name,String id){
+    private void openProjectActivity(int projectId, boolean owner){
         Intent intent = new Intent(this, ProjectManagementActivity.class);
-        intent.putExtra("projectName",name);
-        intent.putExtra("projectId",id);
+        intent.putExtra("isOwner", owner);
+        intent.putExtra("projectId", projectId);
         startActivity(intent);
     }
 }

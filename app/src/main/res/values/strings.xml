@@ -50,4 +50,7 @@
     <string name="project_state_5">Aborted</string>
     <string name="error_adding_skill">You must choose from sugested skills!</string>
     <string name="error_skill_exists">Skill already added!</string>
+    <string name="company_proj_list_label">Company’s projects list</string>
+    <string name="developer_proj_list_label">Developer’s projects list</string>
+    <string name="projects_list"> projects list</string>
 </resources>

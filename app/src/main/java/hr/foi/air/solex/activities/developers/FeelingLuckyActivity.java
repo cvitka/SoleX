@@ -13,11 +13,17 @@ import butterknife.ButterKnife;
 import butterknife.OnItemClick;
 import hr.foi.air.solex.R;
 import hr.foi.air.solex.activities.common.DrawerActivity;
+import hr.foi.air.solex.activities.common.ProjectDisplayActivity;
 
-public class ProjectsListingActivity extends DrawerActivity {
+public class FeelingLuckyActivity extends DrawerActivity {
+    @BindView(R.id.activity_feeling_lucky_lvLuckyProjects)
+    ListView lvLuckyProjects;
 
-    @BindView(R.id.activity_projects_listing_lvProjects)
-    ListView lvProjects;
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_feeling_lucky;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,18 +35,13 @@ public class ProjectsListingActivity extends DrawerActivity {
         items.add("project 2");
         items.add("project 3");
         items.add("project 4");
-        lvProjects.setAdapter(itemsAdapter);
+        lvLuckyProjects.setAdapter(itemsAdapter);
     }
 
-    @OnItemClick(R.id.activity_projects_listing_lvProjects)
-    public void lvProjectsClick(View view){
+    @OnItemClick(R.id.activity_feeling_lucky_lvLuckyProjects)
+    public void lvLuckyProjectsClick(View view) {
+        //open project page
         Intent intent = new Intent(this, ProjectDisplayActivity.class);
         startActivity(intent);
     }
-
-    @Override
-    protected int getLayoutId() {
-        return R.layout.activity_projects_listing;
-    }
-
 }

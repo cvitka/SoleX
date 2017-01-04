@@ -30,7 +30,6 @@ import butterknife.OnClick;
 import butterknife.OnItemLongClick;
 import hr.foi.air.solex.R;
 import hr.foi.air.solex.activities.common.DrawerActivity;
-import hr.foi.air.solex.activities.ProjectsListingActivity;
 import hr.foi.air.solex.adapters.ProjectsListAdapter;
 import hr.foi.air.solex.presenters.CompanyProfilePresenter;
 import hr.foi.air.solex.presenters.CompanyProfilePresenterImpl;
@@ -242,8 +241,8 @@ public class CompanyProfileActivity extends DrawerActivity implements CompanyPro
 
     @OnClick(R.id.activity_company_profile_btnProjects)
     public void btnClick(View view){
-        Intent intent = new Intent(this, ProjectsListingActivity.class);
-        startActivity(intent);
+        //Intent intent = new Intent(this, ProjectsListingActivity.class);
+        //startActivity(intent);
     }
 
     @OnClick(R.id.activity_company_profile_btnAddNewTech)

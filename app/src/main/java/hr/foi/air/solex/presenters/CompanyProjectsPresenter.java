@@ -1,5 +1,5 @@
 package hr.foi.air.solex.presenters;
 
 public interface CompanyProjectsPresenter {
-    void getProjects();
+    void getProjects(int id);
 }

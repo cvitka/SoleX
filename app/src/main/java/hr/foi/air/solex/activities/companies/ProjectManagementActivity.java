@@ -51,12 +51,12 @@ public class ProjectManagementActivity extends DrawerActivity implements Project
 
     Project mThisProject;
     ProjectManagementPresenter mPresenter;
-    GetNeededCollaaborationsPresenter colabPresenter;
-    private String projectId;
+    GetNeededCollaaborationsPresenter collabPresenter;
     private ArrayList<String> itemsId = new ArrayList<String>();
     private String selectedProjectName;
     private String selectedProjectId;
-    private int projectID;
+    private int projectId;
+    boolean isOwner;
 
     @Override
     protected int getLayoutId() {
@@ -68,25 +68,24 @@ public class ProjectManagementActivity extends DrawerActivity implements Project
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
         mPresenter = new ProjectManagementPresenterImpl(this,new SelectedProjectInteractorImpl());
-        colabPresenter = new GetNeededCollaborationsPresenterImpl(this, new ApiNeededCollaborationsInteractorImpl());
+        collabPresenter = new GetNeededCollaborationsPresenterImpl(this, new ApiNeededCollaborationsInteractorImpl());
 
-        String projectName;
+       // String projectName;
 
         if (savedInstanceState == null) {
             Bundle extras = getIntent().getExtras();
             if(extras == null) {
-                projectName= null;
-                projectId = null;
+               /// projectName= null;
             } else {
-                projectName= extras.getString("projectName");
-                projectId= extras.getString("projectId");
-                projectID = Integer.parseInt(projectId);
-                mPresenter.getProject(projectID);
-                colabPresenter.getNeededCollaboration(projectID);
+                //projectName= extras.getString("projectName");
+                projectId= extras.getInt("projectId");
+                isOwner = extras.getBoolean("isOwner");
             }
         } else {
-            projectName= (String) savedInstanceState.getSerializable("projectName");
+           // projectName= (String) savedInstanceState.getSerializable("projectName");
         }
+        mPresenter.getProject(projectId);
+        collabPresenter.getNeededCollaboration(projectId);
     }
 
     @OnItemClick(R.id.activity_project_management_lvNeededCollaborations)
@@ -112,7 +111,7 @@ public class ProjectManagementActivity extends DrawerActivity implements Project
     public void DataArrived(Project project) {
         mThisProject = project;
         txtProjectName.setText(mThisProject.getName());
-        txtProjectDescription.setText(mThisProject.getDescription());
+        txtProjectDescription.setText("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum");
     }
 
     @Override

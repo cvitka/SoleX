@@ -15,7 +15,6 @@ import retrofit2.http.GET;
 import retrofit2.http.Query;
 
 public class ProfileScreenProjectInteractorImpl extends WebServiceCommunicator implements ProfileScreenProjectInteractor {
-    private CreateProjectListener mCreateProjectListener;
     private ProfileScreenProjectListListener mListListener;
 
     private interface WSInterfaceProject {
@@ -37,6 +36,28 @@ public class ProfileScreenProjectInteractorImpl extends WebServiceCommunicator i
         else
             tipDohvacanja = "ProfileScreenProjectDeveloper";
         Call<List<ProfileScreenProject>> call = interfaceProject.getProjects(tipDohvacanja, id);
+        call.enqueue(new Callback<List<ProfileScreenProject>>() {
+            @Override
+            public void onResponse(Call<List<ProfileScreenProject>> call, Response<List<ProfileScreenProject>> response) {
+                if (response.isSuccessful()) {
+                    if (mListListener != null) {
+                        mListListener.onProjectListCome(response.body());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<ProfileScreenProject>> call, Throwable t) {
+                Log.d("Api", t.getMessage());
+            }
+        });
+
+    }
+
+    @Override
+    public void getAllProjectList(int id) {
+        WSInterfaceProject interfaceProject = retrofit.create(WSInterfaceProject.class);
+        Call<List<ProfileScreenProject>> call = interfaceProject.getProjects("AllProjectListCompany", id);
         call.enqueue(new Callback<List<ProfileScreenProject>>() {
             @Override
             public void onResponse(Call<List<ProfileScreenProject>> call, Response<List<ProfileScreenProject>> response) {
