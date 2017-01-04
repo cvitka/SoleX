@@ -7,7 +7,7 @@ public class ApiFavourites {
 
     @SerializedName("developeriId")
     @Expose
-    private String devID;
+    private int devID;
 
     @SerializedName("ime")
     @Expose
@@ -17,11 +17,11 @@ public class ApiFavourites {
     @Expose
     private String devSurname;
 
-    public String getDevID() {
+    public int getDevID() {
         return devID;
     }
 
-    public void setDevID(String devID) {
+    public void setDevID(int devID) {
         this.devID = devID;
     }
 

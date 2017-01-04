@@ -173,6 +173,10 @@ public class CompanyProfileActivity extends DrawerActivity implements CompanyPro
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         ProfileScreenProject clickedProject = mProjectsList.get(position);
+        Intent intent = new Intent(this, ProjectManagementActivity.class);
+        intent.putExtra("isOwner", User.isCurrentUser(UserType.COMPANY, mThisCompany.getId()));
+        intent.putExtra("projectId", clickedProject.getId());
+        startActivity(intent);
     }
 
     @OnItemLongClick(R.id.activity_company_profile_lvMainTech)

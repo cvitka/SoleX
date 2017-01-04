@@ -4,14 +4,23 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ListView;
+import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.core.utils.Utility;
 import com.example.webservice.models.collaboration.NeededCollaboration;
 import com.example.webservice.models.collaboration.NeededCollaborationInteractorImpl;
 import com.jaredrummler.materialspinner.MaterialSpinner;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -34,20 +43,33 @@ public class NewNeededCollaborationActivity extends DrawerActivity implements Ne
     @BindView(R.id.activity_new_needed_collaboration_etDescription)
     EditText etCollabDescription;
 
-    @BindView(R.id.activity_new_needed_collaboration_spItSkills)
-    MaterialSpinner spItSkills;
+    //@BindView(R.id.activity_new_needed_collaboration_spItSkills)
+    //MaterialSpinner spItSkills;
+    @BindView(R.id.activity_new_needed_collaboration_btnAddNewSkill)
+    ImageButton btnAddNewSkill;
+    @BindView(R.id.activity_new_needed_collaboration_lvNeededSkills)
+    ListView lvNeededSkills;
+    @BindView(R.id.activity_new_needed_collaboration_actvNewSkill)
+    AutoCompleteTextView actvNewSkill;
+
 
     @BindView(R.id.activity_new_needed_collaboration_spICooperationType)
     MaterialSpinner spICooperationType;
 
+    @BindView(R.id.activity_new_needed_collaboration_scrollView)
+    ScrollView scrollView;
+
     private int stateSkills;
     private int stateTypes;
     private String details;
-    private String projekt;
+    private int projekt;
 
     MaterialDialog mMaterialDialog;
     private NewNeededCollaborationPresenter mPresenter;
     NeededCollaboration mCollab = new NeededCollaboration();
+    List<String> neededSkillsList;
+    ArrayAdapter<String> neededSkillsAdapter;
+    List<String> allSkills;
 
     @Override
     protected int getLayoutId() {
@@ -64,40 +86,70 @@ public class NewNeededCollaborationActivity extends DrawerActivity implements Ne
         if (savedInstanceState == null) {
             Bundle extras = getIntent().getExtras();
             if(extras == null) {
-                projekt = null;
+                //projekt = null;
             } else {
-                projekt= extras.getString("projectId");
+                projekt= extras.getInt("projectId");
             }
         } else {
-            projekt= (String) savedInstanceState.getSerializable("projectId");
+            projekt= (int) savedInstanceState.getSerializable("projectId");
 
         }
-        fillSpinnerSkills();
+        //fillSpinnerSkills();
         fillSpinnerCooperationType();
+        mPresenter.getAllSkills();
     }
 
+    @Override
+    public void onAllSkillsArrived(List<String> skills) {
+        allSkills = skills;
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_dropdown_item_1line, allSkills);
+        actvNewSkill.setAdapter(adapter);
+
+        neededSkillsList = new ArrayList<>();
+        neededSkillsAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, neededSkillsList);
+        lvNeededSkills.setAdapter(neededSkillsAdapter);
+    }
+
+    @OnClick(R.id.activity_new_needed_collaboration_btnAddNewSkill)
+    public void btnAddNewSkillClick(){
+        String skill = actvNewSkill.getText().toString();
+        if(!allSkills.contains(skill)){
+            showToastLong(getResources().getString(R.string.error_adding_skill));
+        }
+        else if(neededSkillsList.contains(skill)) {
+            showToastLong(getResources().getString(R.string.error_skill_exists));
+        }
+        else{
+            //mCompanyProfilePresenter.addSkill(mThisCompany.getId(), skill);
+            neededSkillsList.add(skill);
+            neededSkillsAdapter.notifyDataSetChanged();
+            actvNewSkill.setText("");
+            Utility.setListViewHeightBasedOnChildren(lvNeededSkills);
+        }
+    }
 
     @OnClick(R.id.activity_new_needed_collaboration_btnAddCollaboration)
     public void btnAddCollaborationClick(){
 
-        if (etCollabName.getText().toString().isEmpty() || etCollabDescription.getText().toString().isEmpty()  || stateSkills == 0 || stateTypes == 0) {
+        if (etCollabName.getText().toString().isEmpty() || etCollabDescription.getText().toString().isEmpty()  || stateTypes == 0) {
             Toast.makeText(getApplicationContext(), "Fill in all data!", Toast.LENGTH_LONG).show();
         }
         else {
-            int id= Integer.parseInt(projekt);
-            if (projekt.isEmpty()){
-                id= mCollab.getProjectId();
-            }
-            mCollab.setProjectId(id);
+            //int id= Integer.parseInt(projekt);
+            //if (projekt.isEmpty()){
+            //    id= mCollab.getProjectId();
+            //}
+            mCollab.setProjectId(projekt);
             mCollab.setName(etCollabName.getText().toString());
             mCollab.setDescription(etCollabDescription.getText().toString());
             mCollab.setTypeOfWork(spICooperationType.getSelectedIndex());
             mCollab.setNaknada(50);
-            mCollab.setStrucnosti(spItSkills.getSelectedIndex());
+            mCollab.setStrucnosti(neededSkillsList);
             mPresenter.addNeededCollaboration(mCollab);
         }
     }
-
+/*
     private void fillSpinnerSkills() {
         spItSkills.setItems(".NET", "Java", "JavaScript", "PHP", "C#");
         spItSkills.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
@@ -127,7 +179,7 @@ public class NewNeededCollaborationActivity extends DrawerActivity implements Ne
             }
         });
     }
-
+/*/
     private void fillSpinnerCooperationType() {
         spICooperationType.setItems("Type A", "Type B", "Type C", "Type D", "Type E");
         spICooperationType.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {

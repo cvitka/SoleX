@@ -3,11 +3,13 @@ package hr.foi.air.solex.activities.companies;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -49,6 +51,9 @@ public class ProjectManagementActivity extends DrawerActivity implements Project
     @BindView(R.id.nav_view)
     NavigationView navigationView;
 
+    @BindView(R.id.scrollView)
+    ScrollView scrollView;
+
     Project mThisProject;
     ProjectManagementPresenter mPresenter;
     GetNeededCollaaborationsPresenter collabPresenter;
@@ -86,6 +91,16 @@ public class ProjectManagementActivity extends DrawerActivity implements Project
         }
         mPresenter.getProject(projectId);
         collabPresenter.getNeededCollaboration(projectId);
+        //fixes scrolling list inside ScrollView
+        lvNeededCollaborations.setOnTouchListener(new View.OnTouchListener() {
+            // Setting on Touch Listener for handling the touch inside ScrollView
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                // Disallow the touch request for parent scroll on touch of child view
+                scrollView.requestDisallowInterceptTouchEvent(true);
+                return false;
+            }
+        });
     }
 
     @OnItemClick(R.id.activity_project_management_lvNeededCollaborations)
@@ -111,7 +126,7 @@ public class ProjectManagementActivity extends DrawerActivity implements Project
     public void DataArrived(Project project) {
         mThisProject = project;
         txtProjectName.setText(mThisProject.getName());
-        txtProjectDescription.setText("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum");
+        txtProjectDescription.setText(mThisProject.getDescription());
     }
 
     @Override

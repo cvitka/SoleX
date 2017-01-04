@@ -36,7 +36,8 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="55dp">
+            android:layout_marginTop="55dp"
+            android:id="@+id/activity_new_needed_collaboration_scrollView">
 
         <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:tools="http://schemas.android.com/tools"
@@ -104,23 +105,37 @@
                 android:layout_marginTop="18dp"
                 android:text="Needed IT skills" />
 
-            <com.jaredrummler.materialspinner.MaterialSpinner
-                android:id="@+id/activity_new_needed_collaboration_spItSkills"
+           <ListView
+                android:id="@+id/activity_new_needed_collaboration_lvNeededSkills"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/activity_new_needed_collaboration_tvNeededSkills"
                 android:layout_below="@+id/activity_new_needed_collaboration_tvNeededSkills"
-                android:layout_marginRight="20dp"
+                android:layout_marginEnd="20dp"
                 android:layout_marginTop="8dp"
-                android:hint="IT Skills"
                 android:textColor="@color/colorPrimaryDarker" />
+            <AutoCompleteTextView
+                android:layout_marginStart="5dp"
+                android:layout_width="230dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/activity_new_needed_collaboration_actvNewSkill"
+                android:layout_below="@+id/activity_new_needed_collaboration_lvNeededSkills"
+                style="@style/Base.Widget.AppCompat.EditText"/>
+            <ImageButton
+                android:id="@+id/activity_new_needed_collaboration_btnAddNewSkill"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_toEndOf="@+id/activity_new_needed_collaboration_actvNewSkill"
+                android:background="@drawable/lblue_add_img"
+                android:layout_below="@+id/activity_new_needed_collaboration_lvNeededSkills"/>
 
             <TextView
                 android:id="@+id/activity_new_needed_collaboration_tvCooperationType"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignStart="@+id/activity_new_needed_collaboration_spItSkills"
-                android:layout_below="@+id/activity_new_needed_collaboration_spItSkills"
+                android:layout_alignStart="@+id/activity_new_needed_collaboration_actvNewSkill"
+                android:layout_below="@+id/activity_new_needed_collaboration_actvNewSkill"
                 android:layout_marginTop="18dp"
                 android:text="Type Of Cooperation" />
 

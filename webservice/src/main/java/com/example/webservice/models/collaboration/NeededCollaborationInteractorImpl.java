@@ -2,6 +2,9 @@ package com.example.webservice.models.collaboration;
 
 import com.example.webservice.models.WebServiceCommunicator;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -10,10 +13,10 @@ import retrofit2.http.Query;
 
 public class NeededCollaborationInteractorImpl extends WebServiceCommunicator implements NeededCollaborationInteractor {
 
-    private interface WSInterfaceCompany {
+    private interface WSInfterfaceCompany {
 
         @GET("dodajPotrebnuSuradnju.php")
-        Call<WSResponseNeededCollaboration> dodajPotrebnuSuradnju(@Query("projektId") int id, @Query("naziv") String naziv, @Query("opis") String opis, @Query("nacinRada") int nacinRada, @Query("naknada") float naknada,@Query("strucnosti") int strucnosti);
+        Call<WSResponseNeededCollaboration> dodajPotrebnuSuradnju(@Query("projektId") int id, @Query("naziv") String naziv, @Query("opis") String opis, @Query("nacinRada") int nacinRada, @Query("naknada") float naknada,@Query("strucnosti[]") List<String> strucnosti);
     }
 
     AddNeededCollaborationListener mListener;
@@ -22,8 +25,17 @@ public class NeededCollaborationInteractorImpl extends WebServiceCommunicator im
 
     @Override
     public void addNeededCollaboration(NeededCollaboration neededCollaboration) {
-        WSInterfaceCompany servInterface = retrofit.create(WSInterfaceCompany.class);
-        Call<WSResponseNeededCollaboration> call = servInterface.dodajPotrebnuSuradnju(neededCollaboration.getProjectId(),neededCollaboration.getName(),neededCollaboration.getDescription(),neededCollaboration.getTypeOfWork(),neededCollaboration.getNaknada(),neededCollaboration.getStrucnosti());
+        WSInfterfaceCompany servInterface = retrofit.create(WSInfterfaceCompany.class);
+        Call<WSResponseNeededCollaboration> call =
+                servInterface.dodajPotrebnuSuradnju(
+                        neededCollaboration.getProjectId(),
+                        neededCollaboration.getName(),
+                        neededCollaboration.getDescription(),
+                        neededCollaboration.getTypeOfWork(),
+                        neededCollaboration.getNaknada(),
+                        neededCollaboration.getStrucnosti());
+        String req = call.request().url().toString();
+
         if (call != null) {
             call.enqueue(new Callback<WSResponseNeededCollaboration>() {
                 @Override

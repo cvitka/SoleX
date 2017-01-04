@@ -1,5 +1,7 @@
 package com.example.webservice.models.collaboration;
 
+import java.util.List;
+
 public class NeededCollaboration {
     private int suradnjaId;
     private int projectId;
@@ -8,7 +10,7 @@ public class NeededCollaboration {
     private int typeOfWork;
     private char statusSuradnje;
     private float naknada;
-    private int strucnosti;
+    private List<String> strucnosti;
     private char status;
 
     public NeededCollaboration() {
@@ -70,11 +72,11 @@ public class NeededCollaboration {
         this.naknada = naknada;
     }
 
-    public int getStrucnosti() {
+    public List<String> getStrucnosti() {
         return strucnosti;
     }
 
-    public void setStrucnosti(int strucnosti) {
+    public void setStrucnosti(List<String> strucnosti) {
         this.strucnosti = strucnosti;
     }
 

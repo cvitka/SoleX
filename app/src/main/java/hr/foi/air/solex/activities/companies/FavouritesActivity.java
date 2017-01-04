@@ -57,7 +57,7 @@ public class FavouritesActivity extends DrawerActivity implements FavouritesActi
 
     AlertDialog alertDialog;
     FavouritesPresenter mFavouritesPresenter;
-    private ArrayList<String> itemsId = new ArrayList<String>();
+    private ArrayList<Integer> itemsId = new ArrayList<Integer>();
     private ArrayList<String> mList = new ArrayList<String>();
     private ArrayList<String> mColabi = new ArrayList<String>();
     private List<ApiFavourites> mFavoriti;
@@ -99,7 +99,7 @@ public class FavouritesActivity extends DrawerActivity implements FavouritesActi
         lvFavourites.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-                mFavouritesPresenter.deleteFavorites(Integer.parseInt(itemsId.get(i)));
+                mFavouritesPresenter.deleteFavorites(itemsId.get(i));
                 return true;
             }
         });
@@ -156,9 +156,9 @@ public class FavouritesActivity extends DrawerActivity implements FavouritesActi
         startActivity(getIntent());
     }
 
-    public void onSelect(String id) {
+    public void onSelect(int id) {
         Intent intent = new Intent(this, DeveloperProfileActivity.class);
-        intent.putExtra("developerId", Integer.parseInt(id));
+        intent.putExtra("developerId", id);
         startActivity(intent);
     }
 
