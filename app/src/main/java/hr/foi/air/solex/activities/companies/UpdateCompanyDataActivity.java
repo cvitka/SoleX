@@ -27,8 +27,8 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import hr.foi.air.solex.R;
 import hr.foi.air.solex.activities.common.DrawerActivity;
-import hr.foi.air.solex.presenters.UpdateCompanyDataPresenter;
-import hr.foi.air.solex.presenters.UpdateCompanyDataPresenterImpl;
+import hr.foi.air.solex.presenters.companies.UpdateCompanyDataPresenter;
+import hr.foi.air.solex.presenters.companies.UpdateCompanyDataPresenterImpl;
 
 import static hr.foi.air.solex.R.id.activity_update_company_etNewAddress;
 

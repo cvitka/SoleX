@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.example.core.utils.UserType;
+import hr.foi.air.solex.utils.UserType;
 import hr.foi.air.solex.models.profile_screen_project.ProfileScreenProject;
 
 import java.util.List;

@@ -50,7 +50,4 @@ dependencies {
     compile 'com.squareup.retrofit2:converter-gson:2.0.2'
     compile 'com.squareup.okhttp:okhttp:2.7.0'
 
-    compile project(':core')
-
-
 }

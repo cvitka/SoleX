@@ -1,6 +1,6 @@
 package hr.foi.air.solex.models.skills;
 
-import com.example.core.utils.UserType;
+import hr.foi.air.solex.utils.UserType;
 
 public interface SkillsInteractor {
     public void getSkillList(int id, UserType user);//(int id, String name, String surname, String address, String email, String number, String years, String image);

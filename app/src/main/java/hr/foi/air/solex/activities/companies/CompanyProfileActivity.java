@@ -15,7 +15,7 @@ import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-import com.example.core.utils.UserType;
+import hr.foi.air.solex.utils.UserType;
 import hr.foi.air.solex.models.mcompanies.CompanyInteractorImpl;
 import hr.foi.air.solex.models.mcompanies.Company;
 import hr.foi.air.solex.models.login_registration.User;
@@ -31,8 +31,8 @@ import butterknife.OnItemLongClick;
 import hr.foi.air.solex.R;
 import hr.foi.air.solex.activities.common.DrawerActivity;
 import hr.foi.air.solex.adapters.ProjectsListAdapter;
-import hr.foi.air.solex.presenters.CompanyProfilePresenter;
-import hr.foi.air.solex.presenters.CompanyProfilePresenterImpl;
+import hr.foi.air.solex.presenters.companies.CompanyProfilePresenter;
+import hr.foi.air.solex.presenters.companies.CompanyProfilePresenterImpl;
 
 public class CompanyProfileActivity extends DrawerActivity implements CompanyProfileView, AdapterView.OnItemClickListener{
     @BindView(R.id.activity_company_profile_btnToggleProjectsLayout)

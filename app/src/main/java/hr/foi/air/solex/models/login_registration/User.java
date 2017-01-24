@@ -1,6 +1,6 @@
 package hr.foi.air.solex.models.login_registration;
 
-import com.example.core.utils.UserType;
+import hr.foi.air.solex.utils.UserType;
 
 /**
  * Created by cvitka on 11.11.16..

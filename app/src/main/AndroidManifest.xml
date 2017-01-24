@@ -26,8 +26,8 @@
             android:theme="@style/AcitivityProfilesBlue" />
         <activity
             android:name=".activities.companies.UpdateCompanyDataActivity"
-            android:theme="@style/ActivityWithInput"
-            android:label="Enter new info"/>
+            android:label="Enter new info"
+            android:theme="@style/ActivityWithInput" />
         <activity
             android:name=".activities.developers.DeveloperProfileActivity"
             android:theme="@style/AcitivityProfilesBlue" />
@@ -62,9 +62,20 @@
             android:label="Favourites"
             android:theme="@style/ActivityWithInput"></activity>
         <activity
-            android:name=".activities.CollaborationActivity"
+            android:name=".activities.common.CollaborationActivity"
             android:label="Collaboration"
             android:theme="@style/ActivityWithInput"></activity>
+        <activity
+            android:name=".activities.developers.ProjectSearchActivity"
+            android:label="Search projects"
+            android:theme="@style/ActivityWithInput"></activity>
+        <activity android:name=".activities.developers.DeveloperApplicationsActivity"
+            android:label="Previous applications"
+            android:theme="@style/ActivityWithInput"></activity>
+        <activity android:name=".activities.developers.DeveloperCollaborationsActivity"
+            android:label="Collaborations"
+            android:theme="@style/ActivityWithInput"></activity>
+
         <activity
             android:name=".activities.common.SplashScreenActivity"
             android:label="@string/app_name"

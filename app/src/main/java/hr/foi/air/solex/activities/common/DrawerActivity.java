@@ -14,14 +14,14 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.example.core.utils.UserType;
+import hr.foi.air.solex.utils.UserType;
 import hr.foi.air.solex.models.login_registration.User;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import hr.foi.air.solex.R;
 import hr.foi.air.solex.activities.companies.CompanyCollaborationsActivity;
-import hr.foi.air.solex.activities.DeveloperApplicationsActivity;
-import hr.foi.air.solex.activities.DeveloperCollaborationsActivity;
+import hr.foi.air.solex.activities.developers.DeveloperApplicationsActivity;
+import hr.foi.air.solex.activities.developers.DeveloperCollaborationsActivity;
 import hr.foi.air.solex.activities.companies.CompanyProjectsActivity;
 import hr.foi.air.solex.activities.developers.DeveloperProfileActivity;
 import hr.foi.air.solex.activities.companies.FavouritesActivity;

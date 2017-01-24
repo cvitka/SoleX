@@ -2,7 +2,7 @@ package hr.foi.air.solex.models.skills;
 
 import android.util.Log;
 
-import com.example.core.utils.UserType;
+import hr.foi.air.solex.utils.UserType;
 import hr.foi.air.solex.models.WebServiceCommunicator;
 
 import java.util.List;

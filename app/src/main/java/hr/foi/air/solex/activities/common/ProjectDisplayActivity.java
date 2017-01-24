@@ -13,7 +13,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnItemClick;
 import hr.foi.air.solex.R;
-import hr.foi.air.solex.activities.CollaborationActivity;
 import hr.foi.air.solex.activities.NeededCollaborationActivity;
 
 public class ProjectDisplayActivity extends DrawerActivity {

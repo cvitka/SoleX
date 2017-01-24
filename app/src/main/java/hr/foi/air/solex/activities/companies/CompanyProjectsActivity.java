@@ -7,7 +7,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
-import com.example.core.utils.UserType;
+import hr.foi.air.solex.utils.UserType;
 import hr.foi.air.solex.models.login_registration.User;
 import hr.foi.air.solex.models.profile_screen_project.ProfileScreenProject;
 
@@ -19,8 +19,8 @@ import butterknife.OnClick;
 import hr.foi.air.solex.R;
 import hr.foi.air.solex.activities.common.DrawerActivity;
 import hr.foi.air.solex.adapters.ProjectsListAdapter;
-import hr.foi.air.solex.presenters.CompanyProjectsPresenter;
-import hr.foi.air.solex.presenters.CompanyProjectsPresenterImpl;
+import hr.foi.air.solex.presenters.companies.CompanyProjectsPresenter;
+import hr.foi.air.solex.presenters.companies.CompanyProjectsPresenterImpl;
 
 public class CompanyProjectsActivity extends DrawerActivity implements CompanyProjectsView {
 

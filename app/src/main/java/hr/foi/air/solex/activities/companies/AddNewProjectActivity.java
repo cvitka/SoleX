@@ -25,8 +25,8 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import hr.foi.air.solex.R;
 import hr.foi.air.solex.activities.common.DrawerActivity;
-import hr.foi.air.solex.presenters.AddNewProjectPresenter;
-import hr.foi.air.solex.presenters.AddNewProjectPresenterImpl;
+import hr.foi.air.solex.presenters.companies.AddNewProjectPresenter;
+import hr.foi.air.solex.presenters.companies.AddNewProjectPresenterImpl;
 
 public class AddNewProjectActivity extends DrawerActivity implements AddNewProjectView {
     @BindView(R.id.btnSaveProject)

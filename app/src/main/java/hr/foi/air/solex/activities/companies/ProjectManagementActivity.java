@@ -24,11 +24,11 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnItemClick;
 import hr.foi.air.solex.R;
-import hr.foi.air.solex.activities.CollaborationActivity;
+import hr.foi.air.solex.activities.common.CollaborationActivity;
 import hr.foi.air.solex.activities.CompanyNeededCollaborationActivity;
 import hr.foi.air.solex.activities.common.DrawerActivity;
-import hr.foi.air.solex.presenters.ProjectManagementPresenter;
-import hr.foi.air.solex.presenters.ProjectManagementPresenterImpl;
+import hr.foi.air.solex.presenters.companies.ProjectManagementPresenter;
+import hr.foi.air.solex.presenters.companies.ProjectManagementPresenterImpl;
 
 public class ProjectManagementActivity extends DrawerActivity implements ProjectManagementView{
 

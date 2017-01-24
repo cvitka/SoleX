@@ -19,8 +19,8 @@ import hr.foi.air.solex.R;
 import hr.foi.air.solex.activities.common.DrawerActivity;
 import hr.foi.air.solex.adapters.CompanyCollaborationsAdapter;
 import hr.foi.air.solex.adapters.DividerItemDecoration;
-import hr.foi.air.solex.presenters.CompanyCollaborationsPresenter;
-import hr.foi.air.solex.presenters.CompanyCollaborationsPresenterImpl;
+import hr.foi.air.solex.presenters.companies.CompanyCollaborationsPresenter;
+import hr.foi.air.solex.presenters.companies.CompanyCollaborationsPresenterImpl;
 
 public class CompanyCollaborationsActivity extends DrawerActivity implements CompanyCollaborationsView {
     @Override

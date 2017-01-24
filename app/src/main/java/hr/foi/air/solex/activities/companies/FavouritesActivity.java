@@ -35,8 +35,8 @@ import butterknife.OnClick;
 import hr.foi.air.solex.R;
 import hr.foi.air.solex.activities.common.DrawerActivity;
 import hr.foi.air.solex.activities.developers.DeveloperProfileActivity;
-import hr.foi.air.solex.presenters.FavouritesPresenter;
-import hr.foi.air.solex.presenters.FavouritesPresenterImpl;
+import hr.foi.air.solex.presenters.companies.FavouritesPresenter;
+import hr.foi.air.solex.presenters.companies.FavouritesPresenterImpl;
 
 public class FavouritesActivity extends DrawerActivity implements FavouritesActivityView {
 

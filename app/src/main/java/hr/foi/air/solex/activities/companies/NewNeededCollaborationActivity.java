@@ -12,7 +12,7 @@ import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.Toast;
 
-import com.example.core.utils.Utility;
+import hr.foi.air.solex.utils.Utility;
 import hr.foi.air.solex.models.collaboration.NeededCollaboration;
 import hr.foi.air.solex.models.collaboration.NeededCollaborationInteractorImpl;
 import com.jaredrummler.materialspinner.MaterialSpinner;
@@ -25,8 +25,8 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import hr.foi.air.solex.R;
 import hr.foi.air.solex.activities.common.DrawerActivity;
-import hr.foi.air.solex.presenters.NewNeededCollaborationPresenter;
-import hr.foi.air.solex.presenters.NewNeededCollaborationPresenterImpl;
+import hr.foi.air.solex.presenters.companies.NewNeededCollaborationPresenter;
+import hr.foi.air.solex.presenters.companies.NewNeededCollaborationPresenterImpl;
 import me.drakeet.materialdialog.MaterialDialog;
 
 public class NewNeededCollaborationActivity extends DrawerActivity implements NewNeededCollaborationView {

@@ -16,8 +16,8 @@ import hr.foi.air.solex.activities.developers.DeveloperProfileActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import hr.foi.air.solex.presenters.LoginPresenter;
-import hr.foi.air.solex.presenters.LoginPresenterImpl;
+import hr.foi.air.solex.presenters.common.LoginPresenter;
+import hr.foi.air.solex.presenters.common.LoginPresenterImpl;
 
 
 public class LoginActivity extends AppCompatActivity implements LoginView {

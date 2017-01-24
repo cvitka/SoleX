@@ -15,7 +15,7 @@ import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-import com.example.core.utils.UserType;
+import hr.foi.air.solex.utils.UserType;
 import hr.foi.air.solex.models.mdevelopers.Developer;
 import hr.foi.air.solex.models.login_registration.User;
 import hr.foi.air.solex.models.profile_screen_project.ProfileScreenProject;
@@ -30,8 +30,8 @@ import butterknife.OnItemLongClick;
 import hr.foi.air.solex.R;
 import hr.foi.air.solex.activities.common.DrawerActivity;
 import hr.foi.air.solex.adapters.ProjectsListAdapter;
-import hr.foi.air.solex.presenters.DeveloperProfilePresenter;
-import hr.foi.air.solex.presenters.DeveloperProfilePresenterImpl;
+import hr.foi.air.solex.presenters.developers.DeveloperProfilePresenter;
+import hr.foi.air.solex.presenters.developers.DeveloperProfilePresenterImpl;
 
 public class DeveloperProfileActivity extends DrawerActivity implements DeveloperProfileView, AdapterView.OnItemClickListener {
 

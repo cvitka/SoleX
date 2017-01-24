@@ -17,8 +17,8 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import hr.foi.air.solex.activities.common.LoginActivity;
 import hr.foi.air.solex.R;
-import hr.foi.air.solex.presenters.DeveloperSignupPresenter;
-import hr.foi.air.solex.presenters.DeveloperSignupPresenterImpl;
+import hr.foi.air.solex.presenters.common.DeveloperSignupPresenter;
+import hr.foi.air.solex.presenters.common.DeveloperSignupPresenterImpl;
 
 
 public class SignupDeveloperFragment extends Fragment implements SignupView{
