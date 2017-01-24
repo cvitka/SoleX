@@ -1,8 +1,8 @@
 package hr.foi.air.solex.presenters;
 
-import com.example.webservice.models.collaboration.ApiNeededCollaborationListListener;
-import com.example.webservice.models.collaboration.ApiNeededCollaborations;
-import com.example.webservice.models.collaboration.ApiNeededCollaborationsInteractor;
+import hr.foi.air.solex.models.collaboration.ApiNeededCollaborationListListener;
+import hr.foi.air.solex.models.collaboration.ApiNeededCollaborations;
+import hr.foi.air.solex.models.collaboration.ApiNeededCollaborationsInteractor;
 
 import java.util.List;
 

@@ -1,15 +1,15 @@
 package hr.foi.air.solex.presenters;
 
-import com.example.webservice.models.collaboration.ApiCollaborationsListListener;
-import com.example.webservice.models.collaboration.ApiCompanyCollaborations;
-import com.example.webservice.models.collaboration.ApiCompanyCollaborationsInteractor;
-import com.example.webservice.models.favorites.ApiFavourites;
-import com.example.webservice.models.favorites.ApiFavouritesInteractor;
-import com.example.webservice.models.favorites.ApiFavouritesListListener;
-import com.example.webservice.models.favorites.FavoritesAddListener;
-import com.example.webservice.models.favorites.FavoritesDeleteListener;
-import com.example.webservice.models.favorites.FavoritesInteractorImpl;
-import com.example.webservice.models.favorites.FavoritesUpdateListener;
+import hr.foi.air.solex.models.collaboration.ApiCollaborationsListListener;
+import hr.foi.air.solex.models.collaboration.ApiCompanyCollaborations;
+import hr.foi.air.solex.models.collaboration.ApiCompanyCollaborationsInteractor;
+import hr.foi.air.solex.models.favorites.ApiFavourites;
+import hr.foi.air.solex.models.favorites.ApiFavouritesInteractor;
+import hr.foi.air.solex.models.favorites.ApiFavouritesListListener;
+import hr.foi.air.solex.models.favorites.FavoritesAddListener;
+import hr.foi.air.solex.models.favorites.FavoritesDeleteListener;
+import hr.foi.air.solex.models.favorites.FavoritesInteractorImpl;
+import hr.foi.air.solex.models.favorites.FavoritesUpdateListener;
 
 import java.util.List;
 

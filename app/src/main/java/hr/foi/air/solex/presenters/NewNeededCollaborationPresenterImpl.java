@@ -1,11 +1,11 @@
 package hr.foi.air.solex.presenters;
 
-import com.example.webservice.models.collaboration.AddNeededCollaborationListener;
-import com.example.webservice.models.collaboration.NeededCollaboration;
-import com.example.webservice.models.collaboration.NeededCollaborationInteractor;
-import com.example.webservice.models.skills.AllSkillListListener;
-import com.example.webservice.models.skills.SkillsInteractor;
-import com.example.webservice.models.skills.SkillsInteractorImpl;
+import hr.foi.air.solex.models.collaboration.AddNeededCollaborationListener;
+import hr.foi.air.solex.models.collaboration.NeededCollaboration;
+import hr.foi.air.solex.models.collaboration.NeededCollaborationInteractor;
+import hr.foi.air.solex.models.skills.AllSkillListListener;
+import hr.foi.air.solex.models.skills.SkillsInteractor;
+import hr.foi.air.solex.models.skills.SkillsInteractorImpl;
 
 import java.util.List;
 

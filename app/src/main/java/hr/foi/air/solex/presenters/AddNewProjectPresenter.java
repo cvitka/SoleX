@@ -1,8 +1,6 @@
 package hr.foi.air.solex.presenters;
 
-import com.example.webservice.models.projects.Project;
-
-import java.util.Date;
+import hr.foi.air.solex.models.projects.Project;
 
 public interface AddNewProjectPresenter {
     void createNewProject(Project project);

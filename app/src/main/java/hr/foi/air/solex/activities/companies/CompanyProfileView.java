@@ -1,7 +1,7 @@
 package hr.foi.air.solex.activities.companies;
 
-import com.example.webservice.models.mcompanies.Company;
-import com.example.webservice.models.profile_screen_project.ProfileScreenProject;
+import hr.foi.air.solex.models.mcompanies.Company;
+import hr.foi.air.solex.models.profile_screen_project.ProfileScreenProject;
 
 import java.util.List;
 

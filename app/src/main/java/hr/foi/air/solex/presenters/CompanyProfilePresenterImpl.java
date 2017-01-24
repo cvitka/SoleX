@@ -1,17 +1,17 @@
 package hr.foi.air.solex.presenters;
 
 import com.example.core.utils.UserType;
-import com.example.webservice.models.mcompanies.Company;
-import com.example.webservice.models.mcompanies.CompanyInteractor;
-import com.example.webservice.models.mcompanies.CompanyScalarListener;
-import com.example.webservice.models.profile_screen_project.ProfileScreenProject;
-import com.example.webservice.models.profile_screen_project.ProfileScreenProjectInteractor;
-import com.example.webservice.models.profile_screen_project.ProfileScreenProjectInteractorImpl;
-import com.example.webservice.models.profile_screen_project.ProfileScreenProjectListListener;
-import com.example.webservice.models.skills.AllSkillListListener;
-import com.example.webservice.models.skills.SkillListListener;
-import com.example.webservice.models.skills.SkillsInteractor;
-import com.example.webservice.models.skills.SkillsInteractorImpl;
+import hr.foi.air.solex.models.mcompanies.Company;
+import hr.foi.air.solex.models.mcompanies.CompanyInteractor;
+import hr.foi.air.solex.models.mcompanies.CompanyScalarListener;
+import hr.foi.air.solex.models.profile_screen_project.ProfileScreenProject;
+import hr.foi.air.solex.models.profile_screen_project.ProfileScreenProjectInteractor;
+import hr.foi.air.solex.models.profile_screen_project.ProfileScreenProjectInteractorImpl;
+import hr.foi.air.solex.models.profile_screen_project.ProfileScreenProjectListListener;
+import hr.foi.air.solex.models.skills.AllSkillListListener;
+import hr.foi.air.solex.models.skills.SkillListListener;
+import hr.foi.air.solex.models.skills.SkillsInteractor;
+import hr.foi.air.solex.models.skills.SkillsInteractorImpl;
 
 import java.util.List;
 

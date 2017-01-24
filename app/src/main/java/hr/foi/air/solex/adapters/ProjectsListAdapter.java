@@ -9,7 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.example.core.utils.UserType;
-import com.example.webservice.models.profile_screen_project.ProfileScreenProject;
+import hr.foi.air.solex.models.profile_screen_project.ProfileScreenProject;
 
 import java.util.List;
 

@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.webservice.models.mdevelopers.Developer;
+import hr.foi.air.solex.models.mdevelopers.Developer;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

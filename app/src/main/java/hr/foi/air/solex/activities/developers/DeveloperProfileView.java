@@ -1,8 +1,8 @@
 package hr.foi.air.solex.activities.developers;
 
 
-import com.example.webservice.models.mdevelopers.Developer;
-import com.example.webservice.models.profile_screen_project.ProfileScreenProject;
+import hr.foi.air.solex.models.mdevelopers.Developer;
+import hr.foi.air.solex.models.profile_screen_project.ProfileScreenProject;
 
 import java.util.List;
 

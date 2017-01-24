@@ -36,7 +36,8 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="55dp">
+            android:layout_marginTop="55dp"
+            android:id="@+id/scrollView">
 
         <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:tools="http://schemas.android.com/tools"
@@ -54,7 +55,7 @@
                 android:text="_company: _project"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView14"
+                android:id="@+id/activity_collaboration_tvCompanyProject"
                 android:textSize="30sp"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentStart="true" />
@@ -63,10 +64,10 @@
                 android:text="_collaboration_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/textView14"
+                android:layout_below="@+id/activity_collaboration_tvCompanyProject"
                 android:layout_alignParentStart="true"
-                android:layout_marginTop="28dp"
-                android:id="@+id/textView16"
+                android:layout_marginTop="5dp"
+                android:id="@+id/activity_collaboration_tvCollaborationName"
                 android:textSize="24sp" />
 
             <TextView
@@ -76,9 +77,9 @@
                 android:ems="10"
                 android:maxLines="4"
                 android:lines="4"
-                android:layout_below="@+id/textView16"
+                android:layout_below="@+id/activity_collaboration_tvCollaborationName"
                 android:layout_marginTop="5dp"
-                android:id="@+id/editText6"
+                android:id="@+id/activity_collaboration_tvCollaborationDescription"
                 android:textSize="16sp"/>
 
             <TextView
@@ -88,27 +89,28 @@
                 android:layout_marginTop="5dp"
                 android:id="@+id/txtViewRequierdItSkills"
                 android:textSize="18sp"
-                android:layout_below="@+id/editText6"
+                android:layout_below="@+id/activity_collaboration_tvCollaborationDescription"
                 android:layout_alignParentStart="true" />
 
             <ListView
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
+                android:layout_height="170dp"
                 android:layout_marginTop="1dp"
                 android:layout_below="@+id/txtViewRequierdItSkills"
                 android:layout_alignParentStart="true"
-                android:id="@+id/activity_project_search_lvItSkills"/>
+                android:id="@+id/activity_collaboration_lvItSkills"/>
 
             <TextView
                 android:text="Developer:"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/activity_project_search_lvItSkills"
+                android:layout_below="@+id/activity_collaboration_lvItSkills"
                 android:layout_alignParentStart="true"
-                android:id="@+id/textView18" />
+                android:id="@+id/textView18"
+                android:layout_marginTop="14dp"/>
             <ImageView
-                android:layout_width="140dp"
-                android:layout_height="140dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 app:srcCompat="@drawable/developer_logo"
                 android:id="@+id/activity_collaboration_imvDeveloper"
                 android:layout_below="@+id/textView18"
@@ -119,16 +121,17 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/textView18"
                 android:layout_toEndOf="@+id/activity_collaboration_imvDeveloper"
-                android:id="@+id/textView19"
+                android:id="@+id/activity_collaboration_tvDeveloperName"
                 android:layout_marginTop="10dp"
                 android:textSize="24sp" />
+            <!--
             <TextView
                 android:text="_it_skills_match %"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/textView19"
+                android:layout_below="@+id/activity_collaboration_tvDeveloperName"
                 android:layout_toEndOf="@+id/activity_collaboration_imvDeveloper"
-                android:id="@+id/textView17"
+                android:id="@+id/activity_collaboration_tvSkillsMatch"
                 android:layout_marginTop="10dp"
                 android:textSize="24sp" />
 
@@ -138,8 +141,8 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/activity_collaboration_btnRemove"
                 android:layout_below="@+id/activity_collaboration_imvDeveloper"
-                android:layout_alignEnd="@+id/textView16" />
-
+                android:layout_alignEnd="@+id/activity_collaboration_tvCollaborationName" />
+ -->
         </RelativeLayout>
         </ScrollView>
 

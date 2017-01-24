@@ -7,8 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.example.webservice.models.favorites.ApiFavourites;
-import com.example.webservice.models.projects.ApiProject;
+import hr.foi.air.solex.models.favorites.ApiFavourites;
 
 import java.util.ArrayList;
 

@@ -16,10 +16,10 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.example.core.utils.UserType;
-import com.example.webservice.models.mcompanies.CompanyInteractorImpl;
-import com.example.webservice.models.mcompanies.Company;
-import com.example.webservice.models.login_registration.User;
-import com.example.webservice.models.profile_screen_project.ProfileScreenProject;
+import hr.foi.air.solex.models.mcompanies.CompanyInteractorImpl;
+import hr.foi.air.solex.models.mcompanies.Company;
+import hr.foi.air.solex.models.login_registration.User;
+import hr.foi.air.solex.models.profile_screen_project.ProfileScreenProject;
 import com.github.aakira.expandablelayout.ExpandableLayout;
 import com.google.gson.Gson;
 
@@ -173,10 +173,13 @@ public class CompanyProfileActivity extends DrawerActivity implements CompanyPro
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         ProfileScreenProject clickedProject = mProjectsList.get(position);
-        Intent intent = new Intent(this, ProjectManagementActivity.class);
-        intent.putExtra("isOwner", User.isCurrentUser(UserType.COMPANY, mThisCompany.getId()));
-        intent.putExtra("projectId", clickedProject.getId());
-        startActivity(intent);
+        if(User.isCurrentUser(UserType.COMPANY, mThisCompany.getId())) {
+            Intent intent = new Intent(this, ProjectManagementActivity.class);
+            intent.putExtra("isOwner", User.isCurrentUser(UserType.COMPANY, mThisCompany.getId()));
+            intent.putExtra("projectId", clickedProject.getId());
+            startActivity(intent);
+        }
+        //else otvorit project display
     }
 
     @OnItemLongClick(R.id.activity_company_profile_lvMainTech)

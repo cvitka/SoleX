@@ -1,12 +1,9 @@
 package hr.foi.air.solex.presenters;
 
-import com.example.webservice.models.projects.CreateProjectListener;
-import com.example.webservice.models.projects.Project;
-import com.example.webservice.models.projects.ProjectInteractor;
-import com.example.webservice.models.projects.ProjectInteractorImpl;
+import hr.foi.air.solex.models.projects.CreateProjectListener;
+import hr.foi.air.solex.models.projects.Project;
+import hr.foi.air.solex.models.projects.ProjectInteractor;
 
-
-import java.util.Date;
 
 import hr.foi.air.solex.activities.companies.AddNewProjectView;
 

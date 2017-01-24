@@ -11,9 +11,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-import com.example.webservice.models.login_registration.User;
-import com.example.webservice.models.projects.Project;
-import com.example.webservice.models.projects.ProjectInteractorImpl;
+import hr.foi.air.solex.models.login_registration.User;
+import hr.foi.air.solex.models.projects.Project;
+import hr.foi.air.solex.models.projects.ProjectInteractorImpl;
 import com.jaredrummler.materialspinner.MaterialSpinner;
 
 import java.text.SimpleDateFormat;

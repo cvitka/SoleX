@@ -1,13 +1,9 @@
 package hr.foi.air.solex.presenters;
 
-import com.example.webservice.models.profile_screen_project.ProfileScreenProject;
-import com.example.webservice.models.profile_screen_project.ProfileScreenProjectInteractor;
-import com.example.webservice.models.profile_screen_project.ProfileScreenProjectInteractorImpl;
-import com.example.webservice.models.profile_screen_project.ProfileScreenProjectListListener;
-import com.example.webservice.models.projects.ApiProject;
-import com.example.webservice.models.projects.ProjectInteractor;
-import com.example.webservice.models.projects.ProjectInteractorImpl;
-import com.example.webservice.models.projects.ProjectListListener;
+import hr.foi.air.solex.models.profile_screen_project.ProfileScreenProject;
+import hr.foi.air.solex.models.profile_screen_project.ProfileScreenProjectInteractor;
+import hr.foi.air.solex.models.profile_screen_project.ProfileScreenProjectInteractorImpl;
+import hr.foi.air.solex.models.profile_screen_project.ProfileScreenProjectListListener;
 
 import java.util.List;
 

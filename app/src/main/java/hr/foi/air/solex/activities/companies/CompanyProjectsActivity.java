@@ -2,21 +2,15 @@ package hr.foi.air.solex.activities.companies;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.example.core.utils.UserType;
-import com.example.webservice.models.login_registration.User;
-import com.example.webservice.models.profile_screen_project.ProfileScreenProject;
-import com.example.webservice.models.projects.ApiProject;
-import com.example.webservice.models.projects.ProjectInteractorImpl;
+import hr.foi.air.solex.models.login_registration.User;
+import hr.foi.air.solex.models.profile_screen_project.ProfileScreenProject;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -24,7 +18,6 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import hr.foi.air.solex.R;
 import hr.foi.air.solex.activities.common.DrawerActivity;
-import hr.foi.air.solex.adapters.ProjectsAdapter;
 import hr.foi.air.solex.adapters.ProjectsListAdapter;
 import hr.foi.air.solex.presenters.CompanyProjectsPresenter;
 import hr.foi.air.solex.presenters.CompanyProjectsPresenterImpl;

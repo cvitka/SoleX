@@ -11,12 +11,10 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.webservice.models.collaboration.ApiNeededCollaborations;
-import com.example.webservice.models.collaboration.ApiNeededCollaborationsInteractorImpl;
-import com.example.webservice.models.projects.Project;
-import com.example.webservice.models.projects.SelectedProjectInteractorImpl;
+import hr.foi.air.solex.models.collaboration.ApiNeededCollaborations;
+import hr.foi.air.solex.models.projects.Project;
+import hr.foi.air.solex.models.projects.SelectedProjectInteractorImpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,8 +27,6 @@ import hr.foi.air.solex.R;
 import hr.foi.air.solex.activities.CollaborationActivity;
 import hr.foi.air.solex.activities.CompanyNeededCollaborationActivity;
 import hr.foi.air.solex.activities.common.DrawerActivity;
-import hr.foi.air.solex.presenters.GetNeededCollaaborationsPresenter;
-import hr.foi.air.solex.presenters.GetNeededCollaborationsPresenterImpl;
 import hr.foi.air.solex.presenters.ProjectManagementPresenter;
 import hr.foi.air.solex.presenters.ProjectManagementPresenterImpl;
 
@@ -56,8 +52,7 @@ public class ProjectManagementActivity extends DrawerActivity implements Project
 
     Project mThisProject;
     ProjectManagementPresenter mPresenter;
-    GetNeededCollaaborationsPresenter collabPresenter;
-    private ArrayList<String> itemsId = new ArrayList<String>();
+    List<ApiNeededCollaborations> neededCollaborations;
     private String selectedProjectName;
     private String selectedProjectId;
     private int projectId;
@@ -73,7 +68,7 @@ public class ProjectManagementActivity extends DrawerActivity implements Project
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
         mPresenter = new ProjectManagementPresenterImpl(this,new SelectedProjectInteractorImpl());
-        collabPresenter = new GetNeededCollaborationsPresenterImpl(this, new ApiNeededCollaborationsInteractorImpl());
+        //collabPresenter = new GetNeededCollaborationsPresenterImpl(this, new ApiNeededCollaborationsInteractorImpl());
 
        // String projectName;
 
@@ -90,7 +85,7 @@ public class ProjectManagementActivity extends DrawerActivity implements Project
            // projectName= (String) savedInstanceState.getSerializable("projectName");
         }
         mPresenter.getProject(projectId);
-        collabPresenter.getNeededCollaboration(projectId);
+        mPresenter.getNeededCollaboration(projectId);
         //fixes scrolling list inside ScrollView
         lvNeededCollaborations.setOnTouchListener(new View.OnTouchListener() {
             // Setting on Touch Listener for handling the touch inside ScrollView
@@ -105,12 +100,19 @@ public class ProjectManagementActivity extends DrawerActivity implements Project
 
     @OnItemClick(R.id.activity_project_management_lvNeededCollaborations)
     public void lvNeededCollaborationsClick(AdapterView<?> adapter, View item, int pos, long id){
-        if(pos%2 == 0){
-            Intent intent = new Intent(this, CompanyNeededCollaborationActivity.class);
+        ApiNeededCollaborations collab = neededCollaborations.get(pos);
+        if(collab.getHasCollaborator() > 0) {
+            Intent intent = new Intent(this, CollaborationActivity.class);
+            intent.putExtra("collaborationName", collab.getDevNcollabNme());
+            intent.putExtra("collaborationId", collab.getCollabId());
+            intent.putExtra("isOwner", true);
             startActivity(intent);
         }
         else{
-            Intent intent = new Intent(this, CollaborationActivity.class);
+            Intent intent = new Intent(this, CompanyNeededCollaborationActivity.class);
+            intent.putExtra("collaborationName", collab.getDevNcollabNme());
+            intent.putExtra("collaborationId", collab.getCollabId());
+            intent.putExtra("isOwner", true);
             startActivity(intent);
         }
     }
@@ -131,33 +133,16 @@ public class ProjectManagementActivity extends DrawerActivity implements Project
 
     @Override
     public void NeededCollaborationsArrived(List<ApiNeededCollaborations> neededCollaborationses) {
+        this.neededCollaborations = neededCollaborationses;
         ArrayList<String> items = new ArrayList<String>();
         ArrayAdapter<String> itemsAdapter;
         itemsAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items);
         for (int i = 0; i < neededCollaborationses.size(); i++) {
             items.add(neededCollaborationses.get(i).getDevNcollabNme());
-            itemsId.add(neededCollaborationses.get(i).getCollabId());
-
         }
         lvNeededCollaborations.setAdapter(itemsAdapter);
-        lvNeededCollaborations.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                selectedProjectName = ((TextView) view).getText().toString();
-                Integer selectionID = Integer.parseInt(itemsId.get(i));
-                selectedProjectId = selectionID.toString();
-                onSelect(selectedProjectName,selectedProjectId);
-
-            }
-        });
     }
 
-    public void onSelect(String name,String id){
-        Intent intent = new Intent(this, CollaborationActivity.class);
-        intent.putExtra("collaborationName",name);
-        intent.putExtra("collaborationId",id);
-        startActivity(intent);
-    }
 
     @Override
     public void onBackPressed() {

@@ -9,10 +9,8 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
-import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -21,12 +19,12 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.webservice.models.collaboration.ApiCompanyCollaborations;
-import com.example.webservice.models.collaboration.ApiCompanyCollaborationsInteractorImpl;
-import com.example.webservice.models.favorites.ApiFavourites;
-import com.example.webservice.models.favorites.ApiFavouritesInteractorImpl;
-import com.example.webservice.models.favorites.FavoritesInteractorImpl;
-import com.example.webservice.models.login_registration.User;
+import hr.foi.air.solex.models.collaboration.ApiCompanyCollaborations;
+import hr.foi.air.solex.models.collaboration.ApiCompanyCollaborationsInteractorImpl;
+import hr.foi.air.solex.models.favorites.ApiFavourites;
+import hr.foi.air.solex.models.favorites.ApiFavouritesInteractorImpl;
+import hr.foi.air.solex.models.favorites.FavoritesInteractorImpl;
+import hr.foi.air.solex.models.login_registration.User;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -16,9 +16,9 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.example.core.utils.UserType;
-import com.example.webservice.models.mdevelopers.Developer;
-import com.example.webservice.models.login_registration.User;
-import com.example.webservice.models.profile_screen_project.ProfileScreenProject;
+import hr.foi.air.solex.models.mdevelopers.Developer;
+import hr.foi.air.solex.models.login_registration.User;
+import hr.foi.air.solex.models.profile_screen_project.ProfileScreenProject;
 import com.github.aakira.expandablelayout.ExpandableLayout;
 import com.google.gson.Gson;
 

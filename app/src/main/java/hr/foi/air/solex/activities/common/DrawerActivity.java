@@ -15,7 +15,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.core.utils.UserType;
-import com.example.webservice.models.login_registration.User;
+import hr.foi.air.solex.models.login_registration.User;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import hr.foi.air.solex.R;

@@ -1,10 +1,10 @@
 package hr.foi.air.solex.presenters;
 
 import com.example.core.utils.UserType;
-import com.example.webservice.models.login_registration.LoginInteractor;
-import com.example.webservice.models.login_registration.LoginInteractorImpl;
-import com.example.webservice.models.login_registration.LoginResponseListener;
-import com.example.webservice.models.login_registration.User;
+import hr.foi.air.solex.models.login_registration.LoginInteractor;
+import hr.foi.air.solex.models.login_registration.LoginInteractorImpl;
+import hr.foi.air.solex.models.login_registration.LoginResponseListener;
+import hr.foi.air.solex.models.login_registration.User;
 
 import hr.foi.air.solex.activities.common.LoginView;
 

@@ -16,8 +16,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.webservice.models.mcompanies.CompanyInteractorImpl;
-import com.example.webservice.models.mcompanies.Company;
+import hr.foi.air.solex.models.mcompanies.CompanyInteractorImpl;
+import hr.foi.air.solex.models.mcompanies.Company;
 import com.google.gson.Gson;
 
 import java.io.ByteArrayOutputStream;

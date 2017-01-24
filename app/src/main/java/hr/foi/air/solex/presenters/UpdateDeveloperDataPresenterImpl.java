@@ -1,10 +1,10 @@
 package hr.foi.air.solex.presenters;
 
 
-import com.example.webservice.models.mdevelopers.Developer;
-import com.example.webservice.models.mdevelopers.DeveloperInteractor;
-import com.example.webservice.models.mdevelopers.DeveloperInteractorImpl;
-import com.example.webservice.models.mdevelopers.DeveloperUpdateListener;
+import hr.foi.air.solex.models.mdevelopers.Developer;
+import hr.foi.air.solex.models.mdevelopers.DeveloperInteractor;
+import hr.foi.air.solex.models.mdevelopers.DeveloperInteractorImpl;
+import hr.foi.air.solex.models.mdevelopers.DeveloperUpdateListener;
 
 import hr.foi.air.solex.activities.developers.UpdateDeveloperDataView;
 

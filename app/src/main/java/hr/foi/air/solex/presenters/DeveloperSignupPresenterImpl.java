@@ -1,9 +1,9 @@
 package hr.foi.air.solex.presenters;
 
-import com.example.webservice.models.mdevelopers.Developer;
-import com.example.webservice.models.signup.DeveloperSignupInteractor;
-import com.example.webservice.models.signup.DeveloperSignupInteractorImpl;
-import com.example.webservice.models.signup.SignUpResponseListener;
+import hr.foi.air.solex.models.mdevelopers.Developer;
+import hr.foi.air.solex.models.signup.DeveloperSignupInteractor;
+import hr.foi.air.solex.models.signup.DeveloperSignupInteractorImpl;
+import hr.foi.air.solex.models.signup.SignUpResponseListener;
 
 import hr.foi.air.solex.fragments.SignupView;
 

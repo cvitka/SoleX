@@ -1,8 +1,6 @@
 package hr.foi.air.solex.activities.companies;
 
-import com.example.webservice.models.collaboration.ApiCompanyCollaborations;
-import com.example.webservice.models.favorites.ApiFavourites;
-import com.example.webservice.models.favorites.WSResponseFavourite;
+import hr.foi.air.solex.models.collaboration.ApiCompanyCollaborations;
 
 import java.util.List;
 

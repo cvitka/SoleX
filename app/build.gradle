@@ -44,7 +44,12 @@ dependencies {
 
     compile 'com.klinkerapps:android-chips:1.1.1@aar'
 
-    compile project(':webservice')
+    //API:
+    compile 'com.google.code.gson:gson:2.4'
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.0.2'
+    compile 'com.squareup.okhttp:okhttp:2.7.0'
+
     compile project(':core')
 
 

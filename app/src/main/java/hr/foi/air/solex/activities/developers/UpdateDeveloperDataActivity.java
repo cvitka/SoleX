@@ -16,8 +16,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.webservice.models.mdevelopers.Developer;
-import com.example.webservice.models.login_registration.User;
+import hr.foi.air.solex.models.mdevelopers.Developer;
+import hr.foi.air.solex.models.login_registration.User;
 import com.google.gson.Gson;
 
 import java.io.ByteArrayOutputStream;

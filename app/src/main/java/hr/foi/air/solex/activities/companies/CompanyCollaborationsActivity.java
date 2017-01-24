@@ -7,10 +7,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
-import com.example.webservice.models.collaboration.ApiCompanyCollaborations;
-import com.example.webservice.models.collaboration.ApiCompanyCollaborationsInteractorImpl;
-import com.example.webservice.models.favorites.ApiFavourites;
-import com.example.webservice.models.favorites.FavoritesInteractorImpl;
+import hr.foi.air.solex.models.collaboration.ApiCompanyCollaborations;
+import hr.foi.air.solex.models.collaboration.ApiCompanyCollaborationsInteractorImpl;
+import hr.foi.air.solex.models.favorites.FavoritesInteractorImpl;
 
 import java.util.List;
 
