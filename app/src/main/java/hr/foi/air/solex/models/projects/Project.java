@@ -5,10 +5,20 @@ public class Project {
     private String name;
     private int stateId;
     private int companyId;
+    private String companyName;
     private String description;
     private String startDate;
     private String finishDate;
     private char status;
+
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
 
     public String getFinishDate() {
         return finishDate;

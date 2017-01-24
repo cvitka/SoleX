@@ -15,6 +15,8 @@ import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import hr.foi.air.solex.activities.common.ProjectDisplayActivity;
+import hr.foi.air.solex.activities.common.ProjectListingActivity;
 import hr.foi.air.solex.utils.UserType;
 import hr.foi.air.solex.models.mcompanies.CompanyInteractorImpl;
 import hr.foi.air.solex.models.mcompanies.Company;
@@ -173,13 +175,18 @@ public class CompanyProfileActivity extends DrawerActivity implements CompanyPro
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         ProfileScreenProject clickedProject = mProjectsList.get(position);
+        //ako smo vlasnik profila
         if(User.isCurrentUser(UserType.COMPANY, mThisCompany.getId())) {
-            Intent intent = new Intent(this, ProjectManagementActivity.class);
+            Intent intent = new Intent(this, ProjectManagementActivity.class);//otvaramo project management
             intent.putExtra("isOwner", User.isCurrentUser(UserType.COMPANY, mThisCompany.getId()));
             intent.putExtra("projectId", clickedProject.getId());
             startActivity(intent);
         }
-        //else otvorit project display
+        else {//inače otvaramo project display
+            Intent intent = new Intent(this, ProjectDisplayActivity.class);
+            intent.putExtra("projectId", clickedProject.getId());
+            startActivity(intent);
+        }
     }
 
     @OnItemLongClick(R.id.activity_company_profile_lvMainTech)
@@ -248,8 +255,12 @@ public class CompanyProfileActivity extends DrawerActivity implements CompanyPro
 
     @OnClick(R.id.activity_company_profile_btnProjects)
     public void btnClick(View view){
-        //Intent intent = new Intent(this, ProjectsListingActivity.class);
-        //startActivity(intent);
+        Intent intent = new Intent(this, ProjectListingActivity.class);
+
+        intent.putExtra("ownerId", mThisCompany.getId());
+        intent.putExtra("ownerName", mThisCompany.getName());
+        intent.putExtra("type", UserType.COMPANY.intVal());
+        startActivity(intent);
     }
 
     @OnClick(R.id.activity_company_profile_btnAddNewTech)

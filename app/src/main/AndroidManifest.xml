@@ -56,25 +56,32 @@
         <activity
             android:name=".activities.companies.CompanyCollaborationsActivity"
             android:label="Collaborations"
-            android:theme="@style/ActivityWithInput"></activity>
+            android:theme="@style/ActivityWithInput"/>
         <activity
             android:name=".activities.companies.FavouritesActivity"
             android:label="Favourites"
-            android:theme="@style/ActivityWithInput"></activity>
+            android:theme="@style/ActivityWithInput"/>
         <activity
             android:name=".activities.common.CollaborationActivity"
             android:label="Collaboration"
-            android:theme="@style/ActivityWithInput"></activity>
+            android:theme="@style/ActivityWithInput"/>
         <activity
             android:name=".activities.developers.ProjectSearchActivity"
             android:label="Search projects"
-            android:theme="@style/ActivityWithInput"></activity>
+            android:theme="@style/ActivityWithInput"/>
         <activity android:name=".activities.developers.DeveloperApplicationsActivity"
             android:label="Previous applications"
-            android:theme="@style/ActivityWithInput"></activity>
+            android:theme="@style/ActivityWithInput"/>
         <activity android:name=".activities.developers.DeveloperCollaborationsActivity"
             android:label="Collaborations"
-            android:theme="@style/ActivityWithInput"></activity>
+            android:theme="@style/ActivityWithInput"/>
+        <activity android:name=".activities.common.ProjectListingActivity"
+            android:label="Project listing"
+            android:theme="@style/ActivityWithInput"/>
+
+        <activity android:name=".activities.common.ProjectDisplayActivity"
+            android:label="Project display"
+            android:theme="@style/ActivityWithInput"/>
 
         <activity
             android:name=".activities.common.SplashScreenActivity"

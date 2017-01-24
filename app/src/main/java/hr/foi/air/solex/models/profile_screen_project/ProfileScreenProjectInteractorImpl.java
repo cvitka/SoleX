@@ -74,4 +74,31 @@ public class ProfileScreenProjectInteractorImpl extends WebServiceCommunicator i
         });
 
     }
+
+    @Override
+    public void getAllProjectList(int id, UserType userType) {
+        String action;
+        if(userType == UserType.COMPANY)
+            action = "AllProjectListCompany";
+        else
+            action = "AllProjectListDeveloper";
+        WSInterfaceProject interfaceProject = retrofit.create(WSInterfaceProject.class);
+        Call<List<ProfileScreenProject>> call = interfaceProject.getProjects(action, id);
+        call.enqueue(new Callback<List<ProfileScreenProject>>() {
+            @Override
+            public void onResponse(Call<List<ProfileScreenProject>> call, Response<List<ProfileScreenProject>> response) {
+                if (response.isSuccessful()) {
+                    if (mListListener != null) {
+                        mListListener.onProjectListCome(response.body());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<ProfileScreenProject>> call, Throwable t) {
+                Log.d("Api", t.getMessage());
+            }
+        });
+
+    }
 }

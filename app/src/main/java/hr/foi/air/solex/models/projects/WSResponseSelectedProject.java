@@ -15,6 +15,7 @@ public class WSResponseSelectedProject {
     @Expose
     private String message;
 
+
     @SerializedName("id")
     @Expose
     private int id;
@@ -39,7 +40,28 @@ public class WSResponseSelectedProject {
     @Expose
     private Date trajanjeDO;
 
-    public WSResponseSelectedProject() {
+    @SerializedName("companyId")
+    @Expose
+    private int companyId;
+
+    @SerializedName("companyName")
+    @Expose
+    private String companyName;
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
+
+    public int getCompanyId() {
+        return companyId;
+    }
+
+    public void setCompanyId(int companyId) {
+        this.companyId = companyId;
     }
 
     public String getSuccess() {

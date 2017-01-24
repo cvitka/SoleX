@@ -15,6 +15,8 @@ import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import hr.foi.air.solex.activities.common.ProjectDisplayActivity;
+import hr.foi.air.solex.activities.common.ProjectListingActivity;
 import hr.foi.air.solex.utils.UserType;
 import hr.foi.air.solex.models.mdevelopers.Developer;
 import hr.foi.air.solex.models.login_registration.User;
@@ -225,10 +227,11 @@ public class DeveloperProfileActivity extends DrawerActivity implements Develope
 
     @OnClick(R.id.activity_developer_profile_btnProjects)
     public void btnProjectsClick(){
-        if(developerId == 0) {
-            //Intent intent = new Intent(this, ProjectsListingActivity.class);
-            //startActivity(intent);
-        }
+        Intent intent = new Intent(this, ProjectListingActivity.class);
+        intent.putExtra("ownerId", mThisDeveloper.getId());
+        intent.putExtra("ownerName", mThisDeveloper.getIme() + " " + mThisDeveloper.getPrezime());
+        intent.putExtra("type", UserType.DEVELOPER.intVal());
+        startActivity(intent);
     }
 
     @Override
@@ -253,6 +256,9 @@ public class DeveloperProfileActivity extends DrawerActivity implements Develope
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         ProfileScreenProject clickedProject = mProjectsList.get(position);
+        Intent intent = new Intent(this, ProjectDisplayActivity.class);
+        intent.putExtra("projectId", clickedProject.getId());
+        startActivity(intent);
     }
 
     @OnItemLongClick(R.id.activity_developer_profile_lvDeveloperSkills)

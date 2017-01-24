@@ -38,6 +38,8 @@ public class SelectedProjectInteractorImpl extends WebServiceCommunicator implem
                                 project.setId(response.body().getId());
                                 project.setName(response.body().getNaziv());
                                 project.setDescription(response.body().getOpisProjekta());
+                                project.setCompanyId(response.body().getCompanyId());
+                                project.setCompanyName(response.body().getCompanyName());
                                 mScalarListener.onDataCome(project);
 
                             }
