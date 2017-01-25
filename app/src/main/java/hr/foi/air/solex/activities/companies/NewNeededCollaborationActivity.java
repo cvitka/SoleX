@@ -2,6 +2,7 @@ package hr.foi.air.solex.activities.companies;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -94,6 +95,15 @@ public class NewNeededCollaborationActivity extends DrawerActivity implements Ne
         //fillSpinnerSkills();
         fillSpinnerCooperationType();
         mPresenter.getAllSkills();
+        lvNeededSkills.setOnTouchListener(new View.OnTouchListener() {
+            // Setting on Touch Listener for handling the touch inside ScrollView
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                // Disallow the touch request for parent scroll on touch of child view
+                scrollView.requestDisallowInterceptTouchEvent(true);
+                return false;
+            }
+        });
     }
 
     @Override
@@ -122,7 +132,7 @@ public class NewNeededCollaborationActivity extends DrawerActivity implements Ne
             neededSkillsList.add(skill);
             neededSkillsAdapter.notifyDataSetChanged();
             actvNewSkill.setText("");
-            Utility.setListViewHeightBasedOnChildren(lvNeededSkills);
+            Utility.setListViewHeightBasedOnChildren(lvNeededSkills, 5);
         }
     }
 
@@ -145,6 +155,7 @@ public class NewNeededCollaborationActivity extends DrawerActivity implements Ne
             mCollab.setStrucnosti(neededSkillsList);
             mPresenter.addNeededCollaboration(mCollab);
         }
+
     }
 /*
     private void fillSpinnerSkills() {

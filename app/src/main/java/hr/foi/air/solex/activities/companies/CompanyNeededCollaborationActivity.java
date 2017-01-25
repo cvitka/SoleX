@@ -30,14 +30,6 @@ public class CompanyNeededCollaborationActivity extends DrawerActivity {
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
 
-        ArrayList<String> items = new ArrayList<String>();
-        ArrayAdapter<String> itemsAdapter;
-        itemsAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items);
-        items.add("developer 1");
-        items.add("developer 2");
-        items.add("developer 3");
-        items.add("developer 4");
-        lvApplicants.setAdapter(itemsAdapter);
     }
 
     @Override
