@@ -21,7 +21,6 @@ public class CompanyCollaborationsAdapter extends RecyclerView.Adapter<CompanyCo
 
     public interface ClickListener {
         void onItemClick(ApiCompanyCollaborations companyCollaborations);
-
         void onItemLongClick(ApiCompanyCollaborations companyCollaborations);
     }
 
@@ -29,7 +28,6 @@ public class CompanyCollaborationsAdapter extends RecyclerView.Adapter<CompanyCo
     ImageView addToFavorites;
 
     private List<ApiCompanyCollaborations> mProjectList;
-    public List<ApiFavourites> mFavouritesList;
     private final ClickListener mListener;
 
     Context mContext;

@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Sol.iml" filepath="$PROJECT_DIR$/Sol.iml" />
       <module fileurl="file://$PROJECT_DIR$/SoleX.iml" filepath="$PROJECT_DIR$/SoleX.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>

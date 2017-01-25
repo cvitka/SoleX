@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             android:hint="Email"
             android:inputType="textEmailAddress"
-            android:text="poduzece"/>
+            android:text="developer"/>
     </android.support.design.widget.TextInputLayout>
 
     <!--  Lozinka -->

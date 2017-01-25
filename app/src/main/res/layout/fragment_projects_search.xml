@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        tools:context="hr.foi.air.solex.activities.developers.ProjectSearchActivity">
+
+        <ScrollView
+            android:id="@+id/activity_company_profile_scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="15dp">
+
+
+            <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/activity_collaboration_search"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                tools:context="hr.foi.air.solex.activities.developers.ProjectSearchActivity">
+
+                <ListView
+                    android:id="@+id/activity_project_search_lvItSkills"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="5dp" />
+
+                <AutoCompleteTextView
+                    android:id="@+id/activity_project_search_actvNewSkill"
+                    android:layout_width="230dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/activity_project_search_lvItSkills"
+                    android:layout_marginStart="5dp"
+                    android:background="@android:color/transparent" />
+
+
+                <View
+                    android:id="@+id/line"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_below="@id/activity_project_search_actvNewSkill"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/colorPrimary"></View>
+
+                <ImageButton
+                    android:id="@+id/activity_project_search_ibAddSkills"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignEnd="@+id/activity_project_search_lvItSkills"
+                    android:layout_below="@+id/activity_project_search_lvItSkills"
+                    android:layout_marginRight="2dp"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/roundbutton"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:tag="gray_expand_img"
+                    app:srcCompat="@drawable/gray_add_button" />
+
+                <EditText
+                    android:id="@+id/activity_project_search_etAddPercentage"
+                    style="@style/EditTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/line"
+                    android:layout_marginTop="20dp"
+                    android:hint="Enter matching percentage"
+                    android:inputType="number" />
+
+                <Button
+                    android:id="@+id/btnSearchCollaborations"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/activity_project_search_etAddPercentage"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="15dp"
+                    android:text="Search"
+                    android:textColor="@color/colorAccent" />
+
+
+            </RelativeLayout>
+
+
+        </ScrollView>
+    </android.support.design.widget.CoordinatorLayout>
+
+
+</LinearLayout>

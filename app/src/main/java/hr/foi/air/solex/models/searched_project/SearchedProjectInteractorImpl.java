@@ -24,7 +24,6 @@ public class SearchedProjectInteractorImpl extends WebServiceCommunicator implem
 
     public SearchedProjectInteractorImpl(SearchedProjectListListener listener) {
         initRetrofit();
-        this.mListListener = listener;
     }
 
     public SearchedProjectInteractorImpl() {
@@ -32,7 +31,7 @@ public class SearchedProjectInteractorImpl extends WebServiceCommunicator implem
     }
 
     @Override
-    public void searchProjects(int percentage, List<String>skills) {
+    public void searchProjects(int percentage, List<String> skills) {
         String action = "ProjectSearchList";
         WSInterfaceProject interfaceProject = retrofit.create(WSInterfaceProject.class);
         Call<List<SearchedProject>> call = interfaceProject.getProjects(action, percentage, skills);
@@ -46,11 +45,17 @@ public class SearchedProjectInteractorImpl extends WebServiceCommunicator implem
                     }
                 }
             }
+
             @Override
             public void onFailure(Call<List<SearchedProject>> call, Throwable t) {
                 Log.d("Api", t.getMessage());
             }
         });
 
+    }
+
+    @Override
+    public void setSearchedProjectListListener(SearchedProjectListListener listListener) {
+        this.mListListener = listListener;
     }
 }

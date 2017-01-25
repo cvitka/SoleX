@@ -1,32 +1,54 @@
 package hr.foi.air.solex.activities.developers;
 
-import android.content.Intent;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.os.Bundle;
-import android.view.View;
+import android.os.Handler;
+import android.os.Vibrator;
+import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.ListView;
-import android.widget.TextView;
+import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
-import butterknife.OnItemClick;
 import hr.foi.air.solex.R;
-import hr.foi.air.solex.activities.FeelingLuckyActivity;
 import hr.foi.air.solex.activities.common.DrawerActivity;
-import hr.foi.air.solex.activities.common.ProjectDisplayActivity;
+import hr.foi.air.solex.fragments.ProjectsSearchFeelingLuckyFragment;
+import hr.foi.air.solex.fragments.ProjectsSearchMainFragment;
+import hr.foi.air.solex.fragments.ProjectsSearchResultFragment;
+import hr.foi.air.solex.models.login_registration.User;
+import hr.foi.air.solex.models.mdevelopers.Developer;
+import hr.foi.air.solex.presenters.developers.ProjectSearchPreseneter;
+import hr.foi.air.solex.presenters.developers.ProjectSearchPresenterImpl;
 
-public class ProjectSearchActivity extends DrawerActivity {
-    @BindView(R.id.txtViewFeelingLucky)
-    TextView txtViewFeelingLucky;
+public class ProjectSearchActivity extends DrawerActivity implements SensorEventListener, ProjectsSearchFeelingLuckyFragment.ReturnToPreviousListener {
 
-    @BindView(R.id.activity_project_search_lvSearchedProjects)
-    ListView lvSearchedProjects;
+    SensorManager mSensorManager;
+    private Sensor mSensor;
+    private Vibrator mVibrator;
+    private long mShakeTimestamp;
 
-    @BindView(R.id.activity_project_search_lvItSkills)
-    ListView lvItSkills;
+    ProjectsSearchFeelingLuckyFragment mProjectsSearchFeelingLuckyFragment;
+    ProjectsSearchMainFragment projectsSearchMainFragment;
+
+    ArrayList<String> allSkills;
+    ArrayList<String> devSkills;
+
+    private static final int SHAKE_SLOP_TIME_MS = 500;
+    private static final float SHAKE_THRESHOLD_GRAVITY = 1.3F;
+
+    boolean dataArrived = false;
+
+    @BindView(R.id.content_frame)
+    RelativeLayout frameLayout;
 
     @Override
     protected int getLayoutId() {
@@ -37,36 +59,65 @@ public class ProjectSearchActivity extends DrawerActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
-        ArrayList<String> items = new ArrayList<String>();
-        ArrayAdapter<String> itemsAdapter;
-        itemsAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items);
-        items.add("project 1");
-        items.add("project 2");
-        items.add("project 3");
-        items.add("project 4");
-        lvSearchedProjects.setAdapter(itemsAdapter);
+
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.content_frame, projectsSearchMainFragment.newInstance());
+        fragmentTransaction.commit();
 
 
-        ArrayList<String> items2 = new ArrayList<String>();
-        ArrayAdapter<String> itemsAdapter2;
-        itemsAdapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items2);
-        items2.add("skill 1");
-        items2.add("skill 2");
-        items2.add("skill 3");
-        items2.add("skill 4");
-        lvItSkills.setAdapter(itemsAdapter2);
+        mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+        mSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        mSensorManager.registerListener(this, mSensor, SensorManager.SENSOR_DELAY_NORMAL);
+
+        mVibrator = (Vibrator) getSystemService(getApplicationContext().VIBRATOR_SERVICE);
+
+        mProjectsSearchFeelingLuckyFragment = new ProjectsSearchFeelingLuckyFragment();
+        mProjectsSearchFeelingLuckyFragment.newInstance();
+        mProjectsSearchFeelingLuckyFragment.setListener(this);
     }
 
-    @OnItemClick(R.id.activity_project_search_lvSearchedProjects)
-    public void lvSearchedProjectsClick(View view) {
-        //open project page
-        Intent intent = new Intent(this, ProjectDisplayActivity.class);
-        startActivity(intent);
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+        Sensor mySensor = event.sensor;
+//cujem ja teb
+        //hahahaha pa kako ne cujes ja kad pricam gledaj speakers sto ide gore
+        if (mySensor.getType() == Sensor.TYPE_ACCELEROMETER) {
+            float x = event.values[0];
+            float y = event.values[1];
+            float z = event.values[2];
+            float gX = x / SensorManager.GRAVITY_EARTH;
+            float gY = y / SensorManager.GRAVITY_EARTH;
+            float gZ = z / SensorManager.GRAVITY_EARTH;
+
+            float gForce = (float) Math.sqrt(gX * gX + gY * gY + gZ * gZ);
+            if (gForce > SHAKE_THRESHOLD_GRAVITY) {
+                final long now = System.currentTimeMillis();
+                final long time = mShakeTimestamp + SHAKE_SLOP_TIME_MS;
+                Log.d("time", Float.toString(time));
+                if (mShakeTimestamp + SHAKE_SLOP_TIME_MS > now) {
+                    return;
+                }
+                mShakeTimestamp = now;
+                mSensorManager.unregisterListener(this);
+                mVibrator.vibrate(500);
+
+                FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.content_frame, ProjectsSearchFeelingLuckyFragment.newInstance());
+                fragmentTransaction.addToBackStack(" ProjectSearchMainFragment");
+                fragmentTransaction.commit();
+
+            }
+        }
     }
 
-    @OnClick(R.id.txtViewFeelingLucky)
-    public void txtViewFeelingLuckyClick(){
-        Intent intent = new Intent(this, FeelingLuckyActivity.class);
-        startActivity(intent);
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
     }
+
+    @Override
+    public void activateShakeSensor() {
+        mSensorManager.registerListener(this, mSensor, SensorManager.SENSOR_DELAY_NORMAL);
+    }
+
 }

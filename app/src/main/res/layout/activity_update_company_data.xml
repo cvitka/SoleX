@@ -52,17 +52,14 @@
                     android:id="@+id/activity_update_company_iwNewImage"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:layout_marginLeft="15dp"
                     android:layout_alignParentStart="true"
-                    app:srcCompat="@drawable/company_logo"
-                    android:layout_below="@+id/activity_update_company_tvNewInfo"
-                    />
+                    android:layout_marginLeft="15dp"
+                    app:srcCompat="@drawable/company_logo" />
 
                 <TextView
                     android:id="@+id/activity_update_company_tvNewName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignStart="@+id/activity_update_company_tvNewInfo"
                     android:layout_below="@+id/activity_update_company_iwNewImage"
                     android:layout_marginTop="11dp"
                     android:text="Company name" />

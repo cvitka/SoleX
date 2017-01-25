@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/projects_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:minHeight="72dp"
+    android:orientation="horizontal"
+    android:padding="16dp"
+    android:weightSum="1">
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_width="160dp">
+
+        <TextView
+            android:id="@+id/activity_search_projects_company_name"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:textColor="@color/colorPrimaryDarker"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:layout_width="match_parent" />
+
+        <TextView
+            android:id="@+id/activity_search_projects_project_name"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/activity_search_projects_company_name"
+            android:layout_width="match_parent" />
+
+        <TextView
+            android:id="@+id/activity_search_projects_collab_name"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/colorPrimary"
+            android:layout_width="match_parent" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_height="55dp"
+        android:orientation="vertical"
+        android:layout_width="130dp">
+
+        <TextView
+            android:id="@+id/activity_search_projects_project_percentage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="7dp"
+            android:layout_marginTop="5dp"
+            android:gravity="top"/>
+
+        <TextView
+            android:id="@+id/activity_search_projects_matches"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:gravity="top"/>
+    </LinearLayout>
+</LinearLayout>
