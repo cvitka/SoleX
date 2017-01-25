@@ -1,4 +1,4 @@
-package hr.foi.air.solex.activities;
+package hr.foi.air.solex.activities.companies;
 
 import android.content.Intent;
 import android.os.Bundle;

@@ -7,6 +7,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -14,8 +15,12 @@ import butterknife.OnItemClick;
 import hr.foi.air.solex.R;
 import hr.foi.air.solex.activities.NeededCollaborationActivity;
 import hr.foi.air.solex.activities.common.DrawerActivity;
+import hr.foi.air.solex.models.collab_applicat.CollabApplicat;
+import hr.foi.air.solex.models.login_registration.User;
+import hr.foi.air.solex.presenters.developers.DeveloperApplicationsPresenter;
+import hr.foi.air.solex.presenters.developers.DeveloperApplicationsPresenterImpl;
 
-public class DeveloperApplicationsActivity extends DrawerActivity {
+public class DeveloperApplicationsActivity extends DrawerActivity implements DeveloperApplicationsView{
     @BindView(R.id.activity_developer_applications_lvApplications)
     ListView lvApplications;
 
@@ -23,6 +28,10 @@ public class DeveloperApplicationsActivity extends DrawerActivity {
     protected int getLayoutId() {
         return R.layout.activity_developer_applications;
     }
+
+    DeveloperApplicationsPresenter mApplicationsPresenter;
+
+    List<CollabApplicat> mApplicationsList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,11 +46,18 @@ public class DeveloperApplicationsActivity extends DrawerActivity {
         items.add("application 3");
         items.add("application 4");
         lvApplications.setAdapter(itemsAdapter);
+        this.mApplicationsPresenter = new DeveloperApplicationsPresenterImpl(this);
+        mApplicationsPresenter.getApplications(User.getInstance().getId());
     }
 
     @OnItemClick(R.id.activity_developer_applications_lvApplications)
     public void lvApplicationstemClick(View view){
         Intent intent = new Intent(this, NeededCollaborationActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    public void onApplicationsArrived(List<CollabApplicat> list) {
+        mApplicationsList = list;
     }
 }

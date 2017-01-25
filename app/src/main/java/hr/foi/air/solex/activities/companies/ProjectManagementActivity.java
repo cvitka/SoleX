@@ -25,7 +25,6 @@ import butterknife.OnClick;
 import butterknife.OnItemClick;
 import hr.foi.air.solex.R;
 import hr.foi.air.solex.activities.common.CollaborationActivity;
-import hr.foi.air.solex.activities.CompanyNeededCollaborationActivity;
 import hr.foi.air.solex.activities.common.DrawerActivity;
 import hr.foi.air.solex.presenters.companies.ProjectManagementPresenter;
 import hr.foi.air.solex.presenters.companies.ProjectManagementPresenterImpl;

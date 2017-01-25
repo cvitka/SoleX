@@ -139,9 +139,11 @@ public class AddNewProjectActivity extends DrawerActivity implements AddNewProje
     }
 
     @Override
-    public void onCreation() {
+    public void onCreation(int newProjectId) {
         Toast.makeText(this, "The project has been created", Toast.LENGTH_LONG).show();
-        Intent intent = new Intent(this, CompanyProjectsActivity.class);
+        Intent intent = new Intent(this, ProjectManagementActivity.class);
+        intent.putExtra("isOwner", true);
+        intent.putExtra("projectId", newProjectId);
         startActivity(intent);
     }
 }

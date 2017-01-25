@@ -35,6 +35,18 @@ public class WSResponseProject {
     @Expose
     private int companyId;
 
+    @SerializedName("newId")
+    @Expose
+    private int newProjectId;
+
+    public int getNewProjectId() {
+        return newProjectId;
+    }
+
+    public void setNewProjectId(int newProjectId) {
+        this.newProjectId = newProjectId;
+    }
+
     public String getSuccess() {
         return success;
     }

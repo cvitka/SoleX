@@ -7,7 +7,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -20,18 +19,13 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnItemClick;
 import hr.foi.air.solex.R;
-import hr.foi.air.solex.activities.CompanyNeededCollaborationActivity;
-import hr.foi.air.solex.activities.NeededCollaborationActivity;
+import hr.foi.air.solex.activities.companies.CompanyNeededCollaborationActivity;
 import hr.foi.air.solex.activities.companies.CompanyProfileActivity;
-import hr.foi.air.solex.activities.companies.NewNeededCollaborationActivity;
 import hr.foi.air.solex.models.collaboration.ApiNeededCollaborations;
-import hr.foi.air.solex.models.login_registration.User;
 import hr.foi.air.solex.models.projects.Project;
 import hr.foi.air.solex.models.projects.SelectedProjectInteractorImpl;
 import hr.foi.air.solex.presenters.common.ProjectDisplayPresenter;
 import hr.foi.air.solex.presenters.common.ProjectDisplayPresenterImpl;
-import hr.foi.air.solex.presenters.companies.ProjectManagementPresenter;
-import hr.foi.air.solex.presenters.companies.ProjectManagementPresenterImpl;
 
 public class ProjectDisplayActivity extends DrawerActivity implements ProjectDisplayView{
 

@@ -78,9 +78,11 @@
         <activity android:name=".activities.common.ProjectListingActivity"
             android:label="Project listing"
             android:theme="@style/ActivityWithInput"/>
-
         <activity android:name=".activities.common.ProjectDisplayActivity"
             android:label="Project display"
+            android:theme="@style/ActivityWithInput"/>
+        <activity android:name=".activities.companies.CompanyNeededCollaborationActivity"
+            android:label="Needed collaboration"
             android:theme="@style/ActivityWithInput"/>
 
         <activity

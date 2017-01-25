@@ -7,6 +7,7 @@ import hr.foi.air.solex.models.login_registration.User;
 
 import java.util.List;
 
+import okhttp3.HttpUrl;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -37,6 +38,7 @@ public class ProjectInteractorImpl extends WebServiceCommunicator implements Pro
     public void createNewProject(Project project) {
         WSInterfaceProject interfaceProject = retrofit.create(WSInterfaceProject.class);
         Call<WSResponseProject> call = interfaceProject.addProject(project.getName(), project.getDescription(), project.getStartDate(), project.getStateId(), project.getCompanyId());
+        HttpUrl str = call.request().url();
         if (call != null) {
             call.enqueue(new Callback<WSResponseProject>() {
                 @Override
@@ -44,7 +46,7 @@ public class ProjectInteractorImpl extends WebServiceCommunicator implements Pro
                     if (response.isSuccessful()) {
                         if (response.body().getSuccess().equals("1")) {
                             if (mCreateProjectListener != null) {
-                                mCreateProjectListener.onProjectCreate();
+                                mCreateProjectListener.onProjectCreate(response.body().getNewProjectId());
                             }
                         }
                     }

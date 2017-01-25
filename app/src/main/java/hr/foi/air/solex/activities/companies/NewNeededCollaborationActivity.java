@@ -140,7 +140,7 @@ public class NewNeededCollaborationActivity extends DrawerActivity implements Ne
             mCollab.setProjectId(projekt);
             mCollab.setName(etCollabName.getText().toString());
             mCollab.setDescription(etCollabDescription.getText().toString());
-            mCollab.setTypeOfWork(spICooperationType.getSelectedIndex());
+            mCollab.setTypeOfWork(spICooperationType.getSelectedIndex()+1);//+1 jer ID-ovi kreću od 1 ne od 0 (za A nije htjelo dodat u bazu)
             mCollab.setNaknada(50);
             mCollab.setStrucnosti(neededSkillsList);
             mPresenter.addNeededCollaboration(mCollab);

@@ -23,7 +23,7 @@ public class AddNewProjectPresenterImpl implements AddNewProjectPresenter, Creat
     }
 
     @Override
-    public void onProjectCreate() {
-        mAddNewProjectView.onCreation();
+    public void onProjectCreate(int newProjectId) {
+        mAddNewProjectView.onCreation(newProjectId);
     }
 }
