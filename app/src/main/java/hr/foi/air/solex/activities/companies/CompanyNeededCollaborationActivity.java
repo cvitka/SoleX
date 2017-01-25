@@ -18,7 +18,7 @@ import hr.foi.air.solex.activities.common.CollaborationActivity;
 import hr.foi.air.solex.activities.common.DrawerActivity;
 import hr.foi.air.solex.activities.developers.DeveloperProfileActivity;
 
-public class CompanyNeededCollaborationActivity extends DrawerActivity {
+public class CompanyNeededCollaborationActivity extends DrawerActivity implements CompanyNeededCollaborationView{
     @BindView(R.id.activity_company_needed_collaboration_lvApplicants)
     ListView lvApplicants;
 
@@ -47,5 +47,20 @@ public class CompanyNeededCollaborationActivity extends DrawerActivity {
     public void btnAcceptApplicantClick(){
         Intent intent = new Intent(this, CollaborationActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    public void onApplicantsArrived() {
+
+    }
+
+    @Override
+    public void onSkillsListArrived() {
+
+    }
+
+    @Override
+    public void onSuccessfullAssign() {
+
     }
 }
