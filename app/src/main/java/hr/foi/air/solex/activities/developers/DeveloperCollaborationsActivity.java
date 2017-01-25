@@ -36,16 +36,7 @@ public class DeveloperCollaborationsActivity extends DrawerActivity implements D
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ButterKnife.bind(this);
 
-        ArrayList<String> items = new ArrayList<String>();
-        ArrayAdapter<String> itemsAdapter;
-        itemsAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items);
-        items.add("collaboration 1");
-        items.add("collaboration 2");
-        items.add("collaboration 3");
-        items.add("collaboration 4");
-        lvCollaborations.setAdapter(itemsAdapter);
         this.mCollaborationsPresenter = new DeveloperCollaborationsPresenterImpl(this);
         mCollaborationsPresenter.getCollaborations(User.getInstance().getId());
     }

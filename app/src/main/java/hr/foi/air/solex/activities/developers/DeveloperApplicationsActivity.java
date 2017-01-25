@@ -36,16 +36,7 @@ public class DeveloperApplicationsActivity extends DrawerActivity implements Dev
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ButterKnife.bind(this);
 
-        ArrayList<String> items = new ArrayList<String>();
-        ArrayAdapter<String> itemsAdapter;
-        itemsAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items);
-        items.add("application 1");
-        items.add("application 2");
-        items.add("application 3");
-        items.add("application 4");
-        lvApplications.setAdapter(itemsAdapter);
         this.mApplicationsPresenter = new DeveloperApplicationsPresenterImpl(this);
         mApplicationsPresenter.getApplications(User.getInstance().getId());
     }
