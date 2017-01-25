@@ -56,7 +56,7 @@
 
     <string name="activity_developer_applications_ListLabel">List of all your applications</string>
 
-    <!-- -->
+    <!-- CollabApplicat-->
     <string name="tvDateStartedLabel">started</string>
     <string name="tvDateApplicatedLabel">applied</string>
     <string name="tvCollabModelLabel">Collaboration model</string>
@@ -64,5 +64,11 @@
 
     <string name="collon">:</string>
     <string name="dash">-</string>
+
+
+    <!--Applicants -->
+    <string name="applied">Applied</string>
+    <string name="with">with</string>
+    <string name="perc_match">% match</string>
 
 </resources>

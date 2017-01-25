@@ -31,85 +31,90 @@
                 app:popupTheme="@style/AppTheme.PopupOverlay" />
 
         </android.support.design.widget.AppBarLayout>
-
-        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:tools="http://schemas.android.com/tools"
-            android:id="@+id/activity_needed_collaboration"
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingBottom="@dimen/activity_vertical_margin"
-            android:paddingLeft="@dimen/activity_horizontal_margin"
-            android:paddingRight="@dimen/activity_horizontal_margin"
-            android:paddingTop="@dimen/activity_vertical_margin"
             android:layout_marginTop="55dp"
-            tools:context="hr.foi.air.solex.activities.companies.CompanyNeededCollaborationActivity">
-
-            <TextView
-                android:text="_project"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView14"
-                android:textSize="30sp"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentStart="true" />
-
-            <TextView
-                android:text="_collaboration_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/textView14"
-                android:layout_alignParentStart="true"
-                android:layout_marginTop="28dp"
-                android:id="@+id/textView16"
-                android:textSize="20sp" />
-
-            <TextView
-                android:text="Required IT skills"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:id="@+id/txtViewRequierdItSkills"
-                android:textSize="18sp"
-                android:layout_below="@+id/textView16"
-                android:layout_alignParentStart="true" />
-
-            <ListView
+            android:id="@+id/activity_company_profile_scrollView">
+            <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/activity_needed_collaboration"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="15dp"
-                android:layout_marginTop="1dp"
-                android:layout_below="@+id/txtViewRequierdItSkills"
-                android:layout_alignParentStart="true"
-                android:id="@+id/activity_project_search_lvItSkills"/>
+                android:layout_height="match_parent"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                tools:context="hr.foi.air.solex.activities.companies.CompanyNeededCollaborationActivity">
 
-            <TextView
-                android:text="Applicants"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/activity_project_search_lvItSkills"
-                android:layout_alignParentStart="true"
-                android:id="@+id/textView17"
-                android:textSize="20sp"/>
+                <TextView
+                    android:text="_project"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/activity_company_needed_collaboration_tvProjectName"
+                    android:textSize="30sp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentStart="true" />
 
-            <ListView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/textView17"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="28dp"
-                android:id="@+id/activity_company_needed_collaboration_lvApplicants"/>
+                <TextView
+                    android:text="_collaboration_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/activity_company_needed_collaboration_tvProjectName"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="8dp"
+                    android:id="@+id/activity_company_needed_collaboration_tvCollabName"
+                    android:textSize="24sp" />
 
-            <Button
-                android:text="Accept application"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/activity_company_needed_collaboration_btnAcceptApplicant"
-                android:layout_below="@+id/activity_company_needed_collaboration_lvApplicants"
-                android:layout_centerInParent="true"/>
+                <TextView
+                    android:text="Required IT skills"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:id="@+id/txtViewRequierdItSkills"
+                    android:textSize="18sp"
+                    android:layout_below="@+id/activity_company_needed_collaboration_tvCollabName"
+                    android:layout_alignParentStart="true" />
 
-        </RelativeLayout>
+                <ListView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="100dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_below="@+id/txtViewRequierdItSkills"
+                    android:layout_alignParentStart="true"
+                    android:id="@+id/activity_company_needed_collaboration_lvItSkills"/>
 
+                <TextView
+                    android:text="Applicants"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/activity_company_needed_collaboration_lvItSkills"
+                    android:layout_alignParentStart="true"
+                    android:id="@+id/textView17"
+                    android:layout_marginTop="8dp"
+                    android:textSize="20sp"/>
 
+                <ListView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textView17"
+                    android:minHeight="100dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="4dp"
+                    android:id="@+id/activity_company_needed_collaboration_lvApplicants"
+                    android:dividerHeight="3dp"/>
+
+                <Button
+                    android:text="Accept application"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/activity_company_needed_collaboration_btnAcceptApplicant"
+                    android:layout_below="@+id/activity_company_needed_collaboration_lvApplicants"
+                    android:layout_centerInParent="true"/>
+            </RelativeLayout>
+
+        </ScrollView>
     </android.support.design.widget.CoordinatorLayout>
 
     <android.support.design.widget.NavigationView
