@@ -7,11 +7,20 @@ public class CollabApplicat {
     private String companyName;
     private String projectName;
     private String collaborationName;
+    private int collaborationId;
     private int collaborationType;
     private String applicationDate;
     private String collaborationStartedDate;
     private String applicationState;
     private int pay;
+
+    public int getCollaborationId() {
+        return collaborationId;
+    }
+
+    public void setCollaborationId(int collaborationId) {
+        this.collaborationId = collaborationId;
+    }
 
     public String getApplicationState() {
         return applicationState;

@@ -3,6 +3,7 @@ package hr.foi.air.solex.activities.developers;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -46,9 +47,11 @@ public class DeveloperCollaborationsActivity extends DrawerActivity implements D
     }
 
     @OnItemClick(R.id.activity_developer_collaborations_lvCollaborations)
-    public void lvCollaborationsClick(View view){
-        //Intent intent = new Intent(this, CollaborationActivity.class);
-        //startActivity(intent);
+    public void lvCollaborationsClick(AdapterView<?> parent, View view, int position, long id){
+        Intent intent = new Intent(this, CollaborationActivity.class);
+        intent.putExtra("isOwner", false);
+        intent.putExtra("collaborationId", mCollaborationsList.get(position).getCollaborationId());
+        startActivity(intent);
     }
 
     @Override

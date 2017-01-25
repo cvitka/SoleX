@@ -3,6 +3,7 @@ package hr.foi.air.solex.activities.developers;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -14,6 +15,7 @@ import butterknife.ButterKnife;
 import butterknife.OnItemClick;
 import hr.foi.air.solex.R;
 import hr.foi.air.solex.activities.NeededCollaborationActivity;
+import hr.foi.air.solex.activities.common.CollaborationActivity;
 import hr.foi.air.solex.activities.common.DrawerActivity;
 import hr.foi.air.solex.adapters.CollabApplicatAdapter;
 import hr.foi.air.solex.models.collab_applicat.CollabApplicat;
@@ -44,9 +46,15 @@ public class DeveloperApplicationsActivity extends DrawerActivity implements Dev
     }
 
     @OnItemClick(R.id.activity_developer_applications_lvApplications)
-    public void lvApplicationstemClick(View view){
-        Intent intent = new Intent(this, NeededCollaborationActivity.class);
-        startActivity(intent);
+    public void lvApplicationstemClick(AdapterView<?> parent, View view, int position, long id){
+        //Intent intent = new Intent(this, NeededCollaborationActivity.class);
+        //startActivity(intent);
+        if(mApplicationsList.get(position).getApplicationState().equals("p")){
+            Intent intent = new Intent(this, CollaborationActivity.class);
+            intent.putExtra("isOwner", false);
+            intent.putExtra("collaborationId", mApplicationsList.get(position).getCollaborationId());
+            startActivity(intent);
+        }
     }
 
     @Override
