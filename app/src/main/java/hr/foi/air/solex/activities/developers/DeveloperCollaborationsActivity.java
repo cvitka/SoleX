@@ -15,10 +15,13 @@ import butterknife.OnItemClick;
 import hr.foi.air.solex.R;
 import hr.foi.air.solex.activities.common.CollaborationActivity;
 import hr.foi.air.solex.activities.common.DrawerActivity;
+import hr.foi.air.solex.adapters.CollabApplicatAdapter;
+import hr.foi.air.solex.adapters.ProjectsListAdapter;
 import hr.foi.air.solex.models.collab_applicat.CollabApplicat;
 import hr.foi.air.solex.models.login_registration.User;
 import hr.foi.air.solex.presenters.developers.DeveloperCollaborationsPresenter;
 import hr.foi.air.solex.presenters.developers.DeveloperCollaborationsPresenterImpl;
+import hr.foi.air.solex.utils.UserType;
 
 public class DeveloperCollaborationsActivity extends DrawerActivity implements DeveloperCollaborationsView {
 
@@ -32,6 +35,7 @@ public class DeveloperCollaborationsActivity extends DrawerActivity implements D
 
     DeveloperCollaborationsPresenter mCollaborationsPresenter;
     List<CollabApplicat> mCollaborationsList;
+    CollabApplicatAdapter mCollabAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,12 +47,16 @@ public class DeveloperCollaborationsActivity extends DrawerActivity implements D
 
     @OnItemClick(R.id.activity_developer_collaborations_lvCollaborations)
     public void lvCollaborationsClick(View view){
-        Intent intent = new Intent(this, CollaborationActivity.class);
-        startActivity(intent);
+        //Intent intent = new Intent(this, CollaborationActivity.class);
+        //startActivity(intent);
     }
 
     @Override
     public void onCollaborationsArrived(List<CollabApplicat> list) {
         mCollaborationsList = list;
+
+        //lvCollaborations.setOnItemClickListener(this);
+        mCollabAdapter = new CollabApplicatAdapter(this, R.layout.list_item_developer_collab_applicat, mCollaborationsList, 'c');
+        lvCollaborations.setAdapter(mCollabAdapter);
     }
 }

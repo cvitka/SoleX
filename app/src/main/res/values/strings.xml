@@ -53,4 +53,16 @@
     <string name="company_proj_list_label">Company’s projects list</string>
     <string name="developer_proj_list_label">Developer’s projects list</string>
     <string name="projects_list"> projects list</string>
+
+    <string name="activity_developer_applications_ListLabel">List of all your applications</string>
+
+    <!-- -->
+    <string name="tvDateStartedLabel">started</string>
+    <string name="tvDateApplicatedLabel">applied</string>
+    <string name="tvCollabModelLabel">Collaboration model</string>
+    <string name="tvPaymentLabel">Agreed payment</string>
+
+    <string name="collon">:</string>
+    <string name="dash">-</string>
+
 </resources>

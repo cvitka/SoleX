@@ -9,7 +9,17 @@ public class CollabApplicat {
     private String collaborationName;
     private int collaborationType;
     private String applicationDate;
+    private String collaborationStartedDate;
+    private String applicationState;
     private int pay;
+
+    public String getApplicationState() {
+        return applicationState;
+    }
+
+    public void setApplicationState(String applicationState) {
+        this.applicationState = applicationState;
+    }
 
     public String getCompanyName() {
         return companyName;
@@ -33,6 +43,14 @@ public class CollabApplicat {
 
     public void setCollaborationName(String collaborationName) {
         this.collaborationName = collaborationName;
+    }
+
+    public String getCollaborationStartedDate() {
+        return collaborationStartedDate;
+    }
+
+    public void setCollaborationStartedDate(String collaborationStartedDate) {
+        this.collaborationStartedDate = collaborationStartedDate;
     }
 
     public int getCollaborationType() {

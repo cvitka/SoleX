@@ -15,6 +15,7 @@ import butterknife.OnItemClick;
 import hr.foi.air.solex.R;
 import hr.foi.air.solex.activities.NeededCollaborationActivity;
 import hr.foi.air.solex.activities.common.DrawerActivity;
+import hr.foi.air.solex.adapters.CollabApplicatAdapter;
 import hr.foi.air.solex.models.collab_applicat.CollabApplicat;
 import hr.foi.air.solex.models.login_registration.User;
 import hr.foi.air.solex.presenters.developers.DeveloperApplicationsPresenter;
@@ -33,6 +34,7 @@ public class DeveloperApplicationsActivity extends DrawerActivity implements Dev
 
     List<CollabApplicat> mApplicationsList;
 
+    CollabApplicatAdapter mApplicatAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,5 +52,7 @@ public class DeveloperApplicationsActivity extends DrawerActivity implements Dev
     @Override
     public void onApplicationsArrived(List<CollabApplicat> list) {
         mApplicationsList = list;
+        mApplicatAdapter = new CollabApplicatAdapter(this, R.layout.list_item_developer_collab_applicat, mApplicationsList, 'a');
+        lvApplications.setAdapter(mApplicatAdapter);
     }
 }
