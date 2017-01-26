@@ -4,17 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnItemClick;
 import hr.foi.air.solex.R;
-import hr.foi.air.solex.activities.NeededCollaborationActivity;
 import hr.foi.air.solex.activities.common.CollaborationActivity;
 import hr.foi.air.solex.activities.common.DrawerActivity;
 import hr.foi.air.solex.adapters.CollabApplicatAdapter;

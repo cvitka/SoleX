@@ -5,21 +5,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toolbar;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnItemClick;
 import hr.foi.air.solex.R;
-import hr.foi.air.solex.activities.NeededCollaborationActivity;
 import hr.foi.air.solex.adapters.ProjectsListAdapter;
-import hr.foi.air.solex.models.login_registration.User;
 import hr.foi.air.solex.models.profile_screen_project.ProfileScreenProject;
 import hr.foi.air.solex.presenters.common.ProjectListingPresenter;
 import hr.foi.air.solex.presenters.common.ProjectListingPresenterImpl;

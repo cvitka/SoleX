@@ -85,6 +85,9 @@
         <activity android:name=".activities.companies.CompanyNeededCollaborationActivity"
             android:label="Needed collaboration"
             android:theme="@style/ActivityWithInput"/>
+        <activity android:name=".activities.developers.DeveloperNeededCollaborationActivity"
+            android:label="Job opportunity"
+            android:theme="@style/ActivityWithInput"/>
 
         <activity
             android:name=".activities.common.SplashScreenActivity"

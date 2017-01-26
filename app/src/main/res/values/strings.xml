@@ -71,4 +71,9 @@
     <string name="with">with</string>
     <string name="perc_match">% match</string>
 
+    <!--Developer applicating -->
+    <string name="applicate">Applicate</string>
+    <string name="withdraw">Withdraw application</string>
+    <string name="num_applicants">Number of applicants</string>
+
 </resources>

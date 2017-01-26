@@ -8,6 +8,10 @@ public interface ApiNeededCollaborationsInteractor {
     void setListListener(ApiNeededCollaborationListListener neededCollaborationListListener);
     void setNeededCollabDataListener(NeededCollaborationDataScalarListener listener);
     void setApplicationAcceptedListener(ApplicationAcceptedListener listener);
+    void setDeveloperAppliesListener(DeveloperAppliesListener listener);
     void getNeededCollaboration(int collaborationId);
+    void getNeededCollaboration(int collaborationId, int developerId);
     void applicationAccepted(int collaborationId, int developerId);
+    void developerApplied(int collaborationId, int developerId);
+    void developerRemovedApply(int collaborationId, int developerId);
 }
