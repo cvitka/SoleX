@@ -15,7 +15,7 @@ public class ProjectSearchResultPresenterImpl implements ProjectSearchResultPres
 
     public ProjectSearchResultPresenterImpl(ProjectSearchResultView projectSearchResultView) {
         mProjectSearchResultView = projectSearchResultView;
-        mPearchedProjectInteractor = new SearchedProjectInteractorImpl(this);
+        mPearchedProjectInteractor = new SearchedProjectInteractorImpl();
         mPearchedProjectInteractor.setSearchedProjectListListener(this);
     }
 

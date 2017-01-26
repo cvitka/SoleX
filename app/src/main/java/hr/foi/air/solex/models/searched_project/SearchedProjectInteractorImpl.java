@@ -2,6 +2,7 @@ package hr.foi.air.solex.models.searched_project;
 
 import android.util.Log;
 
+import java.lang.ref.SoftReference;
 import java.util.List;
 
 import hr.foi.air.solex.models.WebServiceCommunicator;
@@ -20,10 +21,9 @@ public class SearchedProjectInteractorImpl extends WebServiceCommunicator implem
     private interface WSInterfaceProject {
         @GET("dohvatiProjekte.php")
         Call<List<SearchedProject>> getProjects(@Query("tipDohvacanja") String tipDohvacanja, @Query("percentage") int percentage, @Query("skills[]") List<String> skills);
-    }
 
-    public SearchedProjectInteractorImpl(SearchedProjectListListener listener) {
-        initRetrofit();
+        @GET("dohvatiProjekte.php")
+        Call<List<SearchedProject>> getLucky(@Query("tipDohvacanja") String tipDohvacanja, @Query("skills[]") List<String> skills);
     }
 
     public SearchedProjectInteractorImpl() {
@@ -52,6 +52,28 @@ public class SearchedProjectInteractorImpl extends WebServiceCommunicator implem
             }
         });
 
+    }
+
+    @Override
+    public void luckySearchProjects(List<String> skills) {
+        String action = "ProjectSearchLucky";
+        WSInterfaceProject interfaceProject = retrofit.create(WSInterfaceProject.class);
+        Call<List<SearchedProject>> call = interfaceProject.getLucky(action, skills);
+        call.enqueue(new Callback<List<SearchedProject>>() {
+            @Override
+            public void onResponse(Call<List<SearchedProject>> call, Response<List<SearchedProject>> response) {
+                if (response.isSuccessful()) {
+                    if (mListListener != null) {
+                        mListListener.onProjectListCome(response.body());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<SearchedProject>> call, Throwable t) {
+                Log.d("Api", t.getMessage());
+            }
+        });
     }
 
     @Override
