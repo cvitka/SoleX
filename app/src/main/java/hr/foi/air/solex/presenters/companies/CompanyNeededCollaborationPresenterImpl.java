@@ -16,7 +16,7 @@ import hr.foi.air.solex.models.skills.SkillListListener;
 import hr.foi.air.solex.models.skills.SkillsInteractor;
 import hr.foi.air.solex.models.skills.SkillsInteractorImpl;
 
-public class CompanyNeededCollaborationPresenterImpl implements CompanyNeededCollaborationPresenter, ApplicantListListener, SkillListListener, NeededCollaborationDataScalarListener {
+public class CompanyNeededCollaborationPresenterImpl implements CompanyNeededCollaborationPresenter, ApplicantListListener, SkillListListener, NeededCollaborationDataScalarListener, ApplicationAcceptedListener {
     private CompanyNeededCollaborationView mCompanyNeededCollabView;
     private ApplicantInteractor mApplicantInteractor;
     private SkillsInteractor mSkillsInteractor;
@@ -29,6 +29,7 @@ public class CompanyNeededCollaborationPresenterImpl implements CompanyNeededCol
         mSkillsInteractor.setSkillListListener(this);
         mApiCompanyCollaborationsInteractor = new ApiNeededCollaborationsInteractorImpl();
         mApiCompanyCollaborationsInteractor.setNeededCollabDataListener(this);
+        mApiCompanyCollaborationsInteractor.setApplicationAcceptedListener(this);
     }
 
 
@@ -59,11 +60,16 @@ public class CompanyNeededCollaborationPresenterImpl implements CompanyNeededCol
 
     @Override
     public void applicantChosen(int collaborationId, int applicantId) {
-
+        mApiCompanyCollaborationsInteractor.applicationAccepted(collaborationId, applicantId);
     }
 
     @Override
     public void neededCollaborationDataArrived(NeededCollaborationData collaborationData) {
         mCompanyNeededCollabView.onCollaborationDataArrived(collaborationData);
+    }
+
+    @Override
+    public void onSuccessfulAssign() {
+        mCompanyNeededCollabView.onSuccessfullAssign();
     }
 }

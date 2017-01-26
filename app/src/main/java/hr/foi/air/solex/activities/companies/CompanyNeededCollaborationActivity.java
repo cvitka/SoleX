@@ -1,10 +1,12 @@
 package hr.foi.air.solex.activities.companies;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -18,6 +20,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnItemClick;
+import butterknife.OnItemLongClick;
 import hr.foi.air.solex.R;
 import hr.foi.air.solex.activities.common.CollaborationActivity;
 import hr.foi.air.solex.activities.common.DrawerActivity;
@@ -31,8 +34,6 @@ import hr.foi.air.solex.presenters.companies.CompanyNeededCollaborationPresenter
 import hr.foi.air.solex.utils.Utility;
 
 public class CompanyNeededCollaborationActivity extends DrawerActivity implements CompanyNeededCollaborationView{
-
-
 
     @BindView(R.id.activity_company_needed_collaboration_tvCollabName)
     TextView tvCollabName;
@@ -92,7 +93,7 @@ public class CompanyNeededCollaborationActivity extends DrawerActivity implement
             }
         });
 
-
+        lastLongClicked = null;
     }
 
     @Override
@@ -140,8 +141,41 @@ public class CompanyNeededCollaborationActivity extends DrawerActivity implement
         tvProjectName.setText(mThisCollaboration.getProjectName());
     }
 
+    @OnItemClick(R.id.activity_company_needed_collaboration_lvApplicants)
+    public void lvApplicantsOnItemClick(AdapterView<?> parent, View view, int position, long id){
+        Applicant app = mApplicantList.get(position);
+        Intent intent = new Intent(this, DeveloperProfileActivity.class);
+        intent.putExtra("developerId", app.getApplicantId());
+        startActivity(intent);
+    }
+
+
+    View lastLongClicked;
+    @OnItemLongClick(R.id.activity_company_needed_collaboration_lvApplicants)
+    public boolean lvApplicantsOnItemLongClick(AdapterView<?> parent, View view, int position, long id){
+        //int color = ((ColorDrawable)view.getBackground()).getColor();
+        view.setBackgroundColor(0xFFD5F6CF);
+        if(lastLongClicked != null){
+            lastLongClicked.setBackgroundColor(getResources().getColor(R.color.white));
+        }
+        lastLongClicked = view;
+        return true;
+    }
+
+    @OnClick(R.id.activity_company_needed_collaboration_btnAcceptApplicant)
+    public void btnAcceptApplicantOnClick(){
+        if(lastLongClicked!= null) {
+            Applicant app = mApplicantList.get(lvApplicants.getPositionForView(lastLongClicked));
+            mPresenter.applicantChosen(mThisCollaboration.getCollaborationId(), app.getApplicantId());
+        }
+    }
+
     @Override
     public void onSuccessfullAssign() {
-
+        Intent intent = new Intent(this, CollaborationActivity.class);
+        intent.putExtra("collaborationName", mThisCollaboration.getCollaborationName());
+        intent.putExtra("collaborationId", mThisCollaboration.getCollaborationId());
+        intent.putExtra("isOwner", true);
+        startActivity(intent);
     }
 }
