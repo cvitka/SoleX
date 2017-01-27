@@ -14,80 +14,103 @@
         android:theme="@style/Theme.AppCompat">
         <activity
             android:name=".activities.common.LoginActivity"
-            android:theme="@style/AppTheme.Dark">
+            android:theme="@style/AppTheme.Dark"
+            android:windowSoftInputMode="stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
         <activity
             android:name=".activities.common.SignupActivity"
-            android:theme="@style/AppTheme.Dark" />
+            android:theme="@style/AppTheme.Dark"
+            android:windowSoftInputMode="stateHidden"/>
         <activity
             android:name=".activities.companies.CompanyProfileActivity"
             android:theme="@style/AcitivityProfilesBlue" />
         <activity
             android:name=".activities.companies.UpdateCompanyDataActivity"
             android:label="Enter new info"
-            android:theme="@style/ActivityWithInput" />
+            android:theme="@style/ActivityWithInput"
+            android:windowSoftInputMode="stateHidden"  />
         <activity
             android:name=".activities.developers.DeveloperProfileActivity"
             android:theme="@style/AcitivityProfilesBlue" />
         <activity
             android:name=".activities.developers.UpdateDeveloperDataActivity"
-            android:theme="@style/ActivityWithInput" />
+            android:theme="@style/ActivityWithInput"
+            android:windowSoftInputMode="stateHidden"  />
         <activity
             android:name=".activities.common.DrawerActivity"
             android:theme="@style/AcitivityProfilesBlue" />
         <activity
             android:name=".activities.companies.CompanyProjectsActivity"
             android:label="List of your projects"
-            android:theme="@style/ActivityWithInput" />
+            android:theme="@style/ActivityWithInput"
+            android:windowSoftInputMode="stateHidden"/>
         <activity
             android:name=".activities.companies.AddNewProjectActivity"
             android:label="Create new project"
-            android:theme="@style/ActivityWithInput" />
+            android:theme="@style/ActivityWithInput"
+            android:windowSoftInputMode="stateHidden"/>
         <activity
             android:name=".activities.companies.ProjectManagementActivity"
             android:label="Project Management"
-            android:theme="@style/ActivityWithInput" />
+            android:theme="@style/ActivityWithInput"
+            android:windowSoftInputMode="stateHidden"/>
         <activity
             android:name=".activities.companies.NewNeededCollaborationActivity"
             android:label="New Collaboration"
-            android:theme="@style/ActivityWithInput" />
+            android:theme="@style/ActivityWithInput"
+            android:windowSoftInputMode="stateHidden"/>
         <activity
             android:name=".activities.companies.CompanyCollaborationsActivity"
             android:label="Collaborations"
-            android:theme="@style/ActivityWithInput"/>
+            android:theme="@style/ActivityWithInput"
+            android:windowSoftInputMode="stateHidden"/>
         <activity
             android:name=".activities.companies.FavouritesActivity"
             android:label="Favourites"
-            android:theme="@style/ActivityWithInput"/>
+            android:theme="@style/ActivityWithInput"
+            android:windowSoftInputMode="stateHidden"/>
         <activity
             android:name=".activities.common.CollaborationActivity"
             android:label="Collaboration"
-            android:theme="@style/ActivityWithInput"/>
+            android:theme="@style/ActivityWithInput"
+            android:windowSoftInputMode="stateHidden"/>
         <activity
             android:name=".activities.developers.ProjectSearchActivity"
             android:label="Search projects"
-            android:theme="@style/ActivityWithInput"/>
-        <activity android:name=".activities.developers.DeveloperApplicationsActivity"
+            android:theme="@style/ActivityWithInput"
+            android:windowSoftInputMode="stateHidden"/>
+        <activity
+            android:name=".activities.developers.DeveloperApplicationsActivity"
             android:label="Previous applications"
-            android:theme="@style/ActivityWithInput"/>
-        <activity android:name=".activities.developers.DeveloperCollaborationsActivity"
+            android:theme="@style/ActivityWithInput"
+            android:windowSoftInputMode="stateHidden"/>
+        <activity
+            android:name=".activities.developers.DeveloperCollaborationsActivity"
             android:label="Collaborations"
-            android:theme="@style/ActivityWithInput"/>
-        <activity android:name=".activities.common.ProjectListingActivity"
+            android:theme="@style/ActivityWithInput"
+            android:windowSoftInputMode="stateHidden"/>
+        <activity
+            android:name=".activities.common.ProjectListingActivity"
             android:label="Project listing"
-            android:theme="@style/ActivityWithInput"/>
-        <activity android:name=".activities.common.ProjectDisplayActivity"
+            android:theme="@style/ActivityWithInput"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".activities.common.ProjectDisplayActivity"
             android:label="Project display"
-            android:theme="@style/ActivityWithInput"/>
-        <activity android:name=".activities.companies.CompanyNeededCollaborationActivity"
+            android:theme="@style/ActivityWithInput"
+            android:windowSoftInputMode="stateHidden"/>
+        <activity
+            android:name=".activities.companies.CompanyNeededCollaborationActivity"
             android:label="Needed collaboration"
-            android:theme="@style/ActivityWithInput"/>
+            android:theme="@style/ActivityWithInput"
+            android:windowSoftInputMode="stateHidden"/>
         <activity android:name=".activities.developers.DeveloperNeededCollaborationActivity"
             android:label="Job opportunity"
-            android:theme="@style/ActivityWithInput"/>
+            android:theme="@style/ActivityWithInput"
+            android:windowSoftInputMode="stateHidden"/>
 
         <activity
             android:name=".activities.common.SplashScreenActivity"

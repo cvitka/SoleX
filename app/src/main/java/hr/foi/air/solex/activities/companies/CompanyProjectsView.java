@@ -6,4 +6,8 @@ import java.util.List;
 
 public interface CompanyProjectsView {
     void onDataArrived(List<ProfileScreenProject> projects);
+    void onHighlightAddition();
+    void onHighlightFailure(String message);
+    void onHighlightUpdate();
+    void onHighlightUpdateFailure(String message);
 }

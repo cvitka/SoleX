@@ -1,11 +1,24 @@
 package hr.foi.air.solex.models.profile_screen_project;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class ProfileScreenProject {
+
     private int projectId;
     private String projectName;
     private String companyName;
     private int state;
     private int numOfCollaborations;
+    private String  highlightedStatus;
+
+    public String getHighlightedStatus() {
+        return highlightedStatus;
+    }
+
+    public void setHighlightedStatus(String highlightedStatus) {
+        this.highlightedStatus = highlightedStatus;
+    }
 
     public int getNumOfCollaborations() {
         return numOfCollaborations;
@@ -14,7 +27,7 @@ public class ProfileScreenProject {
     public void setNumOfCollaborations(int numOfCollaborations) {
         this.numOfCollaborations = numOfCollaborations;
     }
-    
+
     public int getId() {
         return projectId;
     }

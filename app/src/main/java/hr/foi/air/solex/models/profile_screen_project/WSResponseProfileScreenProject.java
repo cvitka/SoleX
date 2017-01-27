@@ -33,6 +33,10 @@ public class WSResponseProfileScreenProject {
     @Expose
     private int numOfCollaborations;
 
+    @SerializedName("highlightedStatus")
+    @Expose
+    private String  highlightedStatus;
+
     public int getNumOfCollaborations() {
         return numOfCollaborations;
     }
@@ -71,5 +75,21 @@ public class WSResponseProfileScreenProject {
 
     public void setState(String state) {
         this.state = state;
+    }
+
+    public String getSuccess() {
+        return success;
+    }
+
+    public void setSuccess(String success) {
+        this.success = success;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 }
