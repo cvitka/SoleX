@@ -8,17 +8,12 @@ public interface ProfileScreenProjectInteractor {
 
     void getAllProjectList(int id, UserType userType);
 
-    void addToHighlighted(int projectID);
+    void addToHighlighted(int projectID, int userId, UserType userType);
+    void removeHighlighted(int projectID, int userId, UserType userType);
 
     void setAddHighlightListener(AddHighlightListener listener);
-
-    void updateToHighlighted(int projectID);
-
-    void setUpdateHighlightListener(UpdateHighlightListener listener);
+    void setRemoveHighlightListener(RemoveHighlightListener listener);
 
     void getProjectList();
-
-
-
 
 }

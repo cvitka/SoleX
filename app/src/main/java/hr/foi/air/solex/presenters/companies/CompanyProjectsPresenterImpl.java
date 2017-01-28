@@ -1,5 +1,6 @@
 package hr.foi.air.solex.presenters.companies;
 
+import hr.foi.air.solex.models.login_registration.User;
 import hr.foi.air.solex.models.profile_screen_project.ProfileScreenProject;
 import hr.foi.air.solex.models.profile_screen_project.ProfileScreenProjectInteractor;
 import hr.foi.air.solex.models.profile_screen_project.ProfileScreenProjectInteractorImpl;
@@ -9,9 +10,9 @@ import java.util.List;
 
 import hr.foi.air.solex.activities.companies.CompanyProjectsView;
 import hr.foi.air.solex.models.profile_screen_project.AddHighlightListener;
-import hr.foi.air.solex.models.profile_screen_project.UpdateHighlightListener;
+import hr.foi.air.solex.models.profile_screen_project.RemoveHighlightListener;
 
-public class CompanyProjectsPresenterImpl implements CompanyProjectsPresenter, ProfileScreenProjectListListener, AddHighlightListener, UpdateHighlightListener {
+public class CompanyProjectsPresenterImpl implements CompanyProjectsPresenter, ProfileScreenProjectListListener, AddHighlightListener, RemoveHighlightListener {
     private CompanyProjectsView mCompanyProjectsView;
     private ProfileScreenProjectInteractor mProjectInteractor;
 
@@ -19,7 +20,7 @@ public class CompanyProjectsPresenterImpl implements CompanyProjectsPresenter, P
         this.mCompanyProjectsView = CompanyProjectsView;
         this.mProjectInteractor = new ProfileScreenProjectInteractorImpl(this);
         mProjectInteractor.setAddHighlightListener(this);
-        mProjectInteractor.setUpdateHighlightListener(this);
+        mProjectInteractor.setRemoveHighlightListener(this);
     }
 
     @Override
@@ -34,22 +35,22 @@ public class CompanyProjectsPresenterImpl implements CompanyProjectsPresenter, P
 
     @Override
     public void addToHighlights(int id) {
-        mProjectInteractor.addToHighlighted(id);
+        mProjectInteractor.addToHighlighted(id, User.getInstance().getId(), User.getInstance().getUserType());
     }
 
     @Override
-    public void updateHighlights(int id) {
-        mProjectInteractor.updateToHighlighted(id);
+    public void removeHighlights(int id) {
+        mProjectInteractor.removeHighlighted(id, User.getInstance().getId(), User.getInstance().getUserType());
     }
 
     @Override
-    public void onUpdate() {
-        mCompanyProjectsView.onHighlightUpdate();
+    public void onRemove() {
+        mCompanyProjectsView.onHighlightRemove();
     }
 
     @Override
-    public void onUpdateFailure(String message) {
-        mCompanyProjectsView.onHighlightUpdateFailure(message);
+    public void onRemoveFailure(String message) {
+        mCompanyProjectsView.onHighlightRemoveFailure(message);
     }
 
     @Override

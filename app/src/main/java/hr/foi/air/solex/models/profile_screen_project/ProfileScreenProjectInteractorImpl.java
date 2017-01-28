@@ -2,7 +2,6 @@ package hr.foi.air.solex.models.profile_screen_project;
 
 import android.util.Log;
 
-import hr.foi.air.solex.models.login_registration.User;
 import hr.foi.air.solex.utils.UserType;
 import hr.foi.air.solex.models.WebServiceCommunicator;
 
@@ -16,19 +15,26 @@ import retrofit2.http.Query;
 
 public class ProfileScreenProjectInteractorImpl extends WebServiceCommunicator implements ProfileScreenProjectInteractor {
     private ProfileScreenProjectListListener mListListener;
-    AddHighlightListener mAddListener;
-    UpdateHighlightListener mUpdateListener;
+    private AddHighlightListener mAddListener;
+    private RemoveHighlightListener mRemoveListener;
 
     private interface WSInterfaceProject {
         @GET("dohvatiProjekte.php")
         Call<List<ProfileScreenProject>> getProjects(@Query("tipDohvacanja") String tipDohvacanja, @Query("id") int id);
 
         @GET("dodajIstaknutuSuradnju.php")
-        Call<WSResponseProfileScreenProject> addHighlightedProject(@Query("companyID") int companyID, @Query("projektID") int projectID, @Query("status") int status);
+        Call<WSResponseProfileScreenProject> addHighlightedProjectCompany(@Query("companyID") int companyID, @Query("projektID") int projectID);
 
-        @GET("updateIstaknuteSuradnje.php")
-        Call<WSResponseProfileScreenProject> updateHighlightedProject(@Query("companyID") int companyID, @Query("projektID") int projectID);
+        @GET("dodajIstaknutuSuradnju.php")
+        Call<WSResponseProfileScreenProject> addHighlightedProjectDeveloper(@Query("developerID") int developerID, @Query("projektID") int projectID);
+
+        @GET("removeIstaknutuSuradnju.php")
+        Call<WSResponseProfileScreenProject> removeHighlightedProjectCompany(@Query("companyID") int companyID, @Query("projektID") int projectID);
+
+        @GET("removeIstaknutuSuradnju.php")
+        Call<WSResponseProfileScreenProject> removeHighlightedProjectDeveloper(@Query("developerID") int developerID, @Query("projektID") int projectID);
     }
+
 
     public ProfileScreenProjectInteractorImpl(ProfileScreenProjectListListener listener) {
         initRetrofit();
@@ -112,9 +118,13 @@ public class ProfileScreenProjectInteractorImpl extends WebServiceCommunicator i
     }
 
     @Override
-    public void addToHighlighted(int projectID) {
+    public void addToHighlighted(int projectID, int userId, UserType userType) {
         WSInterfaceProject interfaceProject = retrofit.create(WSInterfaceProject.class);
-        Call<WSResponseProfileScreenProject> call = interfaceProject.addHighlightedProject(User.getInstance().getId(), projectID, '1');
+        Call<WSResponseProfileScreenProject> call;
+        if(userType==UserType.COMPANY)
+            call = interfaceProject.addHighlightedProjectCompany(userId, projectID);
+        else
+            call = interfaceProject.addHighlightedProjectDeveloper(userId, projectID);
         call.enqueue(new Callback<WSResponseProfileScreenProject>() {
             @Override
             public void onResponse(Call<WSResponseProfileScreenProject> call, Response<WSResponseProfileScreenProject> response) {
@@ -134,7 +144,7 @@ public class ProfileScreenProjectInteractorImpl extends WebServiceCommunicator i
 
             @Override
             public void onFailure(Call<WSResponseProfileScreenProject> call, Throwable t) {
-
+                mAddListener.onHighlightsAddFailure(t.getMessage());
             }
         });
     }
@@ -145,21 +155,25 @@ public class ProfileScreenProjectInteractorImpl extends WebServiceCommunicator i
     }
 
     @Override
-    public void updateToHighlighted(int projectID) {
+    public void removeHighlighted(int projectID, int userId, UserType userType) {
        WSInterfaceProject interfaceProject = retrofit.create(WSInterfaceProject.class);
-        Call<WSResponseProfileScreenProject> call = interfaceProject.updateHighlightedProject(User.getInstance().getId(), projectID);
+        Call<WSResponseProfileScreenProject> call;
+        if(userType==UserType.COMPANY)
+            call = interfaceProject.removeHighlightedProjectCompany(userId, projectID);
+        else
+            call = interfaceProject.removeHighlightedProjectDeveloper(userId, projectID);
         call.enqueue(new Callback<WSResponseProfileScreenProject>() {
             @Override
             public void onResponse(Call<WSResponseProfileScreenProject> call, Response<WSResponseProfileScreenProject> response) {
                 if (response.isSuccessful()) {
                     if (response.body().getSuccess().equals("1")) {
-                        if (mUpdateListener != null) {
-                            mUpdateListener.onUpdate();
+                        if (mRemoveListener != null) {
+                            mRemoveListener.onRemove();
                         }
 
                     } else {
-                        if (mUpdateListener != null) {
-                            mUpdateListener.onUpdateFailure(response.body().getMessage());
+                        if (mRemoveListener != null) {
+                            mRemoveListener.onRemoveFailure(response.body().getMessage());
                         }
                     }
                 }
@@ -173,8 +187,8 @@ public class ProfileScreenProjectInteractorImpl extends WebServiceCommunicator i
     }
 
     @Override
-    public void setUpdateHighlightListener(UpdateHighlightListener listener) {
-        mUpdateListener = listener;
+    public void setRemoveHighlightListener(RemoveHighlightListener listener) {
+        mRemoveListener = listener;
 
     }
 

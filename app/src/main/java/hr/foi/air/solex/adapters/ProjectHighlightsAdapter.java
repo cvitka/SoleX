@@ -28,7 +28,7 @@ public class ProjectHighlightsAdapter extends RecyclerView.Adapter<ProjectHighli
 
     private List<ProfileScreenProject> mProjectList;
     private final ClickListener clickListener;
-    Context context;
+    private Context context;
 
     @Override
     public ProjectHighlightsAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -65,7 +65,7 @@ public class ProjectHighlightsAdapter extends RecyclerView.Adapter<ProjectHighli
             numOfCollab.setText(Integer.toString(item.getNumOfCollaborations())+" collaborations");
             projectState.setText(TypeHelper.getProjectState(context, item.getState()));
             projectName.setText(item.getProjectName());
-            if (item.getHighlightedStatus() != null && item.getHighlightedStatus().equals("1")) {
+            if (item.getHighlightedStatus() != 0) {
                 addToHighlights.setColorFilter(color);
             }
 
@@ -79,7 +79,10 @@ public class ProjectHighlightsAdapter extends RecyclerView.Adapter<ProjectHighli
                 @Override
                 public boolean onLongClick(View v) {
                     clickListener.onItemLongClick(item);
-                    addToHighlights.setColorFilter(color);
+                    if(item.getHighlightedStatus()==0)
+                        addToHighlights.setColorFilter(context.getResources().getColor(android.R.color.white));
+                    else
+                        addToHighlights.setColorFilter(color);
                     return true;
                 }
             });

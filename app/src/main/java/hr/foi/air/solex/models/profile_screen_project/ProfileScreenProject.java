@@ -10,13 +10,13 @@ public class ProfileScreenProject {
     private String companyName;
     private int state;
     private int numOfCollaborations;
-    private String  highlightedStatus;
+    private int  highlightedStatus;
 
-    public String getHighlightedStatus() {
+    public int getHighlightedStatus() {
         return highlightedStatus;
     }
 
-    public void setHighlightedStatus(String highlightedStatus) {
+    public void setHighlightedStatus(int highlightedStatus) {
         this.highlightedStatus = highlightedStatus;
     }
 

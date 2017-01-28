@@ -33,7 +33,6 @@ public class CompanyProjectsActivity extends DrawerActivity implements CompanyPr
     RecyclerView recyclerView;
 
     CompanyProjectsPresenter mCompanyProjectsPresenter;
-    private ProjectHighlightsAdapter projectHighlightsAdapter;
     ProjectHighlightsAdapter.ClickListener clickListener;
 
     @Override
@@ -68,8 +67,7 @@ public class CompanyProjectsActivity extends DrawerActivity implements CompanyPr
     }
 
     @Override
-    public void onDataArrived(List<ProfileScreenProject> projects) {;
-        projectHighlightsAdapter = new ProjectHighlightsAdapter(projects, clickListener);
+    public void onDataArrived(List<ProfileScreenProject> projects) {
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -82,10 +80,12 @@ public class CompanyProjectsActivity extends DrawerActivity implements CompanyPr
 
             @Override
             public void onItemLongClick(ProfileScreenProject profileScreenProject) {
-                if(profileScreenProject.getHighlightedStatus() == null){
+                if(profileScreenProject.getHighlightedStatus() == 0){
+                    profileScreenProject.setHighlightedStatus(1);
                     mCompanyProjectsPresenter.addToHighlights(profileScreenProject.getId());
                 }else{
-                    mCompanyProjectsPresenter.updateHighlights(profileScreenProject.getId());
+                    profileScreenProject.setHighlightedStatus(0);
+                    mCompanyProjectsPresenter.removeHighlights(profileScreenProject.getId());
                 }
 
             }
@@ -103,12 +103,12 @@ public class CompanyProjectsActivity extends DrawerActivity implements CompanyPr
     }
 
     @Override
-    public void onHighlightUpdate() {
+    public void onHighlightRemove() {
         Toast.makeText(getApplicationContext(), "The project has been added to highlights", Toast.LENGTH_LONG).show();
     }
 
     @Override
-    public void onHighlightUpdateFailure(String message) {
+    public void onHighlightRemoveFailure(String message) {
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
     }
 
