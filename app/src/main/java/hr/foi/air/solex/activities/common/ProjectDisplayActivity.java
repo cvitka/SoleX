@@ -21,11 +21,14 @@ import butterknife.OnItemClick;
 import hr.foi.air.solex.R;
 import hr.foi.air.solex.activities.companies.CompanyNeededCollaborationActivity;
 import hr.foi.air.solex.activities.companies.CompanyProfileActivity;
+import hr.foi.air.solex.activities.developers.DeveloperNeededCollaborationActivity;
 import hr.foi.air.solex.models.collaboration.ApiNeededCollaborations;
+import hr.foi.air.solex.models.login_registration.User;
 import hr.foi.air.solex.models.projects.Project;
 import hr.foi.air.solex.models.projects.SelectedProjectInteractorImpl;
 import hr.foi.air.solex.presenters.common.ProjectDisplayPresenter;
 import hr.foi.air.solex.presenters.common.ProjectDisplayPresenterImpl;
+import hr.foi.air.solex.utils.UserType;
 
 public class ProjectDisplayActivity extends DrawerActivity implements ProjectDisplayView{
 
@@ -92,19 +95,36 @@ public class ProjectDisplayActivity extends DrawerActivity implements ProjectDis
     @OnItemClick(R.id.activity_project_display_lvNeededCollaborations)
     public void lvNeededCollaborationsClick(AdapterView<?> adapter, View item, int pos, long id){
         ApiNeededCollaborations collab = neededCollaborations.get(pos);
-        if(collab.getHasCollaborator() > 0) {
-            Intent intent = new Intent(this, CollaborationActivity.class);
-            intent.putExtra("collaborationName", collab.getDevNcollabNme());
-            intent.putExtra("collaborationId", collab.getCollabId());
-            intent.putExtra("isOwner", false);
-            startActivity(intent);
+        if(User.getInstance().getUserType() == UserType.DEVELOPER) {
+            if (collab.getHasCollaborator() > 0) {
+                Intent intent = new Intent(this, CollaborationActivity.class);
+                intent.putExtra("collaborationName", collab.getDevNcollabNme());
+                intent.putExtra("collaborationId", collab.getCollabId());
+                intent.putExtra("isOwner", false);
+                startActivity(intent);
+            } else {
+                Intent intent = new Intent(this, DeveloperNeededCollaborationActivity.class);
+                intent.putExtra("applicantsNumber", collab.getApplicantNum());
+                intent.putExtra("collaborationId", collab.getCollabId());
+                intent.putExtra("companyName", mThisProject.getCompanyName());
+                startActivity(intent);
+            }
         }
         else{
-            Intent intent = new Intent(this, CompanyNeededCollaborationActivity.class);
-            intent.putExtra("collaborationName", collab.getDevNcollabNme());
-            intent.putExtra("collaborationId", collab.getCollabId());
-            intent.putExtra("isOwner", false);
-            startActivity(intent);
+            if (collab.getHasCollaborator() > 0) {
+                Intent intent = new Intent(this, CollaborationActivity.class);
+                intent.putExtra("collaborationName", collab.getDevNcollabNme());
+                intent.putExtra("collaborationId", collab.getCollabId());
+                intent.putExtra("isOwner", User.isCurrentUser(UserType.COMPANY, mThisProject.getCompanyId()));
+                startActivity(intent);
+            } else {
+                Intent intent = new Intent(this, CompanyNeededCollaborationActivity.class);
+                intent.putExtra("collaborationName", collab.getDevNcollabNme());
+                intent.putExtra("collaborationId", collab.getCollabId());
+                intent.putExtra("isOwner", User.isCurrentUser(UserType.COMPANY, mThisProject.getCompanyId()));
+                startActivity(intent);
+            }
+
         }
     }
 

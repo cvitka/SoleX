@@ -41,6 +41,9 @@ public class CompanyNeededCollaborationActivity extends DrawerActivity implement
     @BindView(R.id.activity_company_needed_collaboration_tvProjectName)
     TextView tvProjectName;
 
+    @BindView(R.id.activity_company_needed_collaboration_tvApplicantsLabel)
+    TextView tvApplicantsLabel;
+
     @BindView(R.id.activity_company_needed_collaboration_lvApplicants)
     ListView lvApplicants;
 
@@ -57,6 +60,7 @@ public class CompanyNeededCollaborationActivity extends DrawerActivity implement
     List<Applicant> mApplicantList;
     List<String> mSkillsList;
     NeededCollaborationData mThisCollaboration;
+    boolean isOwner;
 
     CompanyNeededCollaborationPresenter mPresenter;
 
@@ -66,22 +70,31 @@ public class CompanyNeededCollaborationActivity extends DrawerActivity implement
         ButterKnife.bind(this);
 
         int collaborationId = getIntent().getExtras().getInt("collaborationId");
+        isOwner = getIntent().getExtras().getBoolean("isOwner");
 
         mPresenter = new CompanyNeededCollaborationPresenterImpl(this);
 
         mPresenter.getCollaborationData(collaborationId);
-        mPresenter.getApplicants(collaborationId);
         mPresenter.getCollaborationSkills(collaborationId);
 
-        lvApplicants.setOnTouchListener(new View.OnTouchListener() {
-            // Setting on Touch Listener for handling the touch inside ScrollView
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                // Disallow the touch request for parent scroll on touch of child view
-                scrollView.requestDisallowInterceptTouchEvent(true);
-                return false;
-            }
-        });
+        if(isOwner) {
+            mPresenter.getApplicants(collaborationId);
+            lvApplicants.setOnTouchListener(new View.OnTouchListener() {
+                // Setting on Touch Listener for handling the touch inside ScrollView
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    // Disallow the touch request for parent scroll on touch of child view
+                    scrollView.requestDisallowInterceptTouchEvent(true);
+                    return false;
+                }
+            });
+        }
+        else{
+            lvApplicants.setVisibility(View.GONE);
+            btnAcceptApplicant.setVisibility(View.GONE);
+            tvApplicantsLabel.setVisibility(View.GONE);
+        }
+
 
         lvSkills.setOnTouchListener(new View.OnTouchListener() {
             // Setting on Touch Listener for handling the touch inside ScrollView
@@ -121,7 +134,8 @@ public class CompanyNeededCollaborationActivity extends DrawerActivity implement
         ApplicantsAdapter adapter = new ApplicantsAdapter(
                 this,
                 R.layout.list_item_applicant,
-                mApplicantList);
+                mApplicantList,
+                mSkillsList.size());
         lvApplicants.setAdapter(adapter);
         Utility.setListViewHeightBasedOnChildren(lvApplicants, 4);
     }

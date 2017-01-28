@@ -17,6 +17,18 @@ public class ApiNeededCollaborations {
     @Expose
     private int hasCollaborator;
 
+    @SerializedName("applicantNum")
+    @Expose
+    private int applicantNum;
+
+    public int getApplicantNum() {
+        return applicantNum;
+    }
+
+    public void setApplicantNum(int applicantNum) {
+        this.applicantNum = applicantNum;
+    }
+
     public int getHasCollaborator() {
         return hasCollaborator;
     }

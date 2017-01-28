@@ -14,6 +14,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import hr.foi.air.solex.activities.developers.DeveloperProjectsActivity;
 import hr.foi.air.solex.utils.UserType;
 import hr.foi.air.solex.models.login_registration.User;
 import butterknife.BindView;
@@ -67,6 +68,9 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
                     break;
                 case R.id.developer_opt_search:
                     startNewActivity(ProjectSearchActivity.class);
+                    break;
+                case R.id.developer_opt_dev_projects:
+                    startNewActivity(DeveloperProjectsActivity.class);
                     break;
                 case R.id.developer_opt_collaborations:
                     startNewActivity(DeveloperCollaborationsActivity.class);

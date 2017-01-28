@@ -53,6 +53,7 @@
     <string name="company_proj_list_label">Company’s projects list</string>
     <string name="developer_proj_list_label">Developer’s projects list</string>
     <string name="projects_list"> projects list</string>
+    <string name="applicants_label">Applicants</string>
 
     <string name="activity_developer_applications_ListLabel">List of all your applications</string>
 

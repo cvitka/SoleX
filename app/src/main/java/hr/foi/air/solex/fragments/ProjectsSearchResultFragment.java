@@ -37,11 +37,9 @@ public class ProjectsSearchResultFragment extends Fragment implements ProjectSea
     private List<String> resultProjects;
     private List<SearchedProject> mProjectsList;
 
-    private ProjectSearchResultAdapter projectSearchResultAdapter;
-    ProjectSearchResultAdapter.ClickListener itemClickListener;
-
 
     private SearchProjects mSearchProjects;
+    private int numberOfSearchedSkills;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -52,6 +50,7 @@ public class ProjectsSearchResultFragment extends Fragment implements ProjectSea
         if (arguments != null) {
             mSearchProjects = arguments.getParcelable(ProjectsSearchMainFragment.PROJECT_INFO);
             projectSearchResultPresenter.getSearchedProjects(mSearchProjects.getPercentage(), mSearchProjects.getSkills());
+            numberOfSearchedSkills = arguments.getInt("numberOfSearchedSkills");
         }
 
 
@@ -70,7 +69,6 @@ public class ProjectsSearchResultFragment extends Fragment implements ProjectSea
     public void onProjectListCome(List<SearchedProject> projects) {
 
         mProjectsList = projects;
-        projectSearchResultAdapter = new ProjectSearchResultAdapter(projects, itemClickListener);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -85,6 +83,6 @@ public class ProjectsSearchResultFragment extends Fragment implements ProjectSea
                 startActivity(intent);
             }
 
-        }));
+        },numberOfSearchedSkills));
     }
 }

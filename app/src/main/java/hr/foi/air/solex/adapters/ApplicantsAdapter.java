@@ -17,14 +17,16 @@ import hr.foi.air.solex.models.collab_applicat.CollabApplicat;
 public class ApplicantsAdapter  extends ArrayAdapter<Applicant> {
 
     private List<Applicant> items;
+    private int numOfSkills;
     private Context ctx;
     private int itemResId;
 
-    public ApplicantsAdapter(Context context, int textViewResourceId, List<Applicant> items) {
+    public ApplicantsAdapter(Context context, int textViewResourceId, List<Applicant> items, int numOfSkills) {
         super(context, textViewResourceId, items);
         this.items = items;
         this.ctx = context;
         this.itemResId = textViewResourceId;
+        this.numOfSkills = numOfSkills;
     }
 
     @Override
@@ -43,7 +45,7 @@ public class ApplicantsAdapter  extends ArrayAdapter<Applicant> {
             lblApplicantName.setText(o.getApplicantName() + " "+o.getApplicantSurname());
             //postotak se izračunava
             //trebalo bi implementirati da se ograniče
-            int percentage = (int)((o.getMatches()/(float)(items.size()))*100);
+            int percentage = (int)((o.getMatches()/(float)(this.numOfSkills))*100);
             lblPercentage.setText(String.valueOf(percentage));
             lblDate.setText(o.getApplicationDate());
         }

@@ -86,19 +86,19 @@
                     android:id="@+id/activity_company_needed_collaboration_lvItSkills"/>
 
                 <TextView
-                    android:text="Applicants"
+                    android:text="@string/applicants_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/activity_company_needed_collaboration_lvItSkills"
                     android:layout_alignParentStart="true"
-                    android:id="@+id/textView17"
+                    android:id="@+id/activity_company_needed_collaboration_tvApplicantsLabel"
                     android:layout_marginTop="8dp"
                     android:textSize="20sp"/>
 
                 <ListView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/textView17"
+                    android:layout_below="@+id/activity_company_needed_collaboration_tvApplicantsLabel"
                     android:minHeight="100dp"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="4dp"

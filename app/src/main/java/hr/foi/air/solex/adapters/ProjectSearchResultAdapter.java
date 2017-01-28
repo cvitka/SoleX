@@ -20,6 +20,7 @@ public class ProjectSearchResultAdapter extends RecyclerView.Adapter<ProjectSear
     }
 
     Context mContext;
+    private int numberOfSearchedSkills;
     public List<SearchedProject> projectList;
     private final ClickListener mListener;
 
@@ -35,13 +36,13 @@ public class ProjectSearchResultAdapter extends RecyclerView.Adapter<ProjectSear
             percentage = (TextView) itemView.findViewById(R.id.activity_search_projects_project_percentage);
         }
 
-        public void bind(final SearchedProject item, final ProjectSearchResultAdapter.ClickListener listener) {
+        public void bind(final SearchedProject item, final ProjectSearchResultAdapter.ClickListener listener, int numberOfSearchedSkills) {
             companyName.setText(item.getComapanyName());
             projectName.setText(item.getProjectName());
             collaborationName.setText(item.getCollaborationName());
             int sum = (item.getApplicantsNum());
             matches.setText(String .valueOf(sum)+" applications");
-            int percent = (int)((item.getMatches()/(float)(projectList.size()))*100);
+            int percent = (int)((item.getMatches()/(float)(numberOfSearchedSkills))*100);
             percentage.setText(String.valueOf(percent)+"% match");
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -62,12 +63,13 @@ public class ProjectSearchResultAdapter extends RecyclerView.Adapter<ProjectSear
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.bind(projectList.get(position), mListener);
+        holder.bind(projectList.get(position), mListener, numberOfSearchedSkills);
     }
 
-    public ProjectSearchResultAdapter( List<SearchedProject> projectList, ClickListener mListener) {
+    public ProjectSearchResultAdapter( List<SearchedProject> projectList, ClickListener mListener, int numberOfSearchedSkills) {
         this.mListener = mListener;
         this.projectList = projectList;
+        this.numberOfSearchedSkills = numberOfSearchedSkills;
     }
 
     @Override

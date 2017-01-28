@@ -10,6 +10,10 @@
             android:icon="@mipmap/ic_search_white_24dp"
             android:title="@string/dev_opt_search" />
         <item
+            android:id="@+id/developer_opt_dev_projects"
+            android:icon="@mipmap/ic_folder_white_24dp"
+            android:title="@string/comp_opt_projects" />
+        <item
             android:id="@+id/developer_opt_applications"
             android:icon="@mipmap/ic_developer_mode_white_24dp"
             android:title="@string/dev_opt_applications" />

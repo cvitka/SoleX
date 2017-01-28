@@ -111,6 +111,7 @@ public class ProjectsSearchMainFragment extends Fragment implements ProjectSearc
             searchProjects.setPercentage(Integer.parseInt(etAddPercentage.getText().toString()));
             searchProjects.setSkills(developerSkillsList);
             bundle.putParcelable(PROJECT_INFO, searchProjects);
+            bundle.putInt("numberOfSearchedSkills", developerSkillsList.size());
             fragment.setArguments(bundle);
 
             mSensorManager.unregisterListener(this);
