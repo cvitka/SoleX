@@ -4,18 +4,23 @@ import hr.foi.air.solex.models.collaboration.ApiCollaborationsListListener;
 import hr.foi.air.solex.models.collaboration.ApiCompanyCollaborations;
 import hr.foi.air.solex.models.collaboration.ApiCompanyCollaborationsInteractor;
 import hr.foi.air.solex.models.favorites.FavoritesAddListener;
+import hr.foi.air.solex.models.favorites.FavoritesInteractor;
 import hr.foi.air.solex.models.favorites.FavoritesInteractorImpl;
 import hr.foi.air.solex.models.favorites.FavoritesUpdateListener;
 
 import java.util.List;
 
 import hr.foi.air.solex.activities.companies.CompanyCollaborationsView;
+import hr.foi.air.solex.models.ratings.RatingsInteractor;
+import hr.foi.air.solex.models.ratings.RatingsInteractorImpl;
+import hr.foi.air.solex.models.ratings.RatingsListener;
 
-public class CompanyCollaborationsPresenterImpl implements CompanyCollaborationsPresenter, ApiCollaborationsListListener, FavoritesAddListener, FavoritesUpdateListener {
+public class CompanyCollaborationsPresenterImpl implements CompanyCollaborationsPresenter, ApiCollaborationsListListener, FavoritesAddListener, FavoritesUpdateListener, RatingsListener {
 
-    CompanyCollaborationsView mCompanyCollaborationsView;
-    ApiCompanyCollaborationsInteractor mApiCompanyCollaborationsInteractor;
-    FavoritesInteractorImpl mFavoritesInteractor;
+    private CompanyCollaborationsView mCompanyCollaborationsView;
+    private ApiCompanyCollaborationsInteractor mApiCompanyCollaborationsInteractor;
+    private FavoritesInteractor mFavoritesInteractor;
+    private RatingsInteractor mRatingsInteractor;
 
     public CompanyCollaborationsPresenterImpl(CompanyCollaborationsView companyCollaborationsView, ApiCompanyCollaborationsInteractor apiCompanyCollaborationsInteractor, FavoritesInteractorImpl favoritesInteractor) {
         this.mCompanyCollaborationsView = companyCollaborationsView;
@@ -24,6 +29,7 @@ public class CompanyCollaborationsPresenterImpl implements CompanyCollaborations
         mApiCompanyCollaborationsInteractor.setListListener(this);
         mFavoritesInteractor.setFavoriteAddListener(this);
         mFavoritesInteractor.setFavoriteUpdateListener(this);
+        mRatingsInteractor = new RatingsInteractorImpl(this);
     }
 
     @Override
@@ -66,5 +72,16 @@ public class CompanyCollaborationsPresenterImpl implements CompanyCollaborations
     @Override
     public void onUpdateFailure(String message) {
         mCompanyCollaborationsView.onFavoriteUpdateFailure(message);
+    }
+
+    @Override
+    public void rate(int rating, int user, int collaborationId) {
+        mRatingsInteractor.rate(rating, user, collaborationId);
+    }
+
+    @Override
+    public void onRatingSucceeded() {
+        //mView.suceeded....
+        mCompanyCollaborationsView.onRateSucceeded();
     }
 }

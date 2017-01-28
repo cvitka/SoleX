@@ -71,6 +71,11 @@ public class CompanyCollaborationsActivity extends DrawerActivity implements Com
                 }
 
             }
+
+            @Override
+            public void onRatingChanged(ApiCompanyCollaborations companyCollaborations, int rating) {
+                mCompanyCollaborationsPresenter.rate(rating, Integer.parseInt(companyCollaborations.getDevID()), companyCollaborations.getCollaborationId());
+            }
         }));
     }
 
@@ -104,4 +109,9 @@ public class CompanyCollaborationsActivity extends DrawerActivity implements Com
     }
 
 
+    @Override
+    public void onRateSucceeded() {
+        Toast.makeText(getApplicationContext(), "Collaboration has been rated", Toast.LENGTH_SHORT).show();
+
+    }
 }

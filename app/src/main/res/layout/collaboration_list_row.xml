@@ -9,7 +9,7 @@
     android:orientation="horizontal"
     android:padding="16dp">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -23,7 +23,8 @@
             android:paddingRight="16dp"
             android:textColor="@color/colorPrimaryDarker"
             android:textSize="16sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:text="dev_info"/>
 
         <TextView
             android:id="@+id/collaboration_list_ProjectName"
@@ -31,9 +32,22 @@
             android:layout_height="wrap_content"
             android:maxLines="3"
             android:paddingRight="16dp"
-            android:textColor="@color/colorPrimaryDarker" />
+            android:textColor="@color/colorPrimaryDarker"
+            android:text="proj_name"
+            android:layout_below="@+id/collaboration_list_developerInfo"/>
 
-    </LinearLayout>
+        <RatingBar
+            android:id="@+id/collaboration_list_ratingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="?android:attr/ratingBarStyleSmall"
+            android:numStars="5"
+            android:stepSize="1"
+            android:isIndicator="false"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="35dp"
+            android:theme="@style/AppTheme.RatingBarStyle"/>
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -42,8 +56,9 @@
 
         <ImageView
             android:id="@+id/collaboration_list_addToFavorites"
-            android:layout_width="15dp"
-            android:layout_height="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_centerInParent="true"
             android:scaleType="centerCrop"
             android:src="@drawable/star" />

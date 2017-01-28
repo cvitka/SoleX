@@ -24,6 +24,10 @@ public class ApiCompanyCollaborations {
     @Expose
     private String projectName;
 
+    @SerializedName("potrebneSuradnjeId")
+    @Expose
+    private int collaborationId;
+
     @SerializedName("nazivSuradnje")
     @Expose
     private String collaborationName;
@@ -35,6 +39,26 @@ public class ApiCompanyCollaborations {
     @SerializedName("favorit")
     @Expose
     private Character  favorit;
+
+    @SerializedName("ocjena")
+    @Expose
+    private int  ocjena;
+
+    public int getCollaborationId() {
+        return collaborationId;
+    }
+
+    public void setCollaborationId(int collaborationId) {
+        this.collaborationId = collaborationId;
+    }
+
+    public int getOcjena() {
+        return ocjena;
+    }
+
+    public void setOcjena(int ocjena) {
+        this.ocjena = ocjena;
+    }
 
     public Character getFavorit() {
         return favorit;

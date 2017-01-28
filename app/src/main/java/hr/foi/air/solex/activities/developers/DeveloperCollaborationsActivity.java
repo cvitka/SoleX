@@ -59,7 +59,7 @@ public class DeveloperCollaborationsActivity extends DrawerActivity implements D
         mCollaborationsList = list;
 
         //lvCollaborations.setOnItemClickListener(this);
-        mCollabAdapter = new CollabApplicatAdapter(this, R.layout.list_item_developer_collab_applicat, mCollaborationsList, 'c');
+        mCollabAdapter = new CollabApplicatAdapter(this, R.layout.list_item_developer_collaborations, mCollaborationsList, 'c');
         lvCollaborations.setAdapter(mCollabAdapter);
     }
 }

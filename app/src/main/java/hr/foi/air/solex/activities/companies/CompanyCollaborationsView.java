@@ -10,4 +10,5 @@ public interface CompanyCollaborationsView {
     void onFavoriteFailure(String message);
     void onFavoriteUpdate();
     void onFavoriteUpdateFailure(String message);
+    void onRateSucceeded();
 }

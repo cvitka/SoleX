@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import hr.foi.air.solex.models.collaboration.ApiCompanyCollaborations;
@@ -22,6 +23,7 @@ public class CompanyCollaborationsAdapter extends RecyclerView.Adapter<CompanyCo
     public interface ClickListener {
         void onItemClick(ApiCompanyCollaborations companyCollaborations);
         void onItemLongClick(ApiCompanyCollaborations companyCollaborations);
+        void onRatingChanged(ApiCompanyCollaborations companyCollaborations, int rating);
     }
 
     @BindView(R.id.collaboration_list_addToFavorites)
@@ -34,6 +36,7 @@ public class CompanyCollaborationsAdapter extends RecyclerView.Adapter<CompanyCo
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView devInfo, projectName;
+        public RatingBar ratingBar;
         public ImageView addToFavorites;
 
         public ViewHolder(final View itemView) {
@@ -41,21 +44,31 @@ public class CompanyCollaborationsAdapter extends RecyclerView.Adapter<CompanyCo
             devInfo = (TextView) itemView.findViewById(R.id.collaboration_list_developerInfo);
             projectName = (TextView) itemView.findViewById(R.id.collaboration_list_ProjectName);
             addToFavorites = (ImageView) itemView.findViewById(R.id.collaboration_list_addToFavorites);
+            ratingBar = (RatingBar)itemView.findViewById(R.id.collaboration_list_ratingBar);
         }
 
         public void bind(final ApiCompanyCollaborations item, final ClickListener listener) {
             devInfo.setText(item.getDevName() + " " + item.getDevSurname());
             projectName.setText(item.getProjectName());
+            ratingBar.setRating((int)item.getOcjena());
+            ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+                @Override
+                public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+                    listener.onRatingChanged(item, (int)rating);
+                }
+            });
             final int color = Color.parseColor("#31C3E7");
             if (item.getFavorit() != null && item.getFavorit() == '1') {
                 addToFavorites.setColorFilter(color);
             }
+
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     listener.onItemClick(item);
                 }
             });
+
             itemView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
