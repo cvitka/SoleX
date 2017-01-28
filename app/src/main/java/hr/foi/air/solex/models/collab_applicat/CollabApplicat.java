@@ -1,10 +1,9 @@
 package hr.foi.air.solex.models.collab_applicat;
 
 
-import java.sql.Date;
-
 public class CollabApplicat {
     private String companyName;
+    private int companyId;
     private String projectName;
     private String collaborationName;
     private int collaborationId;
@@ -13,6 +12,23 @@ public class CollabApplicat {
     private String collaborationStartedDate;
     private String applicationState;
     private int pay;
+    private int rating;
+
+    public int getCompanyId() {
+        return companyId;
+    }
+
+    public void setCompanyId(int companyId) {
+        this.companyId = companyId;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
+    }
 
     public int getCollaborationId() {
         return collaborationId;

@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
+import hr.foi.air.solex.activities.common.CollaborationActivity;
 import hr.foi.air.solex.models.collaboration.ApiCompanyCollaborations;
 import hr.foi.air.solex.models.collaboration.ApiCompanyCollaborationsInteractorImpl;
 import hr.foi.air.solex.models.favorites.FavoritesInteractorImpl;
@@ -31,11 +32,7 @@ public class CompanyCollaborationsActivity extends DrawerActivity implements Com
     @BindView(R.id.activity_company_collaborations_recyclerView)
     RecyclerView recyclerView;
 
-
     CompanyCollaborationsPresenter mCompanyCollaborationsPresenter;
-
-    private CompanyCollaborationsAdapter companyCollaborationsAdapter;
-    CompanyCollaborationsAdapter.ClickListener itemClickListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +44,6 @@ public class CompanyCollaborationsActivity extends DrawerActivity implements Com
 
     @Override
     public void onDataArrived(List<ApiCompanyCollaborations> collaborationsList) {
-
-        companyCollaborationsAdapter = new CompanyCollaborationsAdapter(collaborationsList, itemClickListener);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -56,9 +51,7 @@ public class CompanyCollaborationsActivity extends DrawerActivity implements Com
         recyclerView.setAdapter(new CompanyCollaborationsAdapter(collaborationsList, new CompanyCollaborationsAdapter.ClickListener() {
             @Override
             public void onItemClick(ApiCompanyCollaborations companyCollaborations) {
-                Integer selectionID = Integer.parseInt(companyCollaborations.getProjectId());
-                String selectedProjectId = selectionID.toString();
-                onSelect(companyCollaborations.getProjectName(), selectedProjectId);
+                onSelect(companyCollaborations);
             }
 
             @Override
@@ -79,12 +72,12 @@ public class CompanyCollaborationsActivity extends DrawerActivity implements Com
         }));
     }
 
-    public void onSelect(String name, String id) {
-        Intent intent = new Intent(this, ProjectManagementActivity.class);
-        intent.putExtra("projectName", name);
-        intent.putExtra("projectId", id);
+    public void onSelect(ApiCompanyCollaborations collab) {
+        Intent intent = new Intent(this, CollaborationActivity.class);
+        intent.putExtra("collaborationName", collab.getCollaborationName());
+        intent.putExtra("collaborationId", collab.getCollaborationId());
+        intent.putExtra("isOwner", true);
         startActivity(intent);
-
     }
 
     @Override

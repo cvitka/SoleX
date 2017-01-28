@@ -35,7 +35,7 @@ public class CompanyCollaborationsAdapter extends RecyclerView.Adapter<CompanyCo
     Context mContext;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView devInfo, projectName;
+        public TextView devInfo, projectName, collaborationName;
         public RatingBar ratingBar;
         public ImageView addToFavorites;
 
@@ -45,11 +45,13 @@ public class CompanyCollaborationsAdapter extends RecyclerView.Adapter<CompanyCo
             projectName = (TextView) itemView.findViewById(R.id.collaboration_list_ProjectName);
             addToFavorites = (ImageView) itemView.findViewById(R.id.collaboration_list_addToFavorites);
             ratingBar = (RatingBar)itemView.findViewById(R.id.collaboration_list_ratingBar);
+            collaborationName = (TextView) itemView.findViewById(R.id.collaboration_list_CollaborationName);
         }
 
         public void bind(final ApiCompanyCollaborations item, final ClickListener listener) {
             devInfo.setText(item.getDevName() + " " + item.getDevSurname());
             projectName.setText(item.getProjectName());
+            collaborationName.setText(item.getCollaborationName());
             ratingBar.setRating((int)item.getOcjena());
             ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
                 @Override

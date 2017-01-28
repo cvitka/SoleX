@@ -6,29 +6,52 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import java.util.List;
 
 import hr.foi.air.solex.R;
-import hr.foi.air.solex.helpers.TypeHelper;
 import hr.foi.air.solex.models.collab_applicat.CollabApplicat;
-import hr.foi.air.solex.models.profile_screen_project.ProfileScreenProject;
-import hr.foi.air.solex.utils.UserType;
+import hr.foi.air.solex.models.collaboration.ApiCompanyCollaborations;
 
 public class CollabApplicatAdapter extends ArrayAdapter<CollabApplicat>{
+
+    public interface ClickListener {
+        void onRatingChanged(CollabApplicat collab, int rating);
+    }
 
     private List<CollabApplicat> items;
     private Context ctx;
     private int itemResId;
     private char mCollabApplicat;
+    private ClickListener listener;
 
-    public CollabApplicatAdapter(Context context, int textViewResourceId, List<CollabApplicat> items, char collabApplicat) {
-        super(context, textViewResourceId, items);
+    public CollabApplicatAdapter(Context context, int resId, List<CollabApplicat> items, char collabApplicat) {
+        super(context, resId, items);
         this.items = items;
         this.ctx = context;
-        this.itemResId = textViewResourceId;
+        this.itemResId = resId;
         this.mCollabApplicat = collabApplicat;
+    }
+
+    public CollabApplicatAdapter(Context context, int resId, List<CollabApplicat> items, char collabApplicat, ClickListener listener) {
+        super(context, resId, items);
+        this.items = items;
+        this.ctx = context;
+        this.itemResId = resId;
+        this.mCollabApplicat = collabApplicat;
+        this.listener = listener;
+    }
+
+
+    private void setListenerOnRatingBar(final CollabApplicat o, RatingBar rb){
+        rb.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+                listener.onRatingChanged(o, (int)rating);
+            }
+        });
     }
 
     @Override
@@ -59,6 +82,9 @@ public class CollabApplicatAdapter extends ArrayAdapter<CollabApplicat>{
             if(mCollabApplicat == 'c'){
                 lblDateLabel.setText(ctx.getResources().getString(R.string.tvDateStartedLabel));
                 lblDate.setText(o.getCollaborationStartedDate());
+                RatingBar ratingBar = (RatingBar)v.findViewById(R.id.collab_applicat_ratingBar);
+                ratingBar.setRating((int)o.getRating());
+                setListenerOnRatingBar(o, ratingBar);
             }
             else if(mCollabApplicat == 'a'){
                 lblDateLabel.setText(ctx.getResources().getString(R.string.tvDateApplicatedLabel));

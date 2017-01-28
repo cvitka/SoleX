@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <RelativeLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -14,11 +15,24 @@
             android:layout_height="wrap_content"
             android:id="@+id/collab_applicat_tvCollaborationName"
             android:text="naziv_suradnje"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="8dp"
             android:layout_marginStart="2dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentStart="true"
-            android:textSize="28sp"/>
+            android:textSize="20sp"/>
+        <RatingBar
+            android:id="@+id/collab_applicat_ratingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="?android:attr/ratingBarStyleSmall"
+            android:numStars="5"
+            android:layout_marginTop="12dp"
+            android:stepSize="1"
+            android:isIndicator="false"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="35dp"
+            android:theme="@style/AppTheme.RatingBarStyle"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

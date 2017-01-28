@@ -31,10 +31,28 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:maxLines="3"
-            android:paddingRight="16dp"
             android:textColor="@color/colorPrimaryDarker"
             android:text="proj_name"
             android:layout_below="@+id/collaboration_list_developerInfo"/>
+        <TextView
+            android:id="@+id/collaboration_list_Collon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimaryDarker"
+            android:text="@string/collon"
+            android:layout_below="@+id/collaboration_list_developerInfo"
+            android:layout_toRightOf="@id/collaboration_list_ProjectName"/>
+
+        <TextView
+            android:id="@+id/collaboration_list_CollaborationName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="3"
+            android:textColor="@color/colorPrimaryDarker"
+            android:text="collab_name"
+            android:layout_marginStart="4dp"
+            android:layout_below="@+id/collaboration_list_developerInfo"
+            android:layout_toRightOf="@id/collaboration_list_Collon"/>
 
         <RatingBar
             android:id="@+id/collaboration_list_ratingBar"

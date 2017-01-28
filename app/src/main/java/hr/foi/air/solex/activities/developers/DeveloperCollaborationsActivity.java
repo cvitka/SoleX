@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,8 +59,17 @@ public class DeveloperCollaborationsActivity extends DrawerActivity implements D
     public void onCollaborationsArrived(List<CollabApplicat> list) {
         mCollaborationsList = list;
 
-        //lvCollaborations.setOnItemClickListener(this);
-        mCollabAdapter = new CollabApplicatAdapter(this, R.layout.list_item_developer_collaborations, mCollaborationsList, 'c');
+        mCollabAdapter = new CollabApplicatAdapter(this, R.layout.list_item_developer_collaborations, mCollaborationsList, 'c', new CollabApplicatAdapter.ClickListener() {
+            @Override
+            public void onRatingChanged(CollabApplicat collab, int rating) {
+                mCollaborationsPresenter.rate(rating, collab.getCompanyId(), collab.getCollaborationId());
+            }
+        });
         lvCollaborations.setAdapter(mCollabAdapter);
+    }
+
+    @Override
+    public void onRateSucceeded() {
+        Toast.makeText(getApplicationContext(), "Collaboration has been rated", Toast.LENGTH_SHORT).show();
     }
 }
