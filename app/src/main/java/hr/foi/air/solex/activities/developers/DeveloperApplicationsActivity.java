@@ -51,6 +51,15 @@ public class DeveloperApplicationsActivity extends DrawerActivity implements Dev
             intent.putExtra("collaborationId", mApplicationsList.get(position).getCollaborationId());
             startActivity(intent);
         }
+        else{
+            Intent intent = new Intent(this, DeveloperNeededCollaborationActivity.class);
+            intent.putExtra("isOwner", false);
+            intent.putExtra("collaborationId", mApplicationsList.get(position).getCollaborationId());
+            intent.putExtra("applicantsNumber", mApplicationsList.get(position).getApplicatNumber());
+            intent.putExtra("companyName", mApplicationsList.get(position).getCompanyName());
+
+            startActivity(intent);
+        }
     }
 
     @Override

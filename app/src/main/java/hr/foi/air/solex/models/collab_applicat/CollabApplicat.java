@@ -13,6 +13,15 @@ public class CollabApplicat {
     private String applicationState;
     private int pay;
     private int rating;
+    private int applicatNumber;
+
+    public int getApplicatNumber() {
+        return applicatNumber;
+    }
+
+    public void setApplicatNumber(int applicatNumber) {
+        this.applicatNumber = applicatNumber;
+    }
 
     public int getCompanyId() {
         return companyId;
