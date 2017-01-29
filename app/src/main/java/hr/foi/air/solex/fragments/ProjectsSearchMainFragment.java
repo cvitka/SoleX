@@ -101,9 +101,9 @@ public class ProjectsSearchMainFragment extends Fragment implements ProjectSearc
     public void onSearch() {
         ProjectsSearchResultFragment fragment = new ProjectsSearchResultFragment();
         if (etAddPercentage.getText().toString().isEmpty() || etAddPercentage.getText().toString() == null) {
-            Toast.makeText(getActivity(), "Enter percentage(0-100)", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), R.string.enter_percentage, Toast.LENGTH_LONG).show();
         } else if (Integer.parseInt(etAddPercentage.getText().toString()) > 100) {
-            Toast.makeText(getActivity(), "Percentage value has to be under 100!", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), R.string.percentage_limitation, Toast.LENGTH_LONG).show();
         } else {
             //prijenos objekta na result(lista i int)
             Bundle bundle = new Bundle();
@@ -143,11 +143,11 @@ public class ProjectsSearchMainFragment extends Fragment implements ProjectSearc
     public void onClick() {
         String skill = actvNewSkill.getText().toString();
         if (skill.isEmpty()) {
-            Toast.makeText(getActivity(), "Choose some skill", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), R.string.choose_skill, Toast.LENGTH_LONG).show();
         } else if (developerSkillsList.contains(skill)) {
             Toast.makeText(getActivity(), R.string.error_skill_exists, Toast.LENGTH_LONG).show();
         } else if (!allSkillsList.contains(skill)) {
-            Toast.makeText(getActivity(), "No such skill in our database ", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), R.string.no_such_skill, Toast.LENGTH_LONG).show();
         } else {
             developerSkillsList.add(skill);
             mDevSkillAdapter.notifyDataSetChanged();
@@ -174,11 +174,9 @@ public class ProjectsSearchMainFragment extends Fragment implements ProjectSearc
             float gZ = z / SensorManager.GRAVITY_EARTH;
 
             float gForce = (float) Math.sqrt(gX * gX + gY * gY + gZ * gZ);
-            Log.d("gForce", (String.valueOf(gForce)));
             if (gForce > SHAKE_THRESHOLD_GRAVITY) {
                 final long now = System.currentTimeMillis();
-                final long time = mShakeTimestamp + SHAKE_SLOP_TIME_MS;
-                Log.d("time", Float.toString(time));
+
                 if (mShakeTimestamp + SHAKE_SLOP_TIME_MS > now) {
                     return;
                 }

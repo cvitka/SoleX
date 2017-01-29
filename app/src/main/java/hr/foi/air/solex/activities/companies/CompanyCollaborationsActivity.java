@@ -82,29 +82,29 @@ public class CompanyCollaborationsActivity extends DrawerActivity implements Com
 
     @Override
     public void onFavoriteAddition() {
-        Toast.makeText(getApplicationContext(), "The user has been added to favorites", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), R.string.favorite_added, Toast.LENGTH_LONG).show();
 
     }
 
     @Override
     public void onFavoriteFailure(String message) {
-        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), R.string.server_error, Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void onFavoriteUpdate() {
-        Toast.makeText(getApplicationContext(), "The user has been added to favorites", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), R.string.favorite_added, Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void onFavoriteUpdateFailure(String message) {
-        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), R.string.server_error , Toast.LENGTH_LONG).show();
     }
 
 
     @Override
     public void onRateSucceeded() {
-        Toast.makeText(getApplicationContext(), "Collaboration has been rated", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), R.string.collab_rated, Toast.LENGTH_SHORT).show();
 
     }
 }

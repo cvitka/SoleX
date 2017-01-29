@@ -29,7 +29,7 @@
             android:theme="@style/AcitivityProfilesBlue" />
         <activity
             android:name=".activities.companies.UpdateCompanyDataActivity"
-            android:label="Enter new info"
+            android:label="@string/new_info"
             android:theme="@style/ActivityWithInput"
             android:windowSoftInputMode="stateHidden" />
         <activity
@@ -44,76 +44,76 @@
             android:theme="@style/AcitivityProfilesBlue" />
         <activity
             android:name=".activities.companies.CompanyProjectsActivity"
-            android:label="List of your projects"
+            android:label="@string/list_projects"
             android:theme="@style/ActivityWithInput"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".activities.companies.AddNewProjectActivity"
-            android:label="Create new project"
+            android:label="@string/create_new_project"
             android:theme="@style/ActivityWithInput"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".activities.companies.ProjectManagementActivity"
-            android:label="Project Management"
+            android:label="@string/project_management"
             android:theme="@style/ActivityWithInput"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".activities.companies.NewNeededCollaborationActivity"
-            android:label="New Collaboration"
+            android:label="@string/new_collaboration"
             android:theme="@style/ActivityWithInput"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".activities.companies.CompanyCollaborationsActivity"
-            android:label="Collaborations"
+            android:label="@string/collaborations"
             android:theme="@style/ActivityWithInput"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".activities.companies.FavouritesActivity"
-            android:label="Favourites"
+            android:label="@string/favourites"
             android:theme="@style/ActivityWithInput"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".activities.common.CollaborationActivity"
-            android:label="Collaboration"
+            android:label="@string/collaborations"
             android:theme="@style/ActivityWithInput"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".activities.developers.ProjectSearchActivity"
-            android:label="Search projects"
+            android:label="@string/search_projects"
             android:theme="@style/ActivityWithInput"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".activities.developers.DeveloperApplicationsActivity"
-            android:label="Previous applications"
+            android:label="@string/previous_applications"
             android:theme="@style/ActivityWithInput"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".activities.developers.DeveloperCollaborationsActivity"
-            android:label="Collaborations"
+            android:label="@string/collaborations"
             android:theme="@style/ActivityWithInput"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".activities.common.ProjectListingActivity"
-            android:label="Project listing"
+            android:label="@string/project_listing"
             android:theme="@style/ActivityWithInput"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".activities.common.ProjectDisplayActivity"
-            android:label="Project display"
+            android:label="@string/project_display"
             android:theme="@style/ActivityWithInput"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".activities.companies.CompanyNeededCollaborationActivity"
-            android:label="Needed collaboration"
+            android:label="@string/needed_collaboration"
             android:theme="@style/ActivityWithInput"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".activities.developers.DeveloperNeededCollaborationActivity"
-            android:label="Job opportunity"
+            android:label="@string/job_opportunity"
             android:theme="@style/ActivityWithInput"
             android:windowSoftInputMode="stateHidden" />
         <activity android:name=".activities.developers.DeveloperProjectsActivity"
-            android:label="My projects"
+            android:label="@string/my_projects"
             android:theme="@style/ActivityWithInput"
             android:windowSoftInputMode="stateHidden"/>
         <activity
@@ -125,6 +125,11 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".activities.common.AppPreferencesActivity"
+            android:theme="@style/ActivityWithInput">
+
         </activity>
 
         <service android:name=".utils.firebase.MyFirebaseMesagingService">

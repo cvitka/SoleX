@@ -30,7 +30,7 @@ import hr.foi.air.solex.presenters.common.ProjectDisplayPresenter;
 import hr.foi.air.solex.presenters.common.ProjectDisplayPresenterImpl;
 import hr.foi.air.solex.utils.UserType;
 
-public class ProjectDisplayActivity extends DrawerActivity implements ProjectDisplayView{
+public class ProjectDisplayActivity extends DrawerActivity implements ProjectDisplayView {
 
     @BindView(R.id.activity_project_display_lvNeededCollaborations)
     ListView lvNeededCollaborations;
@@ -64,16 +64,16 @@ public class ProjectDisplayActivity extends DrawerActivity implements ProjectDis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
-        mPresenter = new ProjectDisplayPresenterImpl(this,new SelectedProjectInteractorImpl());
+        mPresenter = new ProjectDisplayPresenterImpl(this, new SelectedProjectInteractorImpl());
         //collabPresenter = new GetNeededCollaborationsPresenterImpl(this, new ApiNeededCollaborationsInteractorImpl());
 
         // String projectName;
 
         if (savedInstanceState == null) {
             Bundle extras = getIntent().getExtras();
-            if(extras == null) {
+            if (extras == null) {
             } else {
-                projectId= extras.getInt("projectId");
+                projectId = extras.getInt("projectId");
             }
         } else {
             // projectName= (String) savedInstanceState.getSerializable("projectName");
@@ -93,9 +93,9 @@ public class ProjectDisplayActivity extends DrawerActivity implements ProjectDis
     }
 
     @OnItemClick(R.id.activity_project_display_lvNeededCollaborations)
-    public void lvNeededCollaborationsClick(AdapterView<?> adapter, View item, int pos, long id){
+    public void lvNeededCollaborationsClick(AdapterView<?> adapter, View item, int pos, long id) {
         ApiNeededCollaborations collab = neededCollaborations.get(pos);
-        if(User.getInstance().getUserType() == UserType.DEVELOPER) {
+        if (User.getInstance().getUserType() == UserType.DEVELOPER) {
             if (collab.getHasCollaborator() > 0) {
                 Intent intent = new Intent(this, CollaborationActivity.class);
                 intent.putExtra("collaborationName", collab.getDevNcollabNme());
@@ -109,8 +109,7 @@ public class ProjectDisplayActivity extends DrawerActivity implements ProjectDis
                 intent.putExtra("companyName", mThisProject.getCompanyName());
                 startActivity(intent);
             }
-        }
-        else{
+        } else {
             if (collab.getHasCollaborator() > 0) {
                 Intent intent = new Intent(this, CollaborationActivity.class);
                 intent.putExtra("collaborationName", collab.getDevNcollabNme());
@@ -137,7 +136,7 @@ public class ProjectDisplayActivity extends DrawerActivity implements ProjectDis
     }
 
     @OnClick(R.id.activity_project_display_tvCompanyName)
-    public void tvCompanyNameOnClick(){
+    public void tvCompanyNameOnClick() {
         Intent intent = new Intent(this, CompanyProfileActivity.class);
         intent.putExtra("companyId", mThisProject.getCompanyId());
         startActivity(intent);

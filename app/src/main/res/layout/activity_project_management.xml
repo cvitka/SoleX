@@ -58,7 +58,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="14dp"
                 android:layout_marginTop="14dp"
-                android:text="Project Name"
+                android:text="@string/project_name"
                 android:textSize="24sp" />
 
             <TextView
@@ -70,7 +70,7 @@
                 android:layout_marginTop="17dp"
                 android:textSize="15dp"
                 android:textStyle="bold"
-                android:text="Description" />
+                android:text="@string/description" />
 
             <TextView
                 android:id="@+id/activity_project_management_tvDescriptionData"
@@ -79,7 +79,7 @@
                 android:layout_alignStart="@+id/activity_project_management_tvDescription"
                 android:layout_below="@+id/activity_project_management_tvDescription"
                 android:layout_marginTop="17dp"
-                android:text="Ovo je opis projekta i tako"
+                android:text="@string/project_description"
                 android:textSize="13sp"/>
 
             <TextView
@@ -89,7 +89,7 @@
                 android:layout_alignStart="@+id/activity_project_management_tvDescriptionData"
                 android:layout_below="@+id/activity_project_management_tvDescriptionData"
                 android:layout_marginTop="17dp"
-                android:text="Completion(percentage)"
+                android:text="@string/completion_percentage"
                 android:textSize="15dp"
                 android:textStyle="bold"/>
 
@@ -110,7 +110,7 @@
                 android:layout_alignStart="@+id/activity_project_management_tvCompletionData"
                 android:layout_below="@+id/activity_project_management_tvCompletionData"
                 android:layout_marginTop="17dp"
-                android:text="Collaborations "
+                android:text= "@string/dev_opt_collaborations"
                 android:textSize="15dp"
                 android:textStyle="bold"/>
 
@@ -131,7 +131,7 @@
                 android:layout_below="@id/activity_project_management_lvNeededCollaborations"
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="19dp"
-                android:text="New Collaboration"
+                android:text="@string/new_collaboration"
                 android:textColor="@color/white" />
 
         </RelativeLayout>

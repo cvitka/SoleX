@@ -1,11 +1,17 @@
 package hr.foi.air.solex.utils;
 
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+
+import java.util.Locale;
 
 public class Utility {
     public static void setListViewHeightBasedOnChildren(ListView listView, int maxItems) {
@@ -14,7 +20,7 @@ public class Utility {
             // pre-condition
             return;
         }
-        if(listAdapter.getCount()<=maxItems) {
+        if (listAdapter.getCount() <= maxItems) {
             int totalHeight = 0;
             int desiredWidth = View.MeasureSpec.makeMeasureSpec(listView.getWidth(), View.MeasureSpec.AT_MOST);
             for (int i = 0; i < listAdapter.getCount(); i++) {
@@ -27,8 +33,7 @@ public class Utility {
             params.height = totalHeight + (listView.getDividerHeight() * (listAdapter.getCount() - 1));
             listView.setLayoutParams(params);
             listView.requestLayout();
-        }
-        else{
+        } else {
             View item = listAdapter.getView(0, null, listView);
             item.measure(0, 0);
             ViewGroup.LayoutParams params = listView.getLayoutParams();
@@ -36,5 +41,17 @@ public class Utility {
             listView.setLayoutParams(params);
         }
     }
+
+
+    public void setLanguage(Context context) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        String lang = preferences.getString("pref_lang", "en");
+
+        Configuration config = new Configuration(context.getResources().getConfiguration());
+        config.setLocale(new Locale(lang));
+        context.getResources().updateConfiguration(config, context.getResources().getDisplayMetrics());
+
+    }
+
 
 }

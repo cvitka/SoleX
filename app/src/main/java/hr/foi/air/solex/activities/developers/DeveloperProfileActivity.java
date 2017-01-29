@@ -160,7 +160,6 @@ public class DeveloperProfileActivity extends DrawerActivity implements Develope
         if(layout.isExpanded()){
             layout.collapse();
             btn.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.lblue_expand_img, null));
-            //btn.setImageResource(R.drawable.gray_expand_img);
             lastExpanded = null;
             lastExpandedBtn = null;
         }

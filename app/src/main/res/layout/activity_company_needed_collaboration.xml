@@ -54,7 +54,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
-                    android:text="_project"
+                    android:text="@string/_project"
                     android:textSize="30sp" />
 
                 <TextView
@@ -64,7 +64,7 @@
                     android:layout_alignParentStart="true"
                     android:layout_below="@+id/activity_company_needed_collaboration_tvProjectName"
                     android:layout_marginTop="8dp"
-                    android:text="_collaboration_name"
+                    android:text="@string/_collaboration_name"
                     android:textSize="24sp" />
 
                 <TextView
@@ -74,7 +74,7 @@
                     android:layout_alignParentStart="true"
                     android:layout_below="@+id/activity_company_needed_collaboration_tvCollabName"
                     android:layout_marginTop="5dp"
-                    android:text="Required IT skills"
+                    android:text="@string/required_it_skills"
                     android:textSize="18sp" />
 
                 <ListView
@@ -112,7 +112,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/activity_company_needed_collaboration_lvApplicants"
                     android:layout_centerInParent="true"
-                    android:text="Accept application"
+                    android:text="@string/accept_application"
                     android:textColor="@color/colorAccent"
                     android:layout_marginBottom="20dp"/>
 

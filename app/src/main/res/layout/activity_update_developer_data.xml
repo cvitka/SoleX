@@ -49,17 +49,6 @@
                 android:paddingTop="@dimen/activity_vertical_margin"
                 tools:context="hr.foi.air.solex.activities.developers.UpdateDeveloperDataActivity">
 
-                <TextView
-                    android:id="@+id/activity_update_developer_tvNewInfo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginStart="14dp"
-                    android:layout_marginTop="18dp"
-                    android:text="Enter new info"
-                    android:textSize="24sp" />
-
                 <ImageView
                     android:id="@+id/activity_update_developer_iwNewImage"
                     android:layout_width="100dp"
@@ -67,7 +56,6 @@
                     android:layout_marginLeft="15dp"
                     android:layout_alignParentStart="true"
                     app:srcCompat="@drawable/developer_logo"
-                    android:layout_below="@+id/activity_update_developer_tvNewInfo"
                     />
 
                 <TextView
@@ -77,7 +65,7 @@
                     android:layout_alignStart="@+id/activity_update_developer_iwNewImage"
                     android:layout_below="@+id/activity_update_developer_iwNewImage"
                     android:layout_marginTop="11dp"
-                    android:text="Your name" />
+                    android:text="@string/your_name" />
 
                 <EditText
                     android:id="@+id/activity_update_developer_etNewName"
@@ -88,7 +76,7 @@
                     android:layout_below="@+id/activity_update_developer_tvNewName"
                     android:layout_marginTop="16dp"
                     android:ems="10"
-                    android:hint="enter name"
+                    android:hint="@string/enter_name"
                     android:inputType="textPersonName"
                     android:selectAllOnFocus="true" />
 
@@ -99,7 +87,7 @@
                     android:layout_alignStart="@+id/activity_update_developer_etNewName"
                     android:layout_below="@+id/activity_update_developer_etNewName"
                     android:layout_marginTop="11dp"
-                    android:text="Your surname" />
+                    android:text="@string/your_surname" />
 
                 <EditText
                     android:id="@+id/activity_update_developer_etNewSurname"
@@ -110,7 +98,7 @@
                     android:layout_below="@+id/activity_update_developer_tvNewSurame"
                     android:layout_marginTop="16dp"
                     android:ems="10"
-                    android:hint="enter surname"
+                    android:hint="@string/enter_surname"
                     android:inputType="textPersonName"
                     android:selectAllOnFocus="true" />
 
@@ -121,7 +109,7 @@
                     android:layout_alignStart="@+id/activity_update_developer_etNewSurname"
                     android:layout_below="@+id/activity_update_developer_etNewSurname"
                     android:layout_marginTop="17dp"
-                    android:text="Your address" />
+                    android:text="@string/your_address" />
 
                 <EditText
                     android:id="@+id/activity_update_developer_etNewAddress"
@@ -132,7 +120,7 @@
                     android:layout_below="@+id/activity_update_developer_tvNewAddress"
                     android:layout_marginTop="12dp"
                     android:ems="10"
-                    android:hint="enter address"
+                    android:hint="@string/enter_address"
                     android:inputType="textPersonName" />
 
                 <TextView
@@ -142,7 +130,7 @@
                     android:layout_alignStart="@+id/activity_update_developer_etNewAddress"
                     android:layout_below="@+id/activity_update_developer_etNewAddress"
                     android:layout_marginTop="17dp"
-                    android:text="Your e-mail" />
+                    android:text="@string/your_e_mail" />
 
                 <EditText
                     android:id="@+id/activity_update_developer_etNewEmail"
@@ -153,7 +141,7 @@
                     android:layout_below="@+id/activity_update_developer_tvNewEmail"
                     android:layout_marginTop="12dp"
                     android:ems="10"
-                    android:hint="enter e-mail"
+                    android:hint="@string/enter_e_mail"
                     android:inputType="textEmailAddress" />
 
                 <TextView
@@ -163,7 +151,7 @@
                     android:layout_alignStart="@+id/activity_update_developer_etNewEmail"
                     android:layout_below="@+id/activity_update_developer_etNewEmail"
                     android:layout_marginTop="11dp"
-                    android:text="Your contact number" />
+                    android:text="@string/your_contact_number" />
 
                 <EditText
                     android:id="@+id/activity_update_developer_etNewNumber"
@@ -174,7 +162,7 @@
                     android:layout_below="@+id/activity_update_developer_tvNewNumber"
                     android:layout_marginTop="15dp"
                     android:ems="10"
-                    android:hint="enter contact number"
+                    android:hint="@string/enter_contact_number"
                     android:inputType="textPersonName" />
 
                 <TextView
@@ -184,7 +172,7 @@
                     android:layout_alignStart="@+id/activity_update_developer_etNewNumber"
                     android:layout_below="@+id/activity_update_developer_etNewNumber"
                     android:layout_marginTop="11dp"
-                    android:text="Your years of experience" />
+                    android:text="@string/your_years_of_experience" />
 
                 <EditText
                     android:id="@+id/activity_update_developer_etNewYears"
@@ -195,7 +183,7 @@
                     android:layout_below="@+id/activity_update_developer_tvNewYears"
                     android:layout_marginTop="15dp"
                     android:ems="10"
-                    android:hint="enter experience"
+                    android:hint="@string/enter_experience"
                     android:inputType="textPersonName" />
 
                 <Button
@@ -207,7 +195,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginBottom="25dp"
                     android:textColor="@color/colorAccent"
-                    android:text="Update" />
+                    android:text="@string/update" />
 
 
             </RelativeLayout>

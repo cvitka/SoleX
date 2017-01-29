@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
 import hr.foi.air.solex.adapters.DividerItemDecoration;
 import hr.foi.air.solex.adapters.ProjectHighlightsAdapter;
 import hr.foi.air.solex.utils.UserType;
@@ -33,7 +34,6 @@ public class CompanyProjectsActivity extends DrawerActivity implements CompanyPr
     RecyclerView recyclerView;
 
     CompanyProjectsPresenter mCompanyProjectsPresenter;
-    ProjectHighlightsAdapter.ClickListener clickListener;
 
     @Override
     protected int getLayoutId() {
@@ -80,10 +80,10 @@ public class CompanyProjectsActivity extends DrawerActivity implements CompanyPr
 
             @Override
             public void onItemLongClick(ProfileScreenProject profileScreenProject) {
-                if(profileScreenProject.getHighlightedStatus() == 0){
+                if (profileScreenProject.getHighlightedStatus() == 0) {
                     profileScreenProject.setHighlightedStatus(1);
                     mCompanyProjectsPresenter.addToHighlights(profileScreenProject.getId());
-                }else{
+                } else {
                     profileScreenProject.setHighlightedStatus(0);
                     mCompanyProjectsPresenter.removeHighlights(profileScreenProject.getId());
                 }
@@ -94,22 +94,22 @@ public class CompanyProjectsActivity extends DrawerActivity implements CompanyPr
 
     @Override
     public void onHighlightAddition() {
-        Toast.makeText(getApplicationContext(), "The project has been added to highlights", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), R.string.added_to_highlights, Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void onHighlightFailure(String message) {
-        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), R.string.server_error, Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void onHighlightRemove() {
-        Toast.makeText(getApplicationContext(), "The project has been added to highlights", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), R.string.added_to_highlights, Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void onHighlightRemoveFailure(String message) {
-        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), R.string.server_error, Toast.LENGTH_LONG).show();
     }
 
     private void openProjectActivity(int projectId, boolean owner) {

@@ -59,9 +59,9 @@ public class ProjectsFeelingLuckyAdapter extends RecyclerView.Adapter<ProjectsFe
             projectName.setText(item.getProjectName());
             collaborationName.setText(item.getCollaborationName());
             int sum = (item.getApplicantsNum());
-            matches.setText(String .valueOf(sum)+" applications");
+            matches.setText(String .valueOf(sum)+mContext.getString(R.string.adapter_applications));
             int percent = (int)((item.getMatches()/(float)(mProjectList.size()))*100);
-            percentage.setText(String.valueOf(percent)+"% match");
+            percentage.setText(String.valueOf(percent)+mContext.getString(R.string.match));
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

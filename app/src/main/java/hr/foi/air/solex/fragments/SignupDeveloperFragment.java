@@ -80,10 +80,10 @@ public class SignupDeveloperFragment extends Fragment implements SignupView{
         || txtInputEmail.getText().toString().isEmpty()
         || txtInputPassword.getText().toString().isEmpty()
         || txtInputReEnterPassword.getText().toString().isEmpty()){
-            showToast("All fields must be filled");
+            Toast.makeText(getActivity(),R.string.fill_data,Toast.LENGTH_LONG).show();
         }
         else if(!txtInputPassword.getText().toString().equals(txtInputReEnterPassword.getText().toString())){
-            showToast("Passwords don't match!");
+            Toast.makeText(getActivity(),R.string.password_dont_match,Toast.LENGTH_LONG).show();
         }
         else{
             Developer developer= new Developer();
@@ -115,7 +115,7 @@ public class SignupDeveloperFragment extends Fragment implements SignupView{
 
     @Override
     public void signupSuccessful() {
-        showToast("Registration successful! Redirecting on login screen...");
+        Toast.makeText(getActivity(),R.string.registration_success,Toast.LENGTH_LONG).show();
         progressDialog.dismiss();
         new android.os.Handler().postDelayed(new Runnable() {
             @Override
@@ -129,7 +129,7 @@ public class SignupDeveloperFragment extends Fragment implements SignupView{
 
     @Override
     public void signupFailed(String message) {
-        showToast(message);
+        Toast.makeText(getActivity(),R.string.server_error,Toast.LENGTH_LONG).show();
         progressDialog.dismiss();
     }
 }

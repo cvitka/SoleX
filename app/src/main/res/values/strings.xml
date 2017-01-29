@@ -17,7 +17,6 @@
     <string name="username">Username</string>
     <string name="load_data_from">Load data from web service by default?</string>
     <string name="app_lang_pref">Language preference</string>
-    <string name="nav_header_title">Discount Locator</string>
     <string name="nav_header_info">foi@foi.hr</string>
     <string name="navigation_drawer_open">Open drawer</string>
     <string name="navigation_drawer_close">Close drawer</string>
@@ -76,5 +75,102 @@
     <string name="applicate">Applicate</string>
     <string name="withdraw">Withdraw application</string>
     <string name="num_applicants">Number of applicants</string>
+    <string name="new_info">Enter new info</string>
+    <string name="list_projects">List of your projects</string>
+    <string name="create_new_project">Create new project</string>
+    <string name="project_management">Project Management</string>
+    <string name="new_collaboration">New Collaboration</string>
+    <string name="collaborations">Collaborations</string>
+    <string name="favourites">Favourites</string>
+    <string name="search_projects">Search projects</string>
+    <string name="previous_applications">Previous applications</string>
+    <string name="project_listing">Project listing</string>
+    <string name="project_display">Project display</string>
+    <string name="needed_collaboration">Needed collaboration</string>
+    <string name="job_opportunity">Job opportunity</string>
+    <string name="my_projects">My projects</string>
+    <string name="company_project_collab">_company: _project</string>
+    <string name="collaboration_name">_collaboration_name</string>
+    <string name="required_it_skills">Required IT skills</string>
+    <string name="tvDeveloper">Developer:</string>
+    <string name="tvDeveloper_name">_developer_name:</string>
+    <string name="back_to_exit">Press Back again to Exit.</string>
+    <string name="fill_data">Fill in all data</string>
+    <string name="favorite_added">The user has been added to favorites</string>
+    <string name="collab_rated">Collaboration has been rated</string>
+    <string name="accept_application">Accept application</string>
+    <string name="_project">_project</string>
+    <string name="_collaboration_name">_collaboration_name</string>
+    <string name="update">Update</string>
+    <string name="company_name">Company Name</string>
+    <string name="e_mail_contact">E-Mail contact</string>
+    <string name="address">Address</string>
+    <string name="highlighted_projects">Highlighted Projects</string>
+    <string name="general_information">General Information</string>
+    <string name="added_to_highlights">The project has been added to highlights</string>
+    <string name="new_project">NEW PROJECT</string>
+    <string name="add_new_favorite">Add new Favorite</string>
+    <string name="add">Add</string>
+    <string name="typeA_details">Associate has to work every day and the same amount as the other workers.</string>
+    <string name="typeB_details">Associate has to work every day(Work time not really important)</string>
+    <string name="typeA">Type A</string>
+    <string name="typeB">Type B</string>
+    <string name="typeC">Type C</string>
+    <string name="typeD">Type D</string>
+    <string name="typeE">Type E</string>
+    <string name="typeC_details">Associate has to work until the end of the week to meet certain standard(Example. Until the end of the week he has to work for 30h</string>
+    <string name="typeD_details">Associate has a deadline until which the functionality has to be finished.</string>
+    <string name="typeE_details">Associate has to work at the same time as the other workers and be availabe via audio or video conferencing for close communication with the development team</string>
+    <string name="OK">OK</string>
+    <string name="CANCEL">CANCEL</string>
+    <string name="new_needed_collaboration_created">New Needed Collaboration Has Been Created!</string>
+    <string name="project_name">Project Name</string>
+    <string name="description">Description</string>
+    <string name="project_description">Project description</string>
+    <string name="completion_percentage">Completion(percentage)</string>
+
+    <!-- update company -->
+    <string name="enter_name">enter name</string>
+    <string name="enter_address">enter address</string>
+    <string name="webpage">Webpage</string>
+    <string name="enter_webpage_address">Enter webpage address</string>
+    <string name="director">Director</string>
+    <string name="director_information">Director information</string>
+    <string name="number_of_workers">Number of workers</string>
+    <string name="enter_number_of_workers">Enter number of workers</string>
+    <string name="update_data">Update data</string>
+    <string name="profile_data_update">Profile data has been updated</string>
+    <string name="your_name">Your name</string>
+    <string name="your_surname">Your surname</string>
+    <string name="enter_surname">enter surname</string>
+    <string name="your_address">Your address</string>
+    <string name="your_e_mail">Your e-mail</string>
+    <string name="your_contact_number">Your contact number</string>
+    <string name="enter_contact_number">enter contact number</string>
+    <string name="your_years_of_experience">Your years of experience</string>
+    <!-- search -->
+    <string name="enter_experience">enter experience</string>
+    <string name="enter_percentage">Enter percentage(0-100)</string>
+    <string name="percentage_limitation">Percentage value has to be under 100!</string>
+    <string name="choose_skill">Choose some skill</string>
+    <string name="no_such_skill">"No such skill in our database "</string>
+    <!-- signup -->
+    <string name="all_fields">All fields must be filled</string>
+    <string name="password_dont_match">Passwords don\'t match!</string>
+    <string name="registration_success">Registration successful! Redirecting on login screen...</string>
+    <string name="server_error">Couldn\'t contact server!</string>
+    <!-- profile -->
+    <string name="main_technologies">Main Technologies</string>
+    <!-- favoriti -->
+    <string name="add_your_favourite_collaboration">Add your favourite collaboration</string>
+    <!--- search -->
+    <string name="enter_matching_percentage">Enter matching percentage</string>
+    <string name="search">Search</string>
+    <string name="adapter_applications">" applications"</string>
+    <string name="match">% match</string>
+    <!-- dev profile -->
+    <string name="it_skills">IT skills</string>
+    <string name="projects">Projects</string>
+
 
 </resources>

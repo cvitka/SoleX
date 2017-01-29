@@ -70,6 +70,6 @@ public class DeveloperCollaborationsActivity extends DrawerActivity implements D
 
     @Override
     public void onRateSucceeded() {
-        Toast.makeText(getApplicationContext(), "Collaboration has been rated", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), R.string.collab_rated , Toast.LENGTH_SHORT).show();
     }
 }

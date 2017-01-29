@@ -19,6 +19,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import hr.foi.air.solex.presenters.common.LoginPresenter;
 import hr.foi.air.solex.presenters.common.LoginPresenterImpl;
+import hr.foi.air.solex.utils.Utility;
 
 
 public class LoginActivity extends AppCompatActivity implements LoginView {
@@ -34,6 +35,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        (new Utility()).setLanguage(getApplicationContext());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
@@ -43,7 +45,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     @OnClick(R.id.activity_login_btnLogin)
     public void login_click(View view) {
         if (txtInputEmail.getText().toString().isEmpty() || txtInputPassword.getText().toString().isEmpty()) {
-            Toast.makeText(getApplicationContext(), "Fill in all data", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), R.string.fill_data, Toast.LENGTH_LONG).show();
         } else {
             mLoginPresenter.tryLogin(txtInputEmail.getText().toString(), txtInputPassword.getText().toString());
             progressDialog = new ProgressDialog(this,
@@ -76,7 +78,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
             @Override
             public void run() {
                 progressDialog.dismiss();
-                Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), hr.foi.air.solex.R.string.server_error, Toast.LENGTH_LONG).show();
 
             }
         }, 1000);
@@ -99,7 +101,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
             moveTaskToBack(true);
             finish();
         } else {
-            Toast.makeText(this, "Press Back again to Exit.",
+            Toast.makeText(this, R.string.back_to_exit,
                     Toast.LENGTH_SHORT).show();
             exit = true;
             new Handler().postDelayed(new Runnable() {
@@ -108,7 +110,6 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
                     exit = false;
                 }
             }, 3 * 1000);
-
         }
     }
 }

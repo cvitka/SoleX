@@ -1,6 +1,10 @@
 package hr.foi.air.solex.activities.common;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -12,7 +16,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
+
+import java.util.Locale;
 
 import hr.foi.air.solex.activities.developers.DeveloperProjectsActivity;
 import hr.foi.air.solex.utils.UserType;
@@ -28,8 +35,9 @@ import hr.foi.air.solex.activities.developers.DeveloperProfileActivity;
 import hr.foi.air.solex.activities.companies.FavouritesActivity;
 import hr.foi.air.solex.activities.developers.ProjectSearchActivity;
 import hr.foi.air.solex.activities.companies.CompanyProfileActivity;
+import hr.foi.air.solex.utils.Utility;
 
-public class DrawerActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class DrawerActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, SharedPreferences.OnSharedPreferenceChangeListener {
     @BindView(R.id.nav_view)
     NavigationView navigationView;
 
@@ -38,8 +46,11 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
 
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
+
+    private Utility util;
     private DrawerLayout mDrawer;
     private ActionBarDrawerToggle mDrawerToggle;
+
     private void startNewActivity(Class<?> activity) {
         Intent intent = new Intent(this, activity);
         startActivity(intent);
@@ -120,12 +131,18 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
 
         setSupportActionBar(mToolbar);
 
+        util = new Utility();
+
         mDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerToggle = new ActionBarDrawerToggle(
                 this, mDrawer, mToolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         mDrawer.addDrawerListener(mDrawerToggle);
         mDrawerToggle.syncState();
         setNavigationMenu();
+
+        PreferenceManager.getDefaultSharedPreferences(this)
+               .registerOnSharedPreferenceChangeListener(this);
+
     }
 
     //sets navigation menu depending on user type
@@ -154,18 +171,26 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.activity_app_preference:
-              //  Intent intent = new Intent(this, PreferencesActivity);
+                Intent intent = new Intent(this, AppPreferencesActivity.class);
+                startActivity(intent);
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
 
-    protected void showToastShort(String msg){
+    protected void showToastShort(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 
-    protected void showToastLong(String msg){
+    protected void showToastLong(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        this.recreate();
+        (new Utility()).setLanguage(this);
     }
 }

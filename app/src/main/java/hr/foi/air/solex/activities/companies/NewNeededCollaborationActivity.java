@@ -41,8 +41,6 @@ public class NewNeededCollaborationActivity extends DrawerActivity implements Ne
     @BindView(R.id.activity_new_needed_collaboration_etDescription)
     EditText etCollabDescription;
 
-    //@BindView(R.id.activity_new_needed_collaboration_spItSkills)
-    //MaterialSpinner spItSkills;
     @BindView(R.id.activity_new_needed_collaboration_btnAddNewSkill)
     ImageButton btnAddNewSkill;
     @BindView(R.id.activity_new_needed_collaboration_lvNeededSkills)
@@ -57,13 +55,13 @@ public class NewNeededCollaborationActivity extends DrawerActivity implements Ne
     @BindView(R.id.activity_new_needed_collaboration_scrollView)
     ScrollView scrollView;
 
-    private int stateSkills;
     private int stateTypes;
     private String details;
     private int projekt;
 
     MaterialDialog mMaterialDialog;
     private NewNeededCollaborationPresenter mPresenter;
+
     NeededCollaboration mCollab = new NeededCollaboration();
     List<String> neededSkillsList;
     ArrayAdapter<String> neededSkillsAdapter;
@@ -140,7 +138,7 @@ public class NewNeededCollaborationActivity extends DrawerActivity implements Ne
     public void btnAddCollaborationClick(){
 
         if (etCollabName.getText().toString().isEmpty() || etCollabDescription.getText().toString().isEmpty()  || stateTypes == 0) {
-            Toast.makeText(getApplicationContext(), "Fill in all data!", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), R.string.fill_data, Toast.LENGTH_LONG).show();
         }
         else {
             //int id= Integer.parseInt(projekt);
@@ -195,24 +193,24 @@ public class NewNeededCollaborationActivity extends DrawerActivity implements Ne
             public void onItemSelected(MaterialSpinner view, int position, long id, Object item) {
                 switch (position) {
                     case 0:
-                        details="Suradnik mora raditi u isto vrijeme kada i ostali radnici u firmi (Fiksno vrijeme svaki radni dan).";
-                        fillDialog("Type A",details,1);
+                        details=getString(R.string.typeA_details);
+                        fillDialog(getString(R.string.typeA),details,1);
                         break;
                     case 1:
-                        details="Suradnik mora svaki dan raditi, ali nije bitno u koliko sati.";
-                        fillDialog("Type B",details,2);
+                        details=getString(R.string.typeB_details);
+                        fillDialog(getString(R.string.typeB),details,2);
                         break;
                     case 2:
-                        details="Suradnik mora do kraja tjedna ispuniti unaprijed dogovorenu normu. Npr. do kraja tjedna treba 30h napraviti, ali nije bitno kada će već da bude do kraja tjedna.";
-                        fillDialog("Type C",details,3);
+                        details=getString(R.string.typeC_details);
+                        fillDialog(getString(R.string.typeC),details,3);
                         break;
                     case 3:
-                        details="Suradnik ima rok do kojeg treba napraviti funkcionalnost za koju je unamljen.";
-                        fillDialog("Type D",details,4);
+                        details=getString(R.string.typeD_details);
+                        fillDialog(getString(R.string.typeD),details,4);
                         break;
                     case 4:
-                        details="Suradnik mora raditi u isto vrijeme kada i ostali radnici u firmi (Fiksno vrijeme svaki radni dan), ali tijekom rada mora usko komunicirati sa razvojnim timom cijelo vrijeme putem neke audio ili čak video konferencije.";
-                        fillDialog("Type E",details,5);
+                        details=getString(R.string.typeE_details);
+                        fillDialog(getString(R.string.typeE),details,5);
                         break;
                     default:
                         stateTypes = 0;
@@ -225,14 +223,14 @@ public class NewNeededCollaborationActivity extends DrawerActivity implements Ne
                 mMaterialDialog = new MaterialDialog(this)
                 .setTitle(cooperationType)
                 .setMessage(details)
-                .setPositiveButton("OK", new View.OnClickListener() {
+                .setPositiveButton(getString(R.string.OK), new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         mMaterialDialog.dismiss();
                         stateTypes = type;
                     }
                 })
-                .setNegativeButton("CANCEL", new View.OnClickListener() {
+                .setNegativeButton(getString(R.string.CANCEL), new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         mMaterialDialog.dismiss();
@@ -244,7 +242,7 @@ public class NewNeededCollaborationActivity extends DrawerActivity implements Ne
 
     @Override
     public void onAdd() {
-        Toast.makeText(getApplicationContext(), "New Needed Collaboration Has Been Created!", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), R.string.new_needed_collaboration_created, Toast.LENGTH_LONG).show();
         Intent intent = new Intent(this, ProjectManagementActivity.class);
         intent.putExtra("projectId",projekt);
         startActivity(intent);

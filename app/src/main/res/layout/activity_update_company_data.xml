@@ -62,7 +62,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/activity_update_company_iwNewImage"
                     android:layout_marginTop="11dp"
-                    android:text="Company name" />
+                    android:text="@string/company_name" />
 
                 <EditText
                     android:id="@+id/activity_update_company_etNewName"
@@ -73,7 +73,7 @@
                     android:layout_below="@+id/activity_update_company_tvNewName"
                     android:layout_marginTop="16dp"
                     android:ems="10"
-                    android:hint="enter name"
+                    android:hint="@string/enter_name"
                     android:inputType="textPersonName"
                     android:selectAllOnFocus="true" />
 
@@ -85,7 +85,7 @@
                     android:layout_alignStart="@+id/activity_update_company_etNewName"
                     android:layout_below="@+id/activity_update_company_etNewName"
                     android:layout_marginTop="17dp"
-                    android:text="Contact e-mail" />
+                    android:text="@string/e_mail_contact" />
 
                 <EditText
                     android:id="@+id/activity_update_company_etNewEmail"
@@ -106,7 +106,7 @@
                     android:layout_alignStart="@+id/activity_update_company_etNewEmail"
                     android:layout_below="@+id/activity_update_company_etNewEmail"
                     android:layout_marginTop="11dp"
-                    android:text="Address" />
+                    android:text="@string/address" />
 
                 <EditText
                     android:id="@+id/activity_update_company_etNewAddress"
@@ -117,7 +117,7 @@
                     android:layout_below="@+id/activity_update_company_tvNewAddress"
                     android:layout_marginTop="15dp"
                     android:ems="10"
-                    android:hint="enter address"
+                    android:hint="@string/enter_address"
                     android:inputType="textPersonName" />
 
                 <TextView
@@ -127,7 +127,7 @@
                     android:layout_alignStart="@+id/activity_update_company_etNewAddress"
                     android:layout_below="@+id/activity_update_company_etNewAddress"
                     android:layout_marginTop="11dp"
-                    android:text="Webpage" />
+                    android:text="@string/webpage" />
 
                 <EditText
                     android:id="@+id/activity_update_company_etWebPage"
@@ -138,7 +138,7 @@
                     android:layout_below="@+id/activity_update_company_tvWebPage"
                     android:layout_marginTop="15dp"
                     android:ems="10"
-                    android:hint="Enter webpage address"
+                    android:hint="@string/enter_webpage_address"
                     android:inputType="textPersonName" />
 
                 <TextView
@@ -148,7 +148,7 @@
                     android:layout_alignStart="@+id/activity_update_company_etWebPage"
                     android:layout_below="@+id/activity_update_company_etWebPage"
                     android:layout_marginTop="11dp"
-                    android:text="Director" />
+                    android:text="@string/director" />
 
                 <EditText
                     android:id="@+id/activity_update_company_etDirector"
@@ -159,7 +159,7 @@
                     android:layout_below="@+id/activity_update_company_tvDirector"
                     android:layout_marginTop="15dp"
                     android:ems="10"
-                    android:hint="Director information"
+                    android:hint="@string/director_information"
                     android:inputType="textPersonName" />
 
                 <TextView
@@ -169,7 +169,7 @@
                     android:layout_alignStart="@+id/activity_update_company_etDirector"
                     android:layout_below="@+id/activity_update_company_etDirector"
                     android:layout_marginTop="11dp"
-                    android:text="Number of workers" />
+                    android:text="@string/number_of_workers" />
 
                 <EditText
                     android:id="@+id/activity_update_company_etNumberOfWorkers"
@@ -180,7 +180,7 @@
                     android:layout_below="@+id/activity_update_company_tvNumberOfWorkers"
                     android:layout_marginTop="15dp"
                     android:ems="10"
-                    android:hint="Enter number of workers"
+                    android:hint="@string/enter_number_of_workers"
                     android:inputType="number" />
 
                 <Button
@@ -189,7 +189,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/activity_update_company_etNumberOfWorkers"
                     android:layout_centerHorizontal="true"
-                    android:text="Update data"
+                    android:text="@string/update_data"
                     android:textColor="@color/colorAccent" />
             </RelativeLayout>
 

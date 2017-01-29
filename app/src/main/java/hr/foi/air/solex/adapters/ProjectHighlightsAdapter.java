@@ -62,7 +62,7 @@ public class ProjectHighlightsAdapter extends RecyclerView.Adapter<ProjectHighli
 
         public void bind(final ProfileScreenProject item, final ClickListener clickListener){
             final int color = Color.parseColor("#31C3E7");
-            numOfCollab.setText(Integer.toString(item.getNumOfCollaborations())+" collaborations");
+            numOfCollab.setText(Integer.toString(item.getNumOfCollaborations())+" "+context.getString(R.string.collaborations));
             projectState.setText(TypeHelper.getProjectState(context, item.getState()));
             projectName.setText(item.getProjectName());
             if (item.getHighlightedStatus() != 0) {

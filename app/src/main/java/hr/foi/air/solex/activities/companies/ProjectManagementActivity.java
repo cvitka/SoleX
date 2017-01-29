@@ -65,17 +65,12 @@ public class ProjectManagementActivity extends DrawerActivity implements Project
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
         mPresenter = new ProjectManagementPresenterImpl(this,new SelectedProjectInteractorImpl());
-      //  mNeededPresenter = new GetNeededCollaborationsPresenterImpl();
-        //collabPresenter = new GetNeededCollaborationsPresenterImpl(this, new ApiNeededCollaborationsInteractorImpl());
-
-       // String projectName;
 
         if (savedInstanceState == null) {
             Bundle extras = getIntent().getExtras();
             if(extras == null) {
-               /// projectName= null;
             } else {
-                //projectName= extras.getString("projectName");
+
                 projectId= extras.getInt("projectId");
                 isOwner = extras.getBoolean("isOwner");
             }
@@ -84,12 +79,10 @@ public class ProjectManagementActivity extends DrawerActivity implements Project
         }
         mPresenter.getProject(projectId);
         mPresenter.getNeededCollaboration(projectId);
-        //fixes scrolling list inside ScrollView
         lvNeededCollaborations.setOnTouchListener(new View.OnTouchListener() {
             // Setting on Touch Listener for handling the touch inside ScrollView
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                // Disallow the touch request for parent scroll on touch of child view
                 scrollView.requestDisallowInterceptTouchEvent(true);
                 return false;
             }

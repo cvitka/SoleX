@@ -15,8 +15,6 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import hr.foi.air.solex.activities.common.ProjectDisplayActivity;
 import hr.foi.air.solex.activities.common.ProjectListingActivity;
 import hr.foi.air.solex.utils.UserType;
@@ -24,10 +22,8 @@ import hr.foi.air.solex.models.mcompanies.CompanyInteractorImpl;
 import hr.foi.air.solex.models.mcompanies.Company;
 import hr.foi.air.solex.models.login_registration.User;
 import hr.foi.air.solex.models.profile_screen_project.ProfileScreenProject;
-
 import com.github.aakira.expandablelayout.ExpandableLayout;
 import com.google.gson.Gson;
-
 import java.util.List;
 
 import butterknife.BindView;
@@ -289,7 +285,6 @@ public class CompanyProfileActivity extends DrawerActivity implements CompanyPro
         txtCompanyEmail.setText(mThisCompany.getEmail());
         txtCompanyAddress.setText(mThisCompany.getAddress());
         txtCompanyName.setText(mThisCompany.getName());
-        //txtCompanyDescription.setText(mThisCompany.getOpisPoduzeca());
         txtDirector.setText(mThisCompany.getDirektor());
         txtNumberEployees.setText(Integer.toString(mThisCompany.getBrojZaposlenika()));
         txtWebPage.setText(mThisCompany.getWebStranica());

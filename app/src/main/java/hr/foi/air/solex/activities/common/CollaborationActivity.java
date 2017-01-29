@@ -49,12 +49,6 @@ public class CollaborationActivity extends DrawerActivity implements Collaborati
     @BindView(R.id.activity_collaboration_tvDeveloperName)
     TextView tvDeveloperName;
 
-    //@BindView(R.id.activity_collaboration_tvSkillsMatch)
-    //TextView tvSkillsMatch;
-
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,7 +94,7 @@ public class CollaborationActivity extends DrawerActivity implements Collaborati
     }
 
     @OnClick(R.id.activity_collaboration_imvDeveloper)
-    public void imvDeveloperClick(){
+    public void imvDeveloperClick() {
         Intent intent = new Intent(this, DeveloperProfileActivity.class);
         intent.putExtra("developerId", Integer.parseInt(mThisCollaboration.getDevID()));
         startActivity(intent);

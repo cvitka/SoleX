@@ -51,16 +51,11 @@ public class FavouritesActivity extends DrawerActivity implements FavouritesActi
     @BindView(R.id.activity_favourites_btnAddFavourites)
     Button addFavourite;
 
-
-
-    AlertDialog alertDialog;
     FavouritesPresenter mFavouritesPresenter;
     private ArrayList<Integer> itemsId = new ArrayList<Integer>();
     private ArrayList<String> mList = new ArrayList<String>();
     private ArrayList<String> mColabi = new ArrayList<String>();
-    private List<ApiFavourites> mFavoriti;
     private List<ApiCompanyCollaborations> myCollabi;
-    private int isFirstDialog;
     private String id;
     private String favorit;
 
@@ -76,8 +71,6 @@ public class FavouritesActivity extends DrawerActivity implements FavouritesActi
 
     @Override
     public void dataArrived(List<ApiFavourites> apiFavourites) {
-        mFavoriti = apiFavourites;
-
         ArrayList<String> items = new ArrayList<String>();
         ArrayAdapter<String> itemsAdapter;
         itemsAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items);
@@ -176,7 +169,7 @@ public class FavouritesActivity extends DrawerActivity implements FavouritesActi
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         textView.setThreshold(2);
         dialog.setContentView(post);
-        dialog.setTitle("Add new Favorite");
+        dialog.setTitle(R.string.add_new_favorite);
         dialog.show();
 
         bntClose.setOnClickListener(new View.OnClickListener() {
@@ -190,7 +183,6 @@ public class FavouritesActivity extends DrawerActivity implements FavouritesActi
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //budi here u go rock our world
                 String skill = textView.getText().toString();
 
                 for(String area : mColabi){

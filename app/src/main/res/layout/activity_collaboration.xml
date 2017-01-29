@@ -52,7 +52,7 @@
             xmlns:app="http://schemas.android.com/apk/res-auto">
 
             <TextView
-                android:text="_company: _project"
+                android:text="@string/company_project_collab"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/activity_collaboration_tvCompanyProject"
@@ -61,7 +61,7 @@
                 android:layout_alignParentStart="true" />
 
             <TextView
-                android:text="_collaboration_name"
+                android:text="@string/collaboration_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/activity_collaboration_tvCompanyProject"
@@ -83,7 +83,7 @@
                 android:textSize="16sp"/>
 
             <TextView
-                android:text="Required IT skills"
+                android:text="@string/required_it_skills"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
@@ -101,7 +101,7 @@
                 android:id="@+id/activity_collaboration_lvItSkills"/>
 
             <TextView
-                android:text="Developer:"
+                android:text="@string/tvDeveloper"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/activity_collaboration_lvItSkills"
@@ -116,7 +116,7 @@
                 android:layout_below="@+id/textView18"
                 android:layout_alignParentStart="true" />
             <TextView
-                android:text="_developer_name:"
+                android:text="@string/tvDeveloper_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/textView18"

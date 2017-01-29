@@ -41,13 +41,15 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
-                android:text="NEW PROJECT"
+                android:layout_marginTop="60dp"
+                android:text="@string/new_project"
                 android:textColor="@color/colorAccent" />
 
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="35dp">
+                android:layout_marginTop="35dp"
+                android:layout_marginBottom="50dp">
 
                 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                     xmlns:tools="http://schemas.android.com/tools"

@@ -43,7 +43,7 @@
     <LinearLayout
         android:layout_height="55dp"
         android:orientation="vertical"
-        android:layout_width="130dp">
+        android:layout_width="140dp">
 
         <TextView
             android:id="@+id/activity_search_projects_project_percentage"

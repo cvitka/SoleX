@@ -24,7 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:text="Add your favorite collaboration"/>
+        android:text="@string/add_your_favourite_collaboration"/>
 
     <AutoCompleteTextView
         android:id="@+id/favouriteDialog_name"

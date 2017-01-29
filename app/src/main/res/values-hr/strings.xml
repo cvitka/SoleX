@@ -1,29 +1,176 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="signup">Još nemaš račun? Kreiraj ga!</string>
+    <string name="app_name">SoleX</string>
+    <string name="signup">Nemaš račun? Kreiraj ga!</string>
     <string name="passwordHint">Lozinka</string>
-    <string name="loginButton">Prijavi se</string>
-    <string name="btnPoduzece">Poduzeće</string>
+    <string name="loginButton">Prijava</string>
+    <string name="title_activity_signup">Prijava</string>
+    <string name="action_settings">Postavke</string>
+    <string name="btnPoduzece">Company</string>
     <string name="developer">Razvojni inženjer</string>
-    <string name="account_create">Koju vrstu računa želite kreirati?</string>
-    <string name="signup_yourself_as_a_developer">Registriraj se kao developer!</string>
-    <string name="signup_your_company">Registriraj svoje poduzeće!</string>
+    <string name="account_create">Koji račun želite napraviti?</string>
+    <string name="signup_yourself_as_a_developer">Prijavite se kao developer!</string>
+    <string name="signup_your_company">Prijavite svoje poduzeće!</string>
+    <string name="preferences">Postavke</string>
+    <string name="cancel">Otkaži</string>
+    <string name="delete">Obriši</string>
+    <string name="removal_question">Želite li ukloniti ovu stavku?</string>
+    <string name="username">Korisničko ime</string>
+    <string name="app_lang_pref">Postavke jezika</string>
+    <string name="nav_header_info">foi@foi.hr</string>
+    <string name="navigation_drawer_open">Otvori drawer</string>
+    <string name="navigation_drawer_close">Zatvori drawer</string>
+    <string name="menu_about">O aplikaciji</string>
+    <string name="dev_opt_collaborations">Suradnje</string>
+    <string name="dev_opt_applications">Aplikacije</string>
+    <string name="dev_opt_search">Pretraži projekte</string>
+    <string name="dev_opt_logout">Odjavi se</string>
+    <string name="dev_opt_profile">Moj profil</string>
+    <string name="comp_opt_collaborations">Suradnje</string>
+    <string name="comp_opt_favourites">Favoriti</string>
+    <string name="comp_opt_projects">Moji projekti</string>
+    <string name="comp_opt_logout">Odjavi se</string>
+    <string name="comp_opt_profile">Moj profil</string>
+    <string name="drawer_additional">Dodatno</string>
     <string name="loginProgress">Prijava u tijeku...</string>
-    <string name="signupProgress">Kreiranje računa....</string>
-    <string name="signupInfo">Svi potrebni podaci za registraciju nisu popunjeni!</string>
+    <string name="signupProgress">Stvaranje računa....</string>
+    <string name="signupInfo">Uneseni podaci nisu točni!</string>
+    <string name="enter_e_mail">Unesite e-mail</string>
     <string name="comp_web_page">Web stranica poduzeća</string>
     <string name="comp_director">Direktor</string>
     <string name="comp_num_employees">Broj zaposlenika</string>
-    <string name="list_item_projects_collab">suradnji</string>
-    <string name="project_state_1">Nije počeo</string>
-    <string name="project_state_2">Izvodi se</string>
-    <string name="project_state_3">Završen</string>
-    <string name="project_state_4">Pauziran</string>
+    <string name="list_item_projects_collab">suradnje</string>
+    <string name="project_state_1">Isčekivanje početka</string>
+    <string name="project_state_2">U tijeku</string>
+    <string name="project_state_3">Završeno</string>
+    <string name="project_state_4">Zaustavljen</string>
     <string name="project_state_5">Prekinut</string>
-    <string name="error_adding_skill">Morate izabrati od ponuđenih stručnosti!</string>
-    <string name="error_skill_exists">Ta stručnost je već dodana!</string>
-    <string name="company_proj_list_label">Lista projekata poduzeća</string>
-    <string name="developer_proj_list_label">Lista projekata softverskog inžinjera</string>
-    <string name="projects_list"> lista projekata</string>
+    <string name="error_adding_skill">Morate izabrati iz predloženih vještina!</string>
+    <string name="error_skill_exists">Vještina je već dodana!</string>
+    <string name="company_proj_list_label">Popis projekata poduzeća</string>
+    <string name="developer_proj_list_label">Popis projekata developera</string>
+    <string name="projects_list"> popis projekata</string>
+    <string name="applicants_label">Aplikanti</string>
+
+    <string name="activity_developer_applications_ListLabel">Popis svih aplikacija</string>
+
+    <!-- CollabApplicat-->
+    <string name="tvDateStartedLabel">započeto</string>
+    <string name="tvDateApplicatedLabel">primjenjeno</string>
+    <string name="tvCollabModelLabel">Model suradnje</string>
+    <string name="tvPaymentLabel">Dogovorena isplata</string>
+
+    <string name="collon">:</string>
+    <string name="dash">-</string>
+
+
+    <!--Applicants -->
+    <string name="applied">Primjenjena</string>
+    <string name="with">sa</string>
+    <string name="perc_match">% postotak</string>
+
+    <!--Developer applicating -->
+    <string name="applicate">Aplikant</string>
+    <string name="withdraw">Povuci aplikaciju</string>
+    <string name="num_applicants">Broj aplikanata</string>
+    <string name="new_info">Unesite nove informacije</string>
+    <string name="list_projects">Popis svih projekata</string>
+    <string name="create_new_project">Dodaj novi projekt</string>
+    <string name="project_management">Upravljanje projektima</string>
+    <string name="new_collaboration">Nova suradnja</string>
+    <string name="collaborations">Suradnje</string>
+    <string name="favourites">Favoriti</string>
+    <string name="search_projects">Pretraži projekte</string>
+    <string name="previous_applications">Prethodne aplikacije</string>
+    <string name="project_listing">Popis projekata</string>
+    <string name="project_display">Prikaz projekta</string>
+    <string name="needed_collaboration">Potrebna suradnja</string>
+    <string name="job_opportunity">poslovna mogućnost</string>
+    <string name="my_projects">Projekti</string>
+    <string name="company_project_collab">poduzeće: _projekt</string>
+    <string name="collaboration_name">_suradnja_ime</string>
+    <string name="required_it_skills">Potrebne IT vještine</string>
+    <string name="tvDeveloper">Developer:</string>
+    <string name="tvDeveloper_name">_developer_ime:</string>
+    <string name="back_to_exit">Pritisnite ponovo za izlaz</string>
+    <string name="fill_data">Popunite sve podatke</string>
+    <string name="favorite_added">Korisnik je dodan u favorite</string>
+    <string name="collab_rated">Suradnja je ocijenjena</string>
+    <string name="server_error">Ne može se kontaktirati poslužitelj</string>
+    <string name="accept_application">Prikvati apliciranje</string>
+    <string name="_project">_projekt</string>
+    <string name="_collaboration_name">_sudranja_ime</string>
+    <string name="update">Ažuriraj</string>
+    <string name="company_name">Ime poduzeća</string>
+    <string name="e_mail_contact">E-Mail kontakt</string>
+    <string name="address">Adresa</string>
+    <string name="highlighted_projects">Istaknuti projekti</string>
+    <string name="general_information">Opće informacije</string>
+    <string name="added_to_highlights">Projekt je istaknut</string>
+    <string name="new_project">NOVI PROJEKT</string>
+    <string name="add_new_favorite">Dodaj novog favorita</string>
+    <string name="add">Dodaj</string>
+    <string name="typeA_details">Suradnik mora raditi u isto vrijeme kada i ostali radnici u firmi (Fiksno vrijeme svaki radni dan).</string>
+    <string name="typeB_details">Suradnik mora svaki dan raditi, ali nije bitno u koliko sati.</string>
+    <string name="typeA">Tip A</string>
+    <string name="typeB">Tip B</string>
+    <string name="typeC">Tip C</string>
+    <string name="typeD">Tip D</string>
+    <string name="typeE">Tip E</string>
+    <string name="typeC_details">Suradnik mora do kraja tjedna ispuniti unaprijed dogovorenu normu. Npr. do kraja tjedna treba 30h napraviti, ali nije bitno kada će već da bude do kraja tjedna.</string>
+    <string name="typeD_details">Suradnik ima rok do kojeg treba napraviti funkcionalnost za koju je unamljen.</string>
+    <string name="typeE_details">Suradnik mora raditi u isto vrijeme kada i ostali radnici u firmi (Fiksno vrijeme svaki radni dan), ali tijekom rada mora usko komunicirati sa razvojnim timom cijelo vrijeme putem neke audio ili čak video konferencije.
+</string>
+    <string name="OK">OK</string>
+    <string name="CANCEL">PREKINI</string>
+    <string name="new_needed_collaboration_created">Nova potrebna suradnja je dodana!</string>
+    <string name="project_name">Naziv projekta</string>
+    <string name="description">Opis</string>
+    <string name="project_description">Opis projekta</string>
+    <string name="completion_percentage">Završetak(postotak)</string>
+
+    <!-- update company -->
+    <string name="enter_name">Unesi ime</string>
+    <string name="enter_address">Unesi address</string>
+    <string name="webpage">Web stranica</string>
+    <string name="enter_webpage_address">Unesi web stranicu</string>
+    <string name="director">Direktor</string>
+    <string name="director_information">Informacije o direktoru</string>
+    <string name="number_of_workers">Broj zaposlenika</string>
+    <string name="enter_number_of_workers">Unesi broj zaposlenika</string>
+    <string name="update_data">Ažuriraj podatke</string>
+    <string name="profile_data_update">Profilni podaci su ažurirani</string>
+    <string name="your_name">Ime</string>
+    <string name="your_surname">Prezime</string>
+    <string name="enter_surname">Unesi prezime</string>
+    <string name="your_address">Adresa</string>
+    <string name="your_e_mail">Vaša e-mail adresa </string>
+    <string name="your_contact_number">Broj kontakta </string>
+    <string name="enter_contact_number">Unesi kontaktni broj</string>
+    <string name="your_years_of_experience">Godine iskustva</string>
+    <!-- search -->
+    <string name="enter_experience">Unesite godine iskutva</string>
+    <string name="enter_percentage">Unesite postotak(0-100)</string>
+    <string name="percentage_limitation">Postotak mora biti ispod 100!</string>
+    <string name="choose_skill">Izaberite vještinu</string>
+    <string name="no_such_skill">"Ne postoji navedena vještina "</string>
+    <!-- signup -->
+    <string name="all_fields">Sva polja moraju biti popunjena!</string>
+    <string name="password_dont_match">Lozinke se ne podudaraju!</string>
+    <string name="registration_success">Registracija uspješna! Preusmjeravanje na zaslon prijave...</string>
+    <!--profile -->
+    <string name="main_technologies">Glavne tehnologije</string>
+    <!-- favoriti -->
+    <string name="add_your_favourite_collaboration">Dodaj novog favorita</string>
+
+    <string name="enter_matching_percentage">Unesi postotak</string>
+    <string name="search">Pretraži</string>
+
+    <string name="adapter_applications">" suradnje"</string>
+    <string name="match">% podudaranje</string>
+    <!-- dev profile -->
+    <string name="it_skills">IT vještine</string>
+    <string name="projects">Projekti</string>
+
 
 </resources>

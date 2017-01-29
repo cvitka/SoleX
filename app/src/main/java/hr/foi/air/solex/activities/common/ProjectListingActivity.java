@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import java.util.List;
 
@@ -19,7 +18,7 @@ import hr.foi.air.solex.presenters.common.ProjectListingPresenter;
 import hr.foi.air.solex.presenters.common.ProjectListingPresenterImpl;
 import hr.foi.air.solex.utils.UserType;
 
-public class ProjectListingActivity extends DrawerActivity implements ProjectListingView{
+public class ProjectListingActivity extends DrawerActivity implements ProjectListingView {
     @BindView(R.id.activity_projects_listing_lvProjects)
     ListView lvProjects;
 
@@ -35,7 +34,7 @@ public class ProjectListingActivity extends DrawerActivity implements ProjectLis
 
         mProjectListingPresenter = new ProjectListingPresenterImpl(this);
         int type = getIntent().getExtras().getInt("type");
-        if(type == UserType.COMPANY.intVal())
+        if (type == UserType.COMPANY.intVal())
             projectsOwnerType = UserType.COMPANY;
         else
             projectsOwnerType = UserType.DEVELOPER;
@@ -47,7 +46,7 @@ public class ProjectListingActivity extends DrawerActivity implements ProjectLis
     }
 
     @OnItemClick(R.id.activity_projects_listing_lvProjects)
-    public void lvProjectsItemClick(AdapterView<?> adapter, View item, int pos, long id){
+    public void lvProjectsItemClick(AdapterView<?> adapter, View item, int pos, long id) {
         ProfileScreenProject clickedProj = mProjectsList.get(pos);
         Intent intent = new Intent(this, ProjectDisplayActivity.class);
         intent.putExtra("projectId", clickedProj.getId());

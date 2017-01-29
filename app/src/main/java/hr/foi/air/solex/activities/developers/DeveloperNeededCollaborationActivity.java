@@ -133,6 +133,5 @@ public class DeveloperNeededCollaborationActivity extends DrawerActivity impleme
 
     @Override
     public void pushSucessful() {
-        Toast.makeText(getApplicationContext(),"Push sucessful!",Toast.LENGTH_LONG).show();
     }
 }

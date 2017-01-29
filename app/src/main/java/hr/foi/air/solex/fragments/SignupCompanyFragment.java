@@ -68,10 +68,10 @@ public class SignupCompanyFragment extends Fragment implements SignupView{
         || txtInputEmail.getText().toString().isEmpty()
         || txtInputPassword.getText().toString().isEmpty()
         || txtInputReEnterPassword.getText().toString().isEmpty()){
-            showToast("All fields must be filled");
+            showToast(getString(R.string.all_fields));
         }
         else if(!txtInputPassword.getText().toString().equals(txtInputReEnterPassword.getText().toString())){
-            showToast("Passwords don't match!");
+            showToast(getString(R.string.password_dont_match));
         }
         else{
             Company company = new Company();
@@ -102,7 +102,7 @@ public class SignupCompanyFragment extends Fragment implements SignupView{
 
     @Override
     public void signupSuccessful() {
-        showToast("Registration successful! Redirecting on login screen...");
+        showToast(getString(R.string.registration_success));
         progressDialog.dismiss();
         new android.os.Handler().postDelayed(new Runnable() {
             @Override
@@ -116,7 +116,7 @@ public class SignupCompanyFragment extends Fragment implements SignupView{
 
     @Override
     public void signupFailed(String message) {
-        showToast(message);
+        Toast.makeText(getActivity(),R.string.server_error,Toast.LENGTH_LONG).show();
         progressDialog.dismiss();
     }
 }
