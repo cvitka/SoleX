@@ -18,7 +18,7 @@ import retrofit2.http.Query;
 public class CompanySignupInteractorImpl extends WebServiceCommunicator implements CompanySignupInteractor {
     private interface WebServiceInterface {
        @GET("registracijaPoduzeca.php")
-       Call<SignUpResponse> registrirajPoduzece(@Query("naziv") String name, @Query("adresa") String address, @Query("email") String email, @Query("lozinka") String password);
+       Call<SignUpResponse> registrirajPoduzece(@Query("naziv") String name, @Query("adresa") String address, @Query("email") String email, @Query("lozinka") String password, @Query("token") String  token);
     }
 
     private SignUpResponseListener mResponseListener;
@@ -30,7 +30,7 @@ public class CompanySignupInteractorImpl extends WebServiceCommunicator implemen
     @Override
     public void registerCompany(Company company, String password) {
         WebServiceInterface serviceIntf = retrofit.create(WebServiceInterface.class);
-        Call<SignUpResponse> call3 = serviceIntf.registrirajPoduzece(company.getName(), company.getAddress(), company.getEmail(), password);
+        Call<SignUpResponse> call3 = serviceIntf.registrirajPoduzece(company.getName(), company.getAddress(), company.getEmail(), password, company.getToken());
         if (call3 != null) {
             call3.enqueue(new Callback<SignUpResponse>() {
                 @Override

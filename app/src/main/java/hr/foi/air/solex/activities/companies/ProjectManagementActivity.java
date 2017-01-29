@@ -52,8 +52,6 @@ public class ProjectManagementActivity extends DrawerActivity implements Project
     Project mThisProject;
     ProjectManagementPresenter mPresenter;
     List<ApiNeededCollaborations> neededCollaborations;
-    private String selectedProjectName;
-    private String selectedProjectId;
     private int projectId;
     boolean isOwner;
 
@@ -67,6 +65,7 @@ public class ProjectManagementActivity extends DrawerActivity implements Project
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
         mPresenter = new ProjectManagementPresenterImpl(this,new SelectedProjectInteractorImpl());
+      //  mNeededPresenter = new GetNeededCollaborationsPresenterImpl();
         //collabPresenter = new GetNeededCollaborationsPresenterImpl(this, new ApiNeededCollaborationsInteractorImpl());
 
        // String projectName;

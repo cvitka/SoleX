@@ -124,27 +124,30 @@ public class UpdateCompanyDataActivity extends DrawerActivity implements UpdateC
     }
 
     public void setDataOnLayout(Company company) {
-        mThisCompany = company;
-        txtInputNewEmail.setText(mThisCompany.getEmail());
-        txtInputNewAddress.setText(mThisCompany.getAddress());
-        txtInputNewName.setText(mThisCompany.getName());
-        txtInputNewWebPage.setText(mThisCompany.getWebStranica());
-        txtInputNewDirector.setText(mThisCompany.getDirektor());
-        txtInputNumberofWorkers.setText(""+mThisCompany.getBrojZaposlenika());
+        if(mThisCompany != null){
+            mThisCompany = company;
+            txtInputNewEmail.setText(mThisCompany.getEmail());
+            txtInputNewAddress.setText(mThisCompany.getAddress());
+            txtInputNewName.setText(mThisCompany.getName());
+            txtInputNewWebPage.setText(mThisCompany.getWebStranica());
+            txtInputNewDirector.setText(mThisCompany.getDirektor());
+            txtInputNumberofWorkers.setText(""+mThisCompany.getBrojZaposlenika());
+            String encodedImage = mThisCompany.getPicture();
 
-        String encodedImage = mThisCompany.getPicture();
-        if (!encodedImage.isEmpty()) {
-            byte[] decodedString = Base64.decode(encodedImage, Base64.DEFAULT);
-            Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
-            imageToUpload.setImageBitmap(decodedByte);
-        } else {
-            int id = getResources().getIdentifier("hr.foi.air.solex:drawable/" + "company_logo", null, null);
-            imageToUpload.setImageResource(id);
+            if (!encodedImage.isEmpty()) {
+                byte[] decodedString = Base64.decode(encodedImage, Base64.DEFAULT);
+                Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+                imageToUpload.setImageBitmap(decodedByte);
+            } else {
+                int id = getResources().getIdentifier("hr.foi.air.solex:drawable/" + "company_logo", null, null);
+                imageToUpload.setImageResource(id);
+            }
+
+            View header = navigationView.getHeaderView(0);
+            TextView textEmail = (TextView) header.findViewById(R.id.textViewEmail);
+            textEmail.setText(mThisCompany.getEmail());
         }
 
-        View header = navigationView.getHeaderView(0);
-        TextView textEmail = (TextView) header.findViewById(R.id.textViewEmail);
-        textEmail.setText(mThisCompany.getEmail());
     }
 
     @OnClick(R.id.activity_update_company_iwNewImage)

@@ -14,6 +14,7 @@ public class Developer {
     private String godineIskustva;
     private String picture;
     private String status;
+    private String token;
 
     public int getId() {
         return id;
@@ -85,5 +86,13 @@ public class Developer {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }

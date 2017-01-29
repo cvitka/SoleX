@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import hr.foi.air.solex.models.mdevelopers.Developer;
 import hr.foi.air.solex.models.login_registration.User;
+
 import com.google.gson.Gson;
 
 import java.io.ByteArrayOutputStream;
@@ -89,32 +90,33 @@ public class UpdateDeveloperDataActivity extends DrawerActivity implements Updat
         setDataOnLayout(mThisDeveloper);
     }
 
-    private void setDataOnLayout(Developer dev){
-        txtInputNewEmail.setText(dev.getEmail());
-        txtInputNewExperince.setText(dev.getGodineIskustva());
-        txtInputNewName.setText(dev.getIme());
-        txtInputNewSurname.setText(dev.getPrezime());
-        txtInputNewAddress.setText(dev.getAdresa());
-        txtInputNewNumber.setText(dev.getKontaktBroj());
+    private void setDataOnLayout(Developer dev) {
+        if (dev != null) {
+            txtInputNewEmail.setText(dev.getEmail());
+            txtInputNewExperince.setText(dev.getGodineIskustva());
+            txtInputNewName.setText(dev.getIme());
+            txtInputNewSurname.setText(dev.getPrezime());
+            txtInputNewAddress.setText(dev.getAdresa());
+            txtInputNewNumber.setText(dev.getKontaktBroj());
 
-        String encodedImage = mThisDeveloper.getPicture();
-        if(!encodedImage.isEmpty()){
-            byte[] decodedString = Base64.decode(encodedImage, Base64.DEFAULT);
-            Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
-            imageToUpload.setImageBitmap(decodedByte);
-        }
-        else{
-            int id = getResources().getIdentifier("hr.foi.air.solex:drawable/" + "developer_logo", null, null);
-            imageToUpload.setImageResource(id);
-        }
+            String encodedImage = mThisDeveloper.getPicture();
+            if (!encodedImage.isEmpty()) {
+                byte[] decodedString = Base64.decode(encodedImage, Base64.DEFAULT);
+                Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+                imageToUpload.setImageBitmap(decodedByte);
+            } else {
+                int id = getResources().getIdentifier("hr.foi.air.solex:drawable/" + "developer_logo", null, null);
+                imageToUpload.setImageResource(id);
+            }
 
-        View header=navigationView.getHeaderView(0);
-        TextView textEmail = (TextView)header.findViewById(R.id.textViewEmail);
-        textEmail.setText(dev.getEmail());
+            View header = navigationView.getHeaderView(0);
+            TextView textEmail = (TextView) header.findViewById(R.id.textViewEmail);
+            textEmail.setText(dev.getEmail());
+        }
     }
 
     @OnClick(R.id.activity_update_developer_btnUpdateData)
-    public void btnClick(View view){
+    public void btnClick(View view) {
 
         mThisDeveloper.setIme(txtInputNewName.getText().toString());
         mThisDeveloper.setPrezime(txtInputNewSurname.getText().toString());
@@ -123,11 +125,11 @@ public class UpdateDeveloperDataActivity extends DrawerActivity implements Updat
         mThisDeveloper.setKontaktBroj(txtInputNewNumber.getText().toString());
         mThisDeveloper.setGodineIskustva(txtInputNewExperince.getText().toString());
 
-        if(odabrano == 1){
+        if (odabrano == 1) {
             Bitmap image = ((BitmapDrawable) imageToUpload.getDrawable()).getBitmap();
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            image.compress(Bitmap.CompressFormat.JPEG,20, baos);
-            String encodedImage = Base64.encodeToString(baos.toByteArray(),Base64.DEFAULT);
+            image.compress(Bitmap.CompressFormat.JPEG, 20, baos);
+            String encodedImage = Base64.encodeToString(baos.toByteArray(), Base64.DEFAULT);
             mThisDeveloper.setPicture(encodedImage);
         }
 
@@ -152,7 +154,7 @@ public class UpdateDeveloperDataActivity extends DrawerActivity implements Updat
     }
 
     @OnClick(R.id.activity_update_developer_iwNewImage)
-    public void chooseImage(View view){
+    public void chooseImage(View view) {
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(intent, RESULT_LOAD_IMAGE);
     }

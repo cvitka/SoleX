@@ -10,6 +10,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.messaging.FirebaseMessaging;
+
 import hr.foi.air.solex.models.mdevelopers.Developer;
 
 import butterknife.BindView;
@@ -88,7 +91,8 @@ public class SignupDeveloperFragment extends Fragment implements SignupView{
             developer.setPrezime(txtInputSurname.getText().toString());
             developer.setAdresa(txtInputAddress.getText().toString());
             developer.setEmail(txtInputEmail.getText().toString());
-            //
+            developer.setToken(FirebaseInstanceId.getInstance().getToken());
+
             mDeveloperSignupPresenter.tryRegister(developer, txtInputPassword.getText().toString());
             progressDialog = new ProgressDialog(getActivity(),
                     R.style.AppTheme_Bright_Dialog);
@@ -112,6 +116,7 @@ public class SignupDeveloperFragment extends Fragment implements SignupView{
     @Override
     public void signupSuccessful() {
         showToast("Registration successful! Redirecting on login screen...");
+        progressDialog.dismiss();
         new android.os.Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -125,5 +130,6 @@ public class SignupDeveloperFragment extends Fragment implements SignupView{
     @Override
     public void signupFailed(String message) {
         showToast(message);
+        progressDialog.dismiss();
     }
 }

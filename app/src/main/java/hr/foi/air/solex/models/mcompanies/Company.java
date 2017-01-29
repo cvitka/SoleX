@@ -19,6 +19,7 @@ public class Company {
     private String direktor;
     private String opisPoduzeca;
     private int brojZaposlenika;
+    private String  token;
 
     public HashMap<String, String> getImage() {
         return image;
@@ -117,6 +118,14 @@ public class Company {
         this.status = status;
     }
     private static Company instance;
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
 
     public Company() {
     }
