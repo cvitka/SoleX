@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -53,6 +54,7 @@ public class DeveloperNeededCollaborationActivity extends DrawerActivity impleme
 
     private String companyName;
     private int applicantsNumber;
+    private int companyId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -107,6 +109,7 @@ public class DeveloperNeededCollaborationActivity extends DrawerActivity impleme
         tvCompanyName.setText(companyName);
         tvProjectName.setText(mThisCollaboration.getProjectName());
         tvApplicantsNumber.setText(String.valueOf(applicantsNumber));
+        companyId = collaborationData.getCompanyId();
         ChangeBtnApplicate(mThisCollaboration.getState());
     }
 
@@ -119,11 +122,17 @@ public class DeveloperNeededCollaborationActivity extends DrawerActivity impleme
 
     @Override
     public void onApplySuccessfull() {
+        mPresenter.pushNotif(companyId);
 
     }
 
     @Override
     public void onRemoveApplySucessfull() {
 
+    }
+
+    @Override
+    public void pushSucessful() {
+        Toast.makeText(getApplicationContext(),"Push sucessful!",Toast.LENGTH_LONG).show();
     }
 }

@@ -6,4 +6,5 @@ public interface CompanyNeededCollaborationPresenter {
     void getCollaborationSkills(int collaborationId);
     void applicantChosen(int collaborationId, int applicantId);
     void getCollaborationData(int collaborationId);
+    void pushNotification(int developerId);
 }

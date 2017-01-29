@@ -12,4 +12,5 @@ public interface CompanyNeededCollaborationView {
     void onApplicantsArrived(List<Applicant> list);
     void onSkillsListArrived(List<String> list);
     void onSuccessfullAssign();
+    void onPushSuccessful();
 }

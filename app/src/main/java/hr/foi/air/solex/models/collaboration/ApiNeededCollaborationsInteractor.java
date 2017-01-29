@@ -1,6 +1,5 @@
 package hr.foi.air.solex.models.collaboration;
 
-import hr.foi.air.solex.models.needed_collab.*;
 import hr.foi.air.solex.presenters.companies.ApplicationAcceptedListener;
 
 public interface ApiNeededCollaborationsInteractor {
@@ -14,4 +13,8 @@ public interface ApiNeededCollaborationsInteractor {
     void applicationAccepted(int collaborationId, int developerId);
     void developerApplied(int collaborationId, int developerId);
     void developerRemovedApply(int collaborationId, int developerId);
+    void pushNotification(int companyId);
+    void setPushNotificationListener(PushNotificationListenerDeveloper listener);
+    void pushNotificationDeveloper(int developerId);
+    void setPushNotificationListenerCompany(PushNotificationListenerCompany listenerCompany);
 }

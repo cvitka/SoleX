@@ -76,6 +76,7 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
                     startNewActivity(DeveloperCollaborationsActivity.class);
                     break;
                 case R.id.developer_opt_logout:
+                    finish();
                     startNewActivity(LoginActivity.class);
                     break;
                 case R.id.developer_opt_profile:
@@ -100,6 +101,7 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
                     startActivity(intent);
                     break;
                 case R.id.company_opt_logout:
+                    finish();
                     startNewActivity(LoginActivity.class);
             }
         }

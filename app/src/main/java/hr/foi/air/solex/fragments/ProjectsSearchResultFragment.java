@@ -34,10 +34,6 @@ public class ProjectsSearchResultFragment extends Fragment implements ProjectSea
     @BindView(R.id.activity_search_projects_recyclerView)
     RecyclerView recyclerView;
 
-    private List<String> resultProjects;
-    private List<SearchedProject> mProjectsList;
-
-
     private SearchProjects mSearchProjects;
     private int numberOfSearchedSkills;
 
@@ -68,7 +64,6 @@ public class ProjectsSearchResultFragment extends Fragment implements ProjectSea
     @Override
     public void onProjectListCome(List<SearchedProject> projects) {
 
-        mProjectsList = projects;
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());

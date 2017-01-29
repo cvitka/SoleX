@@ -3,6 +3,7 @@ package hr.foi.air.solex.models.collaboration;
 
 public class NeededCollaborationData {
     private String projectName;
+    private int companyId;
     private String collaborationName;
     private String collaborationDescription;
     private int collaborationId;
@@ -46,5 +47,13 @@ public class NeededCollaborationData {
 
     public void setState(int state) {
         this.state = state;
+    }
+
+    public int getCompanyId() {
+        return companyId;
+    }
+
+    public void setCompanyId(int companyId) {
+        this.companyId = companyId;
     }
 }

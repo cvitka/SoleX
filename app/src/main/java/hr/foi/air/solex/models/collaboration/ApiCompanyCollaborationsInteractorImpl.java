@@ -1,6 +1,7 @@
 package hr.foi.air.solex.models.collaboration;
 
 import android.util.Log;
+import android.widget.Toast;
 
 import hr.foi.air.solex.models.WebServiceCommunicator;
 import hr.foi.air.solex.models.login_registration.User;

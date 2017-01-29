@@ -23,9 +23,6 @@ public class ProjectListingActivity extends DrawerActivity implements ProjectLis
     @BindView(R.id.activity_projects_listing_lvProjects)
     ListView lvProjects;
 
-    @BindView(R.id.activity_projects_listing_tvListLabel)
-    TextView tvListLabel;
-
     UserType projectsOwnerType;
     int projectsOwnerId;
     String projectsOwnerName;
@@ -46,7 +43,6 @@ public class ProjectListingActivity extends DrawerActivity implements ProjectLis
         projectsOwnerId = getIntent().getExtras().getInt("ownerId");
         projectsOwnerName = getIntent().getExtras().getString("ownerName");
 
-        tvListLabel.setText(projectsOwnerName + "'s projects list" + "");//dodao "" samo da ne javlja retardirani error
         mProjectListingPresenter.getProjects(projectsOwnerId, projectsOwnerType);
     }
 

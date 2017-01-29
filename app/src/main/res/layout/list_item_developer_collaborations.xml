@@ -30,7 +30,7 @@
             android:stepSize="1"
             android:isIndicator="false"
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="35dp"
+            android:layout_marginEnd="10dp"
             android:theme="@style/AppTheme.RatingBarStyle"/>
 
         <TextView

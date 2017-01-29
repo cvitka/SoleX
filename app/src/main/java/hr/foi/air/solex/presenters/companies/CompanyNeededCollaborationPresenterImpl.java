@@ -12,11 +12,12 @@ import hr.foi.air.solex.models.collaboration.ApiNeededCollaborationsInteractor;
 import hr.foi.air.solex.models.collaboration.ApiNeededCollaborationsInteractorImpl;
 import hr.foi.air.solex.models.collaboration.NeededCollaborationData;
 import hr.foi.air.solex.models.collaboration.NeededCollaborationDataScalarListener;
+import hr.foi.air.solex.models.collaboration.PushNotificationListenerCompany;
 import hr.foi.air.solex.models.skills.SkillListListener;
 import hr.foi.air.solex.models.skills.SkillsInteractor;
 import hr.foi.air.solex.models.skills.SkillsInteractorImpl;
 
-public class CompanyNeededCollaborationPresenterImpl implements CompanyNeededCollaborationPresenter, ApplicantListListener, SkillListListener, NeededCollaborationDataScalarListener, ApplicationAcceptedListener {
+public class CompanyNeededCollaborationPresenterImpl implements CompanyNeededCollaborationPresenter, ApplicantListListener, SkillListListener, NeededCollaborationDataScalarListener, ApplicationAcceptedListener,PushNotificationListenerCompany {
     private CompanyNeededCollaborationView mCompanyNeededCollabView;
     private ApplicantInteractor mApplicantInteractor;
     private SkillsInteractor mSkillsInteractor;
@@ -30,6 +31,7 @@ public class CompanyNeededCollaborationPresenterImpl implements CompanyNeededCol
         mApiCompanyCollaborationsInteractor = new ApiNeededCollaborationsInteractorImpl();
         mApiCompanyCollaborationsInteractor.setNeededCollabDataListener(this);
         mApiCompanyCollaborationsInteractor.setApplicationAcceptedListener(this);
+        mApiCompanyCollaborationsInteractor.setPushNotificationListenerCompany(this);
     }
 
 
@@ -46,6 +48,11 @@ public class CompanyNeededCollaborationPresenterImpl implements CompanyNeededCol
     @Override
     public void getCollaborationData(int collaborationId) {
         mApiCompanyCollaborationsInteractor.getNeededCollaboration(collaborationId);
+    }
+
+    @Override
+    public void pushNotification(int developerId) {
+        mApiCompanyCollaborationsInteractor.pushNotificationDeveloper(developerId);
     }
 
     @Override
@@ -71,5 +78,10 @@ public class CompanyNeededCollaborationPresenterImpl implements CompanyNeededCol
     @Override
     public void onSuccessfulAssign() {
         mCompanyNeededCollabView.onSuccessfullAssign();
+    }
+
+    @Override
+    public void notificationPushedDeveloper() {
+        mCompanyNeededCollabView.onPushSuccessful();
     }
 }

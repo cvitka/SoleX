@@ -200,13 +200,13 @@
 
                 <Button
                     android:id="@+id/activity_update_developer_btnUpdateData"
-                    style="@style/ButtonStyleBlue"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/activity_update_developer_etNewYears"
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
                     android:layout_marginBottom="25dp"
+                    android:textColor="@color/colorAccent"
                     android:text="Update" />
 
 

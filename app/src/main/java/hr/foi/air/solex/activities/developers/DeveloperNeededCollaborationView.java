@@ -10,4 +10,5 @@ public interface DeveloperNeededCollaborationView {
     void onSkillsArrived(List<String> Skills);
     void onApplySuccessfull();
     void onRemoveApplySucessfull();
+    void pushSucessful();
 }

@@ -31,121 +31,132 @@
 
         </android.support.design.widget.AppBarLayout>
 
-        <ScrollView
-            android:id="@+id/scrollView"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="55dp">
+            android:layout_height="match_parent">
 
-            <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:id="@+id/activity_needed_collaboration"
+            <ScrollView
+                android:id="@+id/scrollView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingBottom="@dimen/activity_vertical_margin"
-                android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin"
-                android:paddingTop="@dimen/activity_vertical_margin"
-                tools:context="hr.foi.air.solex.activities.developers.DeveloperNeededCollaborationActivity">
+                android:layout_marginTop="45dp"
+                android:layout_marginBottom="60dp">
 
-                <TextView
-                    android:id="@+id/activity_developer_needed_collaboration_tvCompanyName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:text="comp_name"
-                    android:textSize="24sp" />
-
-                <TextView
-                    android:id="@+id/activity_developer_needed_collaboration_tvCollon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_toEndOf="@id/activity_developer_needed_collaboration_tvCompanyName"
-                    android:text="@string/collon"
-                    android:textSize="24sp" />
-
-                <TextView
-                    android:id="@+id/activity_developer_needed_collaboration_tvProjectName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_toEndOf="@id/activity_developer_needed_collaboration_tvCollon"
-                    android:text="proj_name"
-                    android:textSize="24sp" />
-
-                <TextView
-                    android:id="@+id/activity_developer_needed_collaboration_tvCollaborationName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_below="@+id/activity_developer_needed_collaboration_tvCompanyName"
-                    android:layout_marginTop="28dp"
-                    android:text="Collaboration Name"
-                    android:textSize="24sp" />
-
-                <TextView
-                    android:id="@+id/activity_developer_needed_collaboration_tvCollaborationDetails"
-                    android:layout_width="340dp"
-                    android:layout_height="90dp"
-                    android:layout_below="@+id/activity_developer_needed_collaboration_tvCollaborationName"
-                    android:layout_marginTop="5dp"
-                    android:ems="10"
-                    android:lines="4"
-                    android:maxLines="4"
-                    android:text="Collaboration details (lorem ipsum, lorem ipsum, lorem ipsum, lorem ipsum, lorem ipsum, lorem ipsum)"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:id="@+id/txtViewRequierdItSkills"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_below="@+id/activity_developer_needed_collaboration_tvCollaborationDetails"
-                    android:layout_marginTop="5dp"
-                    android:text="Required IT skills"
-                    android:textSize="18sp" />
-
-                <ListView
-                    android:id="@+id/activity_developer_needed_collaboration_lvSkills"
+                <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:tools="http://schemas.android.com/tools"
+                    android:id="@+id/activity_needed_collaboration"
                     android:layout_width="match_parent"
-                    android:layout_height="70dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_below="@+id/txtViewRequierdItSkills"
-                    android:layout_marginTop="1dp" />
+                    android:layout_height="match_parent"
+                    android:paddingBottom="@dimen/activity_vertical_margin"
+                    android:paddingLeft="@dimen/activity_horizontal_margin"
+                    android:paddingRight="@dimen/activity_horizontal_margin"
+                    android:paddingTop="@dimen/activity_vertical_margin"
+                    tools:context="hr.foi.air.solex.activities.developers.DeveloperNeededCollaborationActivity">
 
-                <TextView
-                    android:id="@+id/activity_developer_needed_collaboration_tvApplicantsNumberLabel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_below="@+id/activity_developer_needed_collaboration_lvSkills"
-                    android:text="@string/num_applicants" />
+                    <TextView
+                        android:id="@+id/activity_developer_needed_collaboration_tvCompanyName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:text="comp_name"
+                        android:textSize="24sp" />
 
-                <TextView
-                    android:id="@+id/activity_developer_needed_collaboration_tvApplicantsNumber"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/activity_developer_needed_collaboration_lvSkills"
-                    android:layout_marginStart="4dp"
-                    android:layout_toEndOf="@+id/activity_developer_needed_collaboration_tvApplicantsNumberLabel"
-                    android:text="num" />
+                    <TextView
+                        android:id="@+id/activity_developer_needed_collaboration_tvCollon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_toEndOf="@id/activity_developer_needed_collaboration_tvCompanyName"
+                        android:text="@string/collon"
+                        android:textSize="24sp" />
 
-                <Button
-                    android:id="@+id/activity_developer_needed_collaboration_btnApplicate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignEnd="@+id/activity_developer_needed_collaboration_tvCollaborationName"
-                    android:layout_below="@id/activity_developer_needed_collaboration_tvApplicantsNumber"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="50dp"
-                    android:text="Applicate"
-                    android:textColor="@color/colorAccent" />
+                    <TextView
+                        android:id="@+id/activity_developer_needed_collaboration_tvProjectName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_toEndOf="@id/activity_developer_needed_collaboration_tvCollon"
+                        android:text="proj_name"
+                        android:textSize="24sp" />
 
+                    <TextView
+                        android:id="@+id/activity_developer_needed_collaboration_tvCollaborationName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_below="@+id/activity_developer_needed_collaboration_tvCompanyName"
+                        android:layout_marginTop="28dp"
+                        android:text="Collaboration Name"
+                        android:textSize="24sp" />
 
-            </RelativeLayout>
-        </ScrollView>
+                    <TextView
+                        android:id="@+id/activity_developer_needed_collaboration_tvCollaborationDetails"
+                        android:layout_width="340dp"
+                        android:layout_height="90dp"
+                        android:layout_below="@+id/activity_developer_needed_collaboration_tvCollaborationName"
+                        android:layout_marginTop="5dp"
+                        android:ems="10"
+                        android:lines="4"
+                        android:maxLines="4"
+                        android:text="Collaboration details (lorem ipsum, lorem ipsum, lorem ipsum, lorem ipsum, lorem ipsum, lorem ipsum)"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/txtViewRequierdItSkills"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_below="@+id/activity_developer_needed_collaboration_tvCollaborationDetails"
+                        android:text="Required IT skills"
+                        android:textSize="18sp" />
+
+                    <ListView
+                        android:id="@+id/activity_developer_needed_collaboration_lvSkills"
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_below="@+id/txtViewRequierdItSkills"
+                        android:layout_marginTop="1dp" />
+
+                    <TextView
+                        android:id="@+id/activity_developer_needed_collaboration_tvApplicantsNumberLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_below="@+id/activity_developer_needed_collaboration_lvSkills"
+                        android:text="@string/num_applicants" />
+
+                    <TextView
+                        android:id="@+id/activity_developer_needed_collaboration_tvApplicantsNumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/activity_developer_needed_collaboration_lvSkills"
+                        android:layout_marginStart="4dp"
+                        android:layout_toEndOf="@+id/activity_developer_needed_collaboration_tvApplicantsNumberLabel"
+                        android:text="num" />
+                </RelativeLayout>
+            </ScrollView>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toEndOf="@+id/scrollView">
+
+            <Button
+                android:id="@+id/activity_developer_needed_collaboration_btnApplicate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:text="Applicate"
+                android:textColor="@color/colorAccent" />
+        </RelativeLayout>
+
 
     </android.support.design.widget.CoordinatorLayout>
 

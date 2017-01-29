@@ -123,4 +123,5 @@ public class ApiCompanyCollaborations {
     public void setProjectId(String projectId) {
         this.projectId = projectId;
     }
+
 }

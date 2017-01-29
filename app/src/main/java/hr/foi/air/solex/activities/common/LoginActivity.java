@@ -2,6 +2,7 @@ package hr.foi.air.solex.activities.common;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -30,6 +31,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     TextView txtInputPassword;
 
     ProgressDialog progressDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,10 +42,9 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     @OnClick(R.id.activity_login_btnLogin)
     public void login_click(View view) {
-        if(txtInputEmail.getText().toString().isEmpty() || txtInputPassword.getText().toString().isEmpty()){
+        if (txtInputEmail.getText().toString().isEmpty() || txtInputPassword.getText().toString().isEmpty()) {
             Toast.makeText(getApplicationContext(), "Fill in all data", Toast.LENGTH_LONG).show();
-        }
-        else{
+        } else {
             mLoginPresenter.tryLogin(txtInputEmail.getText().toString(), txtInputPassword.getText().toString());
             progressDialog = new ProgressDialog(this,
                     R.style.AppTheme_Bright_Dialog);
@@ -57,12 +58,15 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     public void onDeveloperLoginSuccess() {
         Intent intent = new Intent(this, DeveloperProfileActivity.class);
         intent.putExtra("developerId", User.getInstance().getId());
+        progressDialog.dismiss();
         startActivity(intent);
     }
+
     @Override
     public void onCompanyLoginSuccess() {
         Intent intent = new Intent(this, CompanyProfileActivity.class);
         intent.putExtra("companyId", User.getInstance().getId());
+        progressDialog.dismiss();
         startActivity(intent);
     }
 
@@ -71,7 +75,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         new android.os.Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-            progressDialog.dismiss();
+                progressDialog.dismiss();
                 Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
 
             }
@@ -85,4 +89,26 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
     }
 
+
+    private Boolean exit = false;
+
+    @Override
+    public void onBackPressed() {
+
+        if (exit) {
+            moveTaskToBack(true);
+            finish();
+        } else {
+            Toast.makeText(this, "Press Back again to Exit.",
+                    Toast.LENGTH_SHORT).show();
+            exit = true;
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    exit = false;
+                }
+            }, 3 * 1000);
+
+        }
+    }
 }

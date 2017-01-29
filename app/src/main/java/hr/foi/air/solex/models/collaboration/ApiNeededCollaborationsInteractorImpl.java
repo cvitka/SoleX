@@ -19,23 +19,35 @@ public class ApiNeededCollaborationsInteractorImpl extends WebServiceCommunicato
     private NeededCollaborationDataScalarListener mNeededCollabDataScalarListener;
     private ApplicationAcceptedListener mApplicationAcceptedListener;
     private DeveloperAppliesListener mDeveloperAppliesListener;
+    private PushNotificationListenerDeveloper mPushNotificationListener;
+    PushNotificationListenerCompany mPushNotificationListenerCompany;
 
     private interface WSInterfaceCollaborations {
         @GET("dohvatiPotrebneSuradnje.php")
         Call<List<ApiNeededCollaborations>> getNeededCollaborations(@Query("projektId") int projektId);
+
         @GET("dohvatiSuradnje.php")
         Call<NeededCollaborationData> getNeededCollab(@Query("neededCollabId") int collaborationId);
+
         @GET("dohvatiSuradnje.php")
         Call<NeededCollaborationData> getNeededCollab(@Query("collaborationId") int collaborationId, @Query("developerId") int developerId);
+
         @GET("dodijeliPosao.php")
         Call<NeededCollaborationData> saveApplicationAccepted(@Query("collaborationId") int collaborationId, @Query("developerId") int developerId);
+
         @GET("apliciraj.php")
         Call<NeededCollaborationData> apply(@Query("akcija") String action, @Query("collaborationId") int collaborationId, @Query("developerId") int developerId);
 
+        @GET("push_notification.php")
+        Call<WSResponsePushNotification> sendPushToCompany(@Query("companyId") int companyID);
+
+        @GET("push_notification.php")
+        Call<WSResponsePushNotification> sendPushToDeveloper(@Query("developerId") int developerID);
 
     }
 
-    public ApiNeededCollaborationsInteractorImpl() {initRetrofit();
+    public ApiNeededCollaborationsInteractorImpl() {
+        initRetrofit();
     }
 
     @Override
@@ -110,10 +122,10 @@ public class ApiNeededCollaborationsInteractorImpl extends WebServiceCommunicato
         Call<NeededCollaborationData> call = interfaceCollaborations.saveApplicationAccepted(collaborationId, developerId);
         call.enqueue(new Callback<NeededCollaborationData>() {
             @Override
-                        public void onResponse(Call<NeededCollaborationData> call, Response<NeededCollaborationData> response) {
-                            if (response.isSuccessful()) {
-                                if (mApplicationAcceptedListener != null) {
-                                    mApplicationAcceptedListener.onSuccessfulAssign();
+            public void onResponse(Call<NeededCollaborationData> call, Response<NeededCollaborationData> response) {
+                if (response.isSuccessful()) {
+                    if (mApplicationAcceptedListener != null) {
+                        mApplicationAcceptedListener.onSuccessfulAssign();
                     }
                 }
             }
@@ -128,7 +140,7 @@ public class ApiNeededCollaborationsInteractorImpl extends WebServiceCommunicato
     @Override
     public void developerApplied(int collaborationId, int developerId) {
         WSInterfaceCollaborations interfaceCollaborations = retrofit.create(WSInterfaceCollaborations.class);
-        Call<NeededCollaborationData> call = interfaceCollaborations.apply("add",collaborationId, developerId);
+        Call<NeededCollaborationData> call = interfaceCollaborations.apply("add", collaborationId, developerId);
         call.enqueue(new Callback<NeededCollaborationData>() {
             @Override
             public void onResponse(Call<NeededCollaborationData> call, Response<NeededCollaborationData> response) {
@@ -149,7 +161,7 @@ public class ApiNeededCollaborationsInteractorImpl extends WebServiceCommunicato
     @Override
     public void developerRemovedApply(int collaborationId, int developerId) {
         WSInterfaceCollaborations interfaceCollaborations = retrofit.create(WSInterfaceCollaborations.class);
-        Call<NeededCollaborationData> call = interfaceCollaborations.apply("remove",collaborationId, developerId);
+        Call<NeededCollaborationData> call = interfaceCollaborations.apply("remove", collaborationId, developerId);
         call.enqueue(new Callback<NeededCollaborationData>() {
             @Override
             public void onResponse(Call<NeededCollaborationData> call, Response<NeededCollaborationData> response) {
@@ -165,6 +177,63 @@ public class ApiNeededCollaborationsInteractorImpl extends WebServiceCommunicato
                 Log.d("Api", t.getMessage());
             }
         });
+    }
+
+    @Override
+    public void pushNotification(int companyId) {
+        WSInterfaceCollaborations interfaceCollaborations = retrofit.create(WSInterfaceCollaborations.class);
+        Call<WSResponsePushNotification> call = interfaceCollaborations.sendPushToCompany(companyId);
+        call.enqueue(new Callback<WSResponsePushNotification>() {
+            @Override
+            public void onResponse(Call<WSResponsePushNotification> call, Response<WSResponsePushNotification> response) {
+                if (response.isSuccessful()) {
+                    if (response.body().getSuccess().equals("1") && response.body().getFailure().equals("0")) {
+                        if (mPushNotificationListener != null) {
+                            mPushNotificationListener.notificationPushedCompany();
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<WSResponsePushNotification> call, Throwable t) {
+
+            }
+        });
+    }
+
+    @Override
+    public void setPushNotificationListener(PushNotificationListenerDeveloper listener) {
+        mPushNotificationListener = listener;
+    }
+
+    @Override
+    public void pushNotificationDeveloper(int developerId) {
+        WSInterfaceCollaborations interfaceCollaborations = retrofit.create(WSInterfaceCollaborations.class);
+        Call<WSResponsePushNotification> call = interfaceCollaborations.sendPushToDeveloper(developerId);
+        call.enqueue(new Callback<WSResponsePushNotification>() {
+            @Override
+            public void onResponse(Call<WSResponsePushNotification> call, Response<WSResponsePushNotification> response) {
+                if (response.isSuccessful()) {
+                    if (response.body().getSuccess().equals("1") && response.body().getFailure().equals("0")) {
+                        if (mPushNotificationListenerCompany != null) {
+                            mPushNotificationListenerCompany.notificationPushedDeveloper();
+                        }
+                    }
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<WSResponsePushNotification> call, Throwable t) {
+
+            }
+        });
+    }
+
+    @Override
+    public void setPushNotificationListenerCompany(PushNotificationListenerCompany listenerCompany) {
+        mPushNotificationListenerCompany = listenerCompany;
     }
 
     @Override

@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "38414218706",
+    "firebase_url": "https://solex-85f3c.firebaseio.com",
+    "project_id": "solex-85f3c",
+    "storage_bucket": "solex-85f3c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:38414218706:android:e5876654d5c37a9f",
+        "android_client_info": {
+          "package_name": "hr.foi.air.solex"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "38414218706-du3p0kfduv2jl21ep0n1cvftcvjvlcmb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDmpXmOw6qyCXWats244GpWff8g7T68X0U"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

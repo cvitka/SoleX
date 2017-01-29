@@ -61,7 +61,7 @@ public class CompanyNeededCollaborationActivity extends DrawerActivity implement
     List<String> mSkillsList;
     NeededCollaborationData mThisCollaboration;
     boolean isOwner;
-
+    private int mDevId;
     CompanyNeededCollaborationPresenter mPresenter;
 
     @Override
@@ -153,6 +153,7 @@ public class CompanyNeededCollaborationActivity extends DrawerActivity implement
         mThisCollaboration = collaboration;
         tvCollabName.setText(mThisCollaboration.getCollaborationName());
         tvProjectName.setText(mThisCollaboration.getProjectName());
+        //int developerId = collaboration.get
     }
 
     @OnItemClick(R.id.activity_company_needed_collaboration_lvApplicants)
@@ -181,15 +182,22 @@ public class CompanyNeededCollaborationActivity extends DrawerActivity implement
         if(lastLongClicked!= null) {
             Applicant app = mApplicantList.get(lvApplicants.getPositionForView(lastLongClicked));
             mPresenter.applicantChosen(mThisCollaboration.getCollaborationId(), app.getApplicantId());
+            mDevId = app.getApplicantId();
         }
     }
 
     @Override
     public void onSuccessfullAssign() {
+        mPresenter.pushNotification(mDevId);
         Intent intent = new Intent(this, CollaborationActivity.class);
         intent.putExtra("collaborationName", mThisCollaboration.getCollaborationName());
         intent.putExtra("collaborationId", mThisCollaboration.getCollaborationId());
         intent.putExtra("isOwner", true);
         startActivity(intent);
+    }
+
+    @Override
+    public void onPushSuccessful() {
+
     }
 }

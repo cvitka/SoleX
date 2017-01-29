@@ -2,6 +2,7 @@ package hr.foi.air.solex.activities.companies;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.NavigationView;
 import android.support.v4.content.res.ResourcesCompat;
 import android.view.MotionEvent;
@@ -14,6 +15,7 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import hr.foi.air.solex.activities.common.ProjectDisplayActivity;
 import hr.foi.air.solex.activities.common.ProjectListingActivity;
@@ -22,6 +24,7 @@ import hr.foi.air.solex.models.mcompanies.CompanyInteractorImpl;
 import hr.foi.air.solex.models.mcompanies.Company;
 import hr.foi.air.solex.models.login_registration.User;
 import hr.foi.air.solex.models.profile_screen_project.ProfileScreenProject;
+
 import com.github.aakira.expandablelayout.ExpandableLayout;
 import com.google.gson.Gson;
 
@@ -36,7 +39,7 @@ import hr.foi.air.solex.adapters.ProjectsListAdapter;
 import hr.foi.air.solex.presenters.companies.CompanyProfilePresenter;
 import hr.foi.air.solex.presenters.companies.CompanyProfilePresenterImpl;
 
-public class CompanyProfileActivity extends DrawerActivity implements CompanyProfileView, AdapterView.OnItemClickListener{
+public class CompanyProfileActivity extends DrawerActivity implements CompanyProfileView, AdapterView.OnItemClickListener {
     @BindView(R.id.activity_company_profile_btnToggleProjectsLayout)
     ImageButton highlightProjectsBtn;
 
@@ -105,7 +108,6 @@ public class CompanyProfileActivity extends DrawerActivity implements CompanyPro
     ScrollView scrollView;
 
 
-
     Company mThisCompany;
 
     CompanyProfilePresenter mCompanyProfilePresenter;
@@ -117,12 +119,11 @@ public class CompanyProfileActivity extends DrawerActivity implements CompanyPro
     private ProjectsListAdapter mProjectsAdapter;
 
 
-    public void setVisibilityForUsers(int companyId){
-        if(User.isCurrentUser(UserType.COMPANY, companyId)){
+    public void setVisibilityForUsers(int companyId) {
+        if (User.isCurrentUser(UserType.COMPANY, companyId)) {
             btnProjects.setVisibility(View.GONE);
             lastDrawerOption = R.id.company_opt_profile;
-        }
-        else{
+        } else {
             actvNewTech.setVisibility(View.GONE);
             btnAddNewTech.setVisibility(View.GONE);
             btnStartUpdateCompanyData.setVisibility(View.GONE);
@@ -141,7 +142,7 @@ public class CompanyProfileActivity extends DrawerActivity implements CompanyPro
         mCompanyProfilePresenter.getCompany(companyId);
         mCompanyProfilePresenter.getHighlightedProjects(companyId);
         //autocomplete list is not needed when user looking at profile is not the owner
-        if(User.isCurrentUser(UserType.COMPANY, companyId))
+        if (User.isCurrentUser(UserType.COMPANY, companyId))
             mCompanyProfilePresenter.getAllSkillList();
         mCompanyProfilePresenter.getSkillList(companyId);
         fixNestedScrollViews();
@@ -176,13 +177,12 @@ public class CompanyProfileActivity extends DrawerActivity implements CompanyPro
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         ProfileScreenProject clickedProject = mProjectsList.get(position);
         //ako smo vlasnik profila
-        if(User.isCurrentUser(UserType.COMPANY, mThisCompany.getId())) {
+        if (User.isCurrentUser(UserType.COMPANY, mThisCompany.getId())) {
             Intent intent = new Intent(this, ProjectManagementActivity.class);//otvaramo project management
             intent.putExtra("isOwner", User.isCurrentUser(UserType.COMPANY, mThisCompany.getId()));
             intent.putExtra("projectId", clickedProject.getId());
             startActivity(intent);
-        }
-        else {//inače otvaramo project display
+        } else {//inače otvaramo project display
             Intent intent = new Intent(this, ProjectDisplayActivity.class);
             intent.putExtra("projectId", clickedProject.getId());
             startActivity(intent);
@@ -192,7 +192,7 @@ public class CompanyProfileActivity extends DrawerActivity implements CompanyPro
     @OnItemLongClick(R.id.activity_company_profile_lvMainTech)
     public boolean onItemLongClick(AdapterView<?> parent, int position) {
         //we allow deletion only if profile is being viewed by its owner
-        if(User.isCurrentUser(UserType.COMPANY, mThisCompany.getId())) {
+        if (User.isCurrentUser(UserType.COMPANY, mThisCompany.getId())) {
             mCompanyProfilePresenter.deleteSkill(mThisCompany.getId(), mMainTechList.get(position));
             mMainTechList.remove(position);
             mMainTechAdapter.notifyDataSetChanged();
@@ -200,18 +200,17 @@ public class CompanyProfileActivity extends DrawerActivity implements CompanyPro
         return true;
     }
 
-    private void expandableLayoutClicked(ExpandableLayout layout, ImageButton btn){
-        if(layout.isExpanded()){
+    private void expandableLayoutClicked(ExpandableLayout layout, ImageButton btn) {
+        if (layout.isExpanded()) {
             layout.collapse();
             btn.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.lblue_expand_img, null));
             //btn.setImageResource(R.drawable.gray_expand_img);
             lastExpanded = null;
             lastExpandedBtn = null;
-        }
-        else{
-            if(lastExpanded != null)
+        } else {
+            if (lastExpanded != null)
                 lastExpanded.collapse();
-            if(lastExpandedBtn != null)
+            if (lastExpandedBtn != null)
                 lastExpandedBtn.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.lblue_expand_img, null));
 
             layout.expand();
@@ -225,19 +224,19 @@ public class CompanyProfileActivity extends DrawerActivity implements CompanyPro
     ImageButton lastExpandedBtn;
 
     @OnClick(R.id.activity_company_profile_btnToggleProjectsLayout)
-    public void btnToggleHighlightedProjects(View view){
+    public void btnToggleHighlightedProjects(View view) {
         expandableLayoutClicked(highlightedProjectsLayout, highlightProjectsBtn);
 
 
     }
 
     @OnClick(R.id.activity_company_profile_btnToggleGenInfoLayout)
-    public void btnToggleGeneralInfo(View view){
+    public void btnToggleGeneralInfo(View view) {
         expandableLayoutClicked(generalInfoLayout, generalInfoBtn);
     }
 
     @OnClick(R.id.activity_company_profile_btnToggleMainTechLayout)
-    public void btnToggleMainTech(View view){
+    public void btnToggleMainTech(View view) {
         expandableLayoutClicked(mainTechLayout, mainTechBtn);
     }
 
@@ -247,14 +246,14 @@ public class CompanyProfileActivity extends DrawerActivity implements CompanyPro
     }
 
     @OnClick(R.id.btnStartUpdateCompanyData)
-    public void btnUpdateCompanyDataClick(View view){
+    public void btnUpdateCompanyDataClick(View view) {
         Intent intent = new Intent(this, UpdateCompanyDataActivity.class);
         intent.putExtra("myObject", new Gson().toJson(mThisCompany));
         startActivity(intent);
     }
 
     @OnClick(R.id.activity_company_profile_btnProjects)
-    public void btnClick(View view){
+    public void btnClick(View view) {
         Intent intent = new Intent(this, ProjectListingActivity.class);
 
         intent.putExtra("ownerId", mThisCompany.getId());
@@ -264,15 +263,13 @@ public class CompanyProfileActivity extends DrawerActivity implements CompanyPro
     }
 
     @OnClick(R.id.activity_company_profile_btnAddNewTech)
-    public void btnAddNewTechClick(View view){
+    public void btnAddNewTechClick(View view) {
         String skill = actvNewTech.getText().toString();
-        if(!allTechList.contains(skill)){
+        if (!allTechList.contains(skill)) {
             showToastLong(getResources().getString(R.string.error_adding_skill));
-        }
-        else if(mMainTechList.contains(skill)) {
+        } else if (mMainTechList.contains(skill)) {
             showToastLong(getResources().getString(R.string.error_skill_exists));
-        }
-        else{
+        } else {
             mCompanyProfilePresenter.addSkill(mThisCompany.getId(), skill);
             mMainTechList.add(skill);
             mMainTechAdapter.notifyDataSetChanged();
@@ -280,9 +277,9 @@ public class CompanyProfileActivity extends DrawerActivity implements CompanyPro
         }
     }
 
+
     @Override
     public void onBackPressed() {
-
     }
 
     @Override
@@ -297,8 +294,8 @@ public class CompanyProfileActivity extends DrawerActivity implements CompanyPro
         txtNumberEployees.setText(Integer.toString(mThisCompany.getBrojZaposlenika()));
         txtWebPage.setText(mThisCompany.getWebStranica());
 
-        View header=navigationView.getHeaderView(0);
-        TextView textEmail = (TextView)header.findViewById(R.id.textViewEmail);
+        View header = navigationView.getHeaderView(0);
+        TextView textEmail = (TextView) header.findViewById(R.id.textViewEmail);
         textEmail.setText(mThisCompany.getEmail());
     }
 
@@ -327,4 +324,5 @@ public class CompanyProfileActivity extends DrawerActivity implements CompanyPro
         lvMainTech.setAdapter(mMainTechAdapter);
 
     }
+
 }

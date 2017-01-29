@@ -3,24 +3,18 @@ package hr.foi.air.solex.presenters.developers;
 
 import java.util.List;
 
-import hr.foi.air.solex.activities.companies.CompanyNeededCollaborationView;
 import hr.foi.air.solex.activities.developers.DeveloperNeededCollaborationView;
-import hr.foi.air.solex.models.applicants.Applicant;
-import hr.foi.air.solex.models.applicants.ApplicantInteractor;
-import hr.foi.air.solex.models.applicants.ApplicantInteractorImpl;
-import hr.foi.air.solex.models.applicants.ApplicantListListener;
 import hr.foi.air.solex.models.collaboration.ApiNeededCollaborationsInteractor;
 import hr.foi.air.solex.models.collaboration.ApiNeededCollaborationsInteractorImpl;
 import hr.foi.air.solex.models.collaboration.DeveloperAppliesListener;
 import hr.foi.air.solex.models.collaboration.NeededCollaborationData;
 import hr.foi.air.solex.models.collaboration.NeededCollaborationDataScalarListener;
+import hr.foi.air.solex.models.collaboration.PushNotificationListenerDeveloper;
 import hr.foi.air.solex.models.skills.SkillListListener;
 import hr.foi.air.solex.models.skills.SkillsInteractor;
 import hr.foi.air.solex.models.skills.SkillsInteractorImpl;
-import hr.foi.air.solex.presenters.companies.ApplicationAcceptedListener;
-import hr.foi.air.solex.presenters.companies.CompanyNeededCollaborationPresenter;
 
-public class DeveloperNeededCollaborationPresenterImpl implements DeveloperNeededCollaborationPresenter, SkillListListener, NeededCollaborationDataScalarListener, DeveloperAppliesListener {
+public class DeveloperNeededCollaborationPresenterImpl implements DeveloperNeededCollaborationPresenter, SkillListListener, NeededCollaborationDataScalarListener, DeveloperAppliesListener,PushNotificationListenerDeveloper {
     private DeveloperNeededCollaborationView mDeveloperNeededCollaborationView;
     private SkillsInteractor mSkillsInteractor;
     private ApiNeededCollaborationsInteractor mApiCompanyCollaborationsInteractor;
@@ -32,6 +26,7 @@ public class DeveloperNeededCollaborationPresenterImpl implements DeveloperNeede
         mApiCompanyCollaborationsInteractor = new ApiNeededCollaborationsInteractorImpl();
         mApiCompanyCollaborationsInteractor.setNeededCollabDataListener(this);
         mApiCompanyCollaborationsInteractor.setDeveloperAppliesListener(this);
+        mApiCompanyCollaborationsInteractor.setPushNotificationListener(this);
     }
 
 
@@ -73,5 +68,15 @@ public class DeveloperNeededCollaborationPresenterImpl implements DeveloperNeede
     @Override
     public void removeApply(int collaborationId, int developerId) {
         mApiCompanyCollaborationsInteractor.developerRemovedApply(collaborationId, developerId);
+    }
+
+    @Override
+    public void pushNotif(int companyId) {
+        mApiCompanyCollaborationsInteractor.pushNotification(companyId);
+    }
+
+    @Override
+    public void notificationPushedCompany() {
+        mDeveloperNeededCollaborationView.pushSucessful();
     }
 }
