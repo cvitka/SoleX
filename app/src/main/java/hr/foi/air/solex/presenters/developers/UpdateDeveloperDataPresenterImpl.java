@@ -16,6 +16,7 @@ public class UpdateDeveloperDataPresenterImpl implements UpdateDeveloperDataPres
     public UpdateDeveloperDataPresenterImpl(UpdateDeveloperDataView developerProfileView) {
         this.mDeveloperProfileView = developerProfileView;
         this.mDeveloperInteractor = new DeveloperInteractorImpl();
+        mDeveloperInteractor.setUpdateListener(this);
     }
 
     @Override

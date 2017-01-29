@@ -150,6 +150,7 @@ public class UpdateDeveloperDataActivity extends DrawerActivity implements Updat
         Toast.makeText(this, "Profile data has been updated", Toast.LENGTH_LONG).show();
 
         Intent intent = new Intent(this, DeveloperProfileActivity.class);
+        intent.putExtra("developerId", User.getInstance().getId());
         startActivity(intent);
     }
 

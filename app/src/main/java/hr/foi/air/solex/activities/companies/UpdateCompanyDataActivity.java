@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import hr.foi.air.solex.models.login_registration.User;
 import hr.foi.air.solex.models.mcompanies.CompanyInteractorImpl;
 import hr.foi.air.solex.models.mcompanies.Company;
 import com.google.gson.Gson;
@@ -118,8 +119,8 @@ public class UpdateCompanyDataActivity extends DrawerActivity implements UpdateC
     public void updateFinished() {
         progressDialog.dismiss();
         Toast.makeText(this, "Profile data has been updated", Toast.LENGTH_LONG).show();
-
         Intent intent = new Intent(this, CompanyProfileActivity.class);
+        intent.putExtra("companyId", User.getInstance().getId());
         startActivity(intent);
     }
 
