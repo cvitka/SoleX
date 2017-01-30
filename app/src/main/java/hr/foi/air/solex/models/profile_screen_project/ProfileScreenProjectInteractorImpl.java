@@ -129,14 +129,9 @@ public class ProfileScreenProjectInteractorImpl extends WebServiceCommunicator i
             @Override
             public void onResponse(Call<WSResponseProfileScreenProject> call, Response<WSResponseProfileScreenProject> response) {
                 if (response.isSuccessful()) {
-                    if (response.body().getSuccess().equals("1")) {
+                    if (!response.body().getSuccess().equals("0")) {
                         if (mAddListener != null) {
                             mAddListener.onHighlightsAdd();
-                        }
-
-                    } else {
-                        if (mAddListener != null) {
-                            mAddListener.onHighlightsAddFailure(response.body().getMessage());
                         }
                     }
                 }
@@ -166,14 +161,9 @@ public class ProfileScreenProjectInteractorImpl extends WebServiceCommunicator i
             @Override
             public void onResponse(Call<WSResponseProfileScreenProject> call, Response<WSResponseProfileScreenProject> response) {
                 if (response.isSuccessful()) {
-                    if (response.body().getSuccess().equals("1")) {
+                    if (!response.body().getSuccess().equals("0")) {
                         if (mRemoveListener != null) {
                             mRemoveListener.onRemove();
-                        }
-
-                    } else {
-                        if (mRemoveListener != null) {
-                            mRemoveListener.onRemoveFailure(response.body().getMessage());
                         }
                     }
                 }
@@ -181,7 +171,7 @@ public class ProfileScreenProjectInteractorImpl extends WebServiceCommunicator i
 
             @Override
             public void onFailure(Call<WSResponseProfileScreenProject> call, Throwable t) {
-
+                mRemoveListener.onRemoveFailure(t.getMessage());
             }
         });
     }

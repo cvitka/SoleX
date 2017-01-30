@@ -4,6 +4,7 @@ import java.util.List;
 
 import hr.foi.air.solex.fragments.ProjectsSearchFeelingLuckyView;
 import hr.foi.air.solex.models.searched_project.SearchedProject;
+import hr.foi.air.solex.models.searched_project.SearchedProjectAndroidInteractorImpl;
 import hr.foi.air.solex.models.searched_project.SearchedProjectInteractor;
 import hr.foi.air.solex.models.searched_project.SearchedProjectInteractorImpl;
 import hr.foi.air.solex.models.searched_project.SearchedProjectListListener;
@@ -15,6 +16,7 @@ public class ProjectSearchFeelingLuckyPresenterImpl implements ProjectSearchFeel
     public ProjectSearchFeelingLuckyPresenterImpl(ProjectsSearchFeelingLuckyView projectsSearchFeelingLuckyView) {
         mProjectsSearchFeelingLuckyView = projectsSearchFeelingLuckyView;
         mSearchedProjectInteractor = new SearchedProjectInteractorImpl();
+        //mSearchedProjectInteractor = new SearchedProjectAndroidInteractorImpl();
         mSearchedProjectInteractor.setSearchedProjectListListener(this);
 
     }

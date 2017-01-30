@@ -184,5 +184,6 @@
     <string name="project_state">Project state</string>
     <string name="save_project">Save project</string>
 
+    <string name="removed_on_highlights">Project removed from highlighted!</string>
 
 </resources>

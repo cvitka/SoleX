@@ -235,8 +235,8 @@ public class DeveloperProfileActivity extends DrawerActivity implements Develope
 
     @Override
     public void onBackPressed() {
-        if(developerId !=0) {
-            finish();
+        if (!User.isCurrentUser(UserType.DEVELOPER, mThisDeveloper.getId())) {
+            super.onBackPressed();
         }
     }
 

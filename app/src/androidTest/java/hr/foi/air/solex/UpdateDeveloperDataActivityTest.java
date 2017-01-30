@@ -19,6 +19,7 @@ import hr.foi.air.solex.models.mdevelopers.Developer;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
@@ -77,16 +78,16 @@ public class UpdateDeveloperDataActivityTest {
     public void testUpdateData() throws Exception {
 
         onView(withId(R.id.activity_update_developer_etNewName))
-                .perform(typeText(name));
+                .perform(typeText(name), closeSoftKeyboard());
 
         onView(withId(R.id.activity_update_developer_etNewSurname))
-                .perform(typeText(surname));
+                .perform(typeText(surname), closeSoftKeyboard());
 
         onView(withId(R.id.activity_update_developer_etNewAddress))
-                .perform(typeText(adress));
+                .perform(typeText(adress), closeSoftKeyboard());
 
         onView(withId(R.id.activity_update_developer_etNewEmail))
-                .perform(typeText(email));
+                .perform(typeText(email), closeSoftKeyboard());
 
         //onView(withId(R.id.activity_update_developer_etNewNumber))
                // .perform(typeText(contactNumber));

@@ -276,6 +276,9 @@ public class CompanyProfileActivity extends DrawerActivity implements CompanyPro
 
     @Override
     public void onBackPressed() {
+        if (!User.isCurrentUser(UserType.COMPANY, mThisCompany.getId())) {
+            super.onBackPressed();
+        }
     }
 
     @Override

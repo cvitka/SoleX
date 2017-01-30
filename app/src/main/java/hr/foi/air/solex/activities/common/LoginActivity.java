@@ -3,6 +3,7 @@ package hr.foi.air.solex.activities.common;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Handler;
+import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -100,6 +101,8 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         if (exit) {
             moveTaskToBack(true);
             finish();
+            System.runFinalizersOnExit(true);
+            System.exit(0);
         } else {
             Toast.makeText(this, R.string.back_to_exit,
                     Toast.LENGTH_SHORT).show();
@@ -111,5 +114,10 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
                 }
             }, 3 * 1000);
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 }

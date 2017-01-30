@@ -35,8 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Email"
-            android:inputType="textEmailAddress"
-            android:text="poduzece"/>
+            android:inputType="textEmailAddress"/>
     </android.support.design.widget.TextInputLayout>
 
     <!--  Lozinka -->
@@ -51,7 +50,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/passwordHint"
-            android:text="Jedan2615"
             android:inputType="textPassword" />
     </android.support.design.widget.TextInputLayout>
 

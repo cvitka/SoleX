@@ -4,18 +4,20 @@ import java.util.List;
 
 import hr.foi.air.solex.fragments.ProjectSearchResultView;
 import hr.foi.air.solex.models.searched_project.SearchedProject;
+import hr.foi.air.solex.models.searched_project.SearchedProjectAndroidInteractorImpl;
 import hr.foi.air.solex.models.searched_project.SearchedProjectInteractor;
 import hr.foi.air.solex.models.searched_project.SearchedProjectInteractorImpl;
 import hr.foi.air.solex.models.searched_project.SearchedProjectListListener;
 
 public class ProjectSearchResultPresenterImpl implements ProjectSearchResultPresenter,SearchedProjectListListener {
 
-    ProjectSearchResultView mProjectSearchResultView;
-    SearchedProjectInteractor mPearchedProjectInteractor;
+    private ProjectSearchResultView mProjectSearchResultView;
+    private SearchedProjectInteractor mPearchedProjectInteractor;
 
     public ProjectSearchResultPresenterImpl(ProjectSearchResultView projectSearchResultView) {
         mProjectSearchResultView = projectSearchResultView;
-        mPearchedProjectInteractor = new SearchedProjectInteractorImpl();
+        mPearchedProjectInteractor = new SearchedProjectAndroidInteractorImpl();
+        //mPearchedProjectInteractor = new SearchedProjectInteractorImpl();
         mPearchedProjectInteractor.setSearchedProjectListListener(this);
     }
 

@@ -58,41 +58,15 @@ public class ProjectsSearchFeelingLuckyFragment extends Fragment implements Proj
         return view;
     }
 
-
-
     @Override
     public void onProjectListCome(List<SearchedProject> projects) {
-        ArrayList<SearchedProject> random = new ArrayList();
-        random.add(projects.get(new Random().nextInt(projects.size())));
-/*      // napravio sam prvo tri, ali nekad mi ne da unique, prema uputama pise 1(i ovako nece bit u appu)
-        List<SearchedProject> uniqueProjects = new ArrayList<>(new LinkedHashSet<>(random));
-        if (projects.size() == 1) {
-            random.add(projects.get(new Random().nextInt(projects.size())));
-        } else if (projects.size() == 2) {
-            random.add(projects.get(new Random().nextInt(projects.size())));
-            random.add(projects.get(new Random().nextInt(projects.size())));
-            random.clear();
-            random.addAll(uniqueProjects);
-            while (uniqueProjects.size() != 2) {
-                uniqueProjects.add(projects.get(new Random().nextInt(projects.size())));
-            }
-        } else if (projects.size() > 3) {
-            random.add(projects.get(new Random().nextInt(projects.size())));
-            random.add(projects.get(new Random().nextInt(projects.size())));
-            random.add(projects.get(new Random().nextInt(projects.size())));
 
-            random.clear();
-            random.addAll(uniqueProjects);
-            while (uniqueProjects.size() != 3) {
-                uniqueProjects.add(projects.get(new Random().nextInt(projects.size())));
-            }
-        }*/
-        projectsFeelingLuckyAdapter = new ProjectsFeelingLuckyAdapter(random, itemClickListener);
+        projectsFeelingLuckyAdapter = new ProjectsFeelingLuckyAdapter(projects, itemClickListener);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.addItemDecoration(new DividerItemDecoration(getActivity().getApplicationContext(), LinearLayoutManager.VERTICAL));
-        recyclerView.setAdapter(new ProjectsFeelingLuckyAdapter(random, new ProjectsFeelingLuckyAdapter.ClickListener() {
+        recyclerView.setAdapter(new ProjectsFeelingLuckyAdapter(projects, new ProjectsFeelingLuckyAdapter.ClickListener() {
             @Override
             public void onItemClick(SearchedProject searchedProject) {
                 Intent intent = new Intent(getActivity(), DeveloperNeededCollaborationActivity.class);

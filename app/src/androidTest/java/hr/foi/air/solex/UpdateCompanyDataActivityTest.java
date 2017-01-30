@@ -19,6 +19,7 @@ import hr.foi.air.solex.models.mcompanies.Company;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
@@ -74,16 +75,16 @@ public class UpdateCompanyDataActivityTest {
     public void testUpdateData() throws Exception{
 
         onView(withId(R.id.activity_update_company_etNewName))
-                .perform(typeText(name));
+                .perform(typeText(name), closeSoftKeyboard());
 
         onView(withId(R.id.activity_update_company_etNewEmail))
-                .perform(typeText(email));
+                .perform(typeText(email), closeSoftKeyboard());
 
         onView(withId(R.id.activity_update_company_etNewAddress))
-                .perform(typeText(adress));
+                .perform(typeText(adress), closeSoftKeyboard());
 
         onView(withId(R.id.activity_update_company_etWebPage))
-                .perform(typeText(webPage));
+                .perform(typeText(webPage), closeSoftKeyboard());
 
 
         onView(withId(R.id.activity_update_company_etNewName))

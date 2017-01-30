@@ -63,22 +63,22 @@ public class DeveloperProjectsActivity extends DrawerActivity implements Develop
 
     @Override
     public void onHighlightAddition() {
-        Toast.makeText(getApplicationContext(), R.string.added_to_highlights, Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), R.string.added_to_highlights, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onHighlightFailure(String message) {
-        Toast.makeText(getApplicationContext(), R.string.server_error, Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), R.string.server_error, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onHighlightRemove() {
-        Toast.makeText(getApplicationContext(), R.string.added_to_highlights, Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), R.string.removed_on_highlights, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onHighlightRemoveFailure(String message) {
-        Toast.makeText(getApplicationContext(), R.string.server_error, Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), R.string.server_error, Toast.LENGTH_SHORT).show();
     }
 
     private void openProjectActivity(int projectId) {
