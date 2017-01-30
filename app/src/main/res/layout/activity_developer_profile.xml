@@ -201,7 +201,7 @@
                 <Button
                     android:id="@+id/btnStartUpdateDeveloperData"
                     style="@style/ButtonStyleBlue"
-                    android:layout_width="65dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="25dp"
                     android:layout_alignEnd="@+id/activity_developer_profile_highProjectsLayout"
                     android:layout_alignParentTop="true"

@@ -68,7 +68,7 @@ public class AddNewProjectActivity extends DrawerActivity implements AddNewProje
     @OnClick(R.id.btnSaveProject)
     public void btnSaveProjectClick() {
         if (etProjectName.getText().toString().isEmpty() || etDescription.getText().toString().isEmpty() || tvProjectDate.getText().toString().isEmpty() || stateData == 0) {
-            Toast.makeText(getApplicationContext(), "Fill in all data", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), R.string.fill_data, Toast.LENGTH_LONG).show();
         } else {
             mProject.setName(etProjectName.getText().toString());
             mProject.setDescription(etDescription.getText().toString());
@@ -108,7 +108,7 @@ public class AddNewProjectActivity extends DrawerActivity implements AddNewProje
     }
 
     private void fillSpinner() {
-        spinner.setItems("Chose state","Start project", "In progress", "Finished", "Paused", "Stopped");
+        spinner.setItems(getString(R.string.choose_state),getString(R.string.start_project), getString(R.string.in_progress), getString(R.string.finished), getString(R.string.paused), getString(R.string.stopped));
         spinner.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
             @Override
             public void onItemSelected(MaterialSpinner view, int position, long id, Object item) {

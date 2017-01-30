@@ -70,7 +70,7 @@
     <string name="perc_match">% postotak</string>
 
     <!--Developer applicating -->
-    <string name="applicate">Aplikant</string>
+    <string name="applicate">Apliciraj</string>
     <string name="withdraw">Povuci aplikaciju</string>
     <string name="num_applicants">Broj aplikanata</string>
     <string name="new_info">Unesite nove informacije</string>
@@ -154,6 +154,9 @@
     <string name="percentage_limitation">Postotak mora biti ispod 100!</string>
     <string name="choose_skill">Izaberite vještinu</string>
     <string name="no_such_skill">"Ne postoji navedena vještina "</string>
+    <string name="enter_matching_percentage">Unesi postotak</string>
+    <string name="search">Pretraži</string>
+
     <!-- signup -->
     <string name="all_fields">Sva polja moraju biti popunjena!</string>
     <string name="password_dont_match">Lozinke se ne podudaraju!</string>
@@ -162,15 +165,26 @@
     <string name="main_technologies">Glavne tehnologije</string>
     <!-- favoriti -->
     <string name="add_your_favourite_collaboration">Dodaj novog favorita</string>
-
-    <string name="enter_matching_percentage">Unesi postotak</string>
-    <string name="search">Pretraži</string>
+    <string name="developer_favourites">Developer je dodan u favorite</string>
+    <string name="developer_favourite_delete">Developer je obrisan iz favorita</string>
 
     <string name="adapter_applications">" suradnje"</string>
     <string name="match">% podudaranje</string>
     <!-- dev profile -->
     <string name="it_skills">IT vještine</string>
     <string name="projects">Projekti</string>
+
+
+    <!-- add new project -->
+    <string name="choose_state">Izeberi stanje</string>
+    <string name="start_project">Pokrenut projekt</string>
+    <string name="in_progress">U tijeku</string>
+    <string name="finished">Završeno</string>
+    <string name="paused">Zaustavljeno</string>
+    <string name="stopped">Prekinut</string>
+    <string name="start_date">Datum početka</string>
+    <string name="project_state">Stanje projekta</string>
+    <string name="save_project">Spremi projekt</string>
 
 
 </resources>

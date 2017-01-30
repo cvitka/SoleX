@@ -107,7 +107,7 @@ public class FavouritesActivity extends DrawerActivity implements FavouritesActi
 
     @Override
     public void onFavoriteAddition() {
-        Toast.makeText(getApplicationContext(), "The developer has been added to favorites", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), R.string.developer_favourites, Toast.LENGTH_LONG).show();
         finish();
         startActivity(getIntent());
     }
@@ -121,7 +121,7 @@ public class FavouritesActivity extends DrawerActivity implements FavouritesActi
 
     @Override
     public void onFavoriteUpdate() {
-        Toast.makeText(getApplicationContext(), "The developer has been added to favorites", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), R.string.developer_favourites , Toast.LENGTH_LONG).show();
         finish();
         startActivity(getIntent());
     }
@@ -135,7 +135,7 @@ public class FavouritesActivity extends DrawerActivity implements FavouritesActi
 
     @Override
     public void onFavoriteDelete() {
-        Toast.makeText(getApplicationContext(), "The developer has been deleted from favorites", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), R.string.developer_favourite_delete, Toast.LENGTH_LONG).show();
         finish();
         startActivity(getIntent());
     }

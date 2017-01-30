@@ -124,7 +124,7 @@
     <string name="OK">OK</string>
     <string name="CANCEL">CANCEL</string>
     <string name="new_needed_collaboration_created">New Needed Collaboration Has Been Created!</string>
-    <string name="project_name">Project Name</string>
+    <string name="project_name">Project name</string>
     <string name="description">Description</string>
     <string name="project_description">Project description</string>
     <string name="completion_percentage">Completion(percentage)</string>
@@ -171,6 +171,18 @@
     <!-- dev profile -->
     <string name="it_skills">IT skills</string>
     <string name="projects">Projects</string>
+    <string name="developer_favourites">The developer has been added to favorites</string>
+    <string name="developer_favourite_delete">The developer has been deleted from favorites</string>
+    <!-- add new project -->
+    <string name="choose_state">Choose state</string>
+    <string name="start_project">Start project</string>
+    <string name="in_progress">In progress</string>
+    <string name="finished">Finished</string>
+    <string name="paused">Paused</string>
+    <string name="stopped">Stopped</string>
+    <string name="start_date">start date</string>
+    <string name="project_state">Project state</string>
+    <string name="save_project">Save project</string>
 
 
 </resources>

@@ -52,7 +52,7 @@
                 <Button
                     android:id="@+id/btnStartUpdateCompanyData"
                     style="@style/ButtonStyleBlue"
-                    android:layout_width="75dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="25dp"
                     android:layout_alignEnd="@+id/activity_company_profile_projectsLayout"
                     android:layout_alignParentTop="true"

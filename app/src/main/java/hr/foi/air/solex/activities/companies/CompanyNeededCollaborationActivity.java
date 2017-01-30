@@ -33,7 +33,7 @@ import hr.foi.air.solex.presenters.companies.CompanyNeededCollaborationPresenter
 import hr.foi.air.solex.presenters.companies.CompanyNeededCollaborationPresenterImpl;
 import hr.foi.air.solex.utils.Utility;
 
-public class CompanyNeededCollaborationActivity extends DrawerActivity implements CompanyNeededCollaborationView{
+public class CompanyNeededCollaborationActivity extends DrawerActivity implements CompanyNeededCollaborationView {
 
     @BindView(R.id.activity_company_needed_collaboration_tvCollabName)
     TextView tvCollabName;
@@ -77,7 +77,7 @@ public class CompanyNeededCollaborationActivity extends DrawerActivity implement
         mPresenter.getCollaborationData(collaborationId);
         mPresenter.getCollaborationSkills(collaborationId);
 
-        if(isOwner) {
+        if (isOwner) {
             mPresenter.getApplicants(collaborationId);
             lvApplicants.setOnTouchListener(new View.OnTouchListener() {
                 // Setting on Touch Listener for handling the touch inside ScrollView
@@ -88,8 +88,7 @@ public class CompanyNeededCollaborationActivity extends DrawerActivity implement
                     return false;
                 }
             });
-        }
-        else{
+        } else {
             lvApplicants.setVisibility(View.GONE);
             btnAcceptApplicant.setVisibility(View.GONE);
             tvApplicantsLabel.setVisibility(View.GONE);
@@ -115,14 +114,14 @@ public class CompanyNeededCollaborationActivity extends DrawerActivity implement
     }
 
     @OnItemClick(R.id.activity_company_needed_collaboration_lvApplicants)
-    public void lvApplicantsItemClick(View view){
+    public void lvApplicantsItemClick(View view) {
         //Intent intent = new Intent(this, DeveloperProfileActivity.class);
         //startActivity(intent);
 
     }
 
     @OnClick(R.id.activity_company_needed_collaboration_btnAcceptApplicant)
-    public void btnAcceptApplicantClick(){
+    public void btnAcceptApplicantClick() {
         //Intent intent = new Intent(this, CollaborationActivity.class);
         //startActivity(intent);
     }
@@ -131,13 +130,16 @@ public class CompanyNeededCollaborationActivity extends DrawerActivity implement
     public void onApplicantsArrived(List<Applicant> list) {
         mApplicantList = list;
         //lvApplicants.setOnItemClickListener(this);
-        ApplicantsAdapter adapter = new ApplicantsAdapter(
-                this,
-                R.layout.list_item_applicant,
-                mApplicantList,
-                mSkillsList.size());
-        lvApplicants.setAdapter(adapter);
-        Utility.setListViewHeightBasedOnChildren(lvApplicants, 4);
+        if (mSkillsList != null) {
+            ApplicantsAdapter adapter = new ApplicantsAdapter(
+                    this,
+                    R.layout.list_item_applicant,
+                    mApplicantList,
+                    mSkillsList.size());
+            lvApplicants.setAdapter(adapter);
+            Utility.setListViewHeightBasedOnChildren(lvApplicants, 4);
+        }
+
     }
 
     @Override
@@ -157,7 +159,7 @@ public class CompanyNeededCollaborationActivity extends DrawerActivity implement
     }
 
     @OnItemClick(R.id.activity_company_needed_collaboration_lvApplicants)
-    public void lvApplicantsOnItemClick(AdapterView<?> parent, View view, int position, long id){
+    public void lvApplicantsOnItemClick(AdapterView<?> parent, View view, int position, long id) {
         Applicant app = mApplicantList.get(position);
         Intent intent = new Intent(this, DeveloperProfileActivity.class);
         intent.putExtra("developerId", app.getApplicantId());
@@ -166,11 +168,12 @@ public class CompanyNeededCollaborationActivity extends DrawerActivity implement
 
 
     View lastLongClicked;
+
     @OnItemLongClick(R.id.activity_company_needed_collaboration_lvApplicants)
-    public boolean lvApplicantsOnItemLongClick(AdapterView<?> parent, View view, int position, long id){
+    public boolean lvApplicantsOnItemLongClick(AdapterView<?> parent, View view, int position, long id) {
         //int color = ((ColorDrawable)view.getBackground()).getColor();
         view.setBackgroundColor(0xFFD5F6CF);
-        if(lastLongClicked != null){
+        if (lastLongClicked != null) {
             lastLongClicked.setBackgroundColor(getResources().getColor(R.color.white));
         }
         lastLongClicked = view;
@@ -178,8 +181,8 @@ public class CompanyNeededCollaborationActivity extends DrawerActivity implement
     }
 
     @OnClick(R.id.activity_company_needed_collaboration_btnAcceptApplicant)
-    public void btnAcceptApplicantOnClick(){
-        if(lastLongClicked!= null) {
+    public void btnAcceptApplicantOnClick() {
+        if (lastLongClicked != null) {
             Applicant app = mApplicantList.get(lvApplicants.getPositionForView(lastLongClicked));
             mPresenter.applicantChosen(mThisCollaboration.getCollaborationId(), app.getApplicantId());
             mDevId = app.getApplicantId();

@@ -54,6 +54,7 @@ public class ProjectsSearchMainFragment extends Fragment implements ProjectSearc
     private long mShakeTimestamp;
     private Handler handler;
 
+    Context mContext;
     private List<String> developerSkillsList;
     private List<String> allSkillsList;
     private ArrayAdapter<String> mDevSkillAdapter;
@@ -80,6 +81,7 @@ public class ProjectsSearchMainFragment extends Fragment implements ProjectSearc
         mSensorManager.registerListener(this, mSensor, SensorManager.SENSOR_DELAY_NORMAL);
         //vibriraj nakon shakea
         mVibrator = (Vibrator) getActivity().getSystemService(getContext().VIBRATOR_SERVICE);
+        mContext = getActivity().getApplicationContext();
 
     }
 
@@ -125,7 +127,7 @@ public class ProjectsSearchMainFragment extends Fragment implements ProjectSearc
     @Override
     public void allSkillsListArrived(List<String> list) {
         allSkillsList = list;
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(mContext,
                 android.R.layout.simple_dropdown_item_1line, list);
         actvNewSkill.setAdapter(adapter);
         dataArrived = true;
@@ -133,10 +135,12 @@ public class ProjectsSearchMainFragment extends Fragment implements ProjectSearc
 
     @Override
     public void developerSkillsListArrived(List<String> list) {
-        developerSkillsList = list;
-        mDevSkillAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, list);
-        lvProjectSearchITSkills.setAdapter(mDevSkillAdapter);
-        dataArrived = true;
+        if (getActivity() != null) {
+            developerSkillsList = list;
+            mDevSkillAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, list);
+            lvProjectSearchITSkills.setAdapter(mDevSkillAdapter);
+            dataArrived = true;
+        }
     }
 
     @OnClick(R.id.activity_project_search_ibAddSkills)
