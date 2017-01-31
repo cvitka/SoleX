@@ -7,6 +7,7 @@ import hr.foi.air.solex.models.WebServiceCommunicator;
 import java.util.List;
 
 import hr.foi.air.solex.presenters.companies.ApplicationAcceptedListener;
+import okhttp3.HttpUrl;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -120,6 +121,7 @@ public class ApiNeededCollaborationsInteractorImpl extends WebServiceCommunicato
     public void applicationAccepted(int collaborationId, int developerId) {
         WSInterfaceCollaborations interfaceCollaborations = retrofit.create(WSInterfaceCollaborations.class);
         Call<NeededCollaborationData> call = interfaceCollaborations.saveApplicationAccepted(collaborationId, developerId);
+
         call.enqueue(new Callback<NeededCollaborationData>() {
             @Override
             public void onResponse(Call<NeededCollaborationData> call, Response<NeededCollaborationData> response) {

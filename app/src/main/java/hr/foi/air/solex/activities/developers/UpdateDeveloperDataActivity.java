@@ -85,7 +85,14 @@ public class UpdateDeveloperDataActivity extends DrawerActivity implements Updat
 
         int id = User.getInstance().getId();
         mUpdateDeveloperDataPresenter = new UpdateDeveloperDataPresenterImpl(this);
-        String jsonMyObject = getIntent().getExtras().getString("myObject");
+        String jsonMyObject;
+        if (savedInstanceState == null) {
+            jsonMyObject = getIntent().getExtras().getString("myObject");
+
+        }
+        else {
+            jsonMyObject = getIntent().getExtras().getString("myObject");
+        }
         mThisDeveloper = new Gson().fromJson(jsonMyObject, Developer.class);
         setDataOnLayout(mThisDeveloper);
     }

@@ -87,7 +87,7 @@ public class NewNeededCollaborationActivity extends DrawerActivity implements Ne
                 projekt= extras.getInt("projectId");
             }
         } else {
-            projekt= (int) savedInstanceState.getSerializable("projectId");
+            projekt = savedInstanceState.getInt("projectId");
 
         }
         //fillSpinnerSkills();

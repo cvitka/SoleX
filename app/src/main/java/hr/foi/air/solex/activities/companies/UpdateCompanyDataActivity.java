@@ -81,7 +81,13 @@ public class UpdateCompanyDataActivity extends DrawerActivity implements UpdateC
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
         //dobavljamo bundlovani objekt
-        String jsonMyObject = getIntent().getExtras().getString("myObject");
+        String jsonMyObject;
+        if (savedInstanceState == null) {
+            jsonMyObject = getIntent().getExtras().getString("myObject");
+        }
+        else {
+            jsonMyObject = savedInstanceState.getString("myObject");
+        }
         mThisCompany = new Gson().fromJson(jsonMyObject, Company.class);
         setDataOnLayout(mThisCompany);
 

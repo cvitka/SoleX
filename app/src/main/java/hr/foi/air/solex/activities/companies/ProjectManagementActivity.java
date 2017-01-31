@@ -75,7 +75,8 @@ public class ProjectManagementActivity extends DrawerActivity implements Project
                 isOwner = extras.getBoolean("isOwner");
             }
         } else {
-           // projectName= (String) savedInstanceState.getSerializable("projectName");
+            projectId= savedInstanceState.getInt("projectId");
+            isOwner = savedInstanceState.getBoolean("isOwner");
         }
         mPresenter.getProject(projectId);
         mPresenter.getNeededCollaboration(projectId);

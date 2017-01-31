@@ -90,8 +90,10 @@ public class CollabApplicatAdapter extends ArrayAdapter<CollabApplicat>{
                 lblDateLabel.setText(ctx.getResources().getString(R.string.tvDateApplicatedLabel));
                 lblDate.setText(o.getApplicationDate());
                 if(o.getApplicationState().equals("p")){
-                    v.setBackgroundColor(0x44ffb873);//#ccffcc
+                    v.setBackgroundColor(ctx.getResources().getColor(R.color.light_gray_list_background));
                 }
+                else
+                    v.setBackgroundColor(ctx.getResources().getColor(R.color.white));
             }
 
         }

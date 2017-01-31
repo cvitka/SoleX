@@ -69,8 +69,16 @@ public class CompanyNeededCollaborationActivity extends DrawerActivity implement
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
 
-        int collaborationId = getIntent().getExtras().getInt("collaborationId");
-        isOwner = getIntent().getExtras().getBoolean("isOwner");
+        int collaborationId;
+
+        if (savedInstanceState == null) {
+            collaborationId = getIntent().getExtras().getInt("collaborationId");
+            isOwner = getIntent().getExtras().getBoolean("isOwner");
+        }
+        else {
+            collaborationId = savedInstanceState.getInt("collaborationId");
+            isOwner = savedInstanceState.getBoolean("isOwner");
+        }
 
         mPresenter = new CompanyNeededCollaborationPresenterImpl(this);
 

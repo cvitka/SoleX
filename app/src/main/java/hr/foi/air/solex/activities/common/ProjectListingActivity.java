@@ -33,14 +33,22 @@ public class ProjectListingActivity extends DrawerActivity implements ProjectLis
         super.onCreate(savedInstanceState);
 
         mProjectListingPresenter = new ProjectListingPresenterImpl(this);
-        int type = getIntent().getExtras().getInt("type");
+        int type;
+        if (savedInstanceState == null) {
+            type = getIntent().getExtras().getInt("type");
+            projectsOwnerId = getIntent().getExtras().getInt("ownerId");
+            projectsOwnerName = getIntent().getExtras().getString("ownerName");
+        }
+        else {
+            type = savedInstanceState.getInt("type");
+            projectsOwnerId = savedInstanceState.getInt("ownerId");
+            projectsOwnerName = savedInstanceState.getString("ownerName");
+        }
         if (type == UserType.COMPANY.intVal())
             projectsOwnerType = UserType.COMPANY;
         else
             projectsOwnerType = UserType.DEVELOPER;
 
-        projectsOwnerId = getIntent().getExtras().getInt("ownerId");
-        projectsOwnerName = getIntent().getExtras().getString("ownerName");
 
         mProjectListingPresenter.getProjects(projectsOwnerId, projectsOwnerType);
     }

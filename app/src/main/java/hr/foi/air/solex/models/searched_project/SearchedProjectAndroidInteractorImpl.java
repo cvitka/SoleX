@@ -44,7 +44,7 @@ public class SearchedProjectAndroidInteractorImpl extends WebServiceCommunicator
                         if(response.body()!=null) {
                             List<SearchedProject> filteredList = new ArrayList<SearchedProject>();
                             for (SearchedProject proj : response.body()) {
-                                int projPercentage = (int)((proj.getMatches()/(float)skills.size())*100);
+                                int projPercentage = (int)((proj.getMatches()/(float)proj.getNumOfNeededSkills())*100);
                                 if (projPercentage >= percentage)
                                     filteredList.add(proj);
                             }

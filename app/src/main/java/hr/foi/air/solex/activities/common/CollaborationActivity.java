@@ -56,9 +56,17 @@ public class CollaborationActivity extends DrawerActivity implements Collaborati
         ButterKnife.bind(this);
         Intent inti = getIntent();
         Bundle bud = inti.getExtras();
-        isOwner = getIntent().getExtras().getBoolean("isOwner");
-        int collabId = getIntent().getExtras().getInt("collaborationId");
-        String naziv = getIntent().getExtras().getString("collaborationName");
+
+        int collabId;
+        if (savedInstanceState == null) {
+
+            isOwner = getIntent().getExtras().getBoolean("isOwner");
+            collabId = getIntent().getExtras().getInt("collaborationId");
+        }
+        else {
+            isOwner = savedInstanceState.getBoolean("isOwner");
+            collabId = savedInstanceState.getInt("collaborationId");
+        }
         mCollaborationPresenter = new CollaborationPresenterImpl(this);
         mCollaborationPresenter.getExistingCollaboration(collabId);
         mCollaborationPresenter.getSkillsForCollaboration(collabId);

@@ -130,7 +130,13 @@ public class CompanyProfileActivity extends DrawerActivity implements CompanyPro
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mCompanyProfilePresenter = new CompanyProfilePresenterImpl(this, new CompanyInteractorImpl());
-        int companyId = getIntent().getExtras().getInt("companyId");
+        int companyId;
+        if (savedInstanceState == null) {
+            companyId = getIntent().getExtras().getInt("companyId");
+        }
+        else {
+            companyId = savedInstanceState.getInt("companyId");
+        }
         //if company is logged in
         setVisibilityForUsers(companyId);
 

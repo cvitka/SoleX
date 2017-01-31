@@ -145,6 +145,9 @@ public class DeveloperProfileActivity extends DrawerActivity implements Develope
                 id = extras.getInt("developerId");
             }
         }
+        else{
+            id = savedInstanceState.getInt("developerId");
+        }
 
         mDeveloperProfilePresenter.getDeveloperData(id);
         mDeveloperProfilePresenter.getAllSkillList();
@@ -155,6 +158,9 @@ public class DeveloperProfileActivity extends DrawerActivity implements Develope
         fixNestedScrollViews();
         setVisibilityForUsers(id);
     }
+
+
+
 
     private void expandableLayoutClicked(ExpandableLayout layout, ImageButton btn){
         if(layout.isExpanded()){

@@ -190,7 +190,33 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        this.recreate();
+        //Intent intent = getIntent();
+        //finish();
+        //startActivity(intent);
+        recreate();
         (new Utility()).setLanguage(this);
+    }
+
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        if(getIntent().getExtras()!=null)
+            for (String key : getIntent().getExtras().keySet()) {
+                Object o =  getIntent().getExtras().get(key);
+
+                if (o instanceof Integer) {
+                    outState.putInt(key, (int)o);
+                }
+                else if (o instanceof String) {
+                    outState.putString(key, (String)o);
+                }
+                else if (o instanceof Boolean) {
+                    outState.putBoolean(key, (Boolean)o);
+                }
+                else {
+                    // etc.
+                }
+            }
     }
 }

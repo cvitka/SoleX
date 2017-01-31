@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="login_wrong_cred">Vaš email i lozinka se ne podudaraju!</string>
     <string name="app_name">SoleX</string>
     <string name="signup">Nemaš račun? Kreiraj ga!</string>
     <string name="passwordHint">Lozinka</string>
@@ -55,8 +56,8 @@
     <string name="activity_developer_applications_ListLabel">Popis svih aplikacija</string>
 
     <!-- CollabApplicat-->
-    <string name="tvDateStartedLabel">započeto</string>
-    <string name="tvDateApplicatedLabel">primjenjeno</string>
+    <string name="tvDateStartedLabel">Započeto</string>
+    <string name="tvDateApplicatedLabel">Aplicirano</string>
     <string name="tvCollabModelLabel">Model suradnje</string>
     <string name="tvPaymentLabel">Dogovorena isplata</string>
 

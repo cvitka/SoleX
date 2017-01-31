@@ -15,8 +15,10 @@ public class ProjectSearchFeelingLuckyPresenterImpl implements ProjectSearchFeel
 
     public ProjectSearchFeelingLuckyPresenterImpl(ProjectsSearchFeelingLuckyView projectsSearchFeelingLuckyView) {
         mProjectsSearchFeelingLuckyView = projectsSearchFeelingLuckyView;
-        mSearchedProjectInteractor = new SearchedProjectInteractorImpl();
-        //mSearchedProjectInteractor = new SearchedProjectAndroidInteractorImpl();
+
+        //mSearchedProjectInteractor = new SearchedProjectInteractorImpl();
+        mSearchedProjectInteractor = new SearchedProjectAndroidInteractorImpl();
+
         mSearchedProjectInteractor.setSearchedProjectListListener(this);
 
     }

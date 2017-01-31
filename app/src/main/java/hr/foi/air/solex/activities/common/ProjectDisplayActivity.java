@@ -76,7 +76,7 @@ public class ProjectDisplayActivity extends DrawerActivity implements ProjectDis
                 projectId = extras.getInt("projectId");
             }
         } else {
-            // projectName= (String) savedInstanceState.getSerializable("projectName");
+            projectId= savedInstanceState.getInt("projectId");
         }
         mPresenter.getProject(projectId);
         mPresenter.getNeededCollaboration(projectId);

@@ -53,7 +53,13 @@ public class CompanyProjectsActivity extends DrawerActivity implements CompanyPr
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
-        companyId = getIntent().getExtras().getInt("companyId");
+
+        if (savedInstanceState == null) {
+            companyId = getIntent().getExtras().getInt("companyId");
+        }
+        else {
+            companyId = savedInstanceState.getInt("companyId");
+        }
 
         this.mCompanyProjectsPresenter = new CompanyProjectsPresenterImpl(this);
         mCompanyProjectsPresenter.getProjects(companyId);

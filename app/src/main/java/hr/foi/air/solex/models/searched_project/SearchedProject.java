@@ -9,7 +9,23 @@ public class SearchedProject {
     private String collaborationName;
     private int applicantsNum;
     private int matches;
+    private int numOfNeededSkills;
 
+    public int getNumOfNeededSkills() {
+        return numOfNeededSkills;
+    }
+
+    public void setNumOfNeededSkills(int numOfNeededSkills) {
+        this.numOfNeededSkills = numOfNeededSkills;
+    }
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
 
     public String getProjectName() {
         return projectName;

@@ -42,7 +42,7 @@ public class ProjectSearchResultAdapter extends RecyclerView.Adapter<ProjectSear
             collaborationName.setText(item.getCollaborationName());
             int sum = (item.getApplicantsNum());
             matches.setText(String .valueOf(sum)+" "+mContext.getString(R.string.adapter_applications));
-            int percent = (int)((item.getMatches()/(float)(numberOfSearchedSkills))*100);
+            int percent = (int)((item.getMatches()/(float)(item.getNumOfNeededSkills()))*100);
             percentage.setText(String.valueOf(percent)+mContext.getString(R.string.match));
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

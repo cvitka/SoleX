@@ -61,6 +61,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     public void onDeveloperLoginSuccess() {
         Intent intent = new Intent(this, DeveloperProfileActivity.class);
         intent.putExtra("developerId", User.getInstance().getId());
+        intent.putExtra("hhh", true);
         progressDialog.dismiss();
         startActivity(intent);
     }
@@ -74,12 +75,24 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     }
 
     @Override
-    public void onLoginFailed(final String message) {
+    public void onLoginFailed() {
         new android.os.Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 progressDialog.dismiss();
-                Toast.makeText(getApplicationContext(), hr.foi.air.solex.R.string.server_error, Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), R.string.login_wrong_cred, Toast.LENGTH_LONG).show();
+
+            }
+        }, 1000);
+    }
+
+    @Override
+    public void onContactServerFailed() {
+        new android.os.Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                progressDialog.dismiss();
+                Toast.makeText(getApplicationContext(), R.string.server_error, Toast.LENGTH_LONG).show();
 
             }
         }, 1000);

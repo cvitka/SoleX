@@ -1,5 +1,6 @@
 package hr.foi.air.solex.presenters.common;
 
+import hr.foi.air.solex.R;
 import hr.foi.air.solex.presenters.common.LoginPresenter;
 import hr.foi.air.solex.utils.UserType;
 import hr.foi.air.solex.models.login_registration.LoginInteractor;
@@ -46,11 +47,11 @@ public class LoginPresenterImpl implements LoginPresenter, LoginResponseListener
 
     @Override
     public void onServerConnectionFailed() {
-        mLoginView.onLoginFailed("Cannot connect to server");
+        mLoginView.onContactServerFailed();
     }
 
     @Override
     public void onLoginFailed(String message) {
-        mLoginView.onLoginFailed(message);
+        mLoginView.onLoginFailed();
     }
 }

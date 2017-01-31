@@ -60,10 +60,18 @@ public class DeveloperNeededCollaborationActivity extends DrawerActivity impleme
         super.onCreate(savedInstanceState);
 
         mPresenter = new DeveloperNeededCollaborationPresenterImpl(this);
+        int collaborationId;
+        if (savedInstanceState == null) {
+            companyName = getIntent().getExtras().getString("companyName");
+            applicantsNumber = getIntent().getExtras().getInt("applicantsNumber");
+            collaborationId = getIntent().getExtras().getInt("collaborationId");
+        }
+        else {
+            companyName = savedInstanceState.getString("companyName");
+            applicantsNumber = savedInstanceState.getInt("applicantsNumber");
+            collaborationId = savedInstanceState.getInt("collaborationId");
+        }
 
-        companyName = getIntent().getExtras().getString("companyName");
-        applicantsNumber = getIntent().getExtras().getInt("applicantsNumber");
-        int collaborationId = getIntent().getExtras().getInt("collaborationId");
         mPresenter.getCollaborationSkills(collaborationId);
         mPresenter.getCollaborationData(collaborationId, User.getInstance().getId());
 
