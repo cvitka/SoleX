@@ -26,23 +26,27 @@ public class NewNeededCollaborationPresenterImpl implements NewNeededCollaborati
 
     }
 
+    /**Javi interactoru da dohvati potrebne suradnje */
     @Override
     public void addNeededCollaboration(NeededCollaboration neededCollaboration) {
         mNewNeededCollabInteractor.addNeededCollaboration(neededCollaboration);
 
     }
 
+    /**Javi viewu da je suradnje dodana*/
     @Override
     public void onNeededCollaborationAdd() {
         mNewNeededCollabView.onAdd();
 
     }
 
+    /**Javi interactoru da dohvati potrebne kompetencije*/
     @Override
     public void getAllSkills() {
         mSkillsInteractor.getAllSkillList();
     }
 
+    /**Javi viewu da su kompetencije stigle*/
     @Override
     public void onAllSkillListCome(List<String> skills) {
         mNewNeededCollabView.onAllSkillsArrived(skills);

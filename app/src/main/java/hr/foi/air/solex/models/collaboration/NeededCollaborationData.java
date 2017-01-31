@@ -1,6 +1,6 @@
 package hr.foi.air.solex.models.collaboration;
 
-
+/**POJO klasa za potrebne suradnje  */
 public class NeededCollaborationData {
     private String projectName;
     private int companyId;

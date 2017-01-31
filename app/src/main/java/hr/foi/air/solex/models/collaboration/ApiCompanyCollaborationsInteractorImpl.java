@@ -18,6 +18,7 @@ public class ApiCompanyCollaborationsInteractorImpl extends WebServiceCommunicat
     private ApiCollaborationsListListener mListListener;
     private ApiCompanyCollaborationScalarListener mScalarListener;
 
+    /** Definiranje web service end point*/
     private interface WSInterfaceCollaborations {
 
         @GET("dohvatiSuradnje.php")
@@ -32,21 +33,22 @@ public class ApiCompanyCollaborationsInteractorImpl extends WebServiceCommunicat
         initRetrofit();
     }
 
+    /** Postavljanje listenera */
     @Override
     public void setListListener(ApiCollaborationsListListener listListener) {
         mListListener = listListener;
     }
 
 
+    /** Postavljanje listenera */
     @Override
     public void setScalarListener(ApiCompanyCollaborationScalarListener scalarListener) {
         this.mScalarListener = scalarListener;
     }
 
-
+    /** Dohvat podataka sa web servisa  */
     @Override
     public void getCollaborationScalar(int collaborationId) {
-
         WSInterfaceCollaborations interfaceCollaborations = retrofit.create(WSInterfaceCollaborations.class);
         Call<ApiCompanyCollaborations> call = interfaceCollaborations.getScalarCollaboration(collaborationId);
         call.enqueue(new Callback<ApiCompanyCollaborations>() {
@@ -54,6 +56,7 @@ public class ApiCompanyCollaborationsInteractorImpl extends WebServiceCommunicat
             public void onResponse(Call<ApiCompanyCollaborations> call, Response<ApiCompanyCollaborations> response) {
                 if (response.isSuccessful()) {
                     if (mScalarListener != null) {
+                        /**Prosljedivanje podataka*/
                         mScalarListener.companyCollaborationArrived(response.body());
                     }
                 }
@@ -66,6 +69,7 @@ public class ApiCompanyCollaborationsInteractorImpl extends WebServiceCommunicat
         });
     }
 
+    /** Dohvat liste kolaboracija sa web servisa  */
     @Override
     public void getCollaborationList() {
 
@@ -76,6 +80,7 @@ public class ApiCompanyCollaborationsInteractorImpl extends WebServiceCommunicat
             public void onResponse(Call<List<ApiCompanyCollaborations>> call, Response<List<ApiCompanyCollaborations>> response) {
                 if (response.isSuccessful()) {
                     if (mListListener != null) {
+                        /**Prosljedivanje podataka*/
                         mListListener.onProjectListCome(response.body());
                     }
                 }

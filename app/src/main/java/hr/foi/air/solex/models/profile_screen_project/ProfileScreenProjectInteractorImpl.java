@@ -18,6 +18,7 @@ public class ProfileScreenProjectInteractorImpl extends WebServiceCommunicator i
     private AddHighlightListener mAddListener;
     private RemoveHighlightListener mRemoveListener;
 
+    /**Definiranej web service end point-a */
     private interface WSInterfaceProject {
         @GET("dohvatiProjekte.php")
         Call<List<ProfileScreenProject>> getProjects(@Query("tipDohvacanja") String tipDohvacanja, @Query("id") int id);
@@ -41,6 +42,7 @@ public class ProfileScreenProjectInteractorImpl extends WebServiceCommunicator i
         this.mListListener = listener;
     }
 
+    /**Dohvati listu istaknutih projekata i prosljedi ih */
     @Override
     public void getHighlightedProjectList(int id, UserType userType) {
         WSInterfaceProject interfaceProject = retrofit.create(WSInterfaceProject.class);
@@ -68,6 +70,7 @@ public class ProfileScreenProjectInteractorImpl extends WebServiceCommunicator i
 
     }
 
+    /**Dohvati listu svih projekata */
     @Override
     public void getAllProjectList(int id) {
         WSInterfaceProject interfaceProject = retrofit.create(WSInterfaceProject.class);
@@ -89,7 +92,7 @@ public class ProfileScreenProjectInteractorImpl extends WebServiceCommunicator i
         });
 
     }
-
+    /** Dohvati listu svih projektata, ali po tipu korisnika*/
     @Override
     public void getAllProjectList(int id, UserType userType) {
         String action;
@@ -117,6 +120,7 @@ public class ProfileScreenProjectInteractorImpl extends WebServiceCommunicator i
 
     }
 
+    /**Dodaj projekt u istaknute */
     @Override
     public void addToHighlighted(int projectID, int userId, UserType userType) {
         WSInterfaceProject interfaceProject = retrofit.create(WSInterfaceProject.class);
@@ -143,12 +147,13 @@ public class ProfileScreenProjectInteractorImpl extends WebServiceCommunicator i
             }
         });
     }
-
+    /** Postavi listener*/
     @Override
     public void setAddHighlightListener(AddHighlightListener listener) {
         mAddListener = listener;
     }
 
+    /**Makni iz istaknutih  */
     @Override
     public void removeHighlighted(int projectID, int userId, UserType userType) {
        WSInterfaceProject interfaceProject = retrofit.create(WSInterfaceProject.class);
@@ -168,7 +173,7 @@ public class ProfileScreenProjectInteractorImpl extends WebServiceCommunicator i
                     }
                 }
             }
-
+            /**javi da je nesto krenulo po zlu */
             @Override
             public void onFailure(Call<WSResponseProfileScreenProject> call, Throwable t) {
                 mRemoveListener.onRemoveFailure(t.getMessage());
@@ -176,6 +181,7 @@ public class ProfileScreenProjectInteractorImpl extends WebServiceCommunicator i
         });
     }
 
+    /** Postavi listener*/
     @Override
     public void setRemoveHighlightListener(RemoveHighlightListener listener) {
         mRemoveListener = listener;

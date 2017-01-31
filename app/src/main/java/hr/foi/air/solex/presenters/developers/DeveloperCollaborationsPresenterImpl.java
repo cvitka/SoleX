@@ -24,22 +24,26 @@ public class DeveloperCollaborationsPresenterImpl implements DeveloperCollaborat
         mRatingInteractor = new RatingsInteractorImpl(this);
     }
 
+    /**Javi interactoru da dohvati suradnje*/
     @Override
     public void getCollaborations(int developerId) {
         mCollabApplicatInteractor.getCollaborations(developerId);
     }
 
+    /**Javi interactoru da ocijeni*/
     @Override
     public void rate(int rating, int user, int collaborationId) {
         mRatingInteractor.rate(rating, user, collaborationId);
     }
 
+    /**Javi viewu da su suradnje stigle*/
     @Override
     public void collabListArrived(List<CollabApplicat> list) {
         mCollaborationsView.onCollaborationsArrived(list);
 
     }
 
+    /**Javi viewu da je osjenjeno*/
     @Override
     public void onRatingSucceeded() {
         mCollaborationsView.onRateSucceeded();

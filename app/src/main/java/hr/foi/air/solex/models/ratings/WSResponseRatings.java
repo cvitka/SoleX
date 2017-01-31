@@ -3,6 +3,7 @@ package hr.foi.air.solex.models.ratings;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+/**POJO klasa ocjena */
 public class WSResponseRatings {
 
     @SerializedName("success")

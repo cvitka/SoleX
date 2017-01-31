@@ -1,6 +1,6 @@
 package hr.foi.air.solex.models.collab_applicat;
 
-
+/** POJO klasa za kolboracije i aplikante*/
 public class CollabApplicat {
     private String companyName;
     private int companyId;
@@ -15,6 +15,7 @@ public class CollabApplicat {
     private int rating;
     private int applicatNumber;
 
+    /** Definirani geteri i seteri*/
     public int getApplicatNumber() {
         return applicatNumber;
     }

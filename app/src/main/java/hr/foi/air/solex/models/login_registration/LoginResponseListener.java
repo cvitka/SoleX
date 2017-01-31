@@ -1,9 +1,6 @@
 package hr.foi.air.solex.models.login_registration;
 
-/**
- * Created by Asus on 6.12.2016..
- */
-
+/**Listener za prijavljivanje. Javi uspjeh ili gresku  */
 public interface LoginResponseListener {
     public void onLoginSuccessful(int id, String email, String type);
     public void onServerConnectionFailed();

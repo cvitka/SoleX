@@ -27,21 +27,25 @@ public class ProjectDisplayPresenterImpl implements ProjectDisplayPresenter, Sel
         mInteractor.setScalarListener(this);
     }
 
+    /**javi interacotru da dohvati odabrani projekt */
     @Override
     public void getProject(int id) {
         mInteractor.getSelectedProjectData(id);
     }
 
+    /**Javi viewu da je odabrani projekt dohvacen */
     @Override
     public void onDataCome(Project project) {
         mProjectDisplayView.DataArrived(project);
     }
 
+    /**Javi interactoru da dohvati potrebne suradnje */
     @Override
     public void getNeededCollaboration(int id) {
         mCollaborationsInteractor.getData(id);
     }
 
+    /**Javi viewu da su dohvacene potrebne suradnje  */
     @Override
     public void onDataListCome(List<ApiNeededCollaborations> neededCollaborationses) {
         mProjectDisplayView.NeededCollaborationsArrived(neededCollaborationses);

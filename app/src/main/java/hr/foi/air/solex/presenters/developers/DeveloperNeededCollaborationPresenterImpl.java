@@ -29,52 +29,61 @@ public class DeveloperNeededCollaborationPresenterImpl implements DeveloperNeede
         mApiCompanyCollaborationsInteractor.setPushNotificationListener(this);
     }
 
-
+    /**Javi interactoru da dohvati kompetenricje za suradnju */
     @Override
     public void getCollaborationSkills(int collaborationId) {
         mSkillsInteractor.getCollaborationSkillList(collaborationId);
     }
 
+    /**Javi interactoru da dohvati podatke o suradnji*/
     @Override
     public void getCollaborationData(int collaborationId, int developerId) {
         mApiCompanyCollaborationsInteractor.getNeededCollaboration(collaborationId, developerId);
     }
 
+    /**Javi viewu da je stigla lista kompetencija za suradnju*/
     @Override
     public void onSkillListCome(List<String> skills) {
         mDeveloperNeededCollaborationView.onSkillsArrived(skills);
     }
 
+    /**Javi viewu da su podatci o suradnji stigli*/
     @Override
     public void neededCollaborationDataArrived(NeededCollaborationData collaborationData) {
         mDeveloperNeededCollaborationView.onCollaborationDataArrived(collaborationData);
     }
 
+    /**Javi viewu da paliciranje prihvaceno */
     @Override
     public void onApplySuccessfull() {
         mDeveloperNeededCollaborationView.onApplySuccessfull();
     }
 
+    /**Javi viewu da je apliciranje odbijeno*/
     @Override
     public void onApplyRemoveSuccessfull() {
         mDeveloperNeededCollaborationView.onRemoveApplySucessfull();
     }
 
+    /**Javi interactoru da prihvati apliciranje*/
     @Override
     public void apply(int collaborationId, int developerId) {
         mApiCompanyCollaborationsInteractor.developerApplied(collaborationId, developerId);
     }
 
+    /**Javi interactoru da odbije apliciranje*/
     @Override
     public void removeApply(int collaborationId, int developerId) {
         mApiCompanyCollaborationsInteractor.developerRemovedApply(collaborationId, developerId);
     }
 
+    /**Javi interactoru da napravi push obavijest*/
     @Override
     public void pushNotif(int companyId) {
         mApiCompanyCollaborationsInteractor.pushNotification(companyId);
     }
 
+    /**Javi viewu da je push obavijest uspjesna*/
     @Override
     public void notificationPushedCompany() {
         mDeveloperNeededCollaborationView.pushSucessful();

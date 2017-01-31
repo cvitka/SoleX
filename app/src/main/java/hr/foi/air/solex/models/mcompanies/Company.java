@@ -3,7 +3,7 @@ package hr.foi.air.solex.models.mcompanies;
 import java.sql.Blob;
 import java.util.HashMap;
 
-
+/** Klasa kompanije*/
 public class Company {
 
     private int id;

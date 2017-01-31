@@ -3,6 +3,7 @@ package hr.foi.air.solex.models.mdevelopers;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+/**POJO klasa develoepra */
 public class WSResponseDeveloper {
 
     @SerializedName("success")

@@ -1,6 +1,7 @@
 package hr.foi.air.solex.models.searched_project;
 
 
+/**Klasa trazeni projekt */
 public class SearchedProject {
     //
     private String projectName;

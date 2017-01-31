@@ -16,8 +16,10 @@ import retrofit2.http.GET;
 import retrofit2.http.Query;
 
 public class SearchedProjectInteractorImpl extends WebServiceCommunicator implements SearchedProjectInteractor {
+
     private SearchedProjectListListener mListListener;
 
+    /**Definiranje web service end point-a */
     private interface WSInterfaceProject {
         @GET("dohvatiProjekte.php")
         Call<List<SearchedProject>> getProjects(@Query("tipDohvacanja") String tipDohvacanja, @Query("percentage") int percentage, @Query("skills[]") List<String> skills);
@@ -30,6 +32,7 @@ public class SearchedProjectInteractorImpl extends WebServiceCommunicator implem
         initRetrofit();
     }
 
+    /**Pretrazi projekte- ws filtriranje */
     @Override
     public void searchProjects(int percentage, List<String> skills) {
         String action = "ProjectSearchList";
@@ -53,7 +56,7 @@ public class SearchedProjectInteractorImpl extends WebServiceCommunicator implem
         });
 
     }
-
+    /**Sretno trazenje-ws filtriranje */
     @Override
     public void luckySearchProjects(List<String> skills) {
         String action = "ProjectSearchLucky";
@@ -76,6 +79,7 @@ public class SearchedProjectInteractorImpl extends WebServiceCommunicator implem
         });
     }
 
+    /**Postavi listener */
     @Override
     public void setSearchedProjectListListener(SearchedProjectListListener listListener) {
         this.mListListener = listListener;

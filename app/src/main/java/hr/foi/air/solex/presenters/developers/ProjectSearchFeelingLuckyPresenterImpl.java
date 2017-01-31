@@ -23,11 +23,13 @@ public class ProjectSearchFeelingLuckyPresenterImpl implements ProjectSearchFeel
 
     }
 
+    /**Javi interactoru da dohvati projekte*/
     @Override
     public void getSearchedProjects(List<String> skills) {
         mSearchedProjectInteractor.luckySearchProjects(skills);
     }
 
+    /**Javi viewu da su projekti stigli*/
     @Override
     public void onProjectListCome(List<SearchedProject> projects) {
         mProjectsSearchFeelingLuckyView.onProjectListCome(projects);

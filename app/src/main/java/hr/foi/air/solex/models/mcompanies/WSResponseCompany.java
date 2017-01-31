@@ -3,7 +3,7 @@ package hr.foi.air.solex.models.mcompanies;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-
+/**POJO klasa poduzeca */
 public class WSResponseCompany {
 
     @SerializedName("success")

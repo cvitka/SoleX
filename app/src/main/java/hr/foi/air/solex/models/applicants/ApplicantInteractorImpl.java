@@ -16,6 +16,7 @@ import retrofit2.http.Query;
 public class ApplicantInteractorImpl extends WebServiceCommunicator implements ApplicantInteractor {
     private ApplicantListListener mListListener;
 
+    /** Definiranje web service end point*/
     private interface WSInterfaceProject {
         @GET("dohvatiAplikante.php")
         Call<List<Applicant>> getProjects(@Query("id") int id);
@@ -30,11 +31,13 @@ public class ApplicantInteractorImpl extends WebServiceCommunicator implements A
         initRetrofit();
     }
 
+    /** Postavljanje listenera */
     @Override
     public void setApplicantListListener(ApplicantListListener listener) {
         this.mListListener = listener;
     }
 
+    /** Dohvat podataka sa web servisa  */
     @Override
     public void getApplicantList(int collaborationId) {
         WSInterfaceProject interfaceProject = retrofit.create(WSInterfaceProject.class);
@@ -44,6 +47,7 @@ public class ApplicantInteractorImpl extends WebServiceCommunicator implements A
             public void onResponse(Call<List<Applicant>> call, Response<List<Applicant>> response) {
                 if (response.isSuccessful()) {
                     if (mListListener != null) {
+                        /**Prosljedivanje podataka*/
                         mListListener.onApplicantListCome(response.body());
                     }
                 }

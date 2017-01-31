@@ -1,6 +1,6 @@
 package hr.foi.air.solex.models.applicants;
 
-
+/** POJO klasa za aplikante */
 public class Applicant {
     private String applicationDate;
     private int applicantId;

@@ -26,21 +26,25 @@ public class ProjectManagementPresenterImpl implements ProjectManagementPresente
         mInteractor.setScalarListener(this);
     }
 
+    /**Javi interactoru da dohvati projekt*/
     @Override
     public void getProject(int id) {
         mInteractor.getSelectedProjectData(id);
     }
 
+    /**Javi viewu da je projekt stigao*/
     @Override
     public void onDataCome(Project project) {
         mProjectManagementView.DataArrived(project);
     }
 
+    /**Javi interactoru da dohvati potrebne suradnje*/
     @Override
     public void getNeededCollaboration(int id) {
         mCollaborationsInteractor.getData(id);
     }
 
+    /**Javi viewu da da su suradnje stigle*/
     @Override
     public void onDataListCome(List<ApiNeededCollaborations> neededCollaborationses) {
         mProjectManagementView.NeededCollaborationsArrived(neededCollaborationses);

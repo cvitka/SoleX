@@ -3,6 +3,8 @@ package hr.foi.air.solex.models.collaboration;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+/**POJO klasa za kolaboracije odredene kompanije*/
+
 public class ApiCompanyCollaborations {
     @SerializedName("developeriId")
     @Expose

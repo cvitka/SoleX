@@ -15,6 +15,8 @@ import retrofit2.http.GET;
 import retrofit2.http.Query;
 
 public class CollabApplicatInteractorImpl extends WebServiceCommunicator implements CollabApplicatInteractor{
+
+    /** Definiranje web service end point*/
     private interface WSInterfaceCollabApplicats {
         @GET("dohvatiApliciranja.php")
         Call<List<CollabApplicat>> getApplicatList(@Query("id") int developerId);
@@ -30,6 +32,7 @@ public class CollabApplicatInteractorImpl extends WebServiceCommunicator impleme
         initRetrofit();
     }
 
+    /** Dohvat kolaboracija za odredenog developera sa web servisa  */
     @Override
     public void getCollaborations(int developerId) {
         WSInterfaceCollabApplicats interfaceCollaborations = retrofit.create(WSInterfaceCollabApplicats.class);
@@ -39,6 +42,7 @@ public class CollabApplicatInteractorImpl extends WebServiceCommunicator impleme
             public void onResponse(Call<List<CollabApplicat>> call, Response<List<CollabApplicat>> response) {
                 if (response.isSuccessful()) {
                     if (mCollabListListener != null) {
+                        /**Prosljedivanje podataka*/
                         mCollabListListener.collabListArrived(response.body());
                     }
                 }
@@ -51,6 +55,7 @@ public class CollabApplicatInteractorImpl extends WebServiceCommunicator impleme
         });
     }
 
+    /** Dohvat apliciranja za odredenog developera sa web servisa  */
     @Override
     public void getApplications(int developerId) {
         WSInterfaceCollabApplicats interfaceCollaborations = retrofit.create(WSInterfaceCollabApplicats.class);
@@ -60,6 +65,7 @@ public class CollabApplicatInteractorImpl extends WebServiceCommunicator impleme
             public void onResponse(Call<List<CollabApplicat>> call, Response<List<CollabApplicat>> response) {
                 if (response.isSuccessful()) {
                     if (mApplicatListListener != null) {
+                        /**Prosljedivanje podataka*/
                         mApplicatListListener.applicatListArrived(response.body());
                     }
                 }
@@ -72,6 +78,7 @@ public class CollabApplicatInteractorImpl extends WebServiceCommunicator impleme
         });
     }
 
+    /** Postavljanje listenera */
     @Override
     public void setCollabListener(CollabListListener collabListListener) {
         mCollabListListener = collabListListener;

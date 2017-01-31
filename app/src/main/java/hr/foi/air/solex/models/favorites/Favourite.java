@@ -1,5 +1,6 @@
 package hr.foi.air.solex.models.favorites;
 
+/** Kalsa favorita*/
 public class Favourite {
     int companyID;
     int developerID;

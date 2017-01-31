@@ -16,6 +16,8 @@ import retrofit2.http.Query;
  */
 
 public class CompanySignupInteractorImpl extends WebServiceCommunicator implements CompanySignupInteractor {
+
+    /**Definiranje web service end point-a */
     private interface WebServiceInterface {
        @GET("registracijaPoduzeca.php")
        Call<SignUpResponse> registrirajPoduzece(@Query("naziv") String name, @Query("adresa") String address, @Query("email") String email, @Query("lozinka") String password, @Query("token") String  token);
@@ -27,6 +29,7 @@ public class CompanySignupInteractorImpl extends WebServiceCommunicator implemen
         initRetrofit();
     }
 
+    /**Registriraj poduzece */
     @Override
     public void registerCompany(Company company, String password) {
         WebServiceInterface serviceIntf = retrofit.create(WebServiceInterface.class);
@@ -50,6 +53,7 @@ public class CompanySignupInteractorImpl extends WebServiceCommunicator implemen
                     }
                 }
 
+                /**Javi da se dogodila greska */
                 @Override
                 public void onFailure(Call<SignUpResponse> call, Throwable t) {
                     if (mResponseListener != null)

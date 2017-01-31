@@ -23,6 +23,7 @@ public class ApiNeededCollaborationsInteractorImpl extends WebServiceCommunicato
     private PushNotificationListenerDeveloper mPushNotificationListener;
     PushNotificationListenerCompany mPushNotificationListenerCompany;
 
+    /** Definiranje web service end point*/
     private interface WSInterfaceCollaborations {
         @GET("dohvatiPotrebneSuradnje.php")
         Call<List<ApiNeededCollaborations>> getNeededCollaborations(@Query("projektId") int projektId);
@@ -51,6 +52,7 @@ public class ApiNeededCollaborationsInteractorImpl extends WebServiceCommunicato
         initRetrofit();
     }
 
+    /** Dohvat potrebih suradnji za odredeni projekt sa web servisa  */
     @Override
     public void getData(int id) {
         WSInterfaceCollaborations interfaceCollaborations = retrofit.create(WSInterfaceCollaborations.class);
@@ -73,6 +75,7 @@ public class ApiNeededCollaborationsInteractorImpl extends WebServiceCommunicato
 
     }
 
+    /** Dohvat suradnji sa web servisa  */
     @Override
     public void getNeededCollaboration(int collaborationId) {
 
@@ -96,6 +99,7 @@ public class ApiNeededCollaborationsInteractorImpl extends WebServiceCommunicato
 
     }
 
+    /** Dohvat suradnji sa web servisa  */
     @Override
     public void getNeededCollaboration(int collaborationId, int developerId) {
         WSInterfaceCollaborations interfaceCollaborations = retrofit.create(WSInterfaceCollaborations.class);
@@ -117,6 +121,7 @@ public class ApiNeededCollaborationsInteractorImpl extends WebServiceCommunicato
         });
     }
 
+    /** Prihvacanje apliciranja developera  */
     @Override
     public void applicationAccepted(int collaborationId, int developerId) {
         WSInterfaceCollaborations interfaceCollaborations = retrofit.create(WSInterfaceCollaborations.class);
@@ -139,6 +144,7 @@ public class ApiNeededCollaborationsInteractorImpl extends WebServiceCommunicato
         });
     }
 
+    /** Developer se aplicirao za suradnju  */
     @Override
     public void developerApplied(int collaborationId, int developerId) {
         WSInterfaceCollaborations interfaceCollaborations = retrofit.create(WSInterfaceCollaborations.class);
@@ -160,6 +166,7 @@ public class ApiNeededCollaborationsInteractorImpl extends WebServiceCommunicato
         });
     }
 
+    /** Developerovo apliciranje je odbijeno  */
     @Override
     public void developerRemovedApply(int collaborationId, int developerId) {
         WSInterfaceCollaborations interfaceCollaborations = retrofit.create(WSInterfaceCollaborations.class);
@@ -181,6 +188,7 @@ public class ApiNeededCollaborationsInteractorImpl extends WebServiceCommunicato
         });
     }
 
+    /** Posalji push obavijest poduzecu da se develoepr aplicirao za njihov posao  */
     @Override
     public void pushNotification(int companyId) {
         WSInterfaceCollaborations interfaceCollaborations = retrofit.create(WSInterfaceCollaborations.class);
@@ -209,6 +217,7 @@ public class ApiNeededCollaborationsInteractorImpl extends WebServiceCommunicato
         mPushNotificationListener = listener;
     }
 
+    /** Posalji developeru push obaviejst o rezultatu apliciranja  */
     @Override
     public void pushNotificationDeveloper(int developerId) {
         WSInterfaceCollaborations interfaceCollaborations = retrofit.create(WSInterfaceCollaborations.class);
@@ -233,6 +242,7 @@ public class ApiNeededCollaborationsInteractorImpl extends WebServiceCommunicato
         });
     }
 
+    /** Postavljanje listenera */
     @Override
     public void setPushNotificationListenerCompany(PushNotificationListenerCompany listenerCompany) {
         mPushNotificationListenerCompany = listenerCompany;

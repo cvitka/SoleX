@@ -8,6 +8,7 @@ import hr.foi.air.solex.models.projects.ProjectInteractor;
 import hr.foi.air.solex.activities.companies.AddNewProjectView;
 
 public class AddNewProjectPresenterImpl implements AddNewProjectPresenter, CreateProjectListener {
+
     private AddNewProjectView mAddNewProjectView;
     private ProjectInteractor mProjectInteractor;
 
@@ -17,11 +18,13 @@ public class AddNewProjectPresenterImpl implements AddNewProjectPresenter, Creat
         mProjectInteractor.setCreateListener(this);
     }
 
+    /**javi interactoru da kreira projekt */
     @Override
     public void createNewProject(Project project) {
         mProjectInteractor.createNewProject(project);
     }
 
+    /**javi viewu da je projekt kreiran */
     @Override
     public void onProjectCreate(int newProjectId) {
         mAddNewProjectView.onCreation(newProjectId);

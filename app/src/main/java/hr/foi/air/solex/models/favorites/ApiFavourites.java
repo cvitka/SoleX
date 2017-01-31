@@ -3,6 +3,7 @@ package hr.foi.air.solex.models.favorites;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+/** POJO klasa za listu favorita */
 public class ApiFavourites {
 
     @SerializedName("developeriId")

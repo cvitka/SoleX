@@ -33,22 +33,26 @@ public class ProjectSearchPresenterImpl implements ProjectSearchPreseneter, Skil
 
     }
 
+    /**Javi interactoru da dohvati sve kompetencije*/
     @Override
     public void getAllSkillList() {
         mSkillInteractor.getAllSkillList();
     }
 
+    /**Javi interactoru da dohvati sve kompetencije za developera*/
     @Override
     public void getSkillList(int developerId) {
         mSkillInteractor.getSkillList(developerId, UserType.DEVELOPER);
     }
 
 
+    /**Javi viewu da su sve kompetencije stigle*/
     @Override
     public void onAllSkillListCome(List<String> skills) {
         mProjectSearchView.allSkillsListArrived(skills);
     }
 
+    /**Javi viewu da su kompetencije za developera stigle*/
     @Override
     public void onSkillListCome(List<String> skills) {
         mProjectSearchView.developerSkillsListArrived(skills);

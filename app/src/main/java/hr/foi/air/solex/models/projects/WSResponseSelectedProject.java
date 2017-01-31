@@ -5,6 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.Date;
 
+/**POJO kalsa odabrani projekt */
 public class WSResponseSelectedProject {
 
     @SerializedName("success")

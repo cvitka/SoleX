@@ -1,9 +1,7 @@
 package hr.foi.air.solex.models.skills;
 
-/**
- * Created by cvitka on 11.11.16..
- */
 
+/**Klasa developer */
 public class Developer {
     private int id;
     private String ime;

@@ -21,11 +21,13 @@ public class ProjectSearchResultPresenterImpl implements ProjectSearchResultPres
         mPearchedProjectInteractor.setSearchedProjectListListener(this);
     }
 
+    /**Javi viewu da su trazeni projekti stigli*/
     @Override
     public void onProjectListCome(List<SearchedProject> projects) {
         mProjectSearchResultView.onProjectListCome(projects);
     }
 
+    /**Javi interactoru da dohvati trazene projekte */
     @Override
     public void getSearchedProjects(int percentage, List<String> skills) {
         mPearchedProjectInteractor.searchProjects(percentage,skills);

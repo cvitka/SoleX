@@ -35,51 +35,61 @@ public class CompanyNeededCollaborationPresenterImpl implements CompanyNeededCol
     }
 
 
+    /**Javi interactoru da dohvati aplikante */
     @Override
     public void getApplicants(int collaborationId) {
         mApplicantInteractor.getApplicantList(collaborationId);
     }
 
+    /**Javi interactoru da dohvati suradnje*/
     @Override
     public void getCollaborationSkills(int collaborationId) {
         mSkillsInteractor.getCollaborationSkillList(collaborationId);
     }
 
+    /**Javi interactoru da dohvati podatke o suradnji*/
     @Override
     public void getCollaborationData(int collaborationId) {
         mApiCompanyCollaborationsInteractor.getNeededCollaboration(collaborationId);
     }
 
+    /**Javi interactoru da da napravi push obavijest*/
     @Override
     public void pushNotification(int developerId) {
         mApiCompanyCollaborationsInteractor.pushNotificationDeveloper(developerId);
     }
 
+    /**Javi viewu da su aplikanti stigli*/
     @Override
     public void onApplicantListCome(List<Applicant> applicants) {
         mCompanyNeededCollabView.onApplicantsArrived(applicants);
     }
 
+    /**Javi viewu da je lista kompetencija stigla*/
     @Override
     public void onSkillListCome(List<String> skills) {
         mCompanyNeededCollabView.onSkillsListArrived(skills);
     }
 
+    /**Javi interactoru da prihvati aplikanta */
     @Override
     public void applicantChosen(int collaborationId, int applicantId) {
         mApiCompanyCollaborationsInteractor.applicationAccepted(collaborationId, applicantId);
     }
 
+    /**Javi viewu da su podatci u suradnji stigli*/
     @Override
     public void neededCollaborationDataArrived(NeededCollaborationData collaborationData) {
         mCompanyNeededCollabView.onCollaborationDataArrived(collaborationData);
     }
 
+    /**Javi viewu da je apliciranje uspjesno */
     @Override
     public void onSuccessfulAssign() {
         mCompanyNeededCollabView.onSuccessfullAssign();
     }
 
+    /**Javi viewu da je napravljena push obavijest*/
     @Override
     public void notificationPushedDeveloper() {
         mCompanyNeededCollabView.onPushSuccessful();

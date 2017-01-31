@@ -23,6 +23,7 @@ public class SearchedProjectAndroidInteractorImpl extends WebServiceCommunicator
         initRetrofit();
     }
 
+    /**Definiranje web service end point-a */
     private interface WSInterfaceProject {
         @GET("Module2ApiProjects.php")
         Call<List<SearchedProject>> getProjects(@Query("skills[]") List<String> skills);
@@ -31,6 +32,7 @@ public class SearchedProjectAndroidInteractorImpl extends WebServiceCommunicator
         Call<List<SearchedProject>> getLucky(@Query("skills[]") List<String> skills);
     }
 
+    /**Pretrazi projekte po kompetencijama i postotku podudarnosti-android filtriranje */
     @Override
     public void searchProjects(final int percentage, final List<String> skills) {
         WSInterfaceProject interfaceProject = retrofit.create(WSInterfaceProject.class);
@@ -62,6 +64,7 @@ public class SearchedProjectAndroidInteractorImpl extends WebServiceCommunicator
         });
     }
 
+    /**Pretrazi projekte, ali pomocu sretnog trazenja- andoid filtriranje podataka */
     @Override
     public void luckySearchProjects(List<String> skills) {
         WSInterfaceProject interfaceProject = retrofit.create(WSInterfaceProject.class);
@@ -104,6 +107,7 @@ public class SearchedProjectAndroidInteractorImpl extends WebServiceCommunicator
         });
     }
 
+    /**Psotavi listener */
     @Override
     public void setSearchedProjectListListener(SearchedProjectListListener listListener) {
         mListListener = listListener;

@@ -2,6 +2,7 @@ package hr.foi.air.solex.models.collaboration;
 
 import java.util.List;
 
+/**POJO klasa potrebne suradnje */
 public class NeededCollaboration {
     private int suradnjaId;
     private int projectId;

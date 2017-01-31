@@ -10,6 +10,7 @@ import retrofit2.http.Query;
 
 public class SelectedProjectInteractorImpl extends WebServiceCommunicator implements SelectedProjectInteractor {
 
+    /**Definiranje web service end point-a */
     private interface WSInterfaceSelectedProject{
         @GET("dohvatiOdabraniProjekt.php")
         Call<WSResponseSelectedProject> dohvatiProjekt(@Query("id") int id);
@@ -22,6 +23,7 @@ public class SelectedProjectInteractorImpl extends WebServiceCommunicator implem
         initRetrofit();
     }
 
+    /**Dohvati podatke odabranog projekta */
     @Override
     public void getSelectedProjectData(int id) {
 
@@ -54,7 +56,7 @@ public class SelectedProjectInteractorImpl extends WebServiceCommunicator implem
         }
 
     }
-
+    /**Postavi listener */
     @Override
     public void setScalarListener(SelectedProjectListener listener) {
         this.mScalarListener = listener;

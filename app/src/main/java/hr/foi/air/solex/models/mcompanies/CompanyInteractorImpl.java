@@ -9,6 +9,8 @@ import retrofit2.http.GET;
 import retrofit2.http.Query;
 
 public class CompanyInteractorImpl extends WebServiceCommunicator implements CompanyInteractor {
+
+    /** Definiranje web service end point*/
     private interface WSInterfaceCompany {
         @GET("dohvatiPoduzece.php")
         Call<WSResponseCompany> dohvatiKompaniju(@Query("id") int id);
@@ -33,6 +35,7 @@ public class CompanyInteractorImpl extends WebServiceCommunicator implements Com
         initRetrofit();
     }
 
+    /**Postavljanje listenera */
     public void setScalarListener(CompanyScalarListener listener){
         this.scalarListener = listener;
     }
@@ -41,6 +44,7 @@ public class CompanyInteractorImpl extends WebServiceCommunicator implements Com
         this.updateListener = listener;
     }
 
+    /** Dohvati podatke na temelju id poduzeca*/
     public void getCompanyData(int id)
     {
         WSInterfaceCompany interfaceCompany = retrofit.create(WSInterfaceCompany.class);
@@ -62,6 +66,7 @@ public class CompanyInteractorImpl extends WebServiceCommunicator implements Com
                                 company.setWebStranica(response.body().getWebStranica());
                                 company.setOpisPoduzeca(response.body().getOpisPoduzeca());//mozda se makne
                                 company.setBrojZaposlenika(response.body().getBrojZaposlenika());
+                                /**Proslijedi podatke */
                                 scalarListener.onDataCome(company);
                             }
                         }
@@ -75,6 +80,7 @@ public class CompanyInteractorImpl extends WebServiceCommunicator implements Com
         }
     }
 
+    /**Azuriraj podatke poduzeca */
     @Override
     public void updateCompanyData(Company company) {
         WSInterfaceCompany servInterface = retrofit.create(WSInterfaceCompany.class);

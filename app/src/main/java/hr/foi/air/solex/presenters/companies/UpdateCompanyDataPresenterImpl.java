@@ -6,9 +6,6 @@ import hr.foi.air.solex.models.mcompanies.CompanyUpdateListener;
 
 import hr.foi.air.solex.activities.companies.UpdateCompanyDataView;
 
-/**
- * Created by Asus on 4.12.2016..
- */
 
 public class UpdateCompanyDataPresenterImpl implements UpdateCompanyDataPresenter, CompanyUpdateListener {
     CompanyInteractor mCompanyInteractor;

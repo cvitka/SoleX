@@ -3,6 +3,7 @@ package hr.foi.air.solex.models.collaboration;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+/**POJO klasa za ws response za push obavijest */
 public class WSResponsePushNotification {
     @SerializedName("multicast_id")
     @Expose

@@ -21,6 +21,7 @@ public class ProjectInteractorImpl extends WebServiceCommunicator implements Pro
 
     ProjectListListener mListListener;
 
+    /**Definiranje web service end point-a*/
     private interface WSInterfaceProject {
 
         @GET("dodajProjekt.php")
@@ -34,6 +35,7 @@ public class ProjectInteractorImpl extends WebServiceCommunicator implements Pro
         initRetrofit();
     }
 
+    /**Dodaj novi projekt*/
     @Override
     public void createNewProject(Project project) {
         WSInterfaceProject interfaceProject = retrofit.create(WSInterfaceProject.class);
@@ -60,6 +62,7 @@ public class ProjectInteractorImpl extends WebServiceCommunicator implements Pro
         }
     }
 
+    /**Postavi listener*/
     @Override
     public void setCreateListener(CreateProjectListener listener) {
         mCreateProjectListener = listener;
@@ -70,6 +73,7 @@ public class ProjectInteractorImpl extends WebServiceCommunicator implements Pro
         mListListener = listListener;
     }
 
+    /**Dohvati listu projekata */
     @Override
     public void getProjectList() {
         WSInterfaceProject interfaceProject = retrofit.create(WSInterfaceProject.class);

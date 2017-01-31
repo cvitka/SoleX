@@ -15,6 +15,7 @@ public class FavoritesInteractorImpl extends WebServiceCommunicator implements F
     FavoritesUpdateListener mFavoritesUpdateListener;
     FavoritesDeleteListener mFavoritesDeleteListener;
 
+    /** Definiranje web service end point*/
     private interface WSInterfaceFavourite {
 
         @GET("dodajFavorita.php")
@@ -31,6 +32,7 @@ public class FavoritesInteractorImpl extends WebServiceCommunicator implements F
         initRetrofit();
     }
 
+    /** Dodavanje favorita */
     @Override
     public void addToFavorites(int id) {
         WSInterfaceFavourite interfaceFavourite = retrofit.create(WSInterfaceFavourite.class);
@@ -58,6 +60,7 @@ public class FavoritesInteractorImpl extends WebServiceCommunicator implements F
         });
     }
 
+    /** Azuriranje favorita  */
     @Override
     public void updateFavorites(int id) {
         WSInterfaceFavourite interfaceFavourite = retrofit.create(WSInterfaceFavourite.class);
@@ -84,6 +87,7 @@ public class FavoritesInteractorImpl extends WebServiceCommunicator implements F
         });
     }
 
+    /** Postavljanje listenera */
     @Override
     public void setFavoriteAddListener(FavoritesAddListener addListener) {
         mFavoritesAddListener = addListener;
@@ -94,6 +98,7 @@ public class FavoritesInteractorImpl extends WebServiceCommunicator implements F
         mFavoritesUpdateListener = updateListener;
     }
 
+    /** Ukloni iz favorita*/
     @Override
     public void deleteFavorites(int id) {
         WSInterfaceFavourite interfaceFavourite = retrofit.create(WSInterfaceFavourite.class);

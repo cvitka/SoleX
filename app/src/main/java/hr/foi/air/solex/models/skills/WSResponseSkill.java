@@ -3,6 +3,8 @@ package hr.foi.air.solex.models.skills;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+
+/**POJO klasa ws odgovora */
 public class WSResponseSkill {
 
     @SerializedName("success")

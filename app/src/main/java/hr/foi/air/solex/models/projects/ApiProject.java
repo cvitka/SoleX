@@ -3,6 +3,7 @@ package hr.foi.air.solex.models.projects;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+/**POJO za listu projekata */
 public class ApiProject {
     @SerializedName("projektiId")
     @Expose

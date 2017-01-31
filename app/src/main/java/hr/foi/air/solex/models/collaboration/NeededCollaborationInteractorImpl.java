@@ -14,6 +14,7 @@ public class NeededCollaborationInteractorImpl extends WebServiceCommunicator im
 
     private interface WSInfterfaceCompany {
 
+        /** Definiranje web service end point*/
         @GET("dodajPotrebnuSuradnju.php")
         Call<WSResponseNeededCollaboration> dodajPotrebnuSuradnju(@Query("projektId") int id, @Query("naziv") String naziv, @Query("opis") String opis, @Query("nacinRada") int nacinRada, @Query("naknada") float naknada,@Query("strucnosti[]") List<String> strucnosti);
     }
@@ -22,6 +23,7 @@ public class NeededCollaborationInteractorImpl extends WebServiceCommunicator im
 
     public NeededCollaborationInteractorImpl() {initRetrofit();}
 
+    /** Dodaj potrebu suradnju */
     @Override
     public void addNeededCollaboration(NeededCollaboration neededCollaboration) {
         WSInfterfaceCompany servInterface = retrofit.create(WSInfterfaceCompany.class);
@@ -56,6 +58,7 @@ public class NeededCollaborationInteractorImpl extends WebServiceCommunicator im
 
 
     }
+    /** Postavljanje listenera */
 
     @Override
     public void setAddListener(AddNeededCollaborationListener addNeededCollaborationListener) {

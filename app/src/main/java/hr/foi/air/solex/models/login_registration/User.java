@@ -2,9 +2,7 @@ package hr.foi.air.solex.models.login_registration;
 
 import hr.foi.air.solex.utils.UserType;
 
-/**
- * Created by cvitka on 11.11.16..
- */
+/**Singleton klasa */
 
 public class User {
     int id;

@@ -4,10 +4,8 @@ import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-/**
- * Created by Asus on 6.12.2016..
- */
 
+/**Definiranje Retrofita  */
 public abstract class WebServiceCommunicator {
     protected Retrofit retrofit;
     private final String baseUrl = "http://barka.foi.hr/WebDiP/2015_projekti/WebDiP2015x008/";

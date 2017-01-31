@@ -3,10 +3,8 @@ package hr.foi.air.solex.models.signup;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-/**
- * Created by cvitka on 11.11.16..
- */
 
+/**POJO klasa ws odgovora */
 public class SignUpResponse {
     @SerializedName("success")
     @Expose

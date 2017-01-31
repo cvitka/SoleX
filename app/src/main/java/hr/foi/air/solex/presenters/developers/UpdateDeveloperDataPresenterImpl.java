@@ -19,11 +19,13 @@ public class UpdateDeveloperDataPresenterImpl implements UpdateDeveloperDataPres
         mDeveloperInteractor.setUpdateListener(this);
     }
 
+    /**Javi interactoru da azurira podatke*/
     @Override
     public void updateDeveloperData(Developer developer) {
         mDeveloperInteractor.updateDeveloperData(developer.getId(), developer.getIme(),developer.getPrezime(), developer.getAdresa(), developer.getEmail(),developer.getKontaktBroj(),developer.getGodineIskustva(),developer.getPicture());
     }
 
+    /**Javi viewu da su podatci developera azurirani*/
     @Override
     public void onDeveloperUpdate() {
         mDeveloperProfileView.onDeveloperUpdate();

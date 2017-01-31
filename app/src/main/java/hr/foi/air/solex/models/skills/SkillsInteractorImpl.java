@@ -14,6 +14,8 @@ import retrofit2.http.GET;
 import retrofit2.http.Query;
 
 public class SkillsInteractorImpl extends WebServiceCommunicator implements SkillsInteractor {
+
+    /**Definiranje web service end point-a */
     private interface WSInterface {
         @GET("strucnosti.php")
         Call<List<String>> dohvatiStrucnosti(@Query("akcija") String action, @Query("id") int id);
@@ -34,6 +36,8 @@ public class SkillsInteractorImpl extends WebServiceCommunicator implements Skil
         initRetrofit();
     }
 
+    /**Postavljanje listenera */
+
     public void setSkillListListener(SkillListListener listener){
         this.skillListListener = listener;
     }
@@ -50,6 +54,7 @@ public class SkillsInteractorImpl extends WebServiceCommunicator implements Skil
         this.deleteListener = listener;
     }
 
+    /**Dohvati listu kompetencija za odredenu suradnju */
     @Override
     public void getCollaborationSkillList(int collaborationId) {
         WSInterface wsInterface = retrofit.create(WSInterface.class);
@@ -77,6 +82,7 @@ public class SkillsInteractorImpl extends WebServiceCommunicator implements Skil
         }
     }
 
+    /**Dohvati sve kompetencije */
     @Override
     public void getAllSkillList(){
         WSInterface wsInterface = retrofit.create(WSInterface.class);
@@ -104,6 +110,7 @@ public class SkillsInteractorImpl extends WebServiceCommunicator implements Skil
         }
     }
 
+    /**Dohvati listu kompetencija za korisnika */
     @Override
     public void getSkillList(int id, UserType user) {
         WSInterface wsInterface = retrofit.create(WSInterface.class);
@@ -139,6 +146,8 @@ public class SkillsInteractorImpl extends WebServiceCommunicator implements Skil
         }
     }
 
+
+    /**Ukloni kompetenciju za korisnika */
     @Override
     public void deleteSkill(int id, String skill, UserType user) {
         WSInterface servInterface = retrofit.create(WSInterface.class);
@@ -169,6 +178,7 @@ public class SkillsInteractorImpl extends WebServiceCommunicator implements Skil
         }
     }
 
+    /**Dodaj kompetenciju korisniku */
     @Override
     public void addSkill(int id, String skill, UserType user) {
         WSInterface servInterface = retrofit.create(WSInterface.class);

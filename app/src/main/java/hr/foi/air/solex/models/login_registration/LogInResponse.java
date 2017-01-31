@@ -3,9 +3,7 @@ package hr.foi.air.solex.models.login_registration;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-/**
- * Created by cvitka on 11.11.16..
- */
+/**POJO klasa za login odgovor */
 
 public class LogInResponse {
     @SerializedName("success")

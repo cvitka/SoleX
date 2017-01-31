@@ -16,6 +16,8 @@ import retrofit2.http.Query;
  */
 
 public class LoginInteractorImpl extends WebServiceCommunicator implements LoginInteractor {
+
+    /** Definiranje web service end point*/
     private interface WebServiceInterface {
         @GET("prijava.php")
         Call<LogInResponse> checkPrijava(@Query("email") String email, @Query("lozinka") String password);
@@ -24,11 +26,13 @@ public class LoginInteractorImpl extends WebServiceCommunicator implements Login
     private LoginResponseListener presenter;
     private String mEmail;
 
+
     public LoginInteractorImpl(LoginResponseListener listener) {
         this.presenter = listener;
         initRetrofit();
     }
 
+    /**Provjeri email i lozinku te izvrsi priajvu ili javi gresku */
     @Override
     public void checkLogin(String email, String password) {
         mEmail = email;

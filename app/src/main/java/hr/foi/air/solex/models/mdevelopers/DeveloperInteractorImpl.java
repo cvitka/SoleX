@@ -13,6 +13,7 @@ import retrofit2.http.Query;
 public class DeveloperInteractorImpl extends WebServiceCommunicator implements DeveloperInteractor{
     private interface WSInterfaceDeveloper {
 
+        /** Definiranje web service end point*/
         @GET("dohvatiDeveloepre.php")
         Call<WSResponseDeveloper> dohvatiDevelopere(@Query("id") int id);
 
@@ -36,7 +37,7 @@ public class DeveloperInteractorImpl extends WebServiceCommunicator implements D
 
     }
 
-
+    /**Postavljanej listenera */
     public void setScalarListener(DeveloperScalarListener listener){
         this.scalarListener = listener;
     }
@@ -45,6 +46,7 @@ public class DeveloperInteractorImpl extends WebServiceCommunicator implements D
         this.updateListener = listener;
     }
 
+    /**Dohvati podatke developera i prosljedi ih  */
     @Override
     public void getDeveloperData(int id){
         Log.v("", scalarListener.toString());
@@ -85,6 +87,7 @@ public class DeveloperInteractorImpl extends WebServiceCommunicator implements D
         }
     }
 
+    /**Azuriraj podatke developera i javi da je obavljeno */
     @Override
     public void updateDeveloperData(int id, String name,String surname, String address, String email,String number,String years,String image) {
         WSInterfaceDeveloper servInterface = retrofit.create(WSInterfaceDeveloper.class);

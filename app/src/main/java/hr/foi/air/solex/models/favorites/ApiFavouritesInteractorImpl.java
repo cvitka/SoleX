@@ -18,6 +18,7 @@ public class ApiFavouritesInteractorImpl extends WebServiceCommunicator implemen
         initRetrofit();
     }
 
+    /** Definiranje web service end point*/
     private interface WSInterfaceFavorites {
 
         @GET("dohvatiFavorite.php")
@@ -27,6 +28,7 @@ public class ApiFavouritesInteractorImpl extends WebServiceCommunicator implemen
     ApiFavouritesListListener mListener;
 
 
+    /** Dohvati listu favorita*/
     @Override
     public void getFavouritesList(int id) {
         WSInterfaceFavorites interfaceCollaborations = retrofit.create(WSInterfaceFavorites.class);
@@ -50,6 +52,7 @@ public class ApiFavouritesInteractorImpl extends WebServiceCommunicator implemen
 
 
 
+    /**Postavi listener */
     @Override
     public void setFavouritesListListener(ApiFavouritesListListener apiFavouritesListListener) {
         this.mListener = apiFavouritesListListener;

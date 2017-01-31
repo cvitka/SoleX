@@ -19,6 +19,8 @@ import retrofit2.http.GET;
 import retrofit2.http.Query;
 
 public class RatingsInteractorImpl extends WebServiceCommunicator implements RatingsInteractor {
+
+    /**Definiranej web service end point-a */
     private interface WSInterface {
         @GET("ocjene.php")
         Call<WSResponseRatings> rateDeveloper(@Query("ocjenaDevelopera") int rating, @Query("companyId") int companyId, @Query("developerId") int developerId, @Query("collaborationId") int collaborationId);
@@ -33,6 +35,7 @@ public class RatingsInteractorImpl extends WebServiceCommunicator implements Rat
         mRatingsListener = listener;
     }
 
+    /**Ocijeni */
     @Override
     public void rate(int rating, int user, int collaborationId) {
         WSInterface wsInterface = retrofit.create(WSInterface.class);

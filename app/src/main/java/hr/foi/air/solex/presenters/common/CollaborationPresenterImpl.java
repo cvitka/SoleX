@@ -15,10 +15,13 @@ import hr.foi.air.solex.activities.common.CollaborationView;
 import hr.foi.air.solex.presenters.common.CollaborationPresenter;
 
 public class CollaborationPresenterImpl implements CollaborationPresenter, SkillListListener, ApiCompanyCollaborationScalarListener {
+
     private CollaborationView mCollaborationView;
     private SkillsInteractor mSkillsInteractor;
     private ApiCompanyCollaborationsInteractor mApyCompanyCollaborationsInteractor;
+
     public CollaborationPresenterImpl(CollaborationView collabView) {
+        /**Postavljanje viewa, interactora  i listenera */
         this.mCollaborationView = collabView;
         mSkillsInteractor = new SkillsInteractorImpl();
         mSkillsInteractor.setSkillListListener(this);
@@ -26,21 +29,25 @@ public class CollaborationPresenterImpl implements CollaborationPresenter, Skill
         mApyCompanyCollaborationsInteractor.setScalarListener(this);
     }
 
+    /**Trazi postojece suradnje od interactora */
     @Override
     public void getExistingCollaboration(int collaborationId) {
         mApyCompanyCollaborationsInteractor.getCollaborationScalar(collaborationId);
     }
 
+    /**Trazi kompetencije od interactora */
     @Override
     public void getSkillsForCollaboration(int collaborationId) {
         mSkillsInteractor.getCollaborationSkillList(collaborationId);
     }
 
+    /**Javi viewu da su kompetencije stigle */
     @Override
     public void onSkillListCome(List<String> skills) {
         mCollaborationView.onSkillsArrived(skills);
     }
 
+    /**Javi viewu da su suradnje stigle */
     @Override
     public void companyCollaborationArrived(ApiCompanyCollaborations collaboration) {
         mCollaborationView.onCollaborationArrived(collaboration);

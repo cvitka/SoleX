@@ -3,6 +3,8 @@ package hr.foi.air.solex.models.profile_screen_project;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+
+/**POJO klasa za projekte na profilu */
 public class WSResponseProfileScreenProject {
 
     @SerializedName("success")

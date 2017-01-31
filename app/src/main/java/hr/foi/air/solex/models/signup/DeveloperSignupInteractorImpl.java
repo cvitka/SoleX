@@ -11,11 +11,10 @@ import retrofit2.Response;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 
-/**
- * Created by Asus on 6.12.2016..
- */
 
 public class DeveloperSignupInteractorImpl extends WebServiceCommunicator implements DeveloperSignupInteractor {
+
+    /**Definiranje web service end point-a */
     private interface WebServiceInterface {
         @GET("registracijaDevelopera.php")
         Call<SignUpResponse> registrirajDevelopera(@Query("ime") String name, @Query("prezime") String surName, @Query("adresa") String address, @Query("email") String email, @Query("lozinka") String password,@Query("token") String token);
@@ -27,6 +26,7 @@ public class DeveloperSignupInteractorImpl extends WebServiceCommunicator implem
         initRetrofit();
     }
 
+    /**Registriraj developera */
     @Override
     public void registerDeveloper(Developer developer, String password) {
         WebServiceInterface serviceIntf = retrofit.create(WebServiceInterface.class);
@@ -48,6 +48,8 @@ public class DeveloperSignupInteractorImpl extends WebServiceCommunicator implem
                         }
                     }
                 }
+
+                /**javi da je doslo do pogreske prilikom registracije */
                 @Override
                 public void onFailure(Call<SignUpResponse> call, Throwable t) {
                     mResponseListener.onServerConnectionFailed();

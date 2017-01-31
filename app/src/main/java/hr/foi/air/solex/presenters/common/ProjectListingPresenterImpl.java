@@ -11,6 +11,7 @@ import hr.foi.air.solex.models.profile_screen_project.ProfileScreenProjectListLi
 import hr.foi.air.solex.utils.UserType;
 
 public class ProjectListingPresenterImpl implements ProjectListingPresenter, ProfileScreenProjectListListener {
+
     private ProjectListingView mProjectsView;
     private ProfileScreenProjectInteractor mProjectInteractor;
 
@@ -19,11 +20,13 @@ public class ProjectListingPresenterImpl implements ProjectListingPresenter, Pro
         this.mProjectInteractor = new ProfileScreenProjectInteractorImpl(this);
     }
 
+    /**javi viewu da su projekti stigli */
     @Override
     public void onProjectListCome(List<ProfileScreenProject> projects) {
         mProjectsView.onProjectsArrived(projects);
     }
 
+    /**Javi interactoru da dohvati projekte za korisnika */
     @Override
     public void getProjects(int id, UserType userType) {
         mProjectInteractor.getAllProjectList(id, userType);

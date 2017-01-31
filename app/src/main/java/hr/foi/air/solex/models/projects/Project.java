@@ -1,5 +1,7 @@
 package hr.foi.air.solex.models.projects;
 
+
+/**Klasa projekt*/
 public class Project {
     private int id;
     private String name;
