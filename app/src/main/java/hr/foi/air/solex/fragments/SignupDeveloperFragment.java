@@ -66,7 +66,7 @@ public class SignupDeveloperFragment extends Fragment implements SignupView{
     public SignupDeveloperFragment() {
     }
 
-    public static SignupDeveloperFragment newInstance(){
+    public static SignupDeveloperFragment newInstance(){ /** instanciranje fragmenta*/
         SignupDeveloperFragment signupDeveloperFragment = new SignupDeveloperFragment();
         return signupDeveloperFragment;
     }
@@ -80,10 +80,10 @@ public class SignupDeveloperFragment extends Fragment implements SignupView{
         || txtInputEmail.getText().toString().isEmpty()
         || txtInputPassword.getText().toString().isEmpty()
         || txtInputReEnterPassword.getText().toString().isEmpty()){
-            Toast.makeText(getActivity(),R.string.fill_data,Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(),R.string.fill_data,Toast.LENGTH_LONG).show(); /** provjera popunjenosti podataka*/
         }
         else if(!txtInputPassword.getText().toString().equals(txtInputReEnterPassword.getText().toString())){
-            Toast.makeText(getActivity(),R.string.password_dont_match,Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(),R.string.password_dont_match,Toast.LENGTH_LONG).show(); /** provjera lozinki */
         }
         else{
             Developer developer= new Developer();
@@ -92,7 +92,7 @@ public class SignupDeveloperFragment extends Fragment implements SignupView{
             developer.setAdresa(txtInputAddress.getText().toString());
             developer.setEmail(txtInputEmail.getText().toString());
             developer.setToken(FirebaseInstanceId.getInstance().getToken());
-
+            /** prosljedivanje podataka presenteru*/
             mDeveloperSignupPresenter.tryRegister(developer, txtInputPassword.getText().toString());
             progressDialog = new ProgressDialog(getActivity(),
                     R.style.AppTheme_Bright_Dialog);

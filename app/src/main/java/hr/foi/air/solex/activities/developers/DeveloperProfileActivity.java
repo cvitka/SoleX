@@ -117,7 +117,7 @@ public class DeveloperProfileActivity extends DrawerActivity implements Develope
         });
     }
 
-    public void setVisibilityForUsers(int developerId){
+    public void setVisibilityForUsers(int developerId){/** sakrij gumbe i autocompeletetextview ako nije vlasnik */
         if(User.isCurrentUser(UserType.DEVELOPER, developerId)){
             btnProjects.setVisibility(View.GONE);
             lastDrawerOption = R.id.company_opt_profile;
@@ -132,7 +132,7 @@ public class DeveloperProfileActivity extends DrawerActivity implements Develope
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+/** */
         mDeveloperProfilePresenter = new DeveloperProfilePresenterImpl(this);
 
         int id = 0;
@@ -268,7 +268,7 @@ public class DeveloperProfileActivity extends DrawerActivity implements Develope
 
     @OnItemLongClick(R.id.activity_developer_profile_lvDeveloperSkills)
     public boolean onItemLongClick(AdapterView<?> parent, int position) {
-        //we allow deletion only if profile is being viewed by its owner
+        /** we allow deletion only if profile is being viewed by its owner*/
         if(User.isCurrentUser(UserType.DEVELOPER, mThisDeveloper.getId())) {
             mDeveloperProfilePresenter.deleteSkill(mThisDeveloper.getId(), mDevSkillList.get(position));
             mDevSkillList.remove(position);
@@ -278,7 +278,7 @@ public class DeveloperProfileActivity extends DrawerActivity implements Develope
     }
 
     @Override
-    public void HighlihtedProjectsArrived(List<ProfileScreenProject> list) {
+    public void HighlihtedProjectsArrived(List<ProfileScreenProject> list) {/** stigli istaknuti projekti */
         mProjectsList = list;
         lvDevHighlightedProjects.setOnItemClickListener(this);
         mProjectsAdapter = new ProjectsListAdapter(this, R.layout.list_item_company_profile_highlighted_projects, mProjectsList, UserType.DEVELOPER);
@@ -287,7 +287,7 @@ public class DeveloperProfileActivity extends DrawerActivity implements Develope
     }
 
     @Override
-    public void allSkillsListArrived(List<String> list) {
+    public void allSkillsListArrived(List<String> list) {/**stigle sve vjestine */
         allSkillsList = list;
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_dropdown_item_1line, allSkillsList);
@@ -295,7 +295,7 @@ public class DeveloperProfileActivity extends DrawerActivity implements Develope
     }
 
     @Override
-    public void developerSkillsListArrived(List<String> list) {
+    public void developerSkillsListArrived(List<String> list) {/** stigle developerove vjestine */
         mDevSkillList = list;
         mDevSkillAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, mDevSkillList);
         lvDeveloperSkills.setAdapter(mDevSkillAdapter);

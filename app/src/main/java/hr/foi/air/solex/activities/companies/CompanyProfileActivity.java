@@ -72,10 +72,6 @@ public class CompanyProfileActivity extends DrawerActivity implements CompanyPro
     @BindView(R.id.nav_view)
     NavigationView navigationView;
 
-    //@BindView(R.id.activity_company_profile_tvCompanyDescription)
-    //TextView txtCompanyDescription;
-
-
     @BindView(R.id.activity_company_profile_tvDirector)
     TextView txtDirector;
 
@@ -120,6 +116,7 @@ public class CompanyProfileActivity extends DrawerActivity implements CompanyPro
             btnProjects.setVisibility(View.GONE);
             lastDrawerOption = R.id.company_opt_profile;
         } else {
+            /**  sakrij ukoliko nije user vlasnik */
             actvNewTech.setVisibility(View.GONE);
             btnAddNewTech.setVisibility(View.GONE);
             btnStartUpdateCompanyData.setVisibility(View.GONE);
@@ -137,10 +134,11 @@ public class CompanyProfileActivity extends DrawerActivity implements CompanyPro
         else {
             companyId = savedInstanceState.getInt("companyId");
         }
-        //if company is logged in
+        /**  if company is logged in */
         setVisibilityForUsers(companyId);
 
 
+        /** prosljedivanje prezenterz  */
         mCompanyProfilePresenter.getCompany(companyId);
         mCompanyProfilePresenter.getHighlightedProjects(companyId);
         //autocomplete list is not needed when user looking at profile is not the owner
@@ -178,13 +176,13 @@ public class CompanyProfileActivity extends DrawerActivity implements CompanyPro
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         ProfileScreenProject clickedProject = mProjectsList.get(position);
-        //ako smo vlasnik profila
+        /**  ako smo vlasnik profila */
         if (User.isCurrentUser(UserType.COMPANY, mThisCompany.getId())) {
             Intent intent = new Intent(this, ProjectManagementActivity.class);//otvaramo project management
             intent.putExtra("isOwner", User.isCurrentUser(UserType.COMPANY, mThisCompany.getId()));
             intent.putExtra("projectId", clickedProject.getId());
             startActivity(intent);
-        } else {//inače otvaramo project display
+        } else {/**  inače otvaramo project display*/
             Intent intent = new Intent(this, ProjectDisplayActivity.class);
             intent.putExtra("projectId", clickedProject.getId());
             startActivity(intent);
@@ -193,7 +191,7 @@ public class CompanyProfileActivity extends DrawerActivity implements CompanyPro
 
     @OnItemLongClick(R.id.activity_company_profile_lvMainTech)
     public boolean onItemLongClick(AdapterView<?> parent, int position) {
-        //we allow deletion only if profile is being viewed by its owner
+        /**  we allow deletion only if profile is being viewed by its owner*/
         if (User.isCurrentUser(UserType.COMPANY, mThisCompany.getId())) {
             mCompanyProfilePresenter.deleteSkill(mThisCompany.getId(), mMainTechList.get(position));
             mMainTechList.remove(position);
@@ -202,11 +200,11 @@ public class CompanyProfileActivity extends DrawerActivity implements CompanyPro
         return true;
     }
 
+    /**  expandable layout, collapasnje i sirenje  */
     private void expandableLayoutClicked(ExpandableLayout layout, ImageButton btn) {
         if (layout.isExpanded()) {
             layout.collapse();
             btn.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.lblue_expand_img, null));
-            //btn.setImageResource(R.drawable.gray_expand_img);
             lastExpanded = null;
             lastExpandedBtn = null;
         } else {

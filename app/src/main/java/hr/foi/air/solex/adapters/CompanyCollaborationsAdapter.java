@@ -20,7 +20,7 @@ import hr.foi.air.solex.R;
 
 public class CompanyCollaborationsAdapter extends RecyclerView.Adapter<CompanyCollaborationsAdapter.ViewHolder> {
 
-    public interface ClickListener {
+    public interface ClickListener {/** interface za normalni odabir, dugi odabir i promjenu ratinga */
         void onItemClick(ApiCompanyCollaborations companyCollaborations);
         void onItemLongClick(ApiCompanyCollaborations companyCollaborations);
         void onRatingChanged(ApiCompanyCollaborations companyCollaborations, int rating);
@@ -39,7 +39,7 @@ public class CompanyCollaborationsAdapter extends RecyclerView.Adapter<CompanyCo
         public RatingBar ratingBar;
         public ImageView addToFavorites;
 
-        public ViewHolder(final View itemView) {
+        public ViewHolder(final View itemView) {/** dohvacanje stavki iz layouta defeniranog u adapteru -- collaboration_list_row */
             super(itemView);
             devInfo = (TextView) itemView.findViewById(R.id.collaboration_list_developerInfo);
             projectName = (TextView) itemView.findViewById(R.id.collaboration_list_ProjectName);
@@ -48,7 +48,7 @@ public class CompanyCollaborationsAdapter extends RecyclerView.Adapter<CompanyCo
             collaborationName = (TextView) itemView.findViewById(R.id.collaboration_list_CollaborationName);
         }
 
-        public void bind(final ApiCompanyCollaborations item, final ClickListener listener) {
+        public void bind(final ApiCompanyCollaborations item, final ClickListener listener) {/** ucitavanje podataka na aktivnost */
             devInfo.setText(item.getDevName() + " " + item.getDevSurname());
             projectName.setText(item.getProjectName());
             collaborationName.setText(item.getCollaborationName());
@@ -64,6 +64,7 @@ public class CompanyCollaborationsAdapter extends RecyclerView.Adapter<CompanyCo
                 addToFavorites.setColorFilter(color);
             }
 
+            /**  on click listener*/
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -71,6 +72,7 @@ public class CompanyCollaborationsAdapter extends RecyclerView.Adapter<CompanyCo
                 }
             });
 
+            /** longclick listener */
             itemView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
@@ -81,7 +83,7 @@ public class CompanyCollaborationsAdapter extends RecyclerView.Adapter<CompanyCo
             });
         }
     }
-
+    /** konstruktor za dohvacanje liste projekata i postavljanje listenera za gore navedeni interface*/
     public CompanyCollaborationsAdapter(List<ApiCompanyCollaborations> projectList, ClickListener listener) {
         mProjectList = projectList;
         mListener = listener;
@@ -89,7 +91,7 @@ public class CompanyCollaborationsAdapter extends RecyclerView.Adapter<CompanyCo
 
 
     @Override
-    public CompanyCollaborationsAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public CompanyCollaborationsAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {/** odabir layouta koji prikazati unutar adaptera,tj recyclerviewa */
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.collaboration_list_row, parent, false);
         mContext = parent.getContext();

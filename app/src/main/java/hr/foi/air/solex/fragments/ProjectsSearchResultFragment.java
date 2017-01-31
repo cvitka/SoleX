@@ -43,7 +43,7 @@ public class ProjectsSearchResultFragment extends Fragment implements ProjectSea
         ProjectSearchResultPresenter projectSearchResultPresenter = new ProjectSearchResultPresenterImpl(this);
 
         final Bundle arguments = this.getArguments();
-        if (arguments != null) {
+        if (arguments != null) {  /** dohvacanje sa prethodnog fragmenta podaci*/
             mSearchProjects = arguments.getParcelable(ProjectsSearchMainFragment.PROJECT_INFO);
             projectSearchResultPresenter.getSearchedProjects(mSearchProjects.getPercentage(), mSearchProjects.getSkills());
             numberOfSearchedSkills = arguments.getInt("numberOfSearchedSkills");
@@ -57,12 +57,11 @@ public class ProjectsSearchResultFragment extends Fragment implements ProjectSea
         LayoutInflater lf = getActivity().getLayoutInflater();
         View view = lf.inflate(R.layout.fragment_projects_search_result, container, false);
         ButterKnife.bind(this, view);
-        getActivity().setTitle("Search results");
         return view;
     }
 
     @Override
-    public void onProjectListCome(List<SearchedProject> projects) {
+    public void onProjectListCome(List<SearchedProject> projects) {  /** popunjavanje recyclerviewa*/
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);

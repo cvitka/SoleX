@@ -97,7 +97,7 @@ public class UpdateDeveloperDataActivity extends DrawerActivity implements Updat
         setDataOnLayout(mThisDeveloper);
     }
 
-    private void setDataOnLayout(Developer dev) {
+    private void setDataOnLayout(Developer dev) {/** ucitavanje trenutnih podataka */
         if (dev != null) {
             txtInputNewEmail.setText(dev.getEmail());
             txtInputNewExperince.setText(dev.getGodineIskustva());
@@ -146,13 +146,12 @@ public class UpdateDeveloperDataActivity extends DrawerActivity implements Updat
         progressDialog = new ProgressDialog(UpdateDeveloperDataActivity.this,
                 R.style.AppTheme_Bright_Dialog);
         progressDialog.setIndeterminate(true);
-        progressDialog.setMessage("Updating data...");
+        progressDialog.setMessage(getString(R.string.updating_data));
         progressDialog.show();
     }
 
     @Override
-    public void onDeveloperUpdate() {
-        //pozvat natrag aktivnost profila
+    public void onDeveloperUpdate() {/** uspijesan update, vracanje na main screen */
         progressDialog.dismiss();
         Toast.makeText(this, R.string.profile_data_update, Toast.LENGTH_LONG).show();
 

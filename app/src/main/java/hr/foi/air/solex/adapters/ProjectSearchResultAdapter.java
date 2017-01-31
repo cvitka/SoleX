@@ -15,7 +15,7 @@ import hr.foi.air.solex.models.searched_project.SearchedProject;
 public class ProjectSearchResultAdapter extends RecyclerView.Adapter<ProjectSearchResultAdapter.ViewHolder> {
 
 
-    public interface ClickListener {
+    public interface ClickListener {  /** interface za onClick metodu */
         void onItemClick(SearchedProject searchedProject);
     }
 
@@ -36,7 +36,7 @@ public class ProjectSearchResultAdapter extends RecyclerView.Adapter<ProjectSear
             percentage = (TextView) itemView.findViewById(R.id.activity_search_projects_project_percentage);
         }
 
-        public void bind(final SearchedProject item, final ProjectSearchResultAdapter.ClickListener listener, int numberOfSearchedSkills) {
+        public void bind(final SearchedProject item, final ProjectSearchResultAdapter.ClickListener listener, int numberOfSearchedSkills) {  /** ucitavanje sadrzaja itema  */
             companyName.setText(item.getComapanyName());
             projectName.setText(item.getProjectName());
             collaborationName.setText(item.getCollaborationName());
@@ -54,7 +54,7 @@ public class ProjectSearchResultAdapter extends RecyclerView.Adapter<ProjectSear
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {  /** inflate layout */
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.searched_projects_row, parent, false);
         mContext = parent.getContext();

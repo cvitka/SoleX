@@ -95,7 +95,7 @@ public class UpdateCompanyDataActivity extends DrawerActivity implements UpdateC
     }
 
     @OnClick(R.id.activity_update_company_btnUpdateData)
-    public void btnClick(View view) {
+    public void btnClick(View view) {/** ucitavanje podataka sa textviwea i prosljedivanje presenteru objekta sa podacima*/
         mThisCompany.setName(txtInputNewName.getText().toString());
         mThisCompany.setAddress(txtInputNewAddress.getText().toString());
         mThisCompany.setEmail(txtInputNewEmail.getText().toString());
@@ -117,20 +117,20 @@ public class UpdateCompanyDataActivity extends DrawerActivity implements UpdateC
         progressDialog = new ProgressDialog(UpdateCompanyDataActivity.this,
                 R.style.AppTheme_Bright_Dialog);
         progressDialog.setIndeterminate(true);
-        progressDialog.setMessage("Updating data...");
+        progressDialog.setMessage(getString(R.string.updating_data));
         progressDialog.show();
     }
 
     @Override
     public void updateFinished() {
         progressDialog.dismiss();
-        Toast.makeText(this, "Profile data has been updated", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, R.string.data_updated, Toast.LENGTH_LONG).show();
         Intent intent = new Intent(this, CompanyProfileActivity.class);
         intent.putExtra("companyId", User.getInstance().getId());
         startActivity(intent);
     }
 
-    public void setDataOnLayout(Company company) {
+    public void setDataOnLayout(Company company) {/** postavljanje trenutnih podataka */
         if(mThisCompany != null){
             mThisCompany = company;
             txtInputNewEmail.setText(mThisCompany.getEmail());
@@ -158,7 +158,7 @@ public class UpdateCompanyDataActivity extends DrawerActivity implements UpdateC
     }
 
     @OnClick(R.id.activity_update_company_iwNewImage)
-    public void chooseImage(View view) {
+    public void chooseImage(View view) {/**  biranje slika, ne smije biti velika limitacije na serveru */
 
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(intent, RESULT_LOAD_IMAGE);
@@ -166,7 +166,7 @@ public class UpdateCompanyDataActivity extends DrawerActivity implements UpdateC
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
+        super.onActivityResult(requestCode, resultCode, data);/** ucitavanje slike */
 
         if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && data != null && data != null) {
 

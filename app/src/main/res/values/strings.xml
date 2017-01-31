@@ -97,7 +97,7 @@
     <string name="tvDeveloper_name">_developer_name:</string>
     <string name="back_to_exit">Press Back again to Exit.</string>
     <string name="fill_data">Fill in all data</string>
-    <string name="favorite_added">The user has been added to favorites</string>
+    <string name="favorite_added">The user has been added to favourites</string>
     <string name="collab_rated">Collaboration has been rated</string>
     <string name="accept_application">Accept application</string>
     <string name="_project">_project</string>
@@ -110,7 +110,7 @@
     <string name="general_information">General Information</string>
     <string name="added_to_highlights">The project has been added to highlights</string>
     <string name="new_project">NEW PROJECT</string>
-    <string name="add_new_favorite">Add new Favorite</string>
+    <string name="add_new_favorite">Add new Favourite</string>
     <string name="add">Add</string>
     <string name="typeA_details">Associate has to work every day and the same amount as the other workers.</string>
     <string name="typeB_details">Associate has to work every day(Work time not really important)</string>
@@ -172,8 +172,8 @@
     <!-- dev profile -->
     <string name="it_skills">IT skills</string>
     <string name="projects">Projects</string>
-    <string name="developer_favourites">The developer has been added to favorites</string>
-    <string name="developer_favourite_delete">The developer has been deleted from favorites</string>
+    <string name="developer_favourites">The developer has been added to favourites</string>
+    <string name="developer_favourite_delete">The developer has been deleted from favourites</string>
     <!-- add new project -->
     <string name="choose_state">Choose state</string>
     <string name="start_project">Start project</string>
@@ -186,5 +186,12 @@
     <string name="save_project">Save project</string>
 
     <string name="removed_on_highlights">Project removed from highlighted!</string>
+    <string name="project_created">The project has been created</string>
+    <string name="updating_data">Updating data...</string>
+    <string name="data_updated">Profile data has been updated</string>
+    <string name="suc_application">Successful application</string>
+    <string name="application_remove">Successful removal of your application</string>
+    <string name="updating_developer">Updating data...</string>
+    <string name="favourite_added">The favourite is already added</string>
 
 </resources>

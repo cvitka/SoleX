@@ -39,23 +39,28 @@ public class CompanyCollaborationsActivity extends DrawerActivity implements Com
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
         mCompanyCollaborationsPresenter = new CompanyCollaborationsPresenterImpl(this, new ApiCompanyCollaborationsInteractorImpl(), new FavoritesInteractorImpl());
+        /**  prosljedivanje presenteru */
         mCompanyCollaborationsPresenter.getCollaborations();
     }
 
     @Override
     public void onDataArrived(List<ApiCompanyCollaborations> collaborationsList) {
+        /** stigli podaci , popunjavanje recyclerviewa */
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
+        /** postavljanje vertikalnih linija izmedu itema  */
         recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
         recyclerView.setAdapter(new CompanyCollaborationsAdapter(collaborationsList, new CompanyCollaborationsAdapter.ClickListener() {
             @Override
             public void onItemClick(ApiCompanyCollaborations companyCollaborations) {
+                /**  otvaranje novog activity na click*/
                 onSelect(companyCollaborations);
             }
 
             @Override
             public void onItemLongClick(ApiCompanyCollaborations companyCollaborations) {
+                /**  na dugi klik dodaje se suranja u favorite, ukoliko je nema u bazi onda se inserta u bazu, inace se updatea */
                 Integer selectionID = Integer.parseInt(companyCollaborations.getDevID());
                 if (companyCollaborations.getFavorit() == null) {
                     mCompanyCollaborationsPresenter.addToFavorites(selectionID);
@@ -67,6 +72,7 @@ public class CompanyCollaborationsActivity extends DrawerActivity implements Com
 
             @Override
             public void onRatingChanged(ApiCompanyCollaborations companyCollaborations, int rating) {
+                /** ocjenjivanje suradnji */
                 mCompanyCollaborationsPresenter.rate(rating, Integer.parseInt(companyCollaborations.getDevID()), companyCollaborations.getCollaborationId());
             }
         }));
@@ -77,28 +83,37 @@ public class CompanyCollaborationsActivity extends DrawerActivity implements Com
         intent.putExtra("collaborationName", collab.getCollaborationName());
         intent.putExtra("collaborationId", collab.getCollaborationId());
         intent.putExtra("isOwner", true);
+        finish();
         startActivity(intent);
     }
 
+    /**
+     * poruke obavijest, implementacije viewa gdje je presenter proslijedio viewu podatke dobive iz interactora
+     */
     @Override
     public void onFavoriteAddition() {
-        Toast.makeText(getApplicationContext(), R.string.favorite_added, Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), R.string.favorite_added, Toast.LENGTH_SHORT).show();
 
     }
 
     @Override
     public void onFavoriteFailure(String message) {
-        Toast.makeText(getApplicationContext(), R.string.server_error, Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), R.string.server_error, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onFavoriteUpdate() {
-        Toast.makeText(getApplicationContext(), R.string.favorite_added, Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), R.string.favorite_added, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onFavoriteUpdateFailure(String message) {
-        Toast.makeText(getApplicationContext(), R.string.server_error , Toast.LENGTH_LONG).show();
+        if (message.equals("1")) {
+            Toast.makeText(getApplicationContext(), R.string.favourite_added, Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(getApplicationContext(), R.string.server_error, Toast.LENGTH_SHORT).show();
+        }
+
     }
 
 

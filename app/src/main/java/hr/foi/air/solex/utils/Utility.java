@@ -14,7 +14,7 @@ import android.widget.ListView;
 import java.util.Locale;
 
 public class Utility {
-    public static void setListViewHeightBasedOnChildren(ListView listView, int maxItems) {
+    public static void setListViewHeightBasedOnChildren(ListView listView, int maxItems) { /** metoda za kreiranje dinamickog listviewa(visina) */
         ListAdapter listAdapter = listView.getAdapter();
         if (listAdapter == null) {
             // pre-condition
@@ -43,9 +43,9 @@ public class Utility {
     }
 
 
-    public void setLanguage(Context context) {
+    public void setLanguage(Context context) { /** postavljanje jezika*/
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
-        String lang = preferences.getString("pref_lang", "en");
+        String lang = preferences.getString("pref_lang", "en"); /** default*/
 
         Configuration config = new Configuration(context.getResources().getConfiguration());
         config.setLocale(new Locale(lang));

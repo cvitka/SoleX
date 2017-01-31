@@ -78,6 +78,7 @@ public class ProjectManagementActivity extends DrawerActivity implements Project
             projectId= savedInstanceState.getInt("projectId");
             isOwner = savedInstanceState.getBoolean("isOwner");
         }
+        /** presenteru proslijed podatake za dohvat projekata i potrebnih suradnji */
         mPresenter.getProject(projectId);
         mPresenter.getNeededCollaboration(projectId);
         lvNeededCollaborations.setOnTouchListener(new View.OnTouchListener() {
@@ -117,14 +118,14 @@ public class ProjectManagementActivity extends DrawerActivity implements Project
     }
 
     @Override
-    public void DataArrived(Project project) {
+    public void DataArrived(Project project) { /** stigli podaci, popunjavanje textviewa */
         mThisProject = project;
         txtProjectName.setText(mThisProject.getName());
         txtProjectDescription.setText(mThisProject.getDescription());
     }
 
     @Override
-    public void NeededCollaborationsArrived(List<ApiNeededCollaborations> neededCollaborationses) {
+    public void NeededCollaborationsArrived(List<ApiNeededCollaborations> neededCollaborationses) {/** stigla lista potrebih suradnji */
         this.neededCollaborations = neededCollaborationses;
         ArrayList<String> items = new ArrayList<String>();
         ArrayAdapter<String> itemsAdapter;

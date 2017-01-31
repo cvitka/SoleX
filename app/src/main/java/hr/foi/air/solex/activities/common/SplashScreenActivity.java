@@ -12,7 +12,7 @@ public class SplashScreenActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        /** splash screen i pokretanje logina nakon prikaza */
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
         finish();

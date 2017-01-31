@@ -188,4 +188,11 @@
     <string name="save_project">Spremi projekt</string>
 
     <string name="removed_on_highlights">Projekt više nije istaknut!</string>
+
+    <string name="project_created">Projekt je kreiran</string>
+    <string name="updating_data">Ažuriranje podataka...</string>
+    <string name="data_updated">Profil je ažuriran</string>
+    <string name="suc_application">Uspješno apliciranje!</string>
+    <string name="application_remove">Uspješno ste uklonili apliciranje</string>
+    <string name="favourite_added">Favorit je već dodan!</string>
 </resources>

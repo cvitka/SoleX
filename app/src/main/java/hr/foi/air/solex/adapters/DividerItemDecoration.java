@@ -11,6 +11,7 @@ import android.view.View;
 
 public class DividerItemDecoration extends RecyclerView.ItemDecoration {
 
+    /**  ukrasna klasa , crtanje crta izmedu  itema u recycler viewu */
     private static final int[] ATTRS = new int[]{
             android.R.attr.listDivider
     };

@@ -27,8 +27,8 @@ public class MyFirebaseMesagingService extends FirebaseMessagingService {
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
 
-        title = remoteMessage.getData().get("title");
-        body = remoteMessage.getData().get("body");
+        title = remoteMessage.getData().get("title"); /** dohvacanje naslova od push notifikacije sa webservisa */
+        body = remoteMessage.getData().get("body");  /**  dohvacanje  tijela poruke */
         showNotification(title,body);
     }
 
@@ -37,17 +37,17 @@ public class MyFirebaseMesagingService extends FirebaseMessagingService {
         Intent i = new Intent(this, LoginActivity.class);
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, i, PendingIntent.FLAG_UPDATE_CURRENT);
-        Uri notificationSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, i, PendingIntent.FLAG_UPDATE_CURRENT); /** koja se aktivnost otvara*/
+        Uri notificationSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION); /** zvuk*/
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
-                .setSmallIcon(R.drawable.applogo)
-                .setContentTitle(title)
-                .setContentText(body)
+                .setSmallIcon(R.drawable.applogo) /** ikona */
+                .setContentTitle(title)  /** naslov*/
+                .setContentText(body)  /** tijelo poruke */
                 .setAutoCancel(true)
-                .setSound(notificationSound)
-                .setVibrate(new long[] { 1000, 1000})
-                .setContentIntent(pendingIntent);
+                .setSound(notificationSound)  /** postavljanje notifikacijskog zvuga*/
+                .setVibrate(new long[] { 1000, 1000}) /** postavljanje vibracije*/
+                .setContentIntent(pendingIntent);  /** postavljanje aktivnosti koja se otvara */
 
         NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         manager.notify(0, builder.build());

@@ -5,7 +5,7 @@ import android.content.Context;
 
 import hr.foi.air.solex.R;
 
-public class TypeHelper {
+public class TypeHelper { /** pomocna klasa za stanje projekta */
     public static String getProjectState(Context ctx, int stateId){
         switch(stateId){
             case 1:

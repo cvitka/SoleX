@@ -45,6 +45,7 @@ public class DeveloperApplicationsActivity extends DrawerActivity implements Dev
     public void lvApplicationstemClick(AdapterView<?> parent, View view, int position, long id){
         //Intent intent = new Intent(this, NeededCollaborationActivity.class);
         //startActivity(intent);
+        /** ukoliko je prihvacena aktivnost ucitati mogucnost suradnje inace mogucnost developerovih potrebih suradnji */
         if(mApplicationsList.get(position).getApplicationState().equals("p")){
             Intent intent = new Intent(this, CollaborationActivity.class);
             intent.putExtra("isOwner", false);
@@ -64,6 +65,7 @@ public class DeveloperApplicationsActivity extends DrawerActivity implements Dev
 
     @Override
     public void onApplicationsArrived(List<CollabApplicat> list) {
+        /** popunjavanje listviewa, sa pristiglim podacima */
         mApplicationsList = list;
         mApplicatAdapter = new CollabApplicatAdapter(this, R.layout.list_item_developer_collab_applicat, mApplicationsList, 'a');
         lvApplications.setAdapter(mApplicatAdapter);

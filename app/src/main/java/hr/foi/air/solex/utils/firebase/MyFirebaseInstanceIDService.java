@@ -16,11 +16,11 @@ import okhttp3.RequestBody;
 public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
 
     @Override
-    public void onTokenRefresh() {
+    public void onTokenRefresh() { /** dohvacanje tokena */
 
         String token = FirebaseInstanceId.getInstance().getToken();
 
-        registerToken(token);
+        registerToken(token); /** registriranje tokena*/
     }
 
     private void registerToken(String token) {

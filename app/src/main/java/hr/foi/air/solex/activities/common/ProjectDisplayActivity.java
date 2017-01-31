@@ -64,6 +64,7 @@ public class ProjectDisplayActivity extends DrawerActivity implements ProjectDis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
+        /** prosljedivanje presenteru */
         mPresenter = new ProjectDisplayPresenterImpl(this, new SelectedProjectInteractorImpl());
         //collabPresenter = new GetNeededCollaborationsPresenterImpl(this, new ApiNeededCollaborationsInteractorImpl());
 
@@ -80,12 +81,12 @@ public class ProjectDisplayActivity extends DrawerActivity implements ProjectDis
         }
         mPresenter.getProject(projectId);
         mPresenter.getNeededCollaboration(projectId);
-        //fixes scrolling list inside ScrollView
+
         lvNeededCollaborations.setOnTouchListener(new View.OnTouchListener() {
             // Setting on Touch Listener for handling the touch inside ScrollView
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                // Disallow the touch request for parent scroll on touch of child view
+                /** Disallow the touch request for parent scroll on touch of child view */
                 scrollView.requestDisallowInterceptTouchEvent(true);
                 return false;
             }
@@ -94,6 +95,8 @@ public class ProjectDisplayActivity extends DrawerActivity implements ProjectDis
 
     @OnItemClick(R.id.activity_project_display_lvNeededCollaborations)
     public void lvNeededCollaborationsClick(AdapterView<?> adapter, View item, int pos, long id) {
+        /** prosljedivanje na activitye ovisno o ulozi */
+
         ApiNeededCollaborations collab = neededCollaborations.get(pos);
         if (User.getInstance().getUserType() == UserType.DEVELOPER) {
             if (collab.getHasCollaborator() > 0) {
@@ -101,6 +104,7 @@ public class ProjectDisplayActivity extends DrawerActivity implements ProjectDis
                 intent.putExtra("collaborationName", collab.getDevNcollabNme());
                 intent.putExtra("collaborationId", collab.getCollabId());
                 intent.putExtra("isOwner", false);
+                finish();
                 startActivity(intent);
             } else {
                 Intent intent = new Intent(this, DeveloperNeededCollaborationActivity.class);

@@ -49,7 +49,7 @@ public class ProjectListingActivity extends DrawerActivity implements ProjectLis
         else
             projectsOwnerType = UserType.DEVELOPER;
 
-
+        /**  prosljedivanje id i uloge za dohvat podataka presenteru*/
         mProjectListingPresenter.getProjects(projectsOwnerId, projectsOwnerType);
     }
 
@@ -63,6 +63,7 @@ public class ProjectListingActivity extends DrawerActivity implements ProjectLis
 
     @Override
     public void onProjectsArrived(List<ProfileScreenProject> projects) {
+        /** projekti stigli, prikaz u listviewu */
 
         mProjectsList = projects;
         ProjectsListAdapter adapter =

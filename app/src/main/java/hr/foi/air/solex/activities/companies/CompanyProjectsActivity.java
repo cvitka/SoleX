@@ -40,7 +40,7 @@ public class CompanyProjectsActivity extends DrawerActivity implements CompanyPr
         return R.layout.activity_company_projects;
     }
 
-    private void setLayout(int id) {
+    private void setLayout(int id) {/** skrivanje podataka ukoliko nije poduzece */
         if (!User.isCurrentUser(UserType.COMPANY, id)) {
             btnAddNewProject.setVisibility(View.GONE);
             setTitle(getIntent().getExtras().getString("companyName") + R.string.projects_list);
@@ -80,20 +80,19 @@ public class CompanyProjectsActivity extends DrawerActivity implements CompanyPr
         recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
         recyclerView.setAdapter(new ProjectHighlightsAdapter(projects, new ProjectHighlightsAdapter.ClickListener() {
             @Override
-            public void onItemClick(ProfileScreenProject profileScreenProject) {
+            public void onItemClick(ProfileScreenProject profileScreenProject) {/**  otvaranje nove aktivnosti */
                 openProjectActivity(profileScreenProject.getId(), User.isCurrentUser(UserType.COMPANY, companyId));
             }
 
             @Override
             public void onItemLongClick(ProfileScreenProject profileScreenProject) {
-                if (profileScreenProject.getHighlightedStatus() == 0) {
+                if (profileScreenProject.getHighlightedStatus() == 0) {/** dodavanje u istaknute projekte */
                     profileScreenProject.setHighlightedStatus(1);
                     mCompanyProjectsPresenter.addToHighlights(profileScreenProject.getId());
-                } else {
+                } else {/** uklanjanje iz istaknutih projekata  */
                     profileScreenProject.setHighlightedStatus(0);
                     mCompanyProjectsPresenter.removeHighlights(profileScreenProject.getId());
                 }
-
             }
         }));
     }

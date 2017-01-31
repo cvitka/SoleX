@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * Created by cvitka on 08.11.16..
  */
 
-public class ViewPagerAdapter extends FragmentPagerAdapter{
+public class ViewPagerAdapter extends FragmentPagerAdapter{  /** adapter za upravljanje fragmentima prijave */
 
     private ArrayList<Fragment> mFragmentList = new ArrayList<>();
 

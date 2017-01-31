@@ -10,19 +10,24 @@ import hr.foi.air.solex.R;
 import hr.foi.air.solex.utils.Utility;
 
 public class AppPreferencesActivity extends PreferenceActivity implements SharedPreferences.OnSharedPreferenceChangeListener {
+
+    /** activity sa postavkama */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getFragmentManager().beginTransaction()
                 .replace(android.R.id.content, new AppPreferenceFragment()).commit();
 
+        /**   postavljanje listenera */
+
         PreferenceManager.getDefaultSharedPreferences(this)
                 .registerOnSharedPreferenceChangeListener(this);
-
     }
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        /** setanje jezika  */
+
         (new Utility()).setLanguage(this);
         this.recreate();
     }
@@ -31,6 +36,7 @@ public class AppPreferencesActivity extends PreferenceActivity implements Shared
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
+            /**  ucitavanje layouta */
             addPreferencesFromResource(R.xml.app_preferences);
         }
     }

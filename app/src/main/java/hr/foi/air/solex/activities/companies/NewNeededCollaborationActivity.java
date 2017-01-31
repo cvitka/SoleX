@@ -106,6 +106,7 @@ public class NewNeededCollaborationActivity extends DrawerActivity implements Ne
 
     @Override
     public void onAllSkillsArrived(List<String> skills) {
+        /** stigle vjestine popunjavanje liste */
         allSkills = skills;
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_dropdown_item_1line, allSkills);
@@ -118,6 +119,7 @@ public class NewNeededCollaborationActivity extends DrawerActivity implements Ne
 
     @OnClick(R.id.activity_new_needed_collaboration_btnAddNewSkill)
     public void btnAddNewSkillClick(){
+        /** dodavanje novih vjestina */
         String skill = actvNewSkill.getText().toString();
         if(!allSkills.contains(skill)){
             showToastLong(getResources().getString(R.string.error_adding_skill));
@@ -140,7 +142,7 @@ public class NewNeededCollaborationActivity extends DrawerActivity implements Ne
         if (etCollabName.getText().toString().isEmpty() || etCollabDescription.getText().toString().isEmpty()  || stateTypes == 0) {
             Toast.makeText(getApplicationContext(), R.string.fill_data, Toast.LENGTH_LONG).show();
         }
-        else {
+        else {/** dodavanje nove potrebne suradnje */
             //int id= Integer.parseInt(projekt);
             //if (projekt.isEmpty()){
             //    id= mCollab.getProjectId();
@@ -186,7 +188,7 @@ public class NewNeededCollaborationActivity extends DrawerActivity implements Ne
         });
     }
 /*/
-    private void fillSpinnerCooperationType() {
+    private void fillSpinnerCooperationType() {/** spinner sa podacima o tipovima rada u suradnji */
         spICooperationType.setItems("Type A", "Type B", "Type C", "Type D", "Type E");
         spICooperationType.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
             @Override
@@ -219,7 +221,7 @@ public class NewNeededCollaborationActivity extends DrawerActivity implements Ne
         });
     }
 
-    private void fillDialog(String cooperationType, String details, final int type){
+    private void fillDialog(String cooperationType, String details, final int type){/** dialog sa obavijestima */
                 mMaterialDialog = new MaterialDialog(this)
                 .setTitle(cooperationType)
                 .setMessage(details)
@@ -239,7 +241,7 @@ public class NewNeededCollaborationActivity extends DrawerActivity implements Ne
                 });
         mMaterialDialog.show();
     }
-
+    /** implementacija viewa i nj metoda */
     @Override
     public void onAdd() {
         Toast.makeText(getApplicationContext(), R.string.new_needed_collaboration_created, Toast.LENGTH_LONG).show();

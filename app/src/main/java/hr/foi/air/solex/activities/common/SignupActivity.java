@@ -24,14 +24,16 @@ public class SignupActivity extends AppCompatActivity {
         setContentView(R.layout.activity_signup);
         ButterKnife.bind(this);
         setupViewPager(mPager);
+        /** prikaz loading */
         circleIndicator.setViewPager(mPager);
     }
 
 
     private void setupViewPager(ViewPager viewPager) {
+        /** view pager adapter za fragment ,swipe lijevo desno */
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(SignupDeveloperFragment.newInstance());
-        //on kreira dva objekta (fragmenta) i sa njima radi, onCreate u fragmentima se ne poziva dvaput samo jedanput (vrlo dobro za MVP arhitekturu jer bi nam se inace kreirali presenteri dvaput)
+        /**on kreira dva objekta (fragmenta) i sa njima radi, onCreate u fragmentima se ne poziva dvaput samo jedanput (vrlo dobro za MVP arhitekturu jer bi nam se inace kreirali presenteri dvaput*/
         adapter.addFragment(SignupCompanyFragment.newInstance());
         viewPager.setAdapter(adapter);
     }

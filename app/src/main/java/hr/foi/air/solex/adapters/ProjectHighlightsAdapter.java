@@ -31,7 +31,8 @@ public class ProjectHighlightsAdapter extends RecyclerView.Adapter<ProjectHighli
     private Context context;
 
     @Override
-    public ProjectHighlightsAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ProjectHighlightsAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {    /** inflate layout */
+
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.list_item_projects_highligths, parent, false);
         context = parent.getContext();
@@ -40,8 +41,10 @@ public class ProjectHighlightsAdapter extends RecyclerView.Adapter<ProjectHighli
 
     @Override
     public void onBindViewHolder(ProjectHighlightsAdapter.ViewHolder holder, int position) {
-        holder.bind(mProjectList.get(position), clickListener);
+        holder.bind(mProjectList.get(position), clickListener);    /** vezanje liste projekata sa listenerom*/
+
     }
+
 
     @Override
     public int getItemCount() {
@@ -52,7 +55,7 @@ public class ProjectHighlightsAdapter extends RecyclerView.Adapter<ProjectHighli
         public TextView projectName, projectState, numOfCollab;
         public ImageView addToHighlights;
 
-        public ViewHolder(View itemView) {
+        public ViewHolder(View itemView) {    /** pronalazenje itema iz layouta */
             super(itemView);
             projectName = (TextView) itemView.findViewById(R.id.company_proj_tvProjectName);
             projectState = (TextView) itemView.findViewById(R.id.company_proj_tvProjectState);
@@ -65,7 +68,7 @@ public class ProjectHighlightsAdapter extends RecyclerView.Adapter<ProjectHighli
             numOfCollab.setText(Integer.toString(item.getNumOfCollaborations())+" "+context.getString(R.string.collaborations));
             projectState.setText(TypeHelper.getProjectState(context, item.getState()));
             projectName.setText(item.getProjectName());
-            if (item.getHighlightedStatus() != 0) {
+            if (item.getHighlightedStatus() != 0) {    /** dodavanje zvjezdica pri ucitavanju */
                 addToHighlights.setColorFilter(color);
             }
 
@@ -82,7 +85,7 @@ public class ProjectHighlightsAdapter extends RecyclerView.Adapter<ProjectHighli
                     if(item.getHighlightedStatus()==0)
                         addToHighlights.setColorFilter(context.getResources().getColor(android.R.color.white));
                     else
-                        addToHighlights.setColorFilter(color);
+                        addToHighlights.setColorFilter(color);  /** bojanje zvjezdice */
                     return true;
                 }
             });

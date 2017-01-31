@@ -55,6 +55,7 @@ public class DeveloperCollaborationsActivity extends DrawerActivity implements D
         startActivity(intent);
     }
 
+    /** pristigli podaci suradnji */
     @Override
     public void onCollaborationsArrived(List<CollabApplicat> list) {
         mCollaborationsList = list;
@@ -68,6 +69,7 @@ public class DeveloperCollaborationsActivity extends DrawerActivity implements D
         lvCollaborations.setAdapter(mCollabAdapter);
     }
 
+    /** ocjenjivanje suradnji */
     @Override
     public void onRateSucceeded() {
         Toast.makeText(getApplicationContext(), R.string.collab_rated , Toast.LENGTH_SHORT).show();

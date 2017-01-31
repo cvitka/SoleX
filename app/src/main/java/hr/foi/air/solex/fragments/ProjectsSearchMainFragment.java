@@ -37,7 +37,7 @@ import hr.foi.air.solex.models.searched_project.SearchedProject;
 import hr.foi.air.solex.presenters.developers.ProjectSearchPreseneter;
 import hr.foi.air.solex.presenters.developers.ProjectSearchPresenterImpl;
 
-public class ProjectsSearchMainFragment extends Fragment implements ProjectSearchView, SensorEventListener {
+public class ProjectsSearchMainFragment extends Fragment implements ProjectSearchView, SensorEventListener {  /** glavni fragment kod pretrazivanja*/
     @BindView(R.id.activity_project_search_lvItSkills)
     ListView lvProjectSearchITSkills;
 
@@ -75,11 +75,11 @@ public class ProjectsSearchMainFragment extends Fragment implements ProjectSearc
         projectSearchPreseneter.getAllSkillList();
         projectSearchPreseneter.getSkillList(User.getInstance().getId());
 
-        //aktiviranje sensora
+        /** aktiviranje sensora */
         mSensorManager = (SensorManager) getActivity().getSystemService(Context.SENSOR_SERVICE);
         mSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         mSensorManager.registerListener(this, mSensor, SensorManager.SENSOR_DELAY_NORMAL);
-        //vibriraj nakon shakea
+        /** vibriraj nakon shakea*/
         mVibrator = (Vibrator) getActivity().getSystemService(getContext().VIBRATOR_SERVICE);
         mContext = getActivity().getApplicationContext();
 
@@ -107,7 +107,7 @@ public class ProjectsSearchMainFragment extends Fragment implements ProjectSearc
         } else if (Integer.parseInt(etAddPercentage.getText().toString()) > 100) {
             Toast.makeText(getActivity(), R.string.percentage_limitation, Toast.LENGTH_LONG).show();
         } else {
-            //prijenos objekta na result(lista i int)
+            /** prijenos objekta na result(lista i int)*/
             Bundle bundle = new Bundle();
             SearchProjects searchProjects = new SearchProjects();
             searchProjects.setPercentage(Integer.parseInt(etAddPercentage.getText().toString()));
@@ -116,16 +116,16 @@ public class ProjectsSearchMainFragment extends Fragment implements ProjectSearc
             bundle.putInt("numberOfSearchedSkills", developerSkillsList.size());
             fragment.setArguments(bundle);
 
-            mSensorManager.unregisterListener(this);
+            mSensorManager.unregisterListener(this);  /** gasenje senzora */
             FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.content_frame, fragment);
-            fragmentTransaction.addToBackStack(" ProjectsSearchMainFragment");
+            fragmentTransaction.addToBackStack(" ProjectsSearchMainFragment");  /** postavljanje fragmenta na backstack kako bi se mogao vratiti nazad */
             fragmentTransaction.commit();
         }
     }
 
     @Override
-    public void allSkillsListArrived(List<String> list) {
+    public void allSkillsListArrived(List<String> list) {  /** pristigla lista skillova*/
         allSkillsList = list;
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(mContext,
                 android.R.layout.simple_dropdown_item_1line, list);
@@ -134,7 +134,7 @@ public class ProjectsSearchMainFragment extends Fragment implements ProjectSearc
     }
 
     @Override
-    public void developerSkillsListArrived(List<String> list) {
+    public void developerSkillsListArrived(List<String> list) {  /** pristigla lista developerskih skillova */
         if (getActivity() != null) {
             developerSkillsList = list;
             mDevSkillAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, list);
@@ -167,7 +167,7 @@ public class ProjectsSearchMainFragment extends Fragment implements ProjectSearc
     }
 
     @Override
-    public void onSensorChanged(SensorEvent event) {
+    public void onSensorChanged(SensorEvent event) {  /** aktivacija senzora */
         Sensor mySensor = event.sensor;
         if (mySensor.getType() == Sensor.TYPE_ACCELEROMETER) {
             float x = event.values[0];
@@ -177,16 +177,16 @@ public class ProjectsSearchMainFragment extends Fragment implements ProjectSearc
             float gY = y / SensorManager.GRAVITY_EARTH;
             float gZ = z / SensorManager.GRAVITY_EARTH;
 
-            float gForce = (float) Math.sqrt(gX * gX + gY * gY + gZ * gZ);
-            if (gForce > SHAKE_THRESHOLD_GRAVITY) {
+            float gForce = (float) Math.sqrt(gX * gX + gY * gY + gZ * gZ);   /** racunanje sila */
+            if (gForce > SHAKE_THRESHOLD_GRAVITY) {    /** ukoliko je sila veca od 1.3 aktiviraj lucky fragment */
                 final long now = System.currentTimeMillis();
 
                 if (mShakeTimestamp + SHAKE_SLOP_TIME_MS > now) {
                     return;
                 }
                 mShakeTimestamp = now;
-                mSensorManager.unregisterListener(this);
-                mVibrator.vibrate(500);
+                mSensorManager.unregisterListener(this);  /** ugasi senzor */
+                mVibrator.vibrate(500);  /** vibriraj*/
                 transferDataFeelingLucky();
 
             }
@@ -195,7 +195,7 @@ public class ProjectsSearchMainFragment extends Fragment implements ProjectSearc
 
     @Override
 
-    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {  /**prebaci podatke u searchluckyfrag */
 
     }
 
@@ -210,7 +210,7 @@ public class ProjectsSearchMainFragment extends Fragment implements ProjectSearc
         mProjectsSearchFeelingLuckyFragment.setArguments(bundle);
 
         handler = new Handler();
-        mSensorManager.unregisterListener(this);
+        mSensorManager.unregisterListener(this);  /** izgasi senzor */
 
         handler.post(new Runnable() {
             @Override
@@ -231,7 +231,7 @@ public class ProjectsSearchMainFragment extends Fragment implements ProjectSearc
         mSensorManager.registerListener(this, mSensor, SensorManager.SENSOR_DELAY_NORMAL);
 
         if (dataArrived == true) {
-            //popunjavanje lista nakon povratka sa FeelingLucky i Result
+            /** popunjavanje lista nakon povratka sa FeelingLucky i Result*/
             mDevSkillAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, developerSkillsList);
             lvProjectSearchITSkills.setAdapter(mDevSkillAdapter);
 
@@ -243,7 +243,7 @@ public class ProjectsSearchMainFragment extends Fragment implements ProjectSearc
     @Override
     public void onPause() {
         super.onPause();
-        mSensorManager.unregisterListener(this);
+        mSensorManager.unregisterListener(this);  /** gasenje senzora*/
     }
 }
 

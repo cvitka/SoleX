@@ -67,6 +67,7 @@ public class CollaborationActivity extends DrawerActivity implements Collaborati
             isOwner = savedInstanceState.getBoolean("isOwner");
             collabId = savedInstanceState.getInt("collaborationId");
         }
+        /**  prosljedivanje ID-a suradnje presenteru*/
         mCollaborationPresenter = new CollaborationPresenterImpl(this);
         mCollaborationPresenter.getExistingCollaboration(collabId);
         mCollaborationPresenter.getSkillsForCollaboration(collabId);
@@ -84,6 +85,7 @@ public class CollaborationActivity extends DrawerActivity implements Collaborati
 
     @Override
     public void onCollaborationArrived(ApiCompanyCollaborations collaboration) {
+        /**  stigli podaci o suradnjama, ucitavanje na activity */
         mThisCollaboration = collaboration;
         tvCollaborationDescription.setText(mThisCollaboration.getCollaborationDescription());
         tvCollaborationName.setText(mThisCollaboration.getCollaborationName());
@@ -94,6 +96,8 @@ public class CollaborationActivity extends DrawerActivity implements Collaborati
 
     @Override
     public void onSkillsArrived(List<String> skills) {
+        /** stigli podaci o vjestinama, popunjavanje listViewa */
+
         collaborationSkills = skills;
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_dropdown_item_1line, collaborationSkills);

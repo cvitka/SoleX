@@ -21,6 +21,7 @@ public class ApplicantsAdapter  extends ArrayAdapter<Applicant> {
     private Context ctx;
     private int itemResId;
 
+    /** konstruktor adaptera */
     public ApplicantsAdapter(Context context, int textViewResourceId, List<Applicant> items, int numOfSkills) {
         super(context, textViewResourceId, items);
         this.items = items;
@@ -30,7 +31,7 @@ public class ApplicantsAdapter  extends ArrayAdapter<Applicant> {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, ViewGroup parent) {/** prikaz liste, infeltanje */
         View v = convertView; //v=holder
         if (v == null) {
             LayoutInflater vi = (LayoutInflater)ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);

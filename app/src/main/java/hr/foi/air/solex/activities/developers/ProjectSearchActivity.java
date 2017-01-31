@@ -46,6 +46,7 @@ public class ProjectSearchActivity extends DrawerActivity {
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
 
+        /** ucitavanje fragmenta */
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.content_frame, projectsSearchMainFragment.newInstance());
         fragmentTransaction.commit();

@@ -62,6 +62,7 @@ public class AddNewProjectActivity extends DrawerActivity implements AddNewProje
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
         this.mAddNewProjectPresenter = new AddNewProjectPresenterImpl(this, new ProjectInteractorImpl());
+        /** popunjavanje spinnera */
         fillSpinner();
     }
 
@@ -74,11 +75,11 @@ public class AddNewProjectActivity extends DrawerActivity implements AddNewProje
             mProject.setDescription(etDescription.getText().toString());
             mProject.setStateId(stateData);
             mProject.setCompanyId(User.getInstance().getId());
-
+            /** prosljedivanje presenteru objekta projekata */
             mAddNewProjectPresenter.createNewProject(mProject);
         }
     }
-
+    /**  listener za kalendar*/
     DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
 
         @Override
@@ -100,7 +101,7 @@ public class AddNewProjectActivity extends DrawerActivity implements AddNewProje
     }
 
     private void updateLabel() {
-
+        /**  formatiranje datuma za upis u bazu*/
         String myFormat = "yyyy-MM-dd";
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
         mProject.setStartDate(sdf.format(myCalendar.getTime()));
@@ -140,10 +141,12 @@ public class AddNewProjectActivity extends DrawerActivity implements AddNewProje
 
     @Override
     public void onCreation(int newProjectId) {
-        Toast.makeText(this, "The project has been created", Toast.LENGTH_LONG).show();
+        /**  kreiran projekt prosljedivanje na njegovo upravljanje */
+        Toast.makeText(this, R.string.project_created, Toast.LENGTH_LONG).show();
         Intent intent = new Intent(this, ProjectManagementActivity.class);
         intent.putExtra("isOwner", true);
         intent.putExtra("projectId", newProjectId);
         startActivity(intent);
+        finish();
     }
 }

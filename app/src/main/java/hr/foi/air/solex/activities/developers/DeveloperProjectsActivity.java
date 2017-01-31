@@ -32,11 +32,12 @@ public class DeveloperProjectsActivity extends DrawerActivity implements Develop
         super.onCreate(savedInstanceState);
 
         this.mDeveloperProjectsPresenter = new DeveloperProjectsPresenterImpl(this);
+        /** prosljedivanje podataka presenteru */
         mDeveloperProjectsPresenter.getProjects(User.getInstance().getId());
     }
 
     @Override
-    public void onDataArrived(List<ProfileScreenProject> projects) {
+    public void onDataArrived(List<ProfileScreenProject> projects) {/** stigli projekti popunjavanje recycler viewa */
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -60,7 +61,7 @@ public class DeveloperProjectsActivity extends DrawerActivity implements Develop
             }
         }));
     }
-
+    /**  implementacije viewa gdje su poruke o uspjesima ili neuspjesima*/
     @Override
     public void onHighlightAddition() {
         Toast.makeText(getApplicationContext(), R.string.added_to_highlights, Toast.LENGTH_SHORT).show();

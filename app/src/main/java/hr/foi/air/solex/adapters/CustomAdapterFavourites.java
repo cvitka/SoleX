@@ -45,16 +45,16 @@ class CustomAdapterFavourites extends BaseAdapter {
         ViewHolder holder;
         if (convertView == null) {
 
-            // Inflate the custom row layout from your XML.
+            /**Inflate the custom row layout from your XML.*/
             convertView = mInflater.inflate(R.layout.custom_row_favourites, parent, false);
 
-            // create a new "Holder" with subviews
+            /** create a new "Holder" with subviews*/
             holder = new ViewHolder();
             //holder.name = (TextView) convertView.findViewById(R.id.crName);
            // holder.surname = (TextView) convertView.findViewById(R.id.cRsurname);
 
 
-            // hang onto this holder for future recyclage
+            /** hang onto this holder for future recyclage*/
             convertView.setTag(holder);
         }
         else {

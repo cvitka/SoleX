@@ -64,13 +64,14 @@ public class FavouritesActivity extends DrawerActivity implements FavouritesActi
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
         this.mFavouritesPresenter = new FavouritesPresenterImpl(this, new ApiFavouritesInteractorImpl(),new FavoritesInteractorImpl(),new ApiCompanyCollaborationsInteractorImpl());
+        /** dohvacanje favorita */
         mFavouritesPresenter.getFavourites(User.getInstance().getId());
         mFavouritesPresenter.getCollaborations();
 
     }
 
     @Override
-    public void dataArrived(List<ApiFavourites> apiFavourites) {
+    public void dataArrived(List<ApiFavourites> apiFavourites) {/** stigli podaci popunjavanje liste i psotavljanje adaptera za listView */
         ArrayList<String> items = new ArrayList<String>();
         ArrayAdapter<String> itemsAdapter;
         itemsAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items);
@@ -105,6 +106,7 @@ public class FavouritesActivity extends DrawerActivity implements FavouritesActi
         }
     }
 
+    /** metode iz viewa o uspjesnih, neuspesnim dodavanjima , brisanjima itd. */
     @Override
     public void onFavoriteAddition() {
         Toast.makeText(getApplicationContext(), R.string.developer_favourites, Toast.LENGTH_LONG).show();

@@ -5,10 +5,6 @@ import hr.foi.air.solex.models.profile_screen_project.ProfileScreenProject;
 
 import java.util.List;
 
-/**
- * Created by Asus on 4.12.2016..
- */
-
 public interface CompanyProfileView {
     public void DataArrived(Company company);
     public void HighlihtedProjectsArrived(List<ProfileScreenProject> list);

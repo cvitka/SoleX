@@ -21,7 +21,7 @@ public class ProjectsFeelingLuckyAdapter extends RecyclerView.Adapter<ProjectsFe
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {  /** inflate layout */
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.searched_projects_row, parent, false);
         mContext = parent.getContext();
@@ -30,7 +30,7 @@ public class ProjectsFeelingLuckyAdapter extends RecyclerView.Adapter<ProjectsFe
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.bind(mProjectList.get(position), mListener);
+        holder.bind(mProjectList.get(position), mListener);  /** povezivanje lista i clicklistenera */
     }
 
     @Override
@@ -38,7 +38,7 @@ public class ProjectsFeelingLuckyAdapter extends RecyclerView.Adapter<ProjectsFe
         return mProjectList.size();
     }
 
-    public interface ClickListener {
+    public interface ClickListener {  /** interface za onClick metodu */
         void onItemClick(SearchedProject searchedProject);
     }
 
@@ -54,7 +54,7 @@ public class ProjectsFeelingLuckyAdapter extends RecyclerView.Adapter<ProjectsFe
             percentage = (TextView) itemView.findViewById(R.id.activity_search_projects_project_percentage);
         }
 
-        public void bind(final SearchedProject item, final ProjectsFeelingLuckyAdapter.ClickListener listener) {
+        public void bind(final SearchedProject item, final ProjectsFeelingLuckyAdapter.ClickListener listener) {  /** povezivanje liste i clicklistenera*/
             companyName.setText(item.getComapanyName());
             projectName.setText(item.getProjectName());
             collaborationName.setText(item.getCollaborationName());

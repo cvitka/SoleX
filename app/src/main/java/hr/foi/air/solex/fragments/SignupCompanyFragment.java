@@ -57,7 +57,7 @@ public class SignupCompanyFragment extends Fragment implements SignupView{
     }
     ProgressDialog progressDialog;
 
-    public static SignupCompanyFragment newInstance (){
+    public static SignupCompanyFragment newInstance (){ /** instanciranje fragmenta*/
         return new SignupCompanyFragment();
     }
 
@@ -68,10 +68,10 @@ public class SignupCompanyFragment extends Fragment implements SignupView{
         || txtInputEmail.getText().toString().isEmpty()
         || txtInputPassword.getText().toString().isEmpty()
         || txtInputReEnterPassword.getText().toString().isEmpty()){
-            showToast(getString(R.string.all_fields));
+            showToast(getString(R.string.all_fields)); /** provjera jesu polja popunjena*/
         }
         else if(!txtInputPassword.getText().toString().equals(txtInputReEnterPassword.getText().toString())){
-            showToast(getString(R.string.password_dont_match));
+            showToast(getString(R.string.password_dont_match)); /** provjera lozinki*/
         }
         else{
             Company company = new Company();
@@ -79,7 +79,7 @@ public class SignupCompanyFragment extends Fragment implements SignupView{
             company.setAddress(txtInputAddress.getText().toString());
             company.setEmail(txtInputEmail.getText().toString());
             company.setToken(FirebaseInstanceId.getInstance().getToken());
-            //
+            /** prosljedivanje podataka presenteru*/
             mCompanySignupPresenter.tryRegister(company, txtInputPassword.getText().toString());
             progressDialog = new ProgressDialog(getActivity(),
                         R.style.AppTheme_Bright_Dialog);
@@ -101,7 +101,7 @@ public class SignupCompanyFragment extends Fragment implements SignupView{
     }
 
     @Override
-    public void signupSuccessful() {
+    public void signupSuccessful() { /** implementacija viewa uspjesna prijava i otvaranje main aktivnosti*/
         showToast(getString(R.string.registration_success));
         progressDialog.dismiss();
         new android.os.Handler().postDelayed(new Runnable() {
@@ -115,7 +115,7 @@ public class SignupCompanyFragment extends Fragment implements SignupView{
     }
 
     @Override
-    public void signupFailed(String message) {
+    public void signupFailed(String message) { /** greska kod spajanja na server*/
         Toast.makeText(getActivity(),R.string.server_error,Toast.LENGTH_LONG).show();
         progressDialog.dismiss();
     }

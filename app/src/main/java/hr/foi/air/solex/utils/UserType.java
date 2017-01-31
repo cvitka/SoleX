@@ -4,7 +4,7 @@ package hr.foi.air.solex.utils;
  * Created by Asus on 12.11.2016..
  */
 
-public enum UserType {
+public enum UserType { /** pomocna klasa za dohvat tipa korisnika */
     COMPANY("company", 0),
     DEVELOPER("developer", 1);
 

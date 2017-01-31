@@ -17,7 +17,7 @@ import hr.foi.air.solex.models.collaboration.ApiCompanyCollaborations;
 
 public class CollabApplicatAdapter extends ArrayAdapter<CollabApplicat>{
 
-    public interface ClickListener {
+    public interface ClickListener {/** interface za promjenu ocjene, kako bi znali obojati zvjezdice */
         void onRatingChanged(CollabApplicat collab, int rating);
     }
 
@@ -45,7 +45,7 @@ public class CollabApplicatAdapter extends ArrayAdapter<CollabApplicat>{
     }
 
 
-    private void setListenerOnRatingBar(final CollabApplicat o, RatingBar rb){
+    private void setListenerOnRatingBar(final CollabApplicat o, RatingBar rb){/** listener za gore navedeni interface */
         rb.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {

@@ -31,7 +31,7 @@ public class ProjectsListAdapter extends ArrayAdapter<ProfileScreenProject> {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, ViewGroup parent) {  /** inflate layout */
         View v = convertView; //v=holder
         if (v == null) {
             LayoutInflater vi = (LayoutInflater)ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);

@@ -52,9 +52,11 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
     private ActionBarDrawerToggle mDrawerToggle;
 
     private void startNewActivity(Class<?> activity) {
+        /** otvaranje main screena ovisno o vrsti korisnika */
+
         Intent intent = new Intent(this, activity);
         startActivity(intent);
-        //main activities (profile activities) are never finished
+        /** main activities (profile activities) are never finished */
         if (User.getInstance().getUserType() == UserType.COMPANY)
             if (getLayoutId() != R.layout.activity_company_profile)
                 return;
@@ -69,10 +71,10 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
-        //if we are not already on desired activity
+       /** if we are not already on desired activity */
         if (id != lastDrawerOption) {
             Intent intent;
-            lastDrawerOption = id; //to be updated with getOptionId in subclasses
+            lastDrawerOption = id; /*to be updated with getOptionId in subclasses*/
             switch (id) {
                 case R.id.developer_opt_applications:
                     startNewActivity(DeveloperApplicationsActivity.class);
@@ -133,6 +135,7 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
 
         util = new Utility();
 
+        /**  postavljanje drawera */
         mDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerToggle = new ActionBarDrawerToggle(
                 this, mDrawer, mToolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -140,12 +143,13 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
         mDrawerToggle.syncState();
         setNavigationMenu();
 
+        /** postavljanje listenera za preferencesactivity */
         PreferenceManager.getDefaultSharedPreferences(this)
                .registerOnSharedPreferenceChangeListener(this);
 
     }
 
-    //sets navigation menu depending on user type
+    /**sets navigation menu depending on user type */
     public void setNavigationMenu() {
         navigationView.setNavigationItemSelectedListener(this);
         if (User.getInstance().getUserType() == UserType.COMPANY) {
@@ -157,13 +161,14 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
         }
     }
 
-    //overridden in subclasses , gets layout id so that this superclass can use it
-    protected int getLayoutId() {
+    /**overridden in subclasses , gets layout id so that this superclass can use it*/
+     protected int getLayoutId() {
         return 0;
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        /** postavljanje toolbara */
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.toolbar_menu, menu);
         return super.onCreateOptionsMenu(menu);
@@ -190,6 +195,8 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        /** ucitavanje prilikom promjene jezika tj. postavki opcenito, ali imamo samo implementiran jezik */
+
         //Intent intent = getIntent();
         //finish();
         //startActivity(intent);

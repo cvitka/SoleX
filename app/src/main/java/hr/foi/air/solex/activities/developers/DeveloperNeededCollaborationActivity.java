@@ -87,7 +87,7 @@ public class DeveloperNeededCollaborationActivity extends DrawerActivity impleme
     }
 
     @OnClick(R.id.activity_developer_needed_collaboration_btnApplicate)
-    void btnApplicateOnClick(){
+    void btnApplicateOnClick(){/** mogucnost apliciranja  */
         int state =  mThisCollaboration.getState();
         if(state==0){
             mPresenter.apply(mThisCollaboration.getCollaborationId(), User.getInstance().getId());
@@ -110,7 +110,7 @@ public class DeveloperNeededCollaborationActivity extends DrawerActivity impleme
     }
 
     @Override
-    public void onCollaborationDataArrived(NeededCollaborationData collaborationData) {
+    public void onCollaborationDataArrived(NeededCollaborationData collaborationData) {/** stigli podaci ,ucitavanje textviewa */
         mThisCollaboration = collaborationData;
         tvCollaborationDetails.setText(mThisCollaboration.getCollaborationDescription());
         tvCollaborationName.setText(mThisCollaboration.getCollaborationName());
@@ -122,21 +122,22 @@ public class DeveloperNeededCollaborationActivity extends DrawerActivity impleme
     }
 
     @Override
-    public void onSkillsArrived(List<String> Skills) {
+    public void onSkillsArrived(List<String> Skills) {/** stigli podaci  */
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, Skills);
         lvSkills.setAdapter(adapter);
+        /** utilty metoda pomocu koje se napravi dinamicni listview 6 je max broj itema */
         Utility.setListViewHeightBasedOnChildren(lvSkills, 6);
     }
 
     @Override
-    public void onApplySuccessfull() {
+    public void onApplySuccessfull() {/** pushanje notifikacija kod uspjesne aplikacije */
+        Toast.makeText(getApplicationContext(), R.string.suc_application,Toast.LENGTH_SHORT).show();
         mPresenter.pushNotif(companyId);
-
     }
 
     @Override
     public void onRemoveApplySucessfull() {
-
+        Toast.makeText(getApplicationContext(), R.string.application_remove,Toast.LENGTH_SHORT).show();
     }
 
     @Override

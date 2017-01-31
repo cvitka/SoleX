@@ -19,6 +19,4 @@ public interface ProfileScreenProjectInteractor {
     /**javi da je projekt maknut iz istaknutih */
     void setRemoveHighlightListener(RemoveHighlightListener listener);
 
-    void getProjectList();
-
 }

@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -82,10 +83,11 @@ public class CompanyNeededCollaborationActivity extends DrawerActivity implement
 
         mPresenter = new CompanyNeededCollaborationPresenterImpl(this);
 
+        /** pozivanje suradnji i vjestina */
         mPresenter.getCollaborationData(collaborationId);
         mPresenter.getCollaborationSkills(collaborationId);
 
-        if (isOwner) {
+        if (isOwner) {/**  ukoliko nije vlasnik sakrij listu, gumb i textview*/
             mPresenter.getApplicants(collaborationId);
             lvApplicants.setOnTouchListener(new View.OnTouchListener() {
                 // Setting on Touch Listener for handling the touch inside ScrollView
@@ -205,10 +207,10 @@ public class CompanyNeededCollaborationActivity extends DrawerActivity implement
         intent.putExtra("collaborationId", mThisCollaboration.getCollaborationId());
         intent.putExtra("isOwner", true);
         startActivity(intent);
+        finish();
     }
 
     @Override
     public void onPushSuccessful() {
-
     }
 }

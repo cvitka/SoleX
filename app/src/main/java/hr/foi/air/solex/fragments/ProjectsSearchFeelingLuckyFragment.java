@@ -44,6 +44,7 @@ public class ProjectsSearchFeelingLuckyFragment extends Fragment implements Proj
         mProjectSearchFeelingLuckyPresenter = new ProjectSearchFeelingLuckyPresenterImpl(this);
         final Bundle arguments = this.getArguments();
         if (arguments != null) {
+            /** dohvacanje podataka sa prethodnog fragmenta*/
             mSearchProjects = arguments.getParcelable(ProjectsSearchMainFragment.PROJECT_INFO);
             mProjectSearchFeelingLuckyPresenter.getSearchedProjects(mSearchProjects.getSkills());
         }
@@ -51,7 +52,7 @@ public class ProjectsSearchFeelingLuckyFragment extends Fragment implements Proj
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {  /** inflate layout */
         LayoutInflater lf = getActivity().getLayoutInflater();
         View view = lf.inflate(R.layout.fragment_projects_search_feeling_lucky, container, false);
         ButterKnife.bind(this, view);
@@ -59,7 +60,7 @@ public class ProjectsSearchFeelingLuckyFragment extends Fragment implements Proj
     }
 
     @Override
-    public void onProjectListCome(List<SearchedProject> projects) {
+    public void onProjectListCome(List<SearchedProject> projects) {  /** postavljanje adaptera za recycler view*/
 
         projectsFeelingLuckyAdapter = new ProjectsFeelingLuckyAdapter(projects, itemClickListener);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
@@ -68,7 +69,7 @@ public class ProjectsSearchFeelingLuckyFragment extends Fragment implements Proj
         recyclerView.addItemDecoration(new DividerItemDecoration(getActivity().getApplicationContext(), LinearLayoutManager.VERTICAL));
         recyclerView.setAdapter(new ProjectsFeelingLuckyAdapter(projects, new ProjectsFeelingLuckyAdapter.ClickListener() {
             @Override
-            public void onItemClick(SearchedProject searchedProject) {
+            public void onItemClick(SearchedProject searchedProject) {  /** on click otvori novu aktivnost */
                 Intent intent = new Intent(getActivity(), DeveloperNeededCollaborationActivity.class);
                 intent.putExtra("companyName", searchedProject.getComapanyName());
                 intent.putExtra("applicantsNumber", searchedProject.getApplicantsNum());

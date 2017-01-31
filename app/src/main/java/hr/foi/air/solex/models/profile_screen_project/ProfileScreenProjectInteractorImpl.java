@@ -187,9 +187,4 @@ public class ProfileScreenProjectInteractorImpl extends WebServiceCommunicator i
         mRemoveListener = listener;
 
     }
-
-    @Override
-    public void getProjectList() {
-
-    }
 }
