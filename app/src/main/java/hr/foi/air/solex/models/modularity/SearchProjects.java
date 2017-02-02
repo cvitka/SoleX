@@ -1,4 +1,4 @@
-package hr.foi.air.solex.models.searched_project;
+package hr.foi.air.solex.models.modularity;
 
 import android.os.Parcel;
 import android.os.Parcelable;

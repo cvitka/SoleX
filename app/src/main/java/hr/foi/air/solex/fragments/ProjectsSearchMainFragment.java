@@ -7,12 +7,10 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Parcelable;
 import android.os.Vibrator;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +21,6 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -32,8 +29,7 @@ import butterknife.OnClick;
 import butterknife.OnItemLongClick;
 import hr.foi.air.solex.R;
 import hr.foi.air.solex.models.login_registration.User;
-import hr.foi.air.solex.models.searched_project.SearchProjects;
-import hr.foi.air.solex.models.searched_project.SearchedProject;
+import hr.foi.air.solex.models.modularity.SearchProjects;
 import hr.foi.air.solex.presenters.developers.ProjectSearchPreseneter;
 import hr.foi.air.solex.presenters.developers.ProjectSearchPresenterImpl;
 
@@ -60,7 +56,7 @@ public class ProjectsSearchMainFragment extends Fragment implements ProjectSearc
     private ArrayAdapter<String> mDevSkillAdapter;
 
     ProjectSearchPreseneter projectSearchPreseneter;
-    ProjectsSearchFeelingLuckyFragment mProjectsSearchFeelingLuckyFragment;
+    ProjectSearchDisplayFragment mProjectsSearchFeelingLuckyFragment;
 
     boolean dataArrived = false;
     public static final String PROJECT_INFO = "PROJECT_INFO";
@@ -101,29 +97,61 @@ public class ProjectsSearchMainFragment extends Fragment implements ProjectSearc
 
     @OnClick(R.id.btnSearchCollaborations)
     public void onSearch() {
-        ProjectsSearchResultFragment fragment = new ProjectsSearchResultFragment();
-        if (etAddPercentage.getText().toString().isEmpty() || etAddPercentage.getText().toString() == null) {
-            Toast.makeText(getActivity(), R.string.enter_percentage, Toast.LENGTH_LONG).show();
-        } else if (Integer.parseInt(etAddPercentage.getText().toString()) > 100) {
-            Toast.makeText(getActivity(), R.string.percentage_limitation, Toast.LENGTH_LONG).show();
-        } else {
-            /** prijenos objekta na result(lista i int)*/
-            Bundle bundle = new Bundle();
-            SearchProjects searchProjects = new SearchProjects();
-            searchProjects.setPercentage(Integer.parseInt(etAddPercentage.getText().toString()));
-            searchProjects.setSkills(developerSkillsList);
-            bundle.putParcelable(PROJECT_INFO, searchProjects);
-            bundle.putInt("numberOfSearchedSkills", developerSkillsList.size());
-            fragment.setArguments(bundle);
+        startModule(0);
 
-            mSensorManager.unregisterListener(this);  /** gasenje senzora */
-            FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.content_frame, fragment);
-            fragmentTransaction.addToBackStack(" ProjectsSearchMainFragment");  /** postavljanje fragmenta na backstack kako bi se mogao vratiti nazad */
-            fragmentTransaction.commit();
+    }
+
+    @Override
+    public void onSensorChanged(SensorEvent event) {  /** aktivacija senzora */
+        Sensor mySensor = event.sensor;
+        if (mySensor.getType() == Sensor.TYPE_ACCELEROMETER) {
+            float x = event.values[0];
+            float y = event.values[1];
+            float z = event.values[2];
+            float gX = x / SensorManager.GRAVITY_EARTH;
+            float gY = y / SensorManager.GRAVITY_EARTH;
+            float gZ = z / SensorManager.GRAVITY_EARTH;
+
+            float gForce = (float) Math.sqrt(gX * gX + gY * gY + gZ * gZ);   /** racunanje sila */
+            if (gForce > SHAKE_THRESHOLD_GRAVITY) {    /** ukoliko je sila veca od 1.3 aktiviraj lucky fragment */
+                final long now = System.currentTimeMillis();
+
+                if (mShakeTimestamp + SHAKE_SLOP_TIME_MS > now) {
+                    return;
+                }
+                mShakeTimestamp = now;
+                mSensorManager.unregisterListener(this);  /** ugasi senzor */
+                mVibrator.vibrate(500);  /** vibriraj*/
+                startModule(1);
+
+            }
         }
     }
 
+    private void startModule(int module){
+        mProjectsSearchFeelingLuckyFragment = new ProjectSearchDisplayFragment();
+
+        Bundle bundle = new Bundle();
+        SearchProjects searchProjects = new SearchProjects();
+
+        searchProjects.setSkills(developerSkillsList);
+        bundle.putParcelable(PROJECT_INFO, searchProjects);
+        mProjectsSearchFeelingLuckyFragment.setArguments(bundle);
+        bundle.putInt("module", module);
+
+        handler = new Handler();
+        mSensorManager.unregisterListener(this);  /** izgasi senzor */
+
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.content_frame, mProjectsSearchFeelingLuckyFragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commitAllowingStateLoss();
+            }
+        });
+    }
     @Override
     public void allSkillsListArrived(List<String> list) {  /** pristigla lista skillova*/
         allSkillsList = list;
@@ -167,62 +195,12 @@ public class ProjectsSearchMainFragment extends Fragment implements ProjectSearc
     }
 
     @Override
-    public void onSensorChanged(SensorEvent event) {  /** aktivacija senzora */
-        Sensor mySensor = event.sensor;
-        if (mySensor.getType() == Sensor.TYPE_ACCELEROMETER) {
-            float x = event.values[0];
-            float y = event.values[1];
-            float z = event.values[2];
-            float gX = x / SensorManager.GRAVITY_EARTH;
-            float gY = y / SensorManager.GRAVITY_EARTH;
-            float gZ = z / SensorManager.GRAVITY_EARTH;
-
-            float gForce = (float) Math.sqrt(gX * gX + gY * gY + gZ * gZ);   /** racunanje sila */
-            if (gForce > SHAKE_THRESHOLD_GRAVITY) {    /** ukoliko je sila veca od 1.3 aktiviraj lucky fragment */
-                final long now = System.currentTimeMillis();
-
-                if (mShakeTimestamp + SHAKE_SLOP_TIME_MS > now) {
-                    return;
-                }
-                mShakeTimestamp = now;
-                mSensorManager.unregisterListener(this);  /** ugasi senzor */
-                mVibrator.vibrate(500);  /** vibriraj*/
-                transferDataFeelingLucky();
-
-            }
-        }
-    }
-
-    @Override
 
     public void onAccuracyChanged(Sensor sensor, int accuracy) {  /**prebaci podatke u searchluckyfrag */
 
     }
 
-    public void transferDataFeelingLucky() {
-        mProjectsSearchFeelingLuckyFragment = new ProjectsSearchFeelingLuckyFragment();
 
-        Bundle bundle = new Bundle();
-        SearchProjects searchProjects = new SearchProjects();
-
-        searchProjects.setSkills(developerSkillsList);
-        bundle.putParcelable(PROJECT_INFO, searchProjects);
-        mProjectsSearchFeelingLuckyFragment.setArguments(bundle);
-
-        handler = new Handler();
-        mSensorManager.unregisterListener(this);  /** izgasi senzor */
-
-        handler.post(new Runnable() {
-            @Override
-            public void run() {
-                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.content_frame, mProjectsSearchFeelingLuckyFragment);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commitAllowingStateLoss();
-            }
-        });
-
-    }
 
     @Override
     public void onResume() {

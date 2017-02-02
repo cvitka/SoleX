@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import java.util.List;
 import hr.foi.air.solex.R;
-import hr.foi.air.solex.models.searched_project.SearchedProject;
+import hr.foi.air.solex.models.modularity.SearchedProject;
 
 public class ProjectsFeelingLuckyAdapter extends RecyclerView.Adapter<ProjectsFeelingLuckyAdapter.ViewHolder> {
 

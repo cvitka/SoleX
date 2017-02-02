@@ -1,7 +1,6 @@
 package hr.foi.air.solex.fragments;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,22 +10,23 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
+
 import java.util.List;
-import java.util.Random;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import hr.foi.air.solex.R;
 import hr.foi.air.solex.activities.developers.DeveloperNeededCollaborationActivity;
 import hr.foi.air.solex.adapters.DividerItemDecoration;
 import hr.foi.air.solex.adapters.ProjectsFeelingLuckyAdapter;
-import hr.foi.air.solex.models.searched_project.SearchProjects;
-import hr.foi.air.solex.models.searched_project.SearchedProject;
-import hr.foi.air.solex.presenters.developers.ProjectSearchFeelingLuckyPresenter;
-import hr.foi.air.solex.presenters.developers.ProjectSearchFeelingLuckyPresenterImpl;
+import hr.foi.air.solex.models.modularity.KeywordSearchModule;
+import hr.foi.air.solex.models.modularity.LuckySearchModule;
+import hr.foi.air.solex.models.modularity.SearchProjects;
+import hr.foi.air.solex.models.modularity.SearchedProject;
+import hr.foi.air.solex.presenters.developers.ProjectSearchDisplayPresenter;
+import hr.foi.air.solex.presenters.developers.ProjectSearchDisplayPresenterImpl;
 
-public class ProjectsSearchFeelingLuckyFragment extends Fragment implements ProjectsSearchFeelingLuckyView {
+public class ProjectSearchDisplayFragment extends Fragment implements ProjectSearchDisplayView {
 
     @BindView(R.id.activity_search_lucky_projects_recyclerView)
     RecyclerView recyclerView;
@@ -36,16 +36,24 @@ public class ProjectsSearchFeelingLuckyFragment extends Fragment implements Proj
     private ProjectsFeelingLuckyAdapter projectsFeelingLuckyAdapter;
     ProjectsFeelingLuckyAdapter.ClickListener itemClickListener;
 
-    ProjectSearchFeelingLuckyPresenter mProjectSearchFeelingLuckyPresenter;
+    ProjectSearchDisplayPresenter mProjectSearchFeelingLuckyPresenter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mProjectSearchFeelingLuckyPresenter = new ProjectSearchFeelingLuckyPresenterImpl(this);
+        mProjectSearchFeelingLuckyPresenter = new ProjectSearchDisplayPresenterImpl(this);
         final Bundle arguments = this.getArguments();
         if (arguments != null) {
             /** dohvacanje podataka sa prethodnog fragmenta*/
             mSearchProjects = arguments.getParcelable(ProjectsSearchMainFragment.PROJECT_INFO);
+            int module = arguments.getInt("module");
+            if(module == 0){
+               mProjectSearchFeelingLuckyPresenter.setInteractor(new KeywordSearchModule());
+            }
+            else if (module == 1){
+                mProjectSearchFeelingLuckyPresenter.setInteractor(new LuckySearchModule());
+            }
+
             mProjectSearchFeelingLuckyPresenter.getSearchedProjects(mSearchProjects.getSkills());
         }
     }

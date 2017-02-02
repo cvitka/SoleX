@@ -6,6 +6,7 @@ import hr.foi.air.solex.fragments.ProjectSearchResultView;
 import hr.foi.air.solex.fragments.ProjectSearchView;
 import hr.foi.air.solex.models.projects.Project;
 import hr.foi.air.solex.models.searched_project.SearchedProject;
+import hr.foi.air.solex.models.searched_project.SearchedProjectAndroidInteractorImpl;
 import hr.foi.air.solex.models.searched_project.SearchedProjectInteractor;
 import hr.foi.air.solex.models.searched_project.SearchedProjectInteractorImpl;
 import hr.foi.air.solex.models.searched_project.SearchedProjectListListener;
@@ -25,7 +26,9 @@ public class ProjectSearchPresenterImpl implements ProjectSearchPreseneter, Skil
 
     public ProjectSearchPresenterImpl(ProjectSearchView projectSearchView) {
         mProjectSearchView = projectSearchView;
-        mSearchedProjectInteractor = new SearchedProjectInteractorImpl();
+        mSearchedProjectInteractor =
+                new SearchedProjectInteractorImpl();
+                //new SearchedProjectAndroidInteractorImpl();
         mSkillInteractor = new SkillsInteractorImpl();
 
         mSkillInteractor.setSkillListListener(this);
